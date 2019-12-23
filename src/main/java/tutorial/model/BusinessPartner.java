@@ -1,15 +1,10 @@
 package tutorial.model;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Version;
+import javax.persistence.*;
 
 /**
  * Entity implementation class for Entity: BusinessPartner
@@ -39,9 +34,9 @@ public class BusinessPartner {
 	@Column(name = "\"CustomNum2\"", precision = 30, scale = 5)
 	private BigDecimal customNum2;
 
-	@Temporal(TemporalType.TIMESTAMP)
-    private Date utilDate;
-	
+	@OneToMany(mappedBy = "businessPartner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	private Collection<BusinessPartnerRole> roles;
+
 	public BusinessPartner() {
 		super();
 	}
