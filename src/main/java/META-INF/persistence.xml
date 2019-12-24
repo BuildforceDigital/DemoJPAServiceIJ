@@ -7,6 +7,8 @@
 		<class>tutorial.model.BusinessPartnerRole</class>
 		<class>tutorial.model.AdministrativeDivisionDescription</class>
 		<class>tutorial.model.AdministrativeDivisionDescriptionKey</class>
+		<class>tutorial.model.Person</class>
+		<class>tutorial.model.Company</class>
 <properties>
 			<property name="eclipselink.logging.level.sql" value="FINEST" />
 			<property name="eclipselink.logging.parameters" value="true" />
