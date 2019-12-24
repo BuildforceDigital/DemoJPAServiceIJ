@@ -42,10 +42,11 @@ public abstract class BusinessPartner implements Serializable {
 	@OneToMany(mappedBy = "businessPartner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private Collection<BusinessPartnerRole> roles;
 
-/*
 	@Embedded
 	private PostalAddressData address = new PostalAddressData();
-*/
+
+	@Embedded
+	private AdministrativeInformation administrativeInformation = new AdministrativeInformation();
 
 	public BusinessPartner() {
 		super();
