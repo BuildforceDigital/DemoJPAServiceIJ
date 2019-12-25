@@ -1,5 +1,7 @@
 package tutorial.model;
 
+import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmIgnore;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -27,15 +29,19 @@ public abstract class BusinessPartner implements Serializable {
 	@Column(name = "\"ETag\"")
 	private long eTag;
 
+	@EdmIgnore
 	@Column(name = "\"CustomString1\"", length = 250)
 	private String customString1;
 
+	@EdmIgnore
 	@Column(name = "\"CustomString2\"", length = 250)
 	private String customString2;
 
+	@EdmIgnore
 	@Column(name = "\"CustomNum1\"", precision = 30, scale = 5)
 	private BigDecimal customNum1;
 
+	@EdmIgnore
 	@Column(name = "\"CustomNum2\"", precision = 30, scale = 5)
 	private BigDecimal customNum2;
 
