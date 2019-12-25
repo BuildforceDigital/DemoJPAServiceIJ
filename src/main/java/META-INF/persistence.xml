@@ -3,8 +3,10 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="PersistenceUnit">
+		<class>tutorial.model.AdministrativeDivision</class>
 		<class>tutorial.model.AdministrativeDivisionDescription</class>
 		<class>tutorial.model.AdministrativeDivisionDescriptionKey</class>
+		<class>tutorial.model.AdministrativeDivisionKey</class>
 		<class>tutorial.model.AdministrativeInformation</class>
 		<class>tutorial.model.BusinessPartner</class>
 		<class>tutorial.model.BusinessPartnerRole</class>
@@ -12,6 +14,7 @@
 		<class>tutorial.model.Company</class>
 		<class>tutorial.model.Person</class>
 		<class>tutorial.model.PostalAddressData</class>
+
 		<properties>
 			<property name="eclipselink.logging.level.sql" value="FINEST" />
 			<property name="eclipselink.logging.parameters" value="true" />
