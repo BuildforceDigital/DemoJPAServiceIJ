@@ -20,7 +20,7 @@ import java.util.HashMap;
 public class Servlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final String PUNIT_NAME = "PersistenceUnit";
+	public static final String PUNIT_NAME = "PersistenceUnit";
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
