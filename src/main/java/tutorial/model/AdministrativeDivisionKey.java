@@ -1,15 +1,10 @@
 package tutorial.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class AdministrativeDivisionKey implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+public class AdministrativeDivisionKey {
     @Column(name = "\"CodePublisher\"", length = 10)
     private String codePublisher;
 

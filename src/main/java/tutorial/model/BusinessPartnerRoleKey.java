@@ -1,13 +1,9 @@
 package tutorial.model;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
-public class BusinessPartnerRoleKey implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+public class BusinessPartnerRoleKey {
     @Id
     @Column(name = "BusinessPartnerID")
     private String businessPartnerID;

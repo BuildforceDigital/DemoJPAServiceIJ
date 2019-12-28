@@ -2,7 +2,6 @@ package tutorial.model;
 
 import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmIgnore;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
 
@@ -16,10 +15,7 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "\"Type\"")
 @Entity(name = "BusinessPartner")
 @Table(schema = "\"OLINGO\"", name = "\"BusinessPartner\"")
-public abstract class BusinessPartner implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
+public abstract class BusinessPartner {
 	@Id
 	@Column(length = 32)
 	private String iD;
