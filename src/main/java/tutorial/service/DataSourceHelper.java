@@ -1,6 +1,5 @@
 package tutorial.service;
 
-import java.io.IOException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -33,7 +32,7 @@ public class DataSourceHelper {
 
         switch (database) {
             case DB_HSQLDB:
-                ds = new DriverDataSource(classLoader, HSQLDB_DRIVER_CLASS_NAME, HSQLDB_URL, "sa", "", new Properties());
+                ds = new DriverDataSource(classLoader, HSQLDB_DRIVER_CLASS_NAME, HSQLDB_URL, "SA", null, new Properties());
                 break;
             case DB_DERBY:
                 ds = new DriverDataSource(classLoader, DERBY_DRIVER_CLASS_NAME, DERBY_URL, null, null, new Properties());
