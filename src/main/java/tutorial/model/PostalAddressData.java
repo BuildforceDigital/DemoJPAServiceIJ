@@ -8,13 +8,13 @@ import java.util.Collection;
 @Embeddable
 public class PostalAddressData {
 
-    @Column(name = "\"Address.StreetName\"", nullable = true)
+    @Column(name = "\"Address.StreetName\"")
     private String streetName;
 
-    @Column(name = "\"Address.StreetNumber\"", nullable = true)
+    @Column(name = "\"Address.StreetNumber\"")
     private String houseNumber;
 
-    @Column(name = "\"Address.PostOfficeBox\"", nullable = true)
+    @Column(name = "\"Address.PostOfficeBox\"")
     private String POBox;
 
     @Column(name = "\"Address.PostalCode\"")

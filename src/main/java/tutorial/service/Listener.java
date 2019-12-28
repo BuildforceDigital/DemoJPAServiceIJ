@@ -10,7 +10,7 @@ import org.apache.olingo.commons.api.ex.ODataException;
 import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
 import com.sap.olingo.jpa.processor.core.api.JPAODataServiceContext;
 
-// @WebListener
+@WebListener
 public class Listener implements ServletContextListener {
 
     // Create Service Context

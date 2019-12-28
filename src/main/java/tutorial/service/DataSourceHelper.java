@@ -33,7 +33,7 @@ public class DataSourceHelper {
 
         switch (database) {
             case DB_HSQLDB:
-                ds = new DriverDataSource(classLoader, HSQLDB_DRIVER_CLASS_NAME, HSQLDB_URL, null, null, new Properties());
+                ds = new DriverDataSource(classLoader, HSQLDB_DRIVER_CLASS_NAME, HSQLDB_URL, "sa", "", new Properties());
                 break;
             case DB_DERBY:
                 ds = new DriverDataSource(classLoader, DERBY_DRIVER_CLASS_NAME, DERBY_URL, null, null, new Properties());

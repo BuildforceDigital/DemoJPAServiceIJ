@@ -41,14 +41,12 @@ public class AdministrativeDivision {
     @Column(name = "\"Population\"")
     private Long population;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
             @JoinColumn(referencedColumnName = "\"CodePublisher\"", name = "\"CodePublisher\"", nullable = false,
                     insertable = false, updatable = false),
-            @JoinColumn(referencedColumnName = "\"CodeID\"", name = "\"ParentCodeID\"", nullable = false, insertable = true,
-                    updatable = true),
-            @JoinColumn(referencedColumnName = "\"DivisionCode\"", name = "\"ParentDivisionCode\"", nullable = false,
-                    insertable = true, updatable = true) })
+            @JoinColumn(referencedColumnName = "\"CodeID\"", name = "\"ParentCodeID\"", nullable = false),
+            @JoinColumn(referencedColumnName = "\"DivisionCode\"", name = "\"ParentDivisionCode\"", nullable = false) })
     private AdministrativeDivision parent;
 
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)

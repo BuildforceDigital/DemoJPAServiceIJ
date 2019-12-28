@@ -5,7 +5,7 @@ import javax.persistence.Converter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Converter(autoApply = false)
+@Converter()
 public class AccessRightsConverter implements AttributeConverter<AccessRights[], Short> {
 
     @Override
