@@ -2,8 +2,9 @@ package tutorial.model;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import java.io.Serializable;
 
-public class BusinessPartnerRoleKey {
+public class BusinessPartnerRoleKey implements Serializable {
     @Id
     @Column(name = "BusinessPartnerID")
     private String businessPartnerID;
