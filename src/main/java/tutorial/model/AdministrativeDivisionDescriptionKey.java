@@ -2,9 +2,10 @@ package tutorial.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-public class AdministrativeDivisionDescriptionKey {
+public class AdministrativeDivisionDescriptionKey implements Serializable {
     @Column(name = "\"CodePublisher\"", length = 10, nullable = false)
     private String codePublisher;
 
