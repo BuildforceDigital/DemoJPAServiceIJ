@@ -41,7 +41,9 @@ public class Servlet extends HttpServlet {
 
 			final JPAODataCRUDHandler handler = new JPAODataCRUDHandler(serviceContext);
 			handler.getJPAODataRequestContext().setEntityManager(em);
+
 			handler.getJPAODataRequestContext().setCUDRequestHandler(new CUDRequestHandler());
+
 			handler.process(req, resp);
 		} catch (RuntimeException | ODataException e) {
 			throw new ServletException(e);

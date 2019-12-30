@@ -1,5 +1,8 @@
 package tutorial.model;
 
+import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAStructuredType;
+
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +63,18 @@ public class AdministrativeDivision {
 
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private List<AdministrativeDivision> children;
+
+    private Constructor<?> getConstructor(final JPAStructuredType st) {
+        Constructor<?> cons = null;
+        Constructor<?>[] constructors = st.getTypeClass().getConstructors();
+        for (int i = 0; i < constructors.length; i++) {
+            cons = constructors[i];
+            if (cons.getParameterCount() == 0) {
+                break;
+            }
+        }
+        return cons;
+    }
 
     public List<AdministrativeDivision> getChildren() {
         if (children == null) children = new ArrayList<>();
