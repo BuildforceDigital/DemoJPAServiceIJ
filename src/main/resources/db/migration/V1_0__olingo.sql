@@ -130,7 +130,6 @@ insert into "AdministrativeDivisionDescription"
 values ('ISO', '3166-1', 'CHE', 'de', 'Schweiz');
 insert into "AdministrativeDivisionDescription"
 values ('ISO', '3166-1', 'CHE', 'en', 'Switzerland');
-
 insert into "AdministrativeDivisionDescription"
 values ('ISO', '3166-2', 'DE-BW', 'de', 'Baden-Württemberg');
 insert into "AdministrativeDivisionDescription"
@@ -163,7 +162,6 @@ insert into "AdministrativeDivisionDescription"
 values ('ISO', '3166-2', 'DE-SH', 'de', 'Schleswig-Holstein');
 insert into "AdministrativeDivisionDescription"
 values ('ISO', '3166-2', 'DE-TH', 'de', 'Thüringen');
-
 insert into "AdministrativeDivisionDescription"
 values ('ISO', '3166-2', 'DE-BW', 'en', 'Baden-Württemberg');
 insert into "AdministrativeDivisionDescription"
@@ -196,8 +194,6 @@ insert into "AdministrativeDivisionDescription"
 values ('ISO', '3166-2', 'DE-SH', 'en', 'Schleswig-Holstein');
 insert into "AdministrativeDivisionDescription"
 values ('ISO', '3166-2', 'DE-TH', 'en', 'Thuringia');
-
-
 insert into "AdministrativeDivisionDescription"
 values ('ISO', '3166-2', 'CH-AG', 'de', 'Aargau');
 insert into "AdministrativeDivisionDescription"

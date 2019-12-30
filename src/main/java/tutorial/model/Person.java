@@ -9,8 +9,6 @@ import javax.persistence.*;
 @Table(schema = "\"OLINGO\"", name = "\"BusinessPartner\"")
 public class Person extends BusinessPartner {
 
-    private static final long serialVersionUID = 1L;
-
     @Column(name = "\"NameLine1\"")
     private String firstName;
 
