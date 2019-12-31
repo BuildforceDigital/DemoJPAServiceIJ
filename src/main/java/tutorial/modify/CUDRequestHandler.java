@@ -1,16 +1,23 @@
 package tutorial.modify;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
-import javax.persistence.EntityManager;
-
+import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAAssociationPath;
+import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAEntityType;
 import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAStructuredType;
 import com.sap.olingo.jpa.processor.core.api.JPAAbstractCUDRequestHandler;
+import com.sap.olingo.jpa.processor.core.exception.ODataJPAInvocationTargetException;
 import com.sap.olingo.jpa.processor.core.exception.ODataJPAProcessException;
 import com.sap.olingo.jpa.processor.core.exception.ODataJPAProcessorException;
+import com.sap.olingo.jpa.processor.core.modify.JPAUpdateResult;
 import com.sap.olingo.jpa.processor.core.processor.JPARequestEntity;
+import com.sap.olingo.jpa.processor.core.processor.JPARequestLink;
+import org.apache.olingo.commons.api.http.HttpMethod;
 import org.apache.olingo.commons.api.http.HttpStatusCode;
+
+import javax.persistence.EntityManager;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+import java.util.Map;
 
 public class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
 
@@ -36,42 +43,60 @@ public class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
         return cons;
     }
 
-    public Object createEntity(final JPARequestEntity requestEntity, final EntityManager em)
-            throws ODataJPAProcessException {
+    /*
+    private Constructor<?> getConstructor(final JPAStructuredType st) {
+        Constructor<?>[] constructors = st.getTypeClass().getConstructors();
 
-        final Object instance = createInstance(getConstructor(requestEntity.getEntityType()));
-        requestEntity.getModifyUtil().setAttributesDeep(requestEntity.getData(), instance, requestEntity.getEntityType());
+        return Arrays.stream(constructors).findFirst().orElse(null);
+    }
+    */
+
+    public Object createEntity(final JPARequestEntity requestEntity, final EntityManager em) throws ODataJPAProcessException {
+        final JPAEntityType jpaEt = requestEntity.getEntityType();
+        final Object instance = createInstance(getConstructor(jpaEt));
+
+        requestEntity.getModifyUtil().setAttributesDeep(requestEntity.getData(), instance, jpaEt);
         em.persist(instance);
         return instance;
-
     }
 
-/*    @Override
-    public Object createEntity(final JPARequestEntity requestEntity, final EntityManager em)
-            throws ODataJPAProcessException {
+    @Override
+    public JPAUpdateResult updateEntity(final JPARequestEntity requestEntity, final EntityManager em,
+                                        final HttpMethod method) throws ODataJPAProcessException {
 
-        final JPAEntityType et = requestEntity.getEntityType();
+        if (method == HttpMethod.PATCH || method == HttpMethod.DELETE) {
+            final JPAEntityType jpaEt = requestEntity.getEntityType();
+            final Object instance = em.find(jpaEt.getTypeClass(), requestEntity.getModifyUtil()
+                            .createPrimaryKey(jpaEt, requestEntity.getKeys(), jpaEt));
 
-        if (et.getExternalName().equals("AdministrativeDivision")) {
-            final Map<String, Object> jpaAttributes = requestEntity.getData();
-            AdministrativeDivision result = new AdministrativeDivision();
-
-            result.setCodeID((String) jpaAttributes.get("codeID"));
-            result.setCodePublisher((String) jpaAttributes.get("codePublisher"));
-            result.setDivisionCode((String) jpaAttributes.get("divisionCode"));
-
-            result.setCountryCode((String) jpaAttributes.get("countryCode"));
-            result.setParentCodeID((String) jpaAttributes.get("parentCodeID"));
-            result.setParentDivisionCode((String) jpaAttributes.get("parentDivisionCode"));
-
-            result.setAlternativeCode((String) jpaAttributes.get("alternativeCode"));
-            result.setArea((Integer) jpaAttributes.get("area"));
-            result.setPopulation((Long) jpaAttributes.get("population"));
-
-            em.persist(result);
-            return result;
+            requestEntity.getModifyUtil().setAttributesDeep(requestEntity.getData(), instance, jpaEt);
+            updateLinks(requestEntity, em, instance);
+            return new JPAUpdateResult(false, instance);
         }
-        return super.createEntity(requestEntity, em);
-    }*/
+        return super.updateEntity(requestEntity, em, method);
+    }
+
+    private void updateLinks(final JPARequestEntity requestEntity, final EntityManager em, final Object instance)
+            throws ODataJPAProcessorException, ODataJPAInvocationTargetException {
+        if (requestEntity.getRelationLinks() != null) {
+            for (Map.Entry<JPAAssociationPath, List<JPARequestLink>> links : requestEntity.getRelationLinks().entrySet()) {
+                for (JPARequestLink link : links.getValue()) {
+                    final Object related = em.find(link.getEntityType().getTypeClass(), requestEntity.getModifyUtil()
+                            .createPrimaryKey(link.getEntityType(), link.getRelatedKeys(), link.getEntityType()));
+                    requestEntity.getModifyUtil().linkEntities(instance, related, links.getKey());
+                }
+            }
+        }
+    }
+
+    @Override
+    public void deleteEntity(JPARequestEntity requestEntity, EntityManager em) throws ODataJPAProcessException {
+
+        final Object instance = em.find(requestEntity.getEntityType().getTypeClass(),
+                requestEntity.getModifyUtil().createPrimaryKey(requestEntity.getEntityType(), requestEntity.getKeys(),
+                        requestEntity.getEntityType()));
+        if (instance != null)
+            em.remove(instance);
+    }
 
 }
