@@ -1,8 +1,5 @@
 package tutorial.model;
 
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAStructuredType;
-
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +18,6 @@ import javax.persistence.Table;
 @Entity(name = "AdministrativeDivision")
 @Table(schema = "\"OLINGO\"", name = "\"AdministrativeDivision\"")
 public class AdministrativeDivision {
-
     @Id
     @Column(name = "\"CodePublisher\"", length = 10)
     private String codePublisher;
@@ -50,7 +46,7 @@ public class AdministrativeDivision {
             @JoinColumn(referencedColumnName = "\"CodePublisher\"", name = "\"CodePublisher\"", nullable = false,
                     insertable = false, updatable = false),
             @JoinColumn(referencedColumnName = "\"CodeID\"", name = "\"ParentCodeID\"", nullable = false),
-            @JoinColumn(referencedColumnName = "\"DivisionCode\"", name = "\"ParentDivisionCode\"", nullable = false) })
+            @JoinColumn(referencedColumnName = "\"DivisionCode\"", name = "\"ParentDivisionCode\"", nullable = false)})
     private AdministrativeDivision parent;
 
     public AdministrativeDivision getParent() {
@@ -64,22 +60,11 @@ public class AdministrativeDivision {
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private List<AdministrativeDivision> children;
 
-    private Constructor<?> getConstructor(final JPAStructuredType st) {
-        Constructor<?> cons = null;
-        Constructor<?>[] constructors = st.getTypeClass().getConstructors();
-        for (int i = 0; i < constructors.length; i++) {
-            cons = constructors[i];
-            if (cons.getParameterCount() == 0) {
-                break;
-            }
-        }
-        return cons;
-    }
-
     public List<AdministrativeDivision> getChildren() {
         if (children == null) children = new ArrayList<>();
         return children;
     }
+
     public void setChildren(List<AdministrativeDivision> children) {
         this.children = children;
     }
@@ -155,4 +140,33 @@ public class AdministrativeDivision {
     public void setPopulation(Long population) {
         this.population = population;
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((codeID == null) ? 0 : codeID.hashCode());
+        result = prime * result + ((codePublisher == null) ? 0 : codePublisher.hashCode());
+        result = prime * result + ((divisionCode == null) ? 0 : divisionCode.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        AdministrativeDivision other = (AdministrativeDivision) obj;
+        if (codeID == null) {
+            if (other.codeID != null) return false;
+        } else if (!codeID.equals(other.codeID)) return false;
+        if (codePublisher == null) {
+            if (other.codePublisher != null) return false;
+        } else if (!codePublisher.equals(other.codePublisher)) return false;
+        if (divisionCode == null) {
+            if (other.divisionCode != null) return false;
+        } else if (!divisionCode.equals(other.divisionCode)) return false;
+        return true;
+    }
+
 }

@@ -1,19 +1,31 @@
 package tutorial.model;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.Id;
 import java.io.Serializable;
 
-@Embeddable
+// @Embeddable
 public class AdministrativeDivisionKey implements Serializable {
+    private static final long serialVersionUID = 5482165952249228988L;
+    @Id
     @Column(name = "\"CodePublisher\"", length = 10)
     private String codePublisher;
-
+    @Id
     @Column(name = "\"CodeID\"", length = 10)
     private String codeID;
-
+    @Id
     @Column(name = "\"DivisionCode\"", length = 10)
     private String divisionCode;
+
+    public AdministrativeDivisionKey() {
+        // Needed to be used as IdClass
+    }
+
+    public AdministrativeDivisionKey(String codePublisher, String codeID, String divisionCode) {
+        this.codePublisher = codePublisher;
+        this.codeID = codeID;
+        this.divisionCode = divisionCode;
+    }
 
     @Override
     public int hashCode() {

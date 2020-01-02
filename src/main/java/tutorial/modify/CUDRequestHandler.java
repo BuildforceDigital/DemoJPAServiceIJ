@@ -34,8 +34,8 @@ public class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
     private Constructor<?> getConstructor(final JPAStructuredType st) {
         Constructor<?> cons = null;
         Constructor<?>[] constructors = st.getTypeClass().getConstructors();
-        for (int i = 0; i < constructors.length; i++) {
-            cons = constructors[i];
+        for (Constructor<?> constructor : constructors) {
+            cons = constructor;
             if (cons.getParameterCount() == 0) {
                 break;
             }
@@ -66,8 +66,8 @@ public class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
 
         if (method == HttpMethod.PATCH || method == HttpMethod.DELETE) {
             final JPAEntityType jpaEt = requestEntity.getEntityType();
-            final Object instance = em.find(jpaEt.getTypeClass(), requestEntity.getModifyUtil()
-                            .createPrimaryKey(jpaEt, requestEntity.getKeys(), jpaEt));
+            final Object primaryKey = requestEntity.getModifyUtil().createPrimaryKey(jpaEt, requestEntity.getKeys(), jpaEt);
+            final Object instance = em.find(jpaEt.getTypeClass(), primaryKey);
 
             requestEntity.getModifyUtil().setAttributesDeep(requestEntity.getData(), instance, jpaEt);
             updateLinks(requestEntity, em, instance);
@@ -81,8 +81,9 @@ public class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
         if (requestEntity.getRelationLinks() != null) {
             for (Map.Entry<JPAAssociationPath, List<JPARequestLink>> links : requestEntity.getRelationLinks().entrySet()) {
                 for (JPARequestLink link : links.getValue()) {
-                    final Object related = em.find(link.getEntityType().getTypeClass(), requestEntity.getModifyUtil()
-                            .createPrimaryKey(link.getEntityType(), link.getRelatedKeys(), link.getEntityType()));
+                    final JPAEntityType lnkEt = link.getEntityType();
+                    final Object related = em.find(lnkEt.getTypeClass(), requestEntity.getModifyUtil()
+                            .createPrimaryKey(lnkEt, link.getRelatedKeys(), lnkEt));
                     requestEntity.getModifyUtil().linkEntities(instance, related, links.getKey());
                 }
             }
@@ -91,10 +92,10 @@ public class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
 
     @Override
     public void deleteEntity(JPARequestEntity requestEntity, EntityManager em) throws ODataJPAProcessException {
+        final JPAEntityType reqEt = requestEntity.getEntityType();
+        final Object instance =
+                em.find(reqEt.getTypeClass(), requestEntity.getModifyUtil().createPrimaryKey(reqEt, requestEntity.getKeys(), reqEt));
 
-        final Object instance = em.find(requestEntity.getEntityType().getTypeClass(),
-                requestEntity.getModifyUtil().createPrimaryKey(requestEntity.getEntityType(), requestEntity.getKeys(),
-                        requestEntity.getEntityType()));
         if (instance != null)
             em.remove(instance);
     }
