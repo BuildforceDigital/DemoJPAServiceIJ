@@ -37,8 +37,8 @@ public class AdministrativeDivision {
     @Column(name = "\"AlternativeCode\"", length = 10)
     private String alternativeCode;
     @Column(name = "\"Area\"")
-    private Integer area;
-    @Column(name = "\"Population\"")
+    private Integer area = 0;
+    @Column(name = "\"Population\"", precision = 34, scale = 0)
     private Long population;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -163,10 +163,8 @@ public class AdministrativeDivision {
         if (codePublisher == null) {
             if (other.codePublisher != null) return false;
         } else if (!codePublisher.equals(other.codePublisher)) return false;
-        if (divisionCode == null) {
-            if (other.divisionCode != null) return false;
-        } else if (!divisionCode.equals(other.divisionCode)) return false;
-        return true;
+        if (divisionCode == null) return other.divisionCode == null;
+        else return divisionCode.equals(other.divisionCode);
     }
 
 }

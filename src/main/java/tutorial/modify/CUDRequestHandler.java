@@ -16,6 +16,7 @@ import org.apache.olingo.commons.api.http.HttpStatusCode;
 import javax.persistence.EntityManager;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -32,24 +33,10 @@ public class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
     }
 
     private Constructor<?> getConstructor(final JPAStructuredType st) {
-        Constructor<?> cons = null;
-        Constructor<?>[] constructors = st.getTypeClass().getConstructors();
-        for (Constructor<?> constructor : constructors) {
-            cons = constructor;
-            if (cons.getParameterCount() == 0) {
-                break;
-            }
-        }
-        return cons;
-    }
-
-    /*
-    private Constructor<?> getConstructor(final JPAStructuredType st) {
         Constructor<?>[] constructors = st.getTypeClass().getConstructors();
 
         return Arrays.stream(constructors).findFirst().orElse(null);
     }
-    */
 
     public Object createEntity(final JPARequestEntity requestEntity, final EntityManager em) throws ODataJPAProcessException {
         final JPAEntityType jpaEt = requestEntity.getEntityType();
