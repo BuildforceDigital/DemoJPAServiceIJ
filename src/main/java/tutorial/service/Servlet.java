@@ -18,8 +18,7 @@ import tutorial.modify.CUDRequestHandler;
 
 @WebServlet(urlPatterns="/DemoJPA.svc/*")
 public class Servlet extends HttpServlet {
-
-	private static final String PUNIT_NAME = "PersistenceUnit";
+	protected static final String PUNIT_NAME = "PersistenceUnit";
 	private final EntityManagerFactory emf;
 
 	public Servlet() {
@@ -31,19 +30,14 @@ public class Servlet extends HttpServlet {
 	@Override
 	protected void service(final HttpServletRequest req, final HttpServletResponse resp)
 			throws ServletException {
-
-		EntityManager em = null;
+		final EntityManager em = emf.createEntityManager();
 		final JPAODataCRUDContextAccess serviceContext =
 				(JPAODataCRUDContextAccess) getServletContext().getAttribute("ServiceContext");
+		final JPAODataCRUDHandler handler = new JPAODataCRUDHandler(serviceContext);
 
 		try {
-			em = emf.createEntityManager();
-
-			final JPAODataCRUDHandler handler = new JPAODataCRUDHandler(serviceContext);
 			handler.getJPAODataRequestContext().setEntityManager(em);
-
 			handler.getJPAODataRequestContext().setCUDRequestHandler(new CUDRequestHandler());
-
 			handler.process(req, resp);
 		} catch (RuntimeException | ODataException e) {
 			throw new ServletException(e);

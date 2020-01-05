@@ -19,7 +19,7 @@ public class Listener implements ServletContextListener {
         final DataSource ds = DataSourceHelper.createDataSource(DataSourceHelper.DB_HSQLDB);
         try {
             final JPAODataCRUDContextAccess serviceContext = JPAODataServiceContext.with()
-                    .setPUnit("PersistenceUnit")
+                    .setPUnit(Servlet.PUNIT_NAME)
                     .setDataSource(ds)
                     .setTypePackage("tutorial.operations", "tutorial.model")
                     .build();

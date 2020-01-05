@@ -4,12 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-public class BusinessPartnerRoleKey implements Serializable {
+public class BusinessPartnerRoleKey /*implements Serializable*/ {
     @Id
-    @Column(name = "BusinessPartnerID")
+    @Column(name = "\"BusinessPartnerID\"")
     private String businessPartnerID;
     @Id
-    @Column(name = "BusinessPartnerRole")
+    @Column(name = "\"BusinessPartnerRole\"")
     private String roleCategory;
 
     @Override

@@ -15,7 +15,7 @@ public class PostalAddressData {
     private String houseNumber;
 
     @Column(name = "\"Address.PostOfficeBox\"")
-    private String POBox;
+    private String poBox;
 
     @Column(name = "\"Address.PostalCode\"")
     private String postalCode;
@@ -45,9 +45,9 @@ public class PostalAddressData {
     @EdmDescriptionAssoziation(languageAttribute = "key/language", descriptionAttribute = "name")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
-            @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"Address.RegionCodePublisher\"", nullable = false, insertable = false, updatable = false),
-            @JoinColumn(name = "\"CodeID\"", referencedColumnName = "\"Address.RegionCodeID\"", nullable = false, insertable = false, updatable = false),
-            @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "\"Address.Region\"", nullable = false, insertable = false, updatable = false)
+            @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"Address.RegionCodePublisher\"", insertable = false, updatable = false),
+            @JoinColumn(name = "\"CodeID\"", referencedColumnName = "\"Address.RegionCodeID\"", insertable = false, updatable = false),
+            @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "\"Address.Region\"", insertable = false, updatable = false)
     })
     private Collection<AdministrativeDivisionDescription> regionName;
 }
