@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Entity(name = "Person")
 @DiscriminatorValue(value = "1")
-@Table(schema = "\"OLINGO\"", name = "\"BusinessPartner\"")
 public class Person extends BusinessPartner {
 
     @Column(name = "\"NameLine1\"")

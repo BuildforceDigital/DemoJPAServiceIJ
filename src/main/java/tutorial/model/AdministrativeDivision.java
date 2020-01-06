@@ -60,11 +60,6 @@ public class AdministrativeDivision {
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private List<AdministrativeDivision> children;
 
-    public List<AdministrativeDivision> getChildren() {
-        if (children == null) children = new ArrayList<>();
-        return children;
-    }
-
     public void setChildren(List<AdministrativeDivision> children) {
         this.children = children;
     }

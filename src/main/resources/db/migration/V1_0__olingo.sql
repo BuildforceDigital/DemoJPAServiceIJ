@@ -18,9 +18,9 @@ CREATE TABLE "BusinessPartner"
     "Address.PostOfficeBox"       VARCHAR(60),
     "Address.City"                VARCHAR(100),
     "Address.PostalCode"          VARCHAR(60),
-    "Address.RegionCodePublisher" VARCHAR(10) NOT NULL,
-    "Address.RegionCodeID"        VARCHAR(10) NOT NULL,
-    "Address.Region"              VARCHAR(100),
+    "REGIONCODEPUBLISHER"         VARCHAR(10) NOT NULL,
+    "REGIONCODEID"                VARCHAR(10) NOT NULL,
+    "REGION"                      VARCHAR(100),
     "Address.Country"             VARCHAR(100),
     "Telecom.Phone"               VARCHAR(100),
     "Telecom.Mobile"              VARCHAR(100),
@@ -67,13 +67,13 @@ insert into "BusinessPartner"
 values ('10', 0, '2', '', '', null, null, 'Tenth Org.', '', null, 'Test Road', '12', '', 'Test City', '03921', 'ISO',
         '3166-2', 'US-ME', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'DEU', null, null);
 insert into "BusinessPartner"
-values ('99', 0, '1', '', '', null, null, 'Max', 'Mustermann', null, 'Test Star�e', '12', '', 'Teststadt', '10115',
+values ('99', 0, '1', '', '', null, null, 'Max', 'Mustermann', null, 'Test Straße', '12', '', 'Teststadt', '10115',
         'ISO', '3166-2', 'DE-BE', 'DEU', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'DEU', null, 1);
 insert into "BusinessPartner"
 values ('98', 0, '1', '', '', null, null, 'John', 'Doe', null, 'Test Road', '55', '', 'Test City', '76321', 'ISO',
         '3166-2', 'US-TX', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'DEU', null, 2);
 insert into "BusinessPartner"
-values ('97', 0, '1', '', '', null, null, 'Urs', 'M�ller', null, 'Test Star�e', '23', '', 'Test Dorf', '4123', 'ISO',
+values ('97', 0, '1', '', '', null, null, 'Urs', 'Müller', null, 'Test Straße', '23', '', 'Test Dorf', '4123', 'ISO',
         '3166-2', 'CH-BL', 'CHE', '', '', '', '', '99', '2016-07-20 09:21:23', '', null, 'CHE', null, 9);
 
 --------BUSINESS PARTNER ROLE----------------------------------------------------------------------------------------------------

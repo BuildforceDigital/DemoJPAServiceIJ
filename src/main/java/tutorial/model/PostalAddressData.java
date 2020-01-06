@@ -26,28 +26,35 @@ public class PostalAddressData {
     @Column(name = "\"Address.Country\"")
     private String country;
 
-    @Column(name = "\"Address.RegionCodePublisher\"", length = 10)
+    @Column(name = "\"REGIONCODEPUBLISHER\"", length = 10)
     private String regionCodePublisher = "ISO";
 
-    @Column(name = "\"Address.RegionCodeID\"", length = 10)
+    @Column(name = "\"REGIONCODEID\"", length = 10)
     private String regionCodeID = "3166-2";
 
-    @Column(name = "\"Address.Region\"")
+    @Column(name = "\"REGION\"")
     private String region;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumns({
-            @JoinColumn(name = "\"Address.RegionCodePublisher\"", referencedColumnName = "\"CodePublisher\"", nullable = false, insertable = false, updatable = false),
-            @JoinColumn(name = "\"Address.RegionCodeID\"", referencedColumnName = "\"CodeID\"", nullable = false, insertable = false, updatable = false),
-            @JoinColumn(name = "\"Address.Region\"", referencedColumnName = "\"DivisionCode\"", nullable = false, insertable = false, updatable = false) })
+            @JoinColumn(name = "\"REGIONCODEPUBLISHER\"", referencedColumnName = "\"CodePublisher\"", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "\"REGIONCODEID\"", referencedColumnName = "\"CodeID\"", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "\"REGION\"", referencedColumnName = "\"DivisionCode\"", nullable = false, insertable = false, updatable = false) })
     private AdministrativeDivision administrativeDivision;
 
     @EdmDescriptionAssoziation(languageAttribute = "key/language", descriptionAttribute = "name")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
-            @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"Address.RegionCodePublisher\"", insertable = false, updatable = false),
-            @JoinColumn(name = "\"CodeID\"", referencedColumnName = "\"Address.RegionCodeID\"", insertable = false, updatable = false),
-            @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "\"Address.Region\"", insertable = false, updatable = false)
+            @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"REGIONCODEPUBLISHER\"", insertable = false, updatable = false),
+            @JoinColumn(name = "\"CodeID\"", referencedColumnName = "\"REGIONCODEID\"", insertable = false, updatable = false),
+            @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "\"REGION\"", insertable = false, updatable = false)
     })
     private Collection<AdministrativeDivisionDescription> regionName;
+
+    @Override
+    public String toString() {
+        return "PostalAddressData [streetName=" + streetName + ", houseNumber=" + houseNumber + ", pOBox=" + poBox
+                + ", postalCode=" + postalCode + ", cityName=" + cityName + ", country=" + country + ", region=" + region + "]";
+    }
+
 }
