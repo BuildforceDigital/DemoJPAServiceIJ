@@ -1,6 +1,5 @@
 package tutorial.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -38,7 +37,7 @@ public class AdministrativeDivision {
     private String alternativeCode;
     @Column(name = "\"Area\"")
     private Integer area = 0;
-    @Column(name = "\"Population\"", precision = 34, scale = 0)
+    @Column(name = "\"Population\"", precision = 34)
     private Long population;
 
     @ManyToOne(fetch = FetchType.LAZY)

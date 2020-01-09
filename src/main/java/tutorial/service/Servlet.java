@@ -19,13 +19,8 @@ import tutorial.modify.CUDRequestHandler;
 @WebServlet(urlPatterns="/DemoJPA.svc/*")
 public class Servlet extends HttpServlet {
 	protected static final String PUNIT_NAME = "PersistenceUnit";
-	private final EntityManagerFactory emf;
-
-	public Servlet() {
-		super();
-		final DataSource ds = DataSourceHelper.createDataSource(DataSourceHelper.DB_HSQLDB);
-		emf = JPAEntityManagerFactory.getEntityManagerFactory(PUNIT_NAME, ds);
-	}
+	final DataSource ds = DataSourceHelper.createDataSource(DataSourceHelper.DB_HSQLDB);
+	private final EntityManagerFactory emf =JPAEntityManagerFactory.getEntityManagerFactory(PUNIT_NAME, ds);
 
 	@Override
 	protected void service(final HttpServletRequest req, final HttpServletResponse resp)
