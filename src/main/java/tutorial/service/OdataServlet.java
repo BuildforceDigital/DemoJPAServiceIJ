@@ -17,7 +17,7 @@ import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDHandler;
 import tutorial.modify.CUDRequestHandler;
 
 @WebServlet(urlPatterns="/DemoJPA.svc/*")
-public class Servlet extends HttpServlet {
+public class OdataServlet extends HttpServlet {
 	protected static final String PUNIT_NAME = "PersistenceUnit";
 	final DataSource ds = DataSourceHelper.createDataSource(DataSourceHelper.DB_HSQLDB);
 	private final EntityManagerFactory emf =JPAEntityManagerFactory.getEntityManagerFactory(PUNIT_NAME, ds);

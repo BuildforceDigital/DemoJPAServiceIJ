@@ -11,7 +11,7 @@ import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
 import com.sap.olingo.jpa.processor.core.api.JPAODataServiceContext;
 
 @WebListener
-public class Listener implements ServletContextListener {
+public class OdataListener implements ServletContextListener {
 
     // Create Service Context
     @Override
@@ -19,7 +19,7 @@ public class Listener implements ServletContextListener {
         final DataSource ds = DataSourceHelper.createDataSource(DataSourceHelper.DB_HSQLDB);
         try {
             final JPAODataCRUDContextAccess serviceContext = JPAODataServiceContext.with()
-                    .setPUnit(Servlet.PUNIT_NAME)
+                    .setPUnit(OdataServlet.PUNIT_NAME)
                     .setDataSource(ds)
                     .setTypePackage("tutorial.operations", "tutorial.model")
                     .build();

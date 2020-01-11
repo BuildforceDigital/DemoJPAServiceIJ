@@ -5,11 +5,11 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.flywaydb.core.Flyway;
-import org.flywaydb.core.internal.util.jdbc.DriverDataSource;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.flywaydb.core.internal.jdbc.DriverDataSource;
 
 public class DataSourceHelper {
     private static final String DB_SCHEMA = "OLINGO";
@@ -59,10 +59,7 @@ public class DataSourceHelper {
                 return null;
         }
 
-        Flyway flyway = new Flyway();
-        flyway.setDataSource(ds);
-
-        flyway.setSchemas(DB_SCHEMA);
+        Flyway flyway = Flyway.configure().dataSource(ds).schemas(DB_SCHEMA).load();
         flyway.migrate();
         return ds;
     }
