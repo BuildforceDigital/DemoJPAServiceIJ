@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
-          <factory-entry name="PersistenceUnit" value="21431157-269c-47b7-b538-b0fa9d688dfd" />
+          <factory-entry name="TutorialPU" value="21431157-269c-47b7-b538-b0fa9d688dfd" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/java/META-INF/persistence.xml" />

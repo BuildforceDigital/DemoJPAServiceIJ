@@ -18,13 +18,12 @@ import tutorial.modify.CUDRequestHandler;
 
 @WebServlet(urlPatterns="/DemoJPA.svc/*")
 public class OdataServlet extends HttpServlet {
-	protected static final String PUNIT_NAME = "PersistenceUnit";
-	final DataSource ds = DataSourceHelper.createDataSource(DataSourceHelper.DB_HSQLDB);
+	protected static final String PUNIT_NAME = "TutorialPU";
+	private final DataSource ds = DataSourceHelper.createDataSource(DataSourceHelper.DB_HSQLDB);
 	private final EntityManagerFactory emf =JPAEntityManagerFactory.getEntityManagerFactory(PUNIT_NAME, ds);
 
 	@Override
-	protected void service(final HttpServletRequest req, final HttpServletResponse resp)
-			throws ServletException {
+	protected void service(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException {
 		final EntityManager em = emf.createEntityManager();
 		final JPAODataCRUDContextAccess serviceContext =
 				(JPAODataCRUDContextAccess) getServletContext().getAttribute("ServiceContext");
