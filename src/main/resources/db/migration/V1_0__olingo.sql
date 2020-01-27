@@ -1,8 +1,7 @@
 SET schema "OLINGO";
 
 --------BUSINESS PARTNER---------------------------------------------------------------------------------------------------------
-CREATE TABLE "BusinessPartner"
-(
+CREATE TABLE "BusinessPartner"(
     "ID"                          VARCHAR(32) NOT NULL,
     "ETag"                        BIGINT,
     "Type"                        VARCHAR(2),
@@ -1122,18 +1121,14 @@ values ('Eurostat', 'LAU2', '38016', 'BEL', 'NUTS3', 'BE258', null, 31004430, 11
 insert into "AdministrativeDivision"
 values ('Eurostat', 'LAU2', '38025', 'BEL', 'NUTS3', 'BE258', null, 96339703, 11509);
 
-CREATE TABLE "Comment"
-(
+CREATE TABLE "Comment" (
     "BusinessPartnerID" VARCHAR(32) NOT NULL,
     "Order"             INTEGER     NOT NULL,
     "Text"              VARCHAR(280),
-    PRIMARY KEY ("BusinessPartnerID", "Order")
-);
+    PRIMARY KEY ("BusinessPartnerID", "Order"));
 
-insert into "Comment"
-values ('1', 1, 'This is just a test');
-insert into "Comment"
-values ('1', 3, 'This is another test');
+insert into "Comment" values ('1', 1, 'This is just a test');
+insert into "Comment" values ('1', 3, 'This is another test');
 
 --------DUMMY FOR TESTING--------------------------------------------------------------------------------------------------------
 CREATE TABLE "DummyToBeIgnored"
@@ -1143,7 +1138,6 @@ CREATE TABLE "DummyToBeIgnored"
 );
 
 --------User defined scalat functions--------------------------------------------------------------------------------------------
-/*
 CREATE FUNCTION OLINGO."PopulationDensity"("Area" BIGINT, "Population" BIGINT)
     RETURNS DOUBLE
 BEGIN
@@ -1193,4 +1187,4 @@ CREATE FUNCTION "Siblings"("Publisher" VARCHAR(10), "ID" VARCHAR(10), "Division"
         AND NOT ( a."CodePublisher" = "Publisher"
         AND a."CodeID" = "ID"
         AND a."DivisionCode" = "Division" )
-        );*/
+        );

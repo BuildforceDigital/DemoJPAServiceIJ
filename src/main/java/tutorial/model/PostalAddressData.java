@@ -1,6 +1,6 @@
 package tutorial.model;
 
-import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmDescriptionAssoziation;
+import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmDescriptionAssociation;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -42,7 +42,7 @@ public class PostalAddressData {
             @JoinColumn(name = "\"REGION\"", referencedColumnName = "\"DivisionCode\"", nullable = false, insertable = false, updatable = false) })
     private AdministrativeDivision administrativeDivision;
 
-    @EdmDescriptionAssoziation(languageAttribute = "key/language", descriptionAttribute = "name")
+    @EdmDescriptionAssociation(languageAttribute = "key/language", descriptionAttribute = "name")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
             @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"REGIONCODEPUBLISHER\"", insertable = false, updatable = false),
