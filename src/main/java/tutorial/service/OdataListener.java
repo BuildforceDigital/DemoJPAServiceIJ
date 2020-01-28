@@ -1,14 +1,13 @@
 package tutorial.service;
 
+import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
+import com.sap.olingo.jpa.processor.core.api.JPAODataServiceContext;
+import org.apache.olingo.commons.api.ex.ODataException;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
-
-import org.apache.olingo.commons.api.ex.ODataException;
-
-import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
-import com.sap.olingo.jpa.processor.core.api.JPAODataServiceContext;
 
 @WebListener
 public class OdataListener implements ServletContextListener {

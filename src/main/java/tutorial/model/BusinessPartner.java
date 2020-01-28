@@ -2,11 +2,10 @@ package tutorial.model;
 
 import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmIgnore;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
-
-import javax.persistence.*;
 
 /**
  * Entity implementation class for Entity: BusinessPartner

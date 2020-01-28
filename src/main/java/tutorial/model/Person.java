@@ -1,8 +1,10 @@
 package tutorial.model;
 
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.sql.Date;
-
-import javax.persistence.*;
 
 @Entity(name = "Person")
 @DiscriminatorValue(value = "1")

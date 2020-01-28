@@ -1,5 +1,11 @@
 package tutorial.service;
 
+import com.sap.olingo.jpa.metadata.api.JPAEntityManagerFactory;
+import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
+import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDHandler;
+import org.apache.olingo.commons.api.ex.ODataException;
+import tutorial.modify.CUDRequestHandler;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
@@ -8,13 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-
-import org.apache.olingo.commons.api.ex.ODataException;
-
-import com.sap.olingo.jpa.metadata.api.JPAEntityManagerFactory;
-import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
-import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDHandler;
-import tutorial.modify.CUDRequestHandler;
 
 @WebServlet(urlPatterns="/DemoJPA.svc/*")
 public class OdataServlet extends HttpServlet {

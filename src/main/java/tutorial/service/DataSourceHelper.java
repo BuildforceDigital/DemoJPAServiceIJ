@@ -1,15 +1,13 @@
 package tutorial.service;
 
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
-import org.flywaydb.core.Flyway;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.flywaydb.core.Flyway;
 import org.flywaydb.core.internal.jdbc.DriverDataSource;
+
+import javax.sql.DataSource;
+import java.util.Properties;
 
 public class DataSourceHelper {
     private static final String DB_SCHEMA = "OLINGO";

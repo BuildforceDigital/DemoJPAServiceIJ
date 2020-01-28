@@ -1,30 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1"
-	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="TutorialPU">
-		<!--<class>tutorial.model.ABCClassification</class>-->
-		<class>tutorial.model.AccessRightsConverter</class>
-		<class>tutorial.model.AdministrativeDivision</class> <!--OK-->
-		<class>tutorial.model.AdministrativeDivisionDescription</class> <!--OK-->
-		<!--<class>tutorial.model.AdministrativeDivisionDescriptionKey</class>-->
-		<!--<class>tutorial.model.AdministrativeDivisionKey</class>-->
-		<class>tutorial.model.AdministrativeInformation</class>
-		<class>tutorial.model.BusinessPartner</class> <!--OK-->
-		<class>tutorial.model.BusinessPartnerRole</class> <!--OK-->
-		<class>tutorial.model.ChangeInformation</class>
-		<class>tutorial.model.Company</class> <!--OK-->
-		<class>tutorial.model.Person</class> <!--OK-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
 
-		<properties>
-			<property name="eclipselink.logging.level.sql" value="FINEST" />
-			<property name="eclipselink.logging.parameters" value="true" />
-			<property name="eclipselink.logging.timestamp" value="true" />
-			<property name="eclipselink.weaving" value="static" />
-			<property name="eclipselink.persistence-context.flush-mode" value="commit" />
-			<property name="javax.persistence.validation.mode" value="NONE" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:com.sample" />
-			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
-		</properties>
-	</persistence-unit>
+    <persistence-unit name="TutorialPU">
+        <!--<class>tutorial.model.ABCClassification</class>-->
+        <!--<class>tutorial.model.AccessRightsConverter</class>-->
+        <class>tutorial.model.AdministrativeDivision</class> <!--OK-->
+        <class>tutorial.model.AdministrativeDivisionDescription</class> <!--OK-->
+        <class>tutorial.model.AdministrativeDivisionDescriptionKey</class> <!--OK-->
+        <class>tutorial.model.AdministrativeDivisionKey</class>
+        <!--<class>tutorial.model.AdministrativeInformation</class>-->
+        <!--<class>tutorial.model.BusinessPartner</class>--> <!--OK-->
+        <!--<class>tutorial.model.BusinessPartnerRole</class>--> <!--OK-->
+        <!--<class>tutorial.model.ChangeInformation</class>-->
+        <!--<class>tutorial.model.Company</class>--> <!--OK-->
+        <!--<class>tutorial.model.Person</class>--> <!--OK-->
+
+        <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
+        <properties>
+        <!--<property name="eclipselink.jdbc.url" value=""/>
+            <property name="eclipselink.jdbc.driver" value=""/>
+            <property name="eclipselink.jdbc.user" value=""/>
+            <property name="eclipselink.jdbc.password" value=""/>-->
+        <property name="eclipselink.logging.level.sql" value="FINEST" />
+        <property name="eclipselink.logging.parameters" value="true" />
+        <property name="eclipselink.logging.timestamp" value="true" />
+        <property name="eclipselink.weaving" value="static" />
+        <property name="eclipselink.persistence-context.flush-mode" value="commit" />
+        <property name="javax.persistence.validation.mode" value="NONE" />
+        <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:com.sample" />
+        <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
+    </properties>
+
+    </persistence-unit>
 </persistence>
