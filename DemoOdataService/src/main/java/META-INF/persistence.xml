@@ -5,7 +5,20 @@
              version="2.2">
 
     <persistence-unit name="TutorialPU">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <!--<class>tutorial.model.ABCClassification</class>-->
+        <!--<class>tutorial.model.AccessRightsConverter</class>-->
+        <class>tutorial.model.AdministrativeDivision</class> <!--OK-->
+        <class>tutorial.model.AdministrativeDivisionDescription</class> <!--OK-->
+        <class>tutorial.model.AdministrativeDivisionDescriptionKey</class> <!--OK-->
+        <class>tutorial.model.AdministrativeDivisionKey</class>
+        <!--<class>tutorial.model.AdministrativeInformation</class>-->
+        <!--<class>tutorial.model.BusinessPartner</class>--> <!--OK-->
+        <!--<class>tutorial.model.BusinessPartnerRole</class>--> <!--OK-->
+        <!--<class>tutorial.model.ChangeInformation</class>-->
+        <!--<class>tutorial.model.Company</class>--> <!--OK-->
+        <!--<class>tutorial.model.Person</class>--> <!--OK-->
+
+        <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
         <properties>
         <!--<property name="eclipselink.jdbc.url" value=""/>
             <property name="eclipselink.jdbc.driver" value=""/>
