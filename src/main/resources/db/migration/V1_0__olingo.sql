@@ -1137,7 +1137,7 @@ CREATE TABLE "DummyToBeIgnored"
     PRIMARY KEY ("ID")
 );
 
---------User defined scalat functions--------------------------------------------------------------------------------------------
+--------User defined scalar functions--------------------------------------------------------------------------------------------
 CREATE FUNCTION OLINGO."PopulationDensity"("Area" BIGINT, "Population" BIGINT)
     RETURNS DOUBLE
 BEGIN
