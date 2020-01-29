@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@ReadOnly
+// @ReadOnly
 @Table(name = "BusinessPartnerRole", schema = "OLINGO")
 @IdClass(BusinessPartnerRoleEntityPK.class)
 public class BusinessPartnerRoleEntity {
@@ -53,8 +53,10 @@ public class BusinessPartnerRoleEntity {
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "BusinessPartnerID", referencedColumnName = "ID", nullable = false)
+//    @ManyToOne
+//    @JoinColumn(name = "BusinessPartnerID", referencedColumnName = "ID", nullable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "BusinessPartnerID", referencedColumnName = "ID", insertable = false, updatable = false)
     public BusinessPartnerEntity getBusinessPartnerByBusinessPartnerId() {
         return businessPartnerByBusinessPartnerId;
     }
