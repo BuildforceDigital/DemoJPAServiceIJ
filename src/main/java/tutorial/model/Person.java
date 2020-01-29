@@ -8,7 +8,7 @@ import java.sql.Date;
 
 @Entity(name = "Person")
 @DiscriminatorValue(value = "1")
-public class Person extends BusinessPartner {
+public class Person extends BusinessPartnerEntity {
 
     @Column(name = "\"NameLine1\"")
     private String firstName;

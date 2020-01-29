@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity(name = "Company")
 @DiscriminatorValue(value = "2")
-public class Company extends BusinessPartner {
+public class Company extends BusinessPartnerEntity {
 
     @Column(name = "\"NameLine1\"")
     private String name1;

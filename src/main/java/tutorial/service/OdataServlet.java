@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-@WebServlet(urlPatterns="/DemoJPA.svc/*")
+@WebServlet(urlPatterns="/DemoService.svc/*")
 public class OdataServlet extends HttpServlet {
 	protected static final String PUNIT_NAME = "TutorialPU";
 	private final DataSource ds = DataSourceHelper.createDataSource(DataSourceHelper.DB_HSQLDB);
