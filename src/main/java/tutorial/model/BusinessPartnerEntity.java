@@ -15,7 +15,7 @@ public class BusinessPartnerEntity {
     private Long customNum2;
 
     @Id
-    @Column(name = "ID", nullable = false, length = 32)
+    @Column(name = "ID", length = 32)
     public String getId() {
         return id;
     }
@@ -83,10 +83,8 @@ public class BusinessPartnerEntity {
 
         if (!Objects.equals(id, that.id)) return false;
         if (!Objects.equals(eTag, that.eTag)) return false;
-        if (!Objects.equals(customString1, that.customString1))
-            return false;
-        if (!Objects.equals(customString2, that.customString2))
-            return false;
+        if (!Objects.equals(customString1, that.customString1)) return false;
+        if (!Objects.equals(customString2, that.customString2)) return false;
         if (!Objects.equals(customNum1, that.customNum1)) return false;
         return Objects.equals(customNum2, that.customNum2);
     }

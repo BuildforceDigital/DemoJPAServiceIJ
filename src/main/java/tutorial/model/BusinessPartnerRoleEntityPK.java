@@ -36,8 +36,7 @@ public class BusinessPartnerRoleEntityPK implements Serializable {
 
         BusinessPartnerRoleEntityPK that = (BusinessPartnerRoleEntityPK) o;
 
-        if (!Objects.equals(businessPartnerId, that.businessPartnerId))
-            return false;
+        if (!Objects.equals(businessPartnerId, that.businessPartnerId)) return false;
         return Objects.equals(businessPartnerRole, that.businessPartnerRole);
     }
 

@@ -41,8 +41,7 @@ public class BusinessPartnerRoleEntity {
 
         BusinessPartnerRoleEntity that = (BusinessPartnerRoleEntity) o;
 
-        if (!Objects.equals(businessPartnerId, that.businessPartnerId))
-            return false;
+        if (!Objects.equals(businessPartnerId, that.businessPartnerId)) return false;
         return Objects.equals(businessPartnerRole, that.businessPartnerRole);
     }
 
@@ -53,8 +52,6 @@ public class BusinessPartnerRoleEntity {
         return result;
     }
 
-//    @ManyToOne
-//    @JoinColumn(name = "BusinessPartnerID", referencedColumnName = "ID", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "BusinessPartnerID", referencedColumnName = "ID", insertable = false, updatable = false)
     public BusinessPartnerEntity getBusinessPartnerByBusinessPartnerId() {
