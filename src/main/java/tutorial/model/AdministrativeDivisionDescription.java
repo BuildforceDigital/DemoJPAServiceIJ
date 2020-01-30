@@ -12,7 +12,7 @@ public class AdministrativeDivisionDescription {
     @EmbeddedId
     private AdministrativeDivisionDescriptionKey key;
 
-    @Column(name = "Description", length = 100)
+    @Column(name = "\"Description\"", length = 100)
     private String name;
 
     public String getName() {
