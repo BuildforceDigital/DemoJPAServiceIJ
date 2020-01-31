@@ -7,15 +7,13 @@ import java.util.Objects;
 
 @Entity
 // @ReadOnly
-@Table(name = "BusinessPartnerRole", schema = "OLINGO")
+@Table(name = "\"BusinessPartnerRole\"", schema = "OLINGO")
 @IdClass(BusinessPartnerRoleEntityPK.class)
 public class BusinessPartnerRoleEntity {
-    private String businessPartnerId;
-    private String businessPartnerRole;
-    private BusinessPartnerEntity businessPartnerByBusinessPartnerId;
 
     @Id
-    @Column(name = "BusinessPartnerID", nullable = false, length = 32)
+    @Column(name = "\"BusinessPartnerID\"", nullable = false, length = 32)
+    private String businessPartnerId;
     public String getBusinessPartnerId() {
         return businessPartnerId;
     }
@@ -25,7 +23,8 @@ public class BusinessPartnerRoleEntity {
     }
 
     @Id
-    @Column(name = "BusinessPartnerRole", nullable = false, length = 10)
+    @Column(name = "\"BusinessPartnerRole\"", nullable = false, length = 10)
+    private String businessPartnerRole;
     public String getBusinessPartnerRole() {
         return businessPartnerRole;
     }
@@ -53,7 +52,9 @@ public class BusinessPartnerRoleEntity {
     }
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "BusinessPartnerID", referencedColumnName = "ID", insertable = false, updatable = false)
+    @JoinColumn(name = "\"BusinessPartnerID\"", referencedColumnName = "ID", insertable = false, updatable = false)
+    private BusinessPartnerEntity businessPartnerByBusinessPartnerId;
+
     public BusinessPartnerEntity getBusinessPartnerByBusinessPartnerId() {
         return businessPartnerByBusinessPartnerId;
     }

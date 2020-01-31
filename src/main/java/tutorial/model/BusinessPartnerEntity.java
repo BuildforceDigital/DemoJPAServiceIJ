@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-@Table(name = "BusinessPartner", schema = "OLINGO")
+@Table(name = "\"BusinessPartner\"", schema = "OLINGO")
 public class BusinessPartnerEntity {
     private String id;
     private Long eTag;
@@ -25,7 +25,7 @@ public class BusinessPartnerEntity {
     }
 
     @Basic
-    @Column(name = "ETag")
+    @Column(name = "\"ETag\"")
     public Long geteTag() {
         return eTag;
     }
@@ -35,7 +35,7 @@ public class BusinessPartnerEntity {
     }
 
     @Basic
-    @Column(name = "CustomString1", length = 250)
+    @Column(name = "\"CustomString1\"", length = 250)
     public String getCustomString1() {
         return customString1;
     }
@@ -45,7 +45,7 @@ public class BusinessPartnerEntity {
     }
 
     @Basic
-    @Column(name = "CustomString2", length = 250)
+    @Column(name = "\"CustomString2\"", length = 250)
     public String getCustomString2() {
         return customString2;
     }
@@ -55,7 +55,7 @@ public class BusinessPartnerEntity {
     }
 
     @Basic
-    @Column(name = "CustomNum1", precision = 5)
+    @Column(name = "\"CustomNum1\"", precision = 10, scale = 5)
     public BigDecimal getCustomNum1() {
         return customNum1;
     }
@@ -65,7 +65,7 @@ public class BusinessPartnerEntity {
     }
 
     @Basic
-    @Column(name = "CustomNum2")
+    @Column(name = "\"CustomNum2\"", precision = 30, scale = 5)
     public Long getCustomNum2() {
         return customNum2;
     }
