@@ -42,7 +42,7 @@ public class PostalAddressData {
             @JoinColumn(name = "\"REGION\"", referencedColumnName = "\"DivisionCode\"", nullable = false, insertable = false, updatable = false) })
     private AdministrativeDivision administrativeDivision;
 
-    @EdmDescriptionAssociation(languageAttribute = "key/language", descriptionAttribute = "name")
+    @EdmDescriptionAssociation(languageAttribute = "key/languageIso", descriptionAttribute = "description")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
             @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"REGIONCODEPUBLISHER\"", insertable = false, updatable = false),

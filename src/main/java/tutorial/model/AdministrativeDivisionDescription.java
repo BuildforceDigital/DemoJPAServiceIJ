@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "\"OLINGO\"", name = "\"AdministrativeDivisionDescription\"")
+@Table(schema = "OLINGO", name = "\"AdministrativeDivisionDescription\"")
 public class AdministrativeDivisionDescription {
 
     @EmbeddedId

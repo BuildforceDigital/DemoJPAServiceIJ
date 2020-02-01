@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @IdClass(AdministrativeDivisionKey.class)
 @Entity(name = "AdministrativeDivision")
-@Table(schema = "\"OLINGO\"", name = "\"AdministrativeDivision\"")
+@Table(schema = "OLINGO", name = "\"AdministrativeDivision\"")
 public class AdministrativeDivision {
     @Id
     @Column(name = "\"CodePublisher\"", length = 10)

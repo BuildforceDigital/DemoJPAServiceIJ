@@ -2,6 +2,7 @@ package tutorial.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -13,9 +14,12 @@ public class BusinessPartnerEntity {
     private String customString2;
     private BigDecimal customNum1;
     private Long customNum2;
+    private String languageIso;
+    private String country;
+    private Collection<AdministrativeDivisionDescriptionEntity> administrativeDivDesciption;
 
     @Id
-    @Column(name = "ID", length = 32)
+    @Column(name = "ID", length = 32, nullable = false)
     public String getId() {
         return id;
     }
@@ -65,7 +69,7 @@ public class BusinessPartnerEntity {
     }
 
     @Basic
-    @Column(name = "\"CustomNum2\"", precision = 30, scale = 5)
+    @Column(name = "\"CustomNum2\"", scale = 5)
     public Long getCustomNum2() {
         return customNum2;
     }
@@ -99,4 +103,35 @@ public class BusinessPartnerEntity {
         result = 31 * result + (customNum2 != null ? customNum2.hashCode() : 0);
         return result;
     }
+
+    @Basic
+    @Column(name = "\"LanguageISO\"", length = 4)
+    public String getLanguageIso() {
+        return languageIso;
+    }
+
+    public void setLanguageIso(String languageIso) {
+        this.languageIso = languageIso;
+    }
+
+    @Basic
+    @Column(name = "\"Country\"", length = 4)
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) { this.country = country; }
+
+
+/*
+    @OneToMany(mappedBy = "businessPartner")
+    public Collection<AdministrativeDivisionDescriptionEntity> getAdministrativeDivDesciption() {
+        return administrativeDivDesciption;
+    }
+*/
+
+    public void setAdministrativeDivDesciption(Collection<AdministrativeDivisionDescriptionEntity> administrativeDivDesciption) {
+        this.administrativeDivDesciption = administrativeDivDesciption;
+    }
+
 }

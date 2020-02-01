@@ -15,6 +15,7 @@
 
         <class>tutorial.model.BusinessPartnerEntity</class> <!--OK-->
         <class>tutorial.model.BusinessPartnerRoleEntity</class>
+        <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>
         <!--<class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>
         <class>tutorial.model.AdministrativeDivisionDescriptionEntityPK</class>-->
 
