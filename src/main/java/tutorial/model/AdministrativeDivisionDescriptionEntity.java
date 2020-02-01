@@ -36,16 +36,4 @@ public class AdministrativeDivisionDescriptionEntity {
         return result;
     }
 
-    /*@ManyToOne
-    @JoinColumns({@JoinColumn(name = "LanguageISO", referencedColumnName = "LanguageISO",
-            nullable = false), @JoinColumn(name = "DivisionCode", referencedColumnName = "Country", nullable = false)})
-    private BusinessPartnerEntity businessPartner;
-
-    public BusinessPartnerEntity getBusinessPartner() {
-        return businessPartner;
-    }
-
-    public void setBusinessPartner(BusinessPartnerEntity businessPartner) {
-        this.businessPartner = businessPartner;
-    }*/
 }

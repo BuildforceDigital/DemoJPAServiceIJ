@@ -2,7 +2,6 @@ package tutorial.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -14,16 +13,12 @@ public class AdministrativeDivisionDescriptionEntityPK implements Serializable {
 
     public String getCodePublisher() { return codePublisher; }
 
-    public void setCodePublisher(String codePublisher) {
-        this.codePublisher = codePublisher;
-    }
+    public void setCodePublisher(String codePublisher) { this.codePublisher = codePublisher; }
 
     @Column(name = "\"CodeID\"", nullable = false, length = 10)
     private String codeId;
 
-    public String getCodeId() {
-        return codeId;
-    }
+    public String getCodeId() { return codeId; }
 
     public void setCodeId(String codeId) { this.codeId = codeId; }
 

@@ -10,7 +10,6 @@ import java.util.Objects;
 @Table(name = "\"BusinessPartnerRole\"", schema = "OLINGO")
 @IdClass(BusinessPartnerRoleEntityPK.class)
 public class BusinessPartnerRoleEntity {
-
     @Id
     @Column(name = "\"BusinessPartnerID\"", nullable = false, length = 32)
     private String businessPartnerId;
