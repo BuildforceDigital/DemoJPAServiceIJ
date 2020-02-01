@@ -7,9 +7,11 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity
+@Inheritance
+@DiscriminatorColumn(name = "\"Type\"")
+@Entity(name = "BusinessPartner")
 @Table(name = "\"BusinessPartner\"", schema = "OLINGO")
-public class BusinessPartnerEntity {
+public abstract class BusinessPartnerEntity {
     @Id
     @Column(name = "ID", length = 32, nullable = false)
     private String id;

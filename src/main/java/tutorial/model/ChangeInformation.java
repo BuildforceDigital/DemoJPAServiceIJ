@@ -17,5 +17,5 @@ public class ChangeInformation {
 
     @ManyToOne
     @JoinColumn(name = "\"by\"", referencedColumnName = "\"iD\"", insertable = false, updatable = false)
-    Person user;
+    PersonEntity user;
 }

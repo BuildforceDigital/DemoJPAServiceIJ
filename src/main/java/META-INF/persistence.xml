@@ -16,13 +16,13 @@
         <class>tutorial.model.BusinessPartnerEntity</class> <!--OK-->
         <class>tutorial.model.BusinessPartnerRoleEntity</class>
         <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>
+        <class>tutorial.model.PersonEntity</class>
+        <class>tutorial.model.CompanyEntity</class>
         <!--<class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>
         <class>tutorial.model.AdministrativeDivisionDescriptionEntityPK</class>-->
 
         <!--<class>tutorial.model.AdministrativeInformation</class>-->
         <!--<class>tutorial.model.ChangeInformation</class>-->
-        <!--<class>tutorial.model.Company</class>--> <!--OK-->
-        <!--<class>tutorial.model.Person</class>--> <!--OK-->
 
         <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
      <properties>
