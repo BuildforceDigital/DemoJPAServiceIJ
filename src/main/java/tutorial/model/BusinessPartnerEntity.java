@@ -82,6 +82,9 @@ public abstract class BusinessPartnerEntity {
     @Embedded
     private final PostalDataEntity address = new PostalDataEntity();
 
+    @Embedded
+    private final AdministrativeInformationEntity administrativeInformation = new AdministrativeInformationEntity();
+
     @EdmDescriptionAssociation(languageAttribute = "key/languageIso", descriptionAttribute = "description", valueAssignments = {
             @EdmDescriptionAssociation.valueAssignment(attribute = "key/codePublisher", value = "ISO"),
             @EdmDescriptionAssociation.valueAssignment(attribute = "key/codeId", value = "3166-1")})
@@ -98,6 +101,11 @@ public abstract class BusinessPartnerEntity {
 
         if (!Objects.equals(id, that.id)) return false;
         if (!Objects.equals(eTag, that.eTag)) return false;
+
+        if (!Objects.equals(administrativeInformation, that.administrativeInformation)) return false;
+        if (!Objects.equals(address, that.address)) return false;
+        if (!Objects.equals(country, that.country)) return false;
+
         if (!Objects.equals(customString1, that.customString1)) return false;
         if (!Objects.equals(customString2, that.customString2)) return false;
         if (!Objects.equals(customNum1, that.customNum1)) return false;
