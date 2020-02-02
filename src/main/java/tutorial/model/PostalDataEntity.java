@@ -10,110 +10,81 @@ import java.util.Objects;
 public class PostalDataEntity {
     @Basic
     @Column(name ="\"Address.StreetName\"", length = 200)
-    private String addressStreetName;
+    private String streetName;
 
-    public String getAddressStreetName() {
-        return addressStreetName;
-    }
+    public String getStreetName() { return streetName; }
 
-    public void setAddressStreetName(String addressStreetName) {
-        this.addressStreetName = addressStreetName;
-    }
+    public void setStreetName(String addressStreetName) { this.streetName = addressStreetName; }
 
     @Basic
     @Column(name ="\"Address.StreetNumber\"", length = 60)
-    private String addressStreetNumber;
+    private String houseNumber;
 
-    public String getAddressStreetNumber() {
-        return addressStreetNumber;
-    }
+    public String getHouseNumber() { return houseNumber; }
 
-    public void setAddressStreetNumber(String addressStreetNumber) {
-        this.addressStreetNumber = addressStreetNumber;
-    }
+    public void setHouseNumber(String addressStreetNumber) { this.houseNumber = addressStreetNumber; }
 
     @Basic
     @Column(name ="\"Address.PostOfficeBox\"", length = 60)
-    private String addressPostOfficeBox;
+    private String pOBox;
 
-    public String getAddressPostOfficeBox() {
-        return addressPostOfficeBox;
-    }
+    public String getPOBox() { return pOBox; }
 
-    public void setAddressPostOfficeBox(String addressPostOfficeBox) {
-        this.addressPostOfficeBox = addressPostOfficeBox;
-    }
+    public void setPOBox(String addressPostOfficeBox) { this.pOBox = addressPostOfficeBox; }
 
     @Basic
     @Column(name ="\"Address.City\"", length = 100)
-    private String addressCity;
+    private String cityName;
 
-    public String getAddressCity() {
-        return addressCity;
-    }
+    public String getCityName() { return cityName; }
 
-    public void setAddressCity(String addressCity) {
-        this.addressCity = addressCity;
-    }
+    public void setCityName(String addressCity) { this.cityName = addressCity; }
 
     @Basic
     @Column(name ="\"Address.PostalCode\"", length = 60)
-    private String addressPostalCode;
+    private String postalCode;
 
-    public String getAddressPostalCode() {
-        return addressPostalCode;
-    }
+    public String getPostalCode() { return postalCode; }
 
-    public void setAddressPostalCode(String addressPostalCode) {
-        this.addressPostalCode = addressPostalCode;
-    }
+    public void setPostalCode(String addressPostalCode) { this.postalCode = addressPostalCode; }
 
     @Basic
     @Column(name ="ADDRESS_REGIONCODEPUBLISHER", nullable = false, length = 10)
-    private String addressRegionCodePublisher;
+    private String regionCodePublisher = "ISO";
 
-    public String getAddressRegionCodePublisher() {
-        return addressRegionCodePublisher;
-    }
+    public String getRegionCodePublisher() { return regionCodePublisher; }
 
-    public void setAddressRegionCodePublisher(String addressRegionCodePublisher) {
-        this.addressRegionCodePublisher = addressRegionCodePublisher;
-    }
+    public void setRegionCodePublisher(String addressRegionCodePublisher)
+    { this.regionCodePublisher = addressRegionCodePublisher; }
 
     @Basic
     @Column(name ="ADDRESS_REGIONCODEID", nullable = false, length = 10)
-    private String addressRegionCodeId;
-    public String getAddressRegionCodeId() {
-        return addressRegionCodeId;
-    }
+    private String regionCodeId = "3166-2";
+    public String getRegionCodeId() { return regionCodeId; }
 
-    public void setAddressRegionCodeId(String addressRegionCodeId) {
-        this.addressRegionCodeId = addressRegionCodeId;
-    }
+    public void setRegionCodeId(String addressRegionCodeId) { this.regionCodeId = addressRegionCodeId; }
 
     @Basic
     @Column(name ="ADDRESS_REGION", length = 100)
-    private String addressRegion;
+    private String region;
 
-    public String getAddressRegion() {
-        return addressRegion;
-    }
+    public String getRegion() { return region; }
 
-    public void setAddressRegion(String addressRegion) {
-        this.addressRegion = addressRegion;
-    }
+    public void setRegion(String addressRegion) { this.region = addressRegion; }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(name = "ADDRESS_REGIONCODEPUBLISHER", referencedColumnName = "\"CodePublisher\"", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "ADDRESS_REGIONCODEID", referencedColumnName = "\"CodeID\"", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "ADDRESS_REGION", referencedColumnName = "\"DivisionCode\"", nullable = false, insertable = false, updatable = false) })
+    private AdministrativeDivisionEntity administrativeDivision;
 
     @Basic
     @Column(name ="\"Address.Country\"", length = 100)
-    private String addressCountry;
-    public String getAddressCountry() {
-        return addressCountry;
-    }
+    private String country;
+    public String getCountry() { return country; }
 
-    public void setAddressCountry(String addressCountry) {
-        this.addressCountry = addressCountry;
-    }
-
+    public void setCountry(String addressCountry) { this.country = addressCountry; }
 
     @EdmDescriptionAssociation(languageAttribute = "key/languageIso", descriptionAttribute = "description")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -126,8 +97,8 @@ public class PostalDataEntity {
 
     @Override
     public String toString() {
-        return "PostalAddressData [streetName=" + addressStreetName + ", houseNumber=" + addressStreetNumber + ", pOBox=" + addressPostOfficeBox
-                + ", postalCode=" + addressPostalCode + ", cityName=" + addressCity + ", country=" + addressCountry + ", region=" + addressRegion + "]";
+        return "PostalAddressData [streetName=" + streetName + ", houseNumber=" + houseNumber + ", pOBox=" + pOBox
+                + ", postalCode=" + postalCode + ", cityName=" + cityName + ", country=" + country + ", region=" + region + "]";
     }
 
     @Override
@@ -137,28 +108,28 @@ public class PostalDataEntity {
 
         PostalDataEntity that = (PostalDataEntity) o;
 
-        if (!Objects.equals(addressStreetName, that.addressStreetName)) return false;
-        if (!Objects.equals(addressStreetNumber, that.addressStreetNumber)) return false;
-        if (!Objects.equals(addressPostOfficeBox, that.addressPostOfficeBox)) return false;
-        if (!Objects.equals(addressCity, that.addressCity)) return false;
-        if (!Objects.equals(addressPostalCode, that.addressPostalCode)) return false;
-        if (!Objects.equals(addressRegionCodePublisher, that.addressRegionCodePublisher)) return false;
-        if (!Objects.equals(addressRegionCodeId, that.addressRegionCodeId)) return false;
-        if (!Objects.equals(addressRegion, that.addressRegion)) return false;
-        return Objects.equals(addressCountry, that.addressCountry);
+        if (!Objects.equals(streetName, that.streetName)) return false;
+        if (!Objects.equals(houseNumber, that.houseNumber)) return false;
+        if (!Objects.equals(pOBox, that.pOBox)) return false;
+        if (!Objects.equals(cityName, that.cityName)) return false;
+        if (!Objects.equals(postalCode, that.postalCode)) return false;
+        if (!Objects.equals(regionCodePublisher, that.regionCodePublisher)) return false;
+        if (!Objects.equals(regionCodeId, that.regionCodeId)) return false;
+        if (!Objects.equals(region, that.region)) return false;
+        return Objects.equals(country, that.country);
     }
 
     @Override
     public int hashCode() {
-        int result = addressStreetName != null ? addressStreetName.hashCode() : 0;
-        result = 31 * result + (addressStreetNumber != null ? addressStreetNumber.hashCode() : 0);
-        result = 31 * result + (addressPostOfficeBox != null ? addressPostOfficeBox.hashCode() : 0);
-        result = 31 * result + (addressCity != null ? addressCity.hashCode() : 0);
-        result = 31 * result + (addressPostalCode != null ? addressPostalCode.hashCode() : 0);
-        result = 31 * result + (addressRegionCodePublisher != null ? addressRegionCodePublisher.hashCode() : 0);
-        result = 31 * result + (addressRegionCodeId != null ? addressRegionCodeId.hashCode() : 0);
-        result = 31 * result + (addressRegion != null ? addressRegion.hashCode() : 0);
-        result = 31 * result + (addressCountry != null ? addressCountry.hashCode() : 0);
+        int result = streetName != null ? streetName.hashCode() : 0;
+        result = 31 * result + (houseNumber != null ? houseNumber.hashCode() : 0);
+        result = 31 * result + (pOBox != null ? pOBox.hashCode() : 0);
+        result = 31 * result + (cityName != null ? cityName.hashCode() : 0);
+        result = 31 * result + (postalCode != null ? postalCode.hashCode() : 0);
+        result = 31 * result + (regionCodePublisher != null ? regionCodePublisher.hashCode() : 0);
+        result = 31 * result + (regionCodeId != null ? regionCodeId.hashCode() : 0);
+        result = 31 * result + (region != null ? region.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
         return result;
     }
 
