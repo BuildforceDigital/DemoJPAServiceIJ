@@ -69,7 +69,7 @@ public class PostalDataEntity {
     }
 
     @Basic
-    @Column(name ="\"Address_RegionCodePublisher\"", nullable = false, length = 10)
+    @Column(name ="ADDRESS_REGIONCODEPUBLISHER", nullable = false, length = 10)
     private String addressRegionCodePublisher;
 
     public String getAddressRegionCodePublisher() {
@@ -81,7 +81,7 @@ public class PostalDataEntity {
     }
 
     @Basic
-    @Column(name ="\"Address_RegionCodeID\"", nullable = false, length = 10)
+    @Column(name ="ADDRESS_REGIONCODEID", nullable = false, length = 10)
     private String addressRegionCodeId;
     public String getAddressRegionCodeId() {
         return addressRegionCodeId;
@@ -92,7 +92,7 @@ public class PostalDataEntity {
     }
 
     @Basic
-    @Column(name ="\"Address_Region\"", length = 100)
+    @Column(name ="ADDRESS_REGION", length = 100)
     private String addressRegion;
 
     public String getAddressRegion() {
@@ -104,7 +104,7 @@ public class PostalDataEntity {
     }
 
     @Basic
-    @Column(name ="\"Address_Country\"", length = 100)
+    @Column(name ="\"Address.Country\"", length = 100)
     private String addressCountry;
     public String getAddressCountry() {
         return addressCountry;
@@ -118,9 +118,9 @@ public class PostalDataEntity {
     @EdmDescriptionAssociation(languageAttribute = "key/languageIso", descriptionAttribute = "description")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
-            @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"Address_RegionCodePublisher\"", nullable = false, insertable = false, updatable = false),
-            @JoinColumn(name = "\"CodeID\"", referencedColumnName = "\"Address_RegionCodeID\"", nullable = false, insertable = false, updatable = false),
-            @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "\"Address_Region\"", nullable = false, insertable = false, updatable = false)
+            @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "ADDRESS_REGIONCODEPUBLISHER", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "\"CodeID\"", referencedColumnName = "ADDRESS_REGIONCODEID", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "ADDRESS_REGION", nullable = false, insertable = false, updatable = false)
     })
     private Collection<AdministrativeDivisionDescriptionEntity> regionDescriptions;
 
