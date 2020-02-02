@@ -14,7 +14,7 @@ import java.util.Objects;
 public class PersonEntity extends BusinessPartnerEntity {
 
     @Basic
-    @Column(name = "NameLine1", nullable = true, length = 250)
+    @Column(name = "\"NameLine1\"", length = 250)
     private String nameLine1;
     public String getNameLine1() {
         return nameLine1;
@@ -25,7 +25,7 @@ public class PersonEntity extends BusinessPartnerEntity {
     }
 
     @Basic
-    @Column(name = "NameLine2", nullable = true, length = 250)
+    @Column(name = "\"NameLine2\"", length = 250)
     private String nameLine2;
     public String getNameLine2() {
         return nameLine2;
@@ -36,7 +36,7 @@ public class PersonEntity extends BusinessPartnerEntity {
     }
 
     @Basic
-    @Column(name = "BirthDay", nullable = true)
+    @Column(name = "\"BirthDay\"")
     private Date birthDay;
     public Date getBirthDay() {
         return birthDay;

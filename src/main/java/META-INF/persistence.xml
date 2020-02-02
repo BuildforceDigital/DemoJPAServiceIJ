@@ -18,6 +18,7 @@
         <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>
         <class>tutorial.model.PersonEntity</class>
         <class>tutorial.model.CompanyEntity</class>
+        <class>tutorial.model.PostalDataEntity</class>
         <!--<class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>
         <class>tutorial.model.AdministrativeDivisionDescriptionEntityPK</class>-->
 

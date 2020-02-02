@@ -91,6 +91,9 @@ public abstract class BusinessPartnerEntity {
 
     public void setCountry(String country) { this.country = country; }
 
+    @Embedded
+    private PostalDataEntity address = new PostalDataEntity();
+
     @EdmDescriptionAssociation(languageAttribute = "key/languageIso", descriptionAttribute = "description", valueAssignments = {
             @EdmDescriptionAssociation.valueAssignment(attribute = "key/codePublisher", value = "ISO"),
             @EdmDescriptionAssociation.valueAssignment(attribute = "key/codeId", value = "3166-1")})

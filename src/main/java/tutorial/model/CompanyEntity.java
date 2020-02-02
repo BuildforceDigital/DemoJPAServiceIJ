@@ -14,7 +14,7 @@ import java.util.Objects;
 public class CompanyEntity extends BusinessPartnerEntity {
 
     @Basic
-    @Column(name = "NameLine1", nullable = true, length = 250)
+    @Column(name = "\"NameLine1\"", length = 250)
     private String nameLine1;
 
     public String getNameLine1() {
@@ -26,7 +26,7 @@ public class CompanyEntity extends BusinessPartnerEntity {
     }
 
     @Basic
-    @Column(name = "NameLine2", nullable = true, length = 250)
+    @Column(name = "\"NameLine2\"", length = 250)
     private String nameLine2;
 
     public String getNameLine2() {
