@@ -1,6 +1,7 @@
 package tutorial.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity(name = "AdministrativeDivision")
@@ -78,6 +79,17 @@ public class AdministrativeDivisionEntity {
     public Long getPopulation() { return population; }
 
     public void setPopulation(Long population) { this.population = population; }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(referencedColumnName = "\"CodePublisher\"", name = "\"CodePublisher\"", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(referencedColumnName = "\"CodeID\"", name = "\"ParentCodeID\"", nullable = false),
+            @JoinColumn(referencedColumnName = "\"DivisionCode\"", name = "\"ParentDivisionCode\"", nullable = false)
+    })
+    private AdministrativeDivisionEntity parent;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
+    private List<AdministrativeDivisionEntity> children;
 
     @Override
     public boolean equals(Object o) {
