@@ -40,37 +40,25 @@ public abstract class BusinessPartnerEntity {
     @Column(name = "\"CustomString1\"", length = 250)
     private String customString1;
 
-    public String getCustomString1() {
-        return customString1;
-    }
+    public String getCustomString1() { return customString1; }
 
-    public void setCustomString1(String customString1) {
-        this.customString1 = customString1;
-    }
+    public void setCustomString1(String customString1) { this.customString1 = customString1; }
 
     @Basic
     @Column(name = "\"CustomString2\"", length = 250)
     private String customString2;
 
-    public String getCustomString2() {
-        return customString2;
-    }
+    public String getCustomString2() { return customString2; }
 
-    public void setCustomString2(String customString2) {
-        this.customString2 = customString2;
-    }
+    public void setCustomString2(String customString2) { this.customString2 = customString2; }
 
     @Basic
     @Column(name = "\"CustomNum1\"", precision = 10, scale = 5)
     private BigDecimal customNum1;
 
-    public BigDecimal getCustomNum1() {
-        return customNum1;
-    }
+    public BigDecimal getCustomNum1() { return customNum1; }
 
-    public void setCustomNum1(BigDecimal customNum1) {
-        this.customNum1 = customNum1;
-    }
+    public void setCustomNum1(BigDecimal customNum1) { this.customNum1 = customNum1; }
 
     @Basic
     @Column(name = "\"CustomNum2\"", scale = 5)
@@ -92,7 +80,7 @@ public abstract class BusinessPartnerEntity {
     public void setCountry(String country) { this.country = country; }
 
     @Embedded
-    private PostalDataEntity address = new PostalDataEntity();
+    private final PostalDataEntity address = new PostalDataEntity();
 
     @EdmDescriptionAssociation(languageAttribute = "key/languageIso", descriptionAttribute = "description", valueAssignments = {
             @EdmDescriptionAssociation.valueAssignment(attribute = "key/codePublisher", value = "ISO"),

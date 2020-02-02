@@ -8,19 +8,13 @@
         <!--<class>tutorial.model.ABCClassification</class>-->
         <!--<class>tutorial.model.AccessRightsConverter</class>-->
 
-        <!--<class>tutorial.model.AdministrativeDivision</class>--> <!--OK-->
-        <!--<class>tutorial.model.AdministrativeDivisionDescription</class>--> <!--OK-->
-        <!--<class>tutorial.model.AdministrativeDivisionDescriptionKey</class>--> <!--OK-->
-        <!--<class>tutorial.model.AdministrativeDivisionKey</class>-->
-
         <class>tutorial.model.BusinessPartnerEntity</class> <!--OK-->
         <class>tutorial.model.BusinessPartnerRoleEntity</class>
         <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>
         <class>tutorial.model.PersonEntity</class>
         <class>tutorial.model.CompanyEntity</class>
         <class>tutorial.model.PostalDataEntity</class>
-        <!--<class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>
-        <class>tutorial.model.AdministrativeDivisionDescriptionEntityPK</class>-->
+        <class>tutorial.model.AdministrativeDivisionEntity</class>
 
         <!--<class>tutorial.model.AdministrativeInformation</class>-->
         <!--<class>tutorial.model.ChangeInformation</class>-->
