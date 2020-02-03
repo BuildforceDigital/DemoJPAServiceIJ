@@ -68,9 +68,6 @@ public abstract class BusinessPartnerEntity {
 
     public void setCustomNum2(Long customNum2) { this.customNum2 = customNum2; }
 
-    @OneToMany(mappedBy = "businessPartnerByBusinessPartnerId", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private Collection<BusinessPartnerRoleEntity> roles;
-
     @Basic
     @Column(name = "\"Country\"", length = 4)
     private String country;
@@ -78,6 +75,9 @@ public abstract class BusinessPartnerEntity {
     public String getCountry() { return country; }
 
     public void setCountry(String country) { this.country = country; }
+
+    @OneToMany(mappedBy = "businessPartnerByBusinessPartnerId", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private Collection<BusinessPartnerRoleEntity> roles;
 
     @Embedded
     private final PostalDataEntity address = new PostalDataEntity();

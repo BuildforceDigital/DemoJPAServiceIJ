@@ -8,22 +8,17 @@
         <!--<class>tutorial.model.ABCClassification</class>-->
         <!--<class>tutorial.model.AccessRightsConverter</class>-->
 
+        <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class> <!--OK-->
+        <class>tutorial.model.AdministrativeDivisionEntity</class> <!--OK-->
         <class>tutorial.model.BusinessPartnerEntity</class> <!--OK-->
-        <class>tutorial.model.BusinessPartnerRoleEntity</class>
-        <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>
-        <class>tutorial.model.PersonEntity</class>
-        <class>tutorial.model.CompanyEntity</class>
-        <class>tutorial.model.PostalDataEntity</class>
-        <class>tutorial.model.AdministrativeDivisionEntity</class>
-
-        <!--<class>tutorial.model.AdministrativeInformation</class>-->
-        <!--<class>tutorial.model.ChangeInformation</class>-->
+        <class>tutorial.model.BusinessPartnerRoleEntity</class> <!--OK-->
+        <class>tutorial.model.CompanyEntity</class> <!--OK-->
+        <class>tutorial.model.PersonEntity</class> <!--OK-->
+        <!--<class>tutorial.model.PostalDataEntity</class>-->
 
         <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
      <properties>
-        <!--<property name="eclipselink.jdbc.url" value=""/>
-            <property name="eclipselink.jdbc.driver" value=""/>
-            <property name="eclipselink.jdbc.user" value=""/>
+        <!--<property name="eclipselink.jdbc.user" value=""/>
             <property name="eclipselink.jdbc.password" value=""/>-->
         <property name="eclipselink.logging.level.sql" value="FINEST" />
         <property name="eclipselink.logging.parameters" value="true" />

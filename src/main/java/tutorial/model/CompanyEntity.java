@@ -1,6 +1,5 @@
 package tutorial.model;
 
-
 import javax.persistence.Column;
 import javax.persistence.Basic;
 import javax.persistence.DiscriminatorValue;
