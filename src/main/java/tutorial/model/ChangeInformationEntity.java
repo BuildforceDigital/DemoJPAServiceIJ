@@ -1,8 +1,6 @@
 package tutorial.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -15,6 +13,10 @@ public class ChangeInformationEntity {
     public String getBy() { return by; }
 
     public void setBy(String by) { this.by = by; }
+
+    @ManyToOne
+    @JoinColumn(name = "\"by\"", referencedColumnName = "ID", insertable = false, updatable = false)
+    PersonEntity user;
 
     @Basic
     @Column(precision = 6)
