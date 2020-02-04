@@ -2,16 +2,19 @@ package tutorial.model;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity(name = "Person")
 @DiscriminatorValue(value = "1")
-@Table(schema = "OLINGO", name = "\"BusinessPartner\"")
 public class PersonEntity extends BusinessPartnerEntity {
+
+    @Convert(converter = AccessRightsConverter.class)
+    @Column(name = "\"AccessRights\"")
+    private AccessRights[] accessRights;
 
     @Basic
     @Column(name = "\"NameLine1\"", length = 250)

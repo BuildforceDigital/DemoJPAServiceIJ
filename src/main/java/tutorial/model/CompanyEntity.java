@@ -1,16 +1,24 @@
 package tutorial.model;
 
-import javax.persistence.Column;
-import javax.persistence.Basic;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity(name = "Company")
 @DiscriminatorValue(value = "2")
-@Table(schema = "OLINGO", name = "\"BusinessPartner\"")
+// @Table(schema = "OLINGO", name = "\"BusinessPartner\"") FvdB
 public class CompanyEntity extends BusinessPartnerEntity {
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "\"AbcClass\"")
+    private ABCClassification abcClass;
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(schema = "OLINGO", name = "\"Comment\"",
+            joinColumns = @JoinColumn(name = "\"BusinessPartnerID\""))
+    @Column(name = "\"Text\"")
+    private List<String> comment = new ArrayList<>();
 
     @Basic
     @Column(name = "\"NameLine1\"", length = 250)

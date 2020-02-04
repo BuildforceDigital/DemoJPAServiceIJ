@@ -329,7 +329,7 @@ CREATE TABLE "OLINGO"."BusinessPartner"(
     "UpdatedBy"                   VARCHAR(32) NOT NULL,
     "UpdatedAt"                   TIMESTAMP,
     "Country"                     VARCHAR(4),
-    "ABCClass"                    VARCHAR(1),
+    "AbcClass"                    VARCHAR(1),
     "AccessRights"                INTEGER);
 
 INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '1', 0, '2', '', '', 6000.5, null, 'First Org.', '',    null, 'Test Road', '23',   '', 'Test City', '94321', 'ISO', '3166-2', 'US-CA', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'USA', 'A', null);

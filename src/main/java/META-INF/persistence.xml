@@ -8,13 +8,14 @@
         <!--<class>tutorial.model.ABCClassification</class>-->
         <!--<class>tutorial.model.AccessRightsConverter</class>-->
 
-        <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class> <!--OK-->
-        <class>tutorial.model.AdministrativeDivisionEntity</class> <!--OK-->
-        <class>tutorial.model.BusinessPartnerEntity</class> <!--OK-->
-        <class>tutorial.model.BusinessPartnerRoleEntity</class> <!--OK-->
-        <class>tutorial.model.CompanyEntity</class> <!--OK-->
-        <class>tutorial.model.PersonEntity</class> <!--OK-->
-        <!--<class>tutorial.model.PostalDataEntity</class>-->
+        <class>tutorial.model.AccessRightsConverter</class>
+        <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class> <!--AdministrativeDivisionDescriptionEntities-->
+        <class>tutorial.model.AdministrativeDivisionEntity</class>            <!--AdministrativeDivisions-->
+        <class>tutorial.model.BusinessPartnerEntity</class>                   <!--BusinessPartners-->
+        <class>tutorial.model.BusinessPartnerRoleEntity</class>               <!--BusinessPartnerRoleEntities-->
+        <class>tutorial.model.CompanyEntity</class>                           <!--Companies-->
+        <class>tutorial.model.CommentEntity</class>
+        <class>tutorial.model.PersonEntity</class>                            <!--Persons-->
 
         <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
      <properties>

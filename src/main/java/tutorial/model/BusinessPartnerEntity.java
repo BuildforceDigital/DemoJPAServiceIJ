@@ -1,6 +1,7 @@
 package tutorial.model;
 
 import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmDescriptionAssociation;
+import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmIgnore;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -36,7 +37,7 @@ public abstract class BusinessPartnerEntity {
         this.eTag = eTag;
     }
 
-    @Basic
+    @EdmIgnore
     @Column(name = "\"CustomString1\"", length = 250)
     private String customString1;
 
@@ -44,7 +45,7 @@ public abstract class BusinessPartnerEntity {
 
     public void setCustomString1(String customString1) { this.customString1 = customString1; }
 
-    @Basic
+    @EdmIgnore
     @Column(name = "\"CustomString2\"", length = 250)
     private String customString2;
 
@@ -52,7 +53,7 @@ public abstract class BusinessPartnerEntity {
 
     public void setCustomString2(String customString2) { this.customString2 = customString2; }
 
-    @Basic
+    @EdmIgnore
     @Column(name = "\"CustomNum1\"", precision = 10, scale = 5)
     private BigDecimal customNum1;
 
@@ -60,7 +61,7 @@ public abstract class BusinessPartnerEntity {
 
     public void setCustomNum1(BigDecimal customNum1) { this.customNum1 = customNum1; }
 
-    @Basic
+    @EdmIgnore
     @Column(name = "\"CustomNum2\"", scale = 5)
     private Long customNum2;
 
