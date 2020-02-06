@@ -81,10 +81,19 @@ public abstract class BusinessPartnerEntity {
     private Collection<BusinessPartnerRoleEntity> roles;
 
     @Embedded
-    private final PostalDataEntity address = new PostalDataEntity();
+    private PostalDataEntity address = new PostalDataEntity();
+
+    public PostalDataEntity getAddress() { return address; }
+
+    public void setAddress(PostalDataEntity address) { this.address = address; }
 
     @Embedded
-    private final AdministrativeInformationEntity administrativeInformation = new AdministrativeInformationEntity();
+    private AdministrativeInformationEntity administrativeInformation = new AdministrativeInformationEntity();
+
+    public AdministrativeInformationEntity getAdministrativeInformation() { return administrativeInformation; }
+
+    public void setAdministrativeInformation(AdministrativeInformationEntity administrativeInformation)
+        { this.administrativeInformation = administrativeInformation; }
 
     @EdmDescriptionAssociation(languageAttribute = "key/languageIso", descriptionAttribute = "description", valueAssignments = {
             @EdmDescriptionAssociation.valueAssignment(attribute = "key/codePublisher", value = "ISO"),

@@ -22,11 +22,19 @@ import java.util.Map;
 
 public class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
 
+    public Object createEntity(final JPARequestEntity requestEntity, final EntityManager em) throws ODataJPAProcessException {
+        final JPAEntityType jpaEt = requestEntity.getEntityType();
+        final Object instance = createInstance(getConstructor(jpaEt));
+
+        requestEntity.getModifyUtil().setAttributesDeep(requestEntity.getData(), instance, jpaEt);
+        em.persist(instance);
+        return instance;
+    }
+
     private Object createInstance(final Constructor<?> cons) throws ODataJPAProcessorException {
         Object instance;
-        try {
-            instance = cons.newInstance();
-        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+        try { instance = cons.newInstance(); }
+        catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
             throw new ODataJPAProcessorException(e, HttpStatusCode.INTERNAL_SERVER_ERROR);
         }
         return instance;
@@ -38,16 +46,6 @@ public class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
         return Arrays.stream(constructors).findFirst().orElse(null);
     }
 
-    public Object createEntity(final JPARequestEntity requestEntity, final EntityManager em) throws ODataJPAProcessException {
-        final JPAEntityType jpaEt = requestEntity.getEntityType();
-        final Object instance = createInstance(getConstructor(jpaEt));
-
-        requestEntity.getModifyUtil().setAttributesDeep(requestEntity.getData(), instance, jpaEt);
-        em.persist(instance);
-        return instance;
-    }
-
-    @Override
     public JPAUpdateResult updateEntity(final JPARequestEntity requestEntity, final EntityManager em,
                                         final HttpMethod method) throws ODataJPAProcessException {
 
@@ -69,22 +67,20 @@ public class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
             for (Map.Entry<JPAAssociationPath, List<JPARequestLink>> links : requestEntity.getRelationLinks().entrySet()) {
                 for (JPARequestLink link : links.getValue()) {
                     final JPAEntityType lnkEt = link.getEntityType();
-                    final Object related = em.find(lnkEt.getTypeClass(), requestEntity.getModifyUtil()
-                            .createPrimaryKey(lnkEt, link.getRelatedKeys(), lnkEt));
+                    final Object related = em.find(lnkEt.getTypeClass(),
+                            requestEntity.getModifyUtil().createPrimaryKey(lnkEt, link.getRelatedKeys(), lnkEt));
                     requestEntity.getModifyUtil().linkEntities(instance, related, links.getKey());
                 }
             }
         }
     }
 
-    @Override
     public void deleteEntity(JPARequestEntity requestEntity, EntityManager em) throws ODataJPAProcessException {
         final JPAEntityType reqEt = requestEntity.getEntityType();
         final Object instance =
                 em.find(reqEt.getTypeClass(), requestEntity.getModifyUtil().createPrimaryKey(reqEt, requestEntity.getKeys(), reqEt));
 
-        if (instance != null)
-            em.remove(instance);
+        if (instance != null) em.remove(instance);
     }
 
 }

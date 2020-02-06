@@ -1,6 +1,7 @@
 package tutorial.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -89,7 +90,11 @@ public class AdministrativeDivisionEntity {
     private AdministrativeDivisionEntity parent;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
-    private List<AdministrativeDivisionEntity> children;
+    private List<AdministrativeDivisionEntity> children = new ArrayList<>();
+
+    public List<AdministrativeDivisionEntity> getChildren() { return children; }
+
+    public void setChildren(List<AdministrativeDivisionEntity> children) { this.children = children; }
 
     @Override
     public boolean equals(Object o) {

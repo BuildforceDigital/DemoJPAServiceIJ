@@ -1,6 +1,69 @@
 SET schema "OLINGO";
 -- create schema "OLINGO";
 
+--------BUSINESS PARTNER---------------------------------------------------------------------------------------------------------
+CREATE TABLE "OLINGO"."BusinessPartner"(
+                                           "ID"                          VARCHAR(32) CONSTRAINT BusinessPartner_pkey PRIMARY KEY,
+                                           "ETag"                        BIGINT,
+                                           "Type"                        VARCHAR(2),
+                                           "CustomString1"               VARCHAR(250),
+                                           "CustomString2"               VARCHAR(250),
+                                           "CustomNum1"                  DECIMAL(16, 5),
+                                           "CustomNum2"                  DECIMAL(31, 0),
+                                           "NameLine1"                   VARCHAR(250),
+                                           "NameLine2"                   VARCHAR(250),
+                                           "BirthDay"                    DATE,
+                                           "Address.StreetName"          VARCHAR(200),
+                                           "Address.StreetNumber"        VARCHAR(60),
+                                           "Address.PostOfficeBox"       VARCHAR(60),
+                                           "Address.City"                VARCHAR(100),
+                                           "Address.PostalCode"          VARCHAR(60),
+                                           "ADDRESS_REGIONCODEPUBLISHER" VARCHAR(10) NOT NULL,
+                                           "ADDRESS_REGIONCODEID"        VARCHAR(10) NOT NULL,
+                                           "ADDRESS_REGION"              VARCHAR(10),
+                                           "Address.Country"             VARCHAR(100),
+                                           "Telecom.Phone"               VARCHAR(100),
+                                           "Telecom.Mobile"              VARCHAR(100),
+                                           "Telecom.Fax"                 VARCHAR(100),
+                                           "Telecom.Email"               VARCHAR(100),
+                                           "CreatedBy"                   VARCHAR(32) NOT NULL CONSTRAINT bpa_bpa00_fk REFERENCES "OLINGO"."BusinessPartner",
+                                           "CreatedAt"                   TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+                                           "UpdatedBy"                   VARCHAR(32) CONSTRAINT bpa_bpa01_fk REFERENCES "OLINGO"."BusinessPartner",
+                                           "UpdatedAt"                   TIMESTAMP WITH TIME ZONE CHECK ("UpdatedAt" >= "CreatedAt"),
+                                           "Country"                     VARCHAR(4),
+                                           "AbcClass"                    VARCHAR(1),
+                                           "AccessRights"                INTEGER);
+
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ('99', 0, '1', '', '',   null, null, 'Max', 'Mustermann', null, 'Test Straße', '12', '', 'Teststadt', '10115', 'ISO', '3166-2', 'DE-BE', 'DEU', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'DEU', null, 1);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ('98', 0, '1', '', '',   null, null, 'John', 'Doe',       null, 'Test Road', '55',   '', 'Test City', '76321', 'ISO', '3166-2', 'US-TX', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'DEU', null, 2);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ('97', 0, '1', '', '',   null, null, 'Urs', 'Müller',     null, 'Test Straße', '23', '', 'Test Dorf',  '4123', 'ISO', '3166-2', 'CH-BL', 'CHE', '', '', '', '', '99', '2016-07-20 09:21:23', null, null, 'CHE', null, 9);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '1', 0, '2', '', '', 6000.5, null, 'First Org.', '',    null, 'Test Road', '23',   '', 'Test City', '94321', 'ISO', '3166-2', 'US-CA', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'USA', 'A', null);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ('10', 0, '2', '', '',   null, null, 'Tenth Org.', '',    null, 'Test Road', '12',   '', 'Test City', '03921', 'ISO', '3166-2', 'US-ME', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'DEU', null, null);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '2', 0, '2', '', '',   null, null, 'Second Org.', '',   null, 'Test Road', '45',   '', 'Test City', '76321', 'ISO', '3166-2', 'US-TX', 'USA', '', '', '', '', '97', '2016-01-20 09:21:23', null, null, 'USA', 'B', null);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '3', 0, '2', '', '',   null, null, 'Third Org.', '',    null, 'Test Road', '223',  '', 'Test City', '94322', 'ISO', '3166-2', 'US-CA', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'USA', 'C', null);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '4', 0, '2', '', '',   null, null, 'Fourth Org.', '',   null, 'Test Road', '56',   '', 'Test City', '84321', 'ISO', '3166-2', 'US-UT', 'USA', '', '', '', '', '98', '2016-01-20 09:21:23', null, null, 'USA', 'C', null);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '5', 0, '2', '', '',   null, null, 'Fifth Org.', '',    null, 'Test Road', '35',   '', 'Test City', '59321', 'ISO', '3166-2', 'US-MT', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'USA', null, null);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '6', 0, '2', '', '',   null, null, 'Sixth Org.', '',    null, 'Test Road', '7856', '', 'Test City', '94324', 'ISO', '3166-2', 'US-CA', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'USA', null, null);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '7', 0, '2', '', '',   null, null, 'Seventh Org.', '',  null, 'Test Road', '4',    '', 'Test City', '29321', 'ISO', '3166-2', 'US-SC', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'USA', null, null);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '8', 0, '2', '', '',   null, null, 'Eighth Org.', '',   null, 'Test Road', '453',  '', 'Test City', '29221', 'ISO', '3166-2', 'US-SC', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'USA', null, null);
+INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '9', 0, '2', '', '',   null, null, 'Ninth Org.', '',    null, 'Test Road', '93',   '', 'Test City', '55021', 'ISO', '3166-2', 'US-MN', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'USA', null, null);
+
+--------BUSINESS PARTNER ROLE----------------------------------------------------------------------------------------------------
+CREATE TABLE "OLINGO"."BusinessPartnerRole"
+(
+    "BusinessPartnerID" VARCHAR(32) NOT NULL CONSTRAINT fk_bpr_bpa REFERENCES "OLINGO"."BusinessPartner",
+    "BusinessPartnerRole" VARCHAR(10) NOT NULL,
+    PRIMARY KEY ("BusinessPartnerID", "BusinessPartnerRole")
+);
+
+INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('1', 'A');
+INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('2', 'A');
+INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('2', 'C');
+INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('3', 'A');
+INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('3', 'B');
+INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('3', 'C');
+INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('7', 'C');
+
 --------ADMINISTRATIVE DIVISION DESCRIPTION--------------------------------------------------------------------------------------
 CREATE TABLE "OLINGO"."AdministrativeDivisionDescription"
 (
@@ -298,71 +361,6 @@ INSERT INTO "OLINGO"."AdministrativeDivisionDescription" VALUES ('ISO', '3166-2'
 INSERT INTO "OLINGO"."AdministrativeDivisionDescription" VALUES ('ISO', '3166-2', 'US-WY', 'de', 'Wyoming');
 INSERT INTO "OLINGO"."AdministrativeDivisionDescription" VALUES ('ISO', '3166-2', 'US-WY', 'en', 'Wyoming');
 
---------BUSINESS PARTNER---------------------------------------------------------------------------------------------------------
-
-CREATE TABLE "OLINGO"."BusinessPartner"(
-    "ID"                          VARCHAR(32) CONSTRAINT BusinessPartner_pkey PRIMARY KEY,
-    "ETag"                        BIGINT,
-    "Type"                        VARCHAR(2),
-    "CustomString1"               VARCHAR(250),
-    "CustomString2"               VARCHAR(250),
-    "CustomNum1"                  DECIMAL(16, 5),
-    "CustomNum2"                  DECIMAL(31, 0),
-    "NameLine1"                   VARCHAR(250),
-    "NameLine2"                   VARCHAR(250),
-    "BirthDay"                    DATE,
-    "Address.StreetName"          VARCHAR(200),
-    "Address.StreetNumber"        VARCHAR(60),
-    "Address.PostOfficeBox"       VARCHAR(60),
-    "Address.City"                VARCHAR(100),
-    "Address.PostalCode"          VARCHAR(60),
-    "ADDRESS_REGIONCODEPUBLISHER" VARCHAR(10) NOT NULL,
-    "ADDRESS_REGIONCODEID"        VARCHAR(10) NOT NULL,
-    "ADDRESS_REGION"              VARCHAR(100),
-    "Address.Country"             VARCHAR(100),
-    "Telecom.Phone"               VARCHAR(100),
-    "Telecom.Mobile"              VARCHAR(100),
-    "Telecom.Fax"                 VARCHAR(100),
-    "Telecom.Email"               VARCHAR(100),
-    "CreatedBy"                   VARCHAR(32) NOT NULL,
-    "CreatedAt"                   TIMESTAMP,
-    "UpdatedBy"                   VARCHAR(32) NOT NULL,
-    "UpdatedAt"                   TIMESTAMP,
-    "Country"                     VARCHAR(4),
-    "AbcClass"                    VARCHAR(1),
-    "AccessRights"                INTEGER);
-
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '1', 0, '2', '', '', 6000.5, null, 'First Org.', '',    null, 'Test Road', '23',   '', 'Test City', '94321', 'ISO', '3166-2', 'US-CA', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'USA', 'A', null);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ('10', 0, '2', '', '',   null, null, 'Tenth Org.', '',    null, 'Test Road', '12',   '', 'Test City', '03921', 'ISO', '3166-2', 'US-ME', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'DEU', null, null);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '2', 0, '2', '', '',   null, null, 'Second Org.', '',   null, 'Test Road', '45',   '', 'Test City', '76321', 'ISO', '3166-2', 'US-TX', 'USA', '', '', '', '', '97', '2016-01-20 09:21:23', '', null, 'USA', 'B', null);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '3', 0, '2', '', '',   null, null, 'Third Org.', '',    null, 'Test Road', '223',  '', 'Test City', '94322', 'ISO', '3166-2', 'US-CA', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'USA', 'C', null);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '4', 0, '2', '', '',   null, null, 'Fourth Org.', '',   null, 'Test Road', '56',   '', 'Test City', '84321', 'ISO', '3166-2', 'US-UT', 'USA', '', '', '', '', '98', '2016-01-20 09:21:23', '', null, 'USA', 'C', null);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '5', 0, '2', '', '',   null, null, 'Fifth Org.', '',    null, 'Test Road', '35',   '', 'Test City', '59321', 'ISO', '3166-2', 'US-MT', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'USA', null, null);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '6', 0, '2', '', '',   null, null, 'Sixth Org.', '',    null, 'Test Road', '7856', '', 'Test City', '94324', 'ISO', '3166-2', 'US-CA', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'USA', null, null);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '7', 0, '2', '', '',   null, null, 'Seventh Org.', '',  null, 'Test Road', '4',    '', 'Test City', '29321', 'ISO', '3166-2', 'US-SC', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'USA', null, null);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '8', 0, '2', '', '',   null, null, 'Eighth Org.', '',   null, 'Test Road', '453',  '', 'Test City', '29221', 'ISO', '3166-2', 'US-SC', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'USA', null, null);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '9', 0, '2', '', '',   null, null, 'Ninth Org.', '',    null, 'Test Road', '93',   '', 'Test City', '55021', 'ISO', '3166-2', 'US-MN', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'USA', null, null);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ('97', 0, '1', '', '',   null, null, 'Urs', 'Müller',     null, 'Test Straße', '23', '', 'Test Dorf',  '4123', 'ISO', '3166-2', 'CH-BL', 'CHE', '', '', '', '', '99', '2016-07-20 09:21:23', '', null, 'CHE', null, 9);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ('98', 0, '1', '', '',   null, null, 'John', 'Doe',       null, 'Test Road', '55',   '', 'Test City', '76321', 'ISO', '3166-2', 'US-TX', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'DEU', null, 2);
-INSERT INTO "OLINGO"."BusinessPartner" VALUES ('99', 0, '1', '', '',   null, null, 'Max', 'Mustermann', null, 'Test Straße', '12', '', 'Teststadt', '10115', 'ISO', '3166-2', 'DE-BE', 'DEU', '', '', '', '', '99', '2016-01-20 09:21:23', '', null, 'DEU', null, 1);
-
---------BUSINESS PARTNER ROLE----------------------------------------------------------------------------------------------------
-CREATE TABLE "OLINGO"."BusinessPartnerRole"
-(
-    "BusinessPartnerID" VARCHAR(32) NOT NULL
-        CONSTRAINT fk_bpr_bpa REFERENCES "OLINGO"."BusinessPartner",
-    "BusinessPartnerRole" VARCHAR(10) NOT NULL,
-    PRIMARY KEY ("BusinessPartnerID", "BusinessPartnerRole")
-);
-
-INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('1', 'A');
-INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('2', 'A');
-INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('2', 'C');
-INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('3', 'A');
-INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('3', 'B');
-INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('3', 'C');
-INSERT INTO "OLINGO"."BusinessPartnerRole" VALUES ('7', 'C');
-
 --------ADMINISTRATIVE DIVISION--------------------------------------------------------------------------------------------------
 CREATE TABLE "OLINGO"."AdministrativeDivision"
 (
@@ -605,8 +603,7 @@ CREATE TABLE "OLINGO"."DummyToBeIgnored"
 --------User defined scalar functions--------------------------------------------------------------------------------------------
 CREATE FUNCTION OLINGO."PopulationDensity"("Area" BIGINT, "Population" BIGINT)
     RETURNS DOUBLE
-BEGIN
-    ATOMIC
+BEGIN ATOMIC
     IF "Area" <= 0 THEN RETURN 0;
     ELSE RETURN CAST("Population" / "Area" AS DOUBLE);
     END IF;
@@ -614,14 +611,34 @@ END;
 
 CREATE FUNCTION OLINGO."ConvertToQkm"("Area" BIGINT)
     RETURNS BIGINT
-BEGIN
-    ATOMIC
+BEGIN ATOMIC
     IF "Area" <= 0 THEN RETURN 0;
     ELSE RETURN "Area" / 1000000;
     END IF;
 END;
 
-CREATE FUNCTION "Siblings"("Publisher" VARCHAR(10), "ID" VARCHAR(10), "Division" VARCHAR(10))
-    RETURNS TABLE     (         "CodePublisher"      VARCHAR(10),         "CodeID"             VARCHAR(10),         "DivisionCode"       VARCHAR(10),         "CountryISOCode"     VARCHAR(4),         "ParentCodeID"       VARCHAR(10),         "ParentDivisionCode" VARCHAR(10),         "AlternativeCode"    VARCHAR(10),         "Area"               int,         "Population"         BIGINT     )
-    READS SQL DATA
-    RETURN TABLE ( SELECT * FROM "AdministrativeDivision" as a WHERE EXISTS (SELECT "CodePublisher" FROM "AdministrativeDivision" as b WHERE b."CodeID" = "ID" AND b."DivisionCode" = "Division" AND b."CodePublisher" = a."CodePublisher" AND b."ParentCodeID" = a."ParentCodeID" AND b."ParentDivisionCode" = a."ParentDivisionCode") AND NOT ( a."CodePublisher" = "Publisher" AND a."CodeID" = "ID" AND a."DivisionCode" = "Division" ) );
+CREATE FUNCTION "Siblings" ("Publisher" VARCHAR(10), "ID" VARCHAR(10), "Division" VARCHAR(10))
+	RETURNS TABLE(
+		"CodePublisher" VARCHAR(10),
+		"CodeID" VARCHAR(10),
+		"DivisionCode" VARCHAR(10),
+		"CountryISOCode" VARCHAR(4),
+		"ParentCodeID" VARCHAR(10),
+		"ParentDivisionCode" VARCHAR(10),
+		"AlternativeCode" VARCHAR(10),
+		"Area" int,
+		"Population" BIGINT)
+	READS SQL DATA
+	RETURN TABLE( SELECT *
+FROM "AdministrativeDivision" as a
+WHERE EXISTS (SELECT "CodePublisher"
+				FROM "AdministrativeDivision" as b
+				WHERE b."CodeID" = "ID"
+				AND b."DivisionCode" = "Division"
+				AND b."CodePublisher" = a."CodePublisher"
+				AND b."ParentCodeID" = a."ParentCodeID"
+				AND b."ParentDivisionCode" = a."ParentDivisionCode")
+				AND NOT( a."CodePublisher" = "Publisher"
+					    AND a."CodeID" = "ID"
+					    AND a."DivisionCode" = "Division" )
+				);

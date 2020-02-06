@@ -10,7 +10,9 @@ public class AdministrativeInformationEntity {
     @AttributeOverrides({
             @AttributeOverride(name = "by", column = @Column(name = "\"CreatedBy\"")),
             @AttributeOverride(name = "at", column = @Column(name = "\"CreatedAt\""))})
-    @AssociationOverride(name = "user", joinColumns = @JoinColumn(referencedColumnName = "ID", name = "\"CreatedBy\"", insertable = false, updatable = false))
+
+    @AssociationOverride(name = "user", joinColumns =
+            @JoinColumn(referencedColumnName = "\"ID\"", name = "\"CreatedBy\"", insertable = false, updatable = false))
     private ChangeInformationEntity created;
 
     public ChangeInformationEntity getCreated() {
@@ -43,7 +45,7 @@ public class AdministrativeInformationEntity {
         AdministrativeInformationEntity that = (AdministrativeInformationEntity) o;
 
         if (!Objects.equals(created, that.created)) return false;
-        return updated != null ? updated.equals(that.updated) : that.updated == null;
+        return Objects.equals(updated, that.updated);
     }
 
     @Override

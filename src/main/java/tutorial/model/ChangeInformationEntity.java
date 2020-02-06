@@ -7,7 +7,7 @@ import java.util.Objects;
 @Embeddable
 public class ChangeInformationEntity {
     @Basic
-    @Column(nullable = false, length = 32)
+    @Column(length = 32)
     private String by;
 
     public String getBy() { return by; }
@@ -25,7 +25,6 @@ public class ChangeInformationEntity {
     public Timestamp getAt() { return at; }
 
     public void setAt(Timestamp at) { this.at = at; }
-
 
     @Override
     public boolean equals(Object o) {

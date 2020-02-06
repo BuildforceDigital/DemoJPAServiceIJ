@@ -65,7 +65,7 @@ public class PostalDataEntity {
     public void setRegionCodeId(String addressRegionCodeId) { this.regionCodeId = addressRegionCodeId; }
 
     @Basic
-    @Column(name ="ADDRESS_REGION", length = 100)
+    @Column(name ="ADDRESS_REGION", length = 10)
     private String region;
 
     public String getRegion() { return region; }

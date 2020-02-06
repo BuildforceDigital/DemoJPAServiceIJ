@@ -21,8 +21,7 @@ public class AccessRightsConverter implements AttributeConverter<AccessRights[],
 
     @Override
     public AccessRights[] convertToEntityAttribute(Short dbData) {
-        if (dbData == null)
-            return null;
+        if (dbData == null) return null;
         final List<AccessRights> accesses = new ArrayList<>();
         for (AccessRights e : AccessRights.values()) {
             if ((e.getValue() & dbData) != 0)
