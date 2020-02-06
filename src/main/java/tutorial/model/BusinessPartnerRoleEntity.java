@@ -50,7 +50,7 @@ public class BusinessPartnerRoleEntity {
         return result;
     }
 
-    @ManyToOne( fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "\"BusinessPartnerID\"", referencedColumnName = "ID", insertable = false, updatable = false)
     private BusinessPartnerEntity businessPartnerByBusinessPartnerId;
 

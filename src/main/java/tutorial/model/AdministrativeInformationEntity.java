@@ -15,13 +15,9 @@ public class AdministrativeInformationEntity {
             @JoinColumn(referencedColumnName = "\"ID\"", name = "\"CreatedBy\"", insertable = false, updatable = false))
     private ChangeInformationEntity created;
 
-    public ChangeInformationEntity getCreated() {
-        return created;
-    }
+    public ChangeInformationEntity getCreated() { return created; }
 
-    public void setCreated(ChangeInformationEntity created) {
-        this.created = created;
-    }
+    public void setCreated(ChangeInformationEntity created) { this.created = created; }
 
     @Embedded
     @AttributeOverrides({

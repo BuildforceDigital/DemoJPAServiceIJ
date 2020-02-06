@@ -19,7 +19,7 @@ public class ChangeInformationEntity {
     PersonEntity user;
 
     @Basic
-    @Column(precision = 6)
+    @Column
     private Timestamp at;
 
     public Timestamp getAt() { return at; }

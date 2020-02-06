@@ -72,7 +72,7 @@ public class PostalDataEntity {
 
     public void setRegion(String addressRegion) { this.region = addressRegion; }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumns({
             @JoinColumn(name = "ADDRESS_REGIONCODEPUBLISHER", referencedColumnName = "\"CodePublisher\"", nullable = false, insertable = false, updatable = false),
             @JoinColumn(name = "ADDRESS_REGIONCODEID", referencedColumnName = "\"CodeID\"", nullable = false, insertable = false, updatable = false),

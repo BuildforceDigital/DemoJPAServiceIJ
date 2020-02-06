@@ -77,8 +77,16 @@ public abstract class BusinessPartnerEntity {
 
     public void setCountry(String country) { this.country = country; }
 
-    @OneToMany(mappedBy = "businessPartnerByBusinessPartnerId", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "businessPartnerByBusinessPartnerId", cascade = CascadeType.REMOVE)
     private Collection<BusinessPartnerRoleEntity> roles;
+
+    public Collection<BusinessPartnerRoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<BusinessPartnerRoleEntity> roles) {
+        this.roles = roles;
+    }
 
     @Embedded
     private PostalDataEntity address = new PostalDataEntity();
