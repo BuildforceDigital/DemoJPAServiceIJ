@@ -3,7 +3,7 @@ package tutorial.service;
 import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
 import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDHandler;
 import org.apache.olingo.commons.api.ex.ODataException;
-import tutorial.modify.CUDRequestHandler;
+import tutorial.persistence.CUDRequestHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
