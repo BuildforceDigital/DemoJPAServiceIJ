@@ -14,7 +14,8 @@
         <class>tutorial.model.BusinessPartnerRoleEntity</class>               <!--BusinessPartnerRoleEntities-->
         <class>tutorial.model.CompanyEntity</class>                           <!--Companies-->
         <class>tutorial.model.CommentEntity</class>
-        <class>tutorial.model.PersonEntity</class>                            <!--Persons-->
+        <class>tutorial.model.PersonEntity</class>
+        <class>tutorial.model.AttendanceEventsAllEntity</class>                            <!--Persons-->
 
         <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
      <properties>
