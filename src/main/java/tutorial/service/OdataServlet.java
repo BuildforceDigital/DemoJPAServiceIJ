@@ -3,7 +3,7 @@ package tutorial.service;
 import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
 import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDHandler;
 import org.apache.olingo.commons.api.ex.ODataException;
-import tutorial.persistence.CUDRequestHandler;
+import tutorial.persistence.ExampleCUDRequestHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +21,7 @@ public class OdataServlet extends HttpServlet {
 				(JPAODataCRUDContextAccess) getServletContext().getAttribute("ServiceContext");
 		final JPAODataCRUDHandler handler = new JPAODataCRUDHandler(serviceContext);
 
-		handler.getJPAODataRequestContext().setCUDRequestHandler(new CUDRequestHandler());
+		handler.getJPAODataRequestContext().setCUDRequestHandler(new ExampleCUDRequestHandler());
 		try { handler.process(req, resp); }
 		catch (RuntimeException | ODataException e) { throw new ServletException(e); }
 	}
