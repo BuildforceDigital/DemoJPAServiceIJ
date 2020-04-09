@@ -6,6 +6,15 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class AdministrativeDivisionEntityPK implements Serializable {
+    public AdministrativeDivisionEntityPK() {
+        // Needed to be used as IdClass
+    }
+
+    public AdministrativeDivisionEntityPK(String codePublisher, String codeID, String divisionCode) {
+        this.codePublisher = codePublisher;
+        this.codeId = codeID;
+        this.divisionCode = divisionCode;
+    }
 
     @Column(name = "\"CodePublisher\"", length = 10)
     @Id

@@ -1,131 +1,210 @@
 package tutorial.model;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.PostPersist;
+import javax.persistence.PostUpdate;
+import javax.persistence.Table;
 
 @Entity(name = "AdministrativeDivision")
-@Table(name = "\"AdministrativeDivision\"", schema = "OLINGO")
 @IdClass(AdministrativeDivisionEntityPK.class)
+@Table(name = "\"AdministrativeDivision\"", schema = "OLINGO")
 public class AdministrativeDivisionEntity {
+
     @Id
     @Column(name = "\"CodePublisher\"", length = 10)
     private String codePublisher;
-
-    public String getCodePublisher() { return codePublisher; }
-
-    public void setCodePublisher(String codePublisher) { this.codePublisher = codePublisher; }
-
     @Id
     @Column(name = "\"CodeID\"", length = 10)
     private String codeId;
-
-    public String getCodeId() { return codeId; }
-
-    public void setCodeId(String codeId) { this.codeId = codeId; }
-
     @Id
     @Column(name = "\"DivisionCode\"", length = 10)
     private String divisionCode;
 
-    public String getDivisionCode() { return divisionCode; }
-
-    public void setDivisionCode(String divisionCode) { this.divisionCode = divisionCode; }
-
-    @Basic
     @Column(name = "\"CountryISOCode\"", length = 4)
     private String countryIsoCode;
-
-    public String getCountryIsoCode() { return countryIsoCode; }
-
-    public void setCountryIsoCode(String countryIsoCode) { this.countryIsoCode = countryIsoCode; }
-
-    @Basic
-    @Column(name = "\"ParentCodeID\"", length = 10, insertable = false, updatable = false)
+    @Column(name = "\"ParentCodeID\"", length = 10)
     private String parentCodeId;
-
-    public String getParentCodeId() { return parentCodeId; }
-
-    public void setParentCodeId(String parentCodeId) { this.parentCodeId = parentCodeId; }
-
-    @Basic
-    @Column(name = "\"ParentDivisionCode\"", length = 10, insertable = false, updatable = false)
+    @Column(name = "\"ParentDivisionCode\"", length = 10)
     private String parentDivisionCode;
-
-    public String getParentDivisionCode() { return parentDivisionCode; }
-
-    public void setParentDivisionCode(String parentDivisionCode) { this.parentDivisionCode = parentDivisionCode; }
-
-    @Basic
     @Column(name = "\"AlternativeCode\"", length = 10)
     private String alternativeCode;
+    @Column(name = "\"Area\"") // , precision = 34, scale = 0)
+    private Integer area = 0;
+    @Column(name = "\"Population\"", precision = 34)
+    private long population;
 
-    public String getAlternativeCode() { return alternativeCode; }
-
-    public void setAlternativeCode(String alternativeCode) { this.alternativeCode = alternativeCode; }
-
-    @Basic
-    @Column(name = "\"Area\"")
-    private Integer area;
-
-    public Integer getArea() { return area; }
-
-    public void setArea(Integer area) { this.area = area; }
-
-    @Basic
-    @Column(name = "\"Population\"")
-    private Long population;
-
-    public Long getPopulation() { return population; }
-
-    public void setPopulation(Long population) { this.population = population; }
-
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(referencedColumnName = "\"CodePublisher\"", name = "\"CodePublisher\"", nullable = false, insertable = false, updatable = false),
-            @JoinColumn(referencedColumnName = "\"CodeID\"", name = "\"ParentCodeID\"", nullable = false),
-            @JoinColumn(referencedColumnName = "\"DivisionCode\"", name = "\"ParentDivisionCode\"", nullable = false)
-    })
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(referencedColumnName = "\"CodePublisher\"", name = "\"CodePublisher\"", nullable = false,
+            insertable = false, updatable = false)
+    @JoinColumn(referencedColumnName = "\"CodeID\"", name = "\"ParentCodeID\"", nullable = false,
+            insertable = false, updatable = false)
+    @JoinColumn(referencedColumnName = "\"DivisionCode\"", name = "\"ParentDivisionCode\"", nullable = false,
+            insertable = false, updatable = false)
     private AdministrativeDivisionEntity parent;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<AdministrativeDivisionEntity> children = new ArrayList<>();
 
-    public List<AdministrativeDivisionEntity> getChildren() { return children; }
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"CodePublisher\"", insertable = false,
+            updatable = false)
+    @JoinColumn(name = "\"CodeID\"", referencedColumnName = "\"CodeID\"", insertable = false, updatable = false)
+    @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "\"DivisionCode\"", insertable = false,
+            updatable = false)
+    private List<AdministrativeDivisionDescriptionEntity> allDescriptions;
 
-    public void setChildren(List<AdministrativeDivisionEntity> children) { this.children = children; }
+    public AdministrativeDivisionEntity() {
+        // required for JPA
+    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public AdministrativeDivisionEntity(final AdministrativeDivisionEntityPK key) {
+        codePublisher = key.getCodePublisher();
+        codeId = key.getCodeId();
+        divisionCode = key.getDivisionCode();
+    }
 
-        AdministrativeDivisionEntity that = (AdministrativeDivisionEntity) o;
+    @PostPersist
+    @PostUpdate
+    public void adjustParent() {
+        for (AdministrativeDivisionEntity child : children) {
+            child.setParent(this);
+        }
+    }
 
-        if (!Objects.equals(codePublisher, that.codePublisher)) return false;
-        if (!Objects.equals(codeId, that.codeId)) return false;
-        if (!Objects.equals(divisionCode, that.divisionCode)) return false;
-        if (!Objects.equals(countryIsoCode, that.countryIsoCode)) return false;
-        if (!Objects.equals(parentCodeId, that.parentCodeId)) return false;
-        if (!Objects.equals(parentDivisionCode, that.parentDivisionCode)) return false;
-        if (!Objects.equals(alternativeCode, that.alternativeCode)) return false;
-        if (!Objects.equals(area, that.area)) return false;
-        return Objects.equals(population, that.population);
+    public String getAlternativeCode() {
+        return alternativeCode;
+    }
+
+    public int getArea() {
+        return area;
+    }
+
+    public List<AdministrativeDivisionEntity> getChildren() {
+        return children;
+    }
+
+    public String getCodeId() {
+        return codeId;
+    }
+
+    public String getCodePublisher() {
+        return codePublisher;
+    }
+
+    public String getCountryIsoCode() {
+        return countryIsoCode;
+    }
+
+    public String getDivisionCode() {
+        return divisionCode;
+    }
+
+    public Object getKey() {
+        return new AdministrativeDivisionEntityPK(codePublisher, codeId, divisionCode);
+    }
+
+    public AdministrativeDivisionEntity getParent() {
+        return parent;
+    }
+
+    public String getParentCodeId() {
+        return parentCodeId;
+    }
+
+    public String getParentDivisionCode() {
+        return parentDivisionCode;
+    }
+
+    public long getPopulation() {
+        return population;
+    }
+
+    public void setAlternativeCode(String alternativeCode) {
+        this.alternativeCode = alternativeCode;
+    }
+
+    public void setArea(int area) {
+        this.area = area;
+    }
+
+    public void setArea(Integer area) {
+        this.area = area;
+    }
+
+    public void setChildren(List<AdministrativeDivisionEntity> children) {
+        this.children = children;
+    }
+
+    public void setCodeID(String codeID) {
+        this.codeId = codeID;
+    }
+
+    public void setCodePublisher(String codePublisher) {
+        this.codePublisher = codePublisher;
+    }
+
+    public void setCountryIsoCode(String countryCode) {
+        this.countryIsoCode = countryCode;
+    }
+
+    public void setDivisionCode(String divisionCode) {
+        this.divisionCode = divisionCode;
+    }
+
+    public void setParent(AdministrativeDivisionEntity parent) {
+        this.parent = parent;
+        this.parentCodeId = parent.getCodeId();
+        this.parentDivisionCode = parent.getDivisionCode();
+
+    }
+
+    public void setParentCodeId(String parentCodeID) {
+        this.parentCodeId = parentCodeID;
+    }
+
+    public void setParentDivisionCode(String parentDivisionCode) {
+        this.parentDivisionCode = parentDivisionCode;
+    }
+
+    public void setPopulation(long population) {
+        this.population = population;
     }
 
     @Override
     public int hashCode() {
-        int result = codePublisher != null ? codePublisher.hashCode() : 0;
-        result = 31 * result + (codeId != null ? codeId.hashCode() : 0);
-        result = 31 * result + (divisionCode != null ? divisionCode.hashCode() : 0);
-        result = 31 * result + (countryIsoCode != null ? countryIsoCode.hashCode() : 0);
-        result = 31 * result + (parentCodeId != null ? parentCodeId.hashCode() : 0);
-        result = 31 * result + (parentDivisionCode != null ? parentDivisionCode.hashCode() : 0);
-        result = 31 * result + (alternativeCode != null ? alternativeCode.hashCode() : 0);
-        result = 31 * result + (area != null ? area.hashCode() : 0);
-        result = 31 * result + (population != null ? population.hashCode() : 0);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((codeId == null) ? 0 : codeId.hashCode());
+        result = prime * result + ((codePublisher == null) ? 0 : codePublisher.hashCode());
+        result = prime * result + ((divisionCode == null) ? 0 : divisionCode.hashCode());
         return result;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        AdministrativeDivisionEntity other = (AdministrativeDivisionEntity) obj;
+        if (codeId == null) {
+            if (other.codeId != null) return false;
+        } else if (!codeId.equals(other.codeId)) return false;
+        if (codePublisher == null) {
+            if (other.codePublisher != null) return false;
+        } else if (!codePublisher.equals(other.codePublisher)) return false;
+        if (divisionCode == null) {
+            return other.divisionCode == null;
+        } else return divisionCode.equals(other.divisionCode);
+    }
 }
