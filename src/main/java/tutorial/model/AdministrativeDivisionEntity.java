@@ -44,7 +44,7 @@ public class AdministrativeDivisionEntity {
     @Column(name = "\"Population\"", precision = 34)
     private long population;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(referencedColumnName = "\"CodePublisher\"", name = "\"CodePublisher\"", nullable = false,
             insertable = false, updatable = false)
     @JoinColumn(referencedColumnName = "\"CodeID\"", name = "\"ParentCodeID\"", nullable = false,
@@ -146,7 +146,7 @@ public class AdministrativeDivisionEntity {
         this.children = children;
     }
 
-    public void setCodeID(String codeID) {
+    public void setCodeId(String codeID) {
         this.codeId = codeID;
     }
 

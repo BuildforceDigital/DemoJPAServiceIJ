@@ -86,14 +86,16 @@ public class PostalDataEntity {
 
     public void setCountry(String addressCountry) { this.country = addressCountry; }
 
+/*
     @EdmDescriptionAssociation(languageAttribute = "key/languageIso", descriptionAttribute = "description")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
-            @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "ADDRESS_REGIONCODEPUBLISHER", nullable = false, insertable = false, updatable = false),
-            @JoinColumn(name = "\"CodeID\"", referencedColumnName = "ADDRESS_REGIONCODEID", nullable = false, insertable = false, updatable = false),
-            @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "ADDRESS_REGION", nullable = false, insertable = false, updatable = false)
+            @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"ADDRESS_REGIONCODEPUBLISHER\"", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "\"CodeID\"", referencedColumnName = "\"ADDRESS_REGIONCODEID\"", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "\"ADDRESS_REGION\"", nullable = false, insertable = false, updatable = false)
     })
     private Collection<AdministrativeDivisionDescriptionEntity> regionDescriptions;
+*/
 
     @Override
     public String toString() {
