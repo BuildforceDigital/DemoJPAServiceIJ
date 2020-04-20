@@ -1,6 +1,6 @@
 package tutorial.model;
 
-import org.eclipse.persistence.annotations.ReadOnly;
+//import org.eclipse.persistence.annotations.ReadOnly;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
