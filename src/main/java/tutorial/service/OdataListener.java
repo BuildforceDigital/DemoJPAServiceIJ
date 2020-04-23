@@ -16,12 +16,12 @@ import java.util.logging.Logger;
 public class OdataListener implements ServletContextListener {
     private Logger logger;
 
-    private void log(Level level, String message) {
+    private void log(String message) {
         String LOGGER_SUBSYSTEM = "tutorial";
         if (this.logger == null) {
             this.logger = Logger.getLogger(LOGGER_SUBSYSTEM);
         }
-        this.logger.log(level, LOGGER_SUBSYSTEM + "::" + message);
+        this.logger.log(Level.SEVERE, LOGGER_SUBSYSTEM + "::" + message);
     }
 
     // Create Service Context
@@ -35,8 +35,8 @@ public class OdataListener implements ServletContextListener {
                     .setTypePackage("tutorial.operations", "tutorial.model")
                     .build();
             sce.getServletContext().setAttribute("ServiceContext", serviceContext);
-        } catch (RuntimeException | ODataJPAException | ODataJPAFilterException e) {
-            log (Level.SEVERE, e.getMessage());
+        } catch (RuntimeException | ODataJPAFilterException | ODataJPAException e) {
+            log (e.getMessage());
         }
     }
 

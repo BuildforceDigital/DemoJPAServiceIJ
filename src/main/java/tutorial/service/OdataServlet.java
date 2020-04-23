@@ -1,5 +1,6 @@
 package tutorial.service;
 
+import com.sap.olingo.jpa.metadata.core.edm.mapper.exception.ODataJPAModelException;
 import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
 import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDHandler;
 import tutorial.persistence.ExampleCUDRequestHandler;
@@ -22,7 +23,7 @@ public class OdataServlet extends HttpServlet {
 
 		handler.getJPAODataRequestContext().setCUDRequestHandler(new ExampleCUDRequestHandler());
 		try { handler.process(req, resp); }
-		catch (RuntimeException e /*| ODataException */) { throw new ServletException(e); }
+		catch ( ODataJPAModelException e) { throw new ServletException(e); }
 	}
 
 }
