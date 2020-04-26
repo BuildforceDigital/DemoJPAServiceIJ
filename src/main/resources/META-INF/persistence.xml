@@ -5,7 +5,6 @@
              version="2.2">
 
     <persistence-unit name="TutorialPU">
-        <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
         <!--<class>tutorial.model.ABCClassification</class>-->
 
         <class>tutorial.model.AccessRightsConverter</class>
@@ -27,8 +26,9 @@
         <property name="eclipselink.logging.timestamp" value="true" />
         <property name="eclipselink.weaving" value="static" />
         <property name="eclipselink.persistence-context.flush-mode" value="commit" />
-<!--
+
         <property name="javax.persistence.validation.mode" value="NONE" />
+<!--
         <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:com.sample" />
         <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
 -->
