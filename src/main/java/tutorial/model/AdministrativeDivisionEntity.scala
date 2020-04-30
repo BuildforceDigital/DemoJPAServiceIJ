@@ -1,0 +1,134 @@
+package tutorial.model
+
+import java.{util => ju}
+
+import javax.persistence._
+import scala.jdk.CollectionConverters._
+
+
+@Entity(name = "AdministrativeDivision")
+@IdClass(classOf[AdministrativeDivisionEntityPK])
+@Table(name = "\"AdministrativeDivision\"", schema = "OLINGO")
+class AdministrativeDivisionEntity() {
+  @Id
+  @Column(name = "\"CodePublisher\"", length = 10)
+  private var codePublisher: String = _
+  @Id
+  @Column(name = "\"CodeID\"", length = 10)
+  private var codeId: String = _
+  @Id
+  @Column(name = "\"DivisionCode\"", length = 10)
+  private var divisionCode: String = _
+  @Column(name = "\"CountryISOCode\"", length = 4)
+  private var countryIsoCode: String = _
+  @Column(name = "\"ParentCodeID\"", length = 10)
+  private var parentCodeId: String = _
+  @Column(name = "\"ParentDivisionCode\"", length = 10)
+  private var parentDivisionCode: String = _
+  @Column(name = "\"AlternativeCode\"", length = 10)
+  private var alternativeCode: String = _
+  @Column(name = "\"Area\"") // , precision = 34, scale = 0)
+  private var area: Int = 0
+  @Column(name = "\"Population\"", precision = 34)
+  private var population = 0L
+
+  @ManyToOne(fetch = FetchType.EAGER, cascade = Array(CascadeType.PERSIST))
+  @JoinColumn(referencedColumnName = "\"CodePublisher\"", name = "\"CodePublisher\"", nullable = false, insertable = false, updatable = false)
+  @JoinColumn(referencedColumnName = "\"CodeID\"", name = "\"ParentCodeID\"", nullable = false, insertable = false, updatable = false)
+  @JoinColumn(referencedColumnName = "\"DivisionCode\"", name = "\"ParentDivisionCode\"", nullable = false, insertable = false, updatable = false)
+  private var parent: AdministrativeDivisionEntity = _
+
+  @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = Array(CascadeType.ALL))
+  private var children: ju.List[AdministrativeDivisionEntity] = new ju.ArrayList[AdministrativeDivisionEntity]
+
+  @OneToMany(fetch = FetchType.LAZY)
+  @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"CodePublisher\"", insertable = false, updatable = false)
+  @JoinColumn(name = "\"CodeID\"", referencedColumnName = "\"CodeID\"", insertable = false, updatable = false)
+  @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "\"DivisionCode\"", insertable = false, updatable = false)
+  private val allDescriptions: ju.List[AdministrativeDivisionDescriptionEntity] = null
+
+  def this(key: AdministrativeDivisionEntityPK) {
+    this()
+    codePublisher = key.getCodePublisher
+    codeId = key.getCodeId
+    divisionCode = key.getDivisionCode
+  }
+
+  @PostPersist
+  @PostUpdate def adjustParent(): Unit = {
+    for (child <- children.asScala) {
+      child.setParent(this)
+    }
+  }
+
+  def getAlternativeCode: String = alternativeCode
+
+  def getArea: Int = area
+
+  def getChildren: ju.List[AdministrativeDivisionEntity] = children
+
+  def getCodeId: String = codeId
+
+  def getCodePublisher: String = codePublisher
+
+  def getCountryIsoCode: String = countryIsoCode
+
+  def getDivisionCode: String = divisionCode
+
+  def getKey = new AdministrativeDivisionEntityPK(codePublisher, codeId, divisionCode)
+
+  def getParent: AdministrativeDivisionEntity = parent
+
+  def getParentCodeId: String = parentCodeId
+
+  def getParentDivisionCode: String = parentDivisionCode
+
+  def getPopulation: Long = population
+
+  def setAlternativeCode(alternativeCode: String): Unit = {
+    this.alternativeCode = alternativeCode
+  }
+
+  def setArea(area: Int): Unit = {
+    this.area = area
+  }
+
+  def setChildren(children: ju.List[AdministrativeDivisionEntity]): Unit = {
+    this.children = children
+  }
+
+  def setCodeId(codeID: String): Unit = {
+    this.codeId = codeID
+  }
+
+  def setCodePublisher(codePublisher: String): Unit = {
+    this.codePublisher = codePublisher
+  }
+
+  def setCountryIsoCode(countryCode: String): Unit = {
+    this.countryIsoCode = countryCode
+  }
+
+  def setDivisionCode(divisionCode: String): Unit = {
+    this.divisionCode = divisionCode
+  }
+
+  def setParent(parent: AdministrativeDivisionEntity): Unit = {
+    this.parent = parent
+    this.parentCodeId = parent.getCodeId
+    this.parentDivisionCode = parent.getDivisionCode
+  }
+
+  def setParentCodeId(parentCodeID: String): Unit = {
+    this.parentCodeId = parentCodeID
+  }
+
+  def setParentDivisionCode(parentDivisionCode: String): Unit = {
+    this.parentDivisionCode = parentDivisionCode
+  }
+
+  def setPopulation(population: Long): Unit = {
+    this.population = population
+  }
+
+}
