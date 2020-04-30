@@ -2,10 +2,9 @@ package tutorial.model;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Objects;
 
-public class AdministrativeDivisionEntityPK implements Serializable {
+public class AdministrativeDivisionEntityPK {
     public AdministrativeDivisionEntityPK() {
         // Needed to be used as IdClass
     }
