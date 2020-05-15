@@ -1,7 +1,7 @@
 package tutorial.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -46,4 +46,5 @@ public class BusinessPartnerRoleEntityPK implements Serializable {
         result = 31 * result + (businessPartnerRole != null ? businessPartnerRole.hashCode() : 0);
         return result;
     }
+
 }

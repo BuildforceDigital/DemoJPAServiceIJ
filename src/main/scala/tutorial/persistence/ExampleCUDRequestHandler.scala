@@ -11,7 +11,7 @@ import com.sap.olingo.jpa.processor.core.api.example.JPAExampleModifyException.M
 import com.sap.olingo.jpa.processor.core.exception.{ODataJPAInvocationTargetException, ODataJPAProcessException, ODataJPAProcessorException}
 import com.sap.olingo.jpa.processor.core.modify.JPAUpdateResult
 import com.sap.olingo.jpa.processor.core.processor.{JPAModifyUtil, JPARequestEntity, JPARequestLink}
-import javax.persistence.EntityManager
+import jakarta.persistence.EntityManager
 import org.apache.olingo.commons.api.http.{HttpMethod, HttpStatusCode}
 
 import java.{util => ju}

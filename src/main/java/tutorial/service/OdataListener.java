@@ -29,19 +29,18 @@ public class OdataListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         final DataSource ds = DataSourceHelper.createDataSource(DataSourceHelper.DB_HSQLDB);
         try {
-            final JPAODataCRUDContextAccess serviceContext = JPAODataServiceContext.with()
-                    .setPUnit(OdataServlet.PUNIT_NAME)
-                    .setDataSource(ds)
-                    .setTypePackage("tutorial.operations", "tutorial.model")
-                    .build();
+            final JPAODataCRUDContextAccess serviceContext =
+                    new JPAODataServiceContext(OdataServlet.PUNIT_NAME, ds, "tutorial.operations", "tutorial.model");
+
             sce.getServletContext().setAttribute("ServiceContext", serviceContext);
         } catch (RuntimeException | ODataJPAFilterException | ODataJPAException e) {
-            log (e.getMessage());
+            log(e.getMessage());
         }
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        sce.getServletContext().setAttribute("ServiceContext", null);
+        sce.getServletContext().removeAttribute("ServiceContext");
     }
+
 }

@@ -2,8 +2,13 @@ package tutorial.model;
 
 import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmDescriptionAssociation;
 
-import javax.persistence.*;
-import java.util.Collection;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
+import jakarta.persistence.ManyToOne;
+
 import java.util.Objects;
 
 @Embeddable

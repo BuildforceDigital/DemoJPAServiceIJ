@@ -1,6 +1,10 @@
 package tutorial.model;
 
-import javax.persistence.*;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.sql.Timestamp;
 import java.util.Objects;
 

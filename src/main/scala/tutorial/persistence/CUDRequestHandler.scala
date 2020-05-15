@@ -8,7 +8,7 @@ import com.sap.olingo.jpa.processor.core.api.JPAAbstractCUDRequestHandler
 import com.sap.olingo.jpa.processor.core.exception.{ODataJPAInvocationTargetException, ODataJPAProcessException, ODataJPAProcessorException}
 import com.sap.olingo.jpa.processor.core.modify.JPAUpdateResult
 import com.sap.olingo.jpa.processor.core.processor.JPARequestEntity
-import javax.persistence.EntityManager
+import jakarta.persistence.EntityManager
 import org.apache.olingo.commons.api.http.{HttpMethod, HttpStatusCode}
 
 import scala.jdk.CollectionConverters._
@@ -74,4 +74,5 @@ class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
     val instance = em.find(reqEt.getTypeClass, requestEntity.getModifyUtil.createPrimaryKey(reqEt, requestEntity.getKeys, reqEt))
     if (instance != null) em.remove(instance)
   }
+
 }

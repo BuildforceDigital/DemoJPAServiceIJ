@@ -1,13 +1,22 @@
 package tutorial.model;
 
-import javax.persistence.*;
+import jakarta.persistence.Basic;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity(name = "Company")
 @DiscriminatorValue(value = "2")
-// @Table(schema = "OLINGO", name = "\"BusinessPartner\"") FvdB
 public class CompanyEntity extends BusinessPartnerEntity {
 
     @Enumerated(value = EnumType.STRING)
