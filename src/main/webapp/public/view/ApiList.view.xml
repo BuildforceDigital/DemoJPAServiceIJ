@@ -1,0 +1,39 @@
+<mvc:View
+        xmlns:l="sap.ui.layout"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+    <l:VerticalLayout
+                class="sapUiContentPadding"
+                width="100%">
+            <l:content>
+                <Link
+                        text="All tables summary (per view)"
+                        target="_blank"
+                        href="/api/dbsummary.json" />
+                <Link
+                        text="Employees"
+                        target="_blank"
+                        href="/api/employees.json" />
+                <Link
+                        text="Metadata"
+                        target="_blank"
+                        href="/api/$metadata.xml" />
+                <Link
+                        text="Operators"
+                        target="_blank"
+                        href="/api/operators.json" />
+                <Link
+                        text="Peoples"
+                        target="_blank"
+                        href="/api/person" />
+                <Link
+                        text="Present"
+                        target="_blank"
+                        href="/api/present.json" />
+                <Link
+                        text="Projects"
+                        target="_blank"
+                        href="/api/projects.json" />
+            </l:content>
+        </l:VerticalLayout>
+</mvc:View>

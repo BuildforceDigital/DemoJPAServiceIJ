@@ -1,0 +1,116 @@
+.productInfo {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background-color: rgb(255, 255, 255); /* The Fallback */
+	background-color: rgba(255, 255, 255, 0.7);
+}
+/*
+.productShortDescription {
+  font-weight: bold;
+}
+*/
+.productNumber {
+	color: #666;
+}
+
+/* Image Grid */
+.uoMImgGrid {
+	padding: 0.25em;
+	overflow: hidden;
+	background-color: #fff;
+}
+.uoMImgGrid .sapMCLI {
+	float: left;
+	width: 50%;
+	padding: 0.25em;
+}
+.uoMImgGrid .sapMLIBContent {
+	position: relative;
+}
+.uoMImgGrid .sapMImg {
+	display: block;
+	max-width: 100%;
+	width: 100%;
+}
+.uoMImgGrid .sapMCLI:nth-child(odd) {
+	clear: left;
+}
+
+/* Image Grid Media Queries */
+@media screen and (min-width: 40em) {
+	.uoMImgGrid .sapMCLI {
+		width: 33.3333333333333333%;
+	}
+	.uoMImgGrid .sapMText {
+		font-size: 1em;
+	}
+	.uoMImgGrid .sapMCLI:nth-child(3n+1) {
+		clear: left;
+	}
+	.uoMImgGrid .sapMCLI:nth-child(odd) {
+		clear: none;
+	}
+}
+@media screen and (min-width: 55em) {
+	.uoMImgGrid .sapMCLI {
+		width: 25%;
+	}
+	.uoMImgGrid .sapMText {
+		font-size: 1.05em;
+	}
+	.uoMImgGrid .sapMCLI:nth-child(4n+1) {
+		clear: left;
+	}
+	.uoMImgGrid .sapMCLI:nth-child(3n+1) {
+		clear: none;
+	}
+}
+@media screen and (min-width: 72em) {
+	.uoMImgGrid .sapMCLI {
+		width: 20%;
+	}
+	.uoMImgGrid .sapMText {
+		font-size: 1.1em;
+	}
+	.uoMImgGrid .sapMCLI:nth-child(5n+1) {
+		clear: left;
+	}
+	.uoMImgGrid .sapMCLI:nth-child(4n+1) {
+		clear: none;
+	}
+}
+@media screen and (min-width: 90em) {
+	.uoMImgGrid .sapMCLI {
+		width: 16.666666666%;
+	}
+	.uoMImgGrid .sapMText {
+		font-size: 1.15em;
+	}
+	.uoMImgGrid .sapMCLI:nth-child(6n+1) {
+		clear: left;
+	}
+	.uoMImgGrid .sapMCLI:nth-child(5n+1) {
+		clear: none;
+	}
+}
+
+.titleLink .sapMLnk {
+	font-size: 1.375rem;
+}
+
+.photo {
+	border-radius: 0.5rem;
+}
+
+/* json highlight */
+.pre {
+	outline: 1px solid #ccc;
+	padding: 0.5rem;
+	margin: 0.5rem;
+}
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }

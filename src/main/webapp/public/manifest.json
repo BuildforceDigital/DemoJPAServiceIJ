@@ -1,0 +1,245 @@
+{
+  "_version": "1.8.0",
+  "sap.app": {
+    "id": "nl.buildforce.gt",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "organizationsRemote": {
+        "uri": "/here/goes/your/serviceUrl/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "api/$metadata.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_belize",
+      "sap_belize_hcb",
+      "sap_belize_plus",
+      "sap_belize_hcw"
+    ]
+  },
+  "sap.ui5": {
+    "rootView": "nl.buildforce.gt.view.App",
+    "dependencies": {
+      "minUI5Version": "1.30.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {},
+        "sap.tnt": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nl.buildforce.gt.i18n.i18n"
+        }
+      },
+      "peoples": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "/api/person"
+      },
+      "": {
+        "dataSource": "organizationsRemote"
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "nl.buildforce.gt.view",
+        "controlId": "idAppControl",
+        "controlAggregation": "pages",
+        "transition": "slide",
+        "async": true,
+        "bypassed": {
+          "target": "notFoundPage"
+        }
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "welcome",
+          "target": "welcome",
+          "id": "welcome"
+        },
+        {
+          "pattern": "apilist",
+          "name": "apilist",
+          "target": "apilist"
+        },
+        {
+          "pattern": "testery",
+          "name": "testery",
+          "target": "testery"
+        },
+        {
+          "pattern": "notFound",
+          "name": "notFound",
+          "target": "notFoundPage"
+        },
+        {
+          "pattern": "dbsummary",
+          "name": "dbsummary",
+          "target": "dbsummary"
+        },
+        {
+          "pattern": "inappbrowser",
+          "name": "inappbrowser",
+          "target": "inappbrowser"
+        },
+        {
+          "pattern": "operators",
+          "name": "operators",
+          "target": "operators"
+        },
+        {
+          "pattern": "operator/{operatorId}",
+          "name": "operator",
+          "target": "operator"
+        },
+        {
+          "pattern": "organizations",
+          "name": "organizations",
+          "target": "organizations"
+        },
+        {
+          "pattern": "people",
+          "name": "people",
+          "target": "people"
+        },
+        {
+          "pattern": "printer",
+          "name": "printer",
+          "target": "printer"
+        },
+        {
+          "pattern": "projects",
+          "name": "projects",
+          "target": "projects"
+        },
+        {
+          "pattern": "project/{projectCode}",
+          "name": "project",
+          "target": "project"
+        },
+        {
+          "pattern": "projectDetail/{projectCode}",
+          "name": "projectDetail",
+          "target": "projectDetail"
+        },
+        {
+          "pattern": "signage",
+          "name": "signage",
+          "target": "signage"
+        },
+        {
+          "pattern": "termsOfUse",
+          "name": "termsOfUse",
+          "target": "termsOfUse"
+        }
+      ],
+      "targets": {
+        "apilist": {
+          "viewName": "ApiList",
+          "viewLevel": 2
+        },
+        "testery": {
+          "viewName": "Testery",
+          "viewLevel": 2
+        },
+        "dbsummary": {
+          "viewName": "DbSummary",
+          "viewLevel": 2
+        },
+        "operators": {
+          "viewName": "operation.Operators",
+          "viewLevel": 2
+        },
+        "welcome": {
+          "viewName": "Welcome",
+          "viewLevel": 1
+        },
+        "operator": {
+          "viewName": "operation.Operator",
+          "viewLevel": 3
+        },
+        "notFoundPage": {
+          "viewName": "NotFound",
+          "transition": "show"
+        },
+        "people": {
+          "viewName": "person.People",
+          "viewLevel": 2
+        },
+        "inappbrowser": {
+          "viewName": "InAppBrowser",
+          "viewLevel": 2
+        },
+        "printer": {
+          "viewName": "Printer",
+          "viewLevel": 2
+        },
+        "project": {
+          "viewName": "project.Project",
+          "viewLevel": 2
+        },
+        "projectDetail": {
+          "viewName": "project.ProjectDetail",
+          "viewLevel": 2
+        },
+        "projects": {
+          "viewName": "project.Projects",
+          "viewLevel": 2
+        },
+        "signage": {
+          "viewName": "misc.Signage",
+          "viewLevel": 2
+        },
+        "termsOfUse": {
+          "viewName": "misc.TermsOfUse",
+          "viewLevel": 2
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    }
+  },
+  "sap.platform.hcp": {
+    "uri": "webapp",
+    "_version": "1.1.0"
+  }
+}

@@ -1,0 +1,17 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+    <List items="{/employees}">
+        <items>
+            <StandardListItem
+                    title="{name}"
+                    icon="{imageurl}"
+                    description="Remarks: {remarks}"
+                    info="{telephonenumber}"
+                    iconDensityAware="false"
+                    iconInset="false"
+                    type="Navigation"
+                    press="onListItemPressed"/>
+        </items>
+    </List>
+</mvc:View>

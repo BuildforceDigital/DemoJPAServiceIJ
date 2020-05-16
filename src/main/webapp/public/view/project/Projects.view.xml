@@ -1,0 +1,22 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        controllerName="nl.buildforce.gt.controller.project.Projects"
+        xmlns="sap.m">
+    <Page title="{i18n>ProjectsList}" class="sapUiResponsiveContentPadding">
+        <content>
+            <List items="{/projects}">
+                <items>
+                    <StandardListItem
+                            title="{projectCode}"
+                            icon="{imageurl}"
+                            iconDensityAware="false"
+                            iconInset="false"
+                            description="{projOwnerName}"
+                            info="{projectName}"
+                            type="Navigation"
+                            press="onListItemPressed"/>
+                </items>
+            </List>
+        </content>
+    </Page>
+</mvc:View>

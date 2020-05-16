@@ -1,0 +1,104 @@
+{
+  "items" : [
+    {
+      "productNumber" : "1",
+      "productShortDescription" : "This is a very long text that will be clipped out of context",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "2",
+      "productShortDescription" : "3D Logo Model",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "3",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "4",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "5",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "6",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "7",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "8",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "9",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "10",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "11",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "12",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "13",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "14",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "15",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "16",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "17",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "18",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "19",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    },
+    {
+      "productNumber" : "20",
+      "productShortDescription" : "Product Text",
+      "image" : "http://sap.github.io/openui5/resources/3d_logos.jpg"
+    }
+  ]
+}

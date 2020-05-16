@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>GreenTrak - Test page</title>
+    <meta lang="en" name="description" content="Electronic attendance registration and recording for working sites.">
+    <link rel="copyright" href="copyright.html">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="GreenTrac Admin">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+    <script>
+			// CacheBuster Timestamp
+			window["openui5-timestamp"] = (window.location.search.indexOf("hc_orionpath") !== -1) ? new Date().getTime() : "20170810131500";
+			//window["openui5-timestamp"] = new Date().getTime();
+
+			var standalone = window.navigator.standalone,
+				userAgent = window.navigator.userAgent.toLowerCase(),
+				safari = /safari/.test( userAgent ),
+				ios = /iphone|ipod|ipad/.test( userAgent );
+
+			bAddToHomescreen = false;
+
+			function loadScript(sUrl) {
+				sUrl += '?ts=' + window["openui5-timestamp"];
+				document.write("<script src=\"" + sUrl + "\"><\/script>");
+			}
+			function loadStyle(sUrl) {
+				sUrl += '?ts=' + window["openui5-timestamp"];
+				document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + sUrl + "\">");
+			}
+			loadScript("util/CacheBuster.js");
+			loadScript("preboot.js");
+	</script>
+    <script id="open-ui-bootstrap-na"
+			src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-frameOptions="deny"
+			data-sap-ui-libs="sap.m,sap.ui.layout,sap.tnt,sap.f"
+			data-sap-ui-oninit="main();"
+			data-sap-ui-preload="async"
+			data-sap-ui-resourceroots='{"nl.buildforce.gt": "./"}'
+			data-sap-ui-theme="sap_belize_plus">
+	</script>
+	<script>
+	      sap.ui.getCore().attachInit(function() {
+	          sap.ui.require([
+	              "nl/buildforce/gt/localService/mockserver"
+	          ], function(mockserver) {
+	              mockserver.init();
+	          });
+	      });
+	</script>
+</head>
+
+<body class="sapUiBody" id="content"></body>
+</html>

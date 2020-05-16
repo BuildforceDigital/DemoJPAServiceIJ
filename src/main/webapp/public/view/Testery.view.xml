@@ -1,0 +1,23 @@
+<mvc:View
+        xmlns:l="sap.ui.layout"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+    <l:VerticalLayout
+                class="sapUiContentPadding"
+                width="100%">
+            <l:content>
+                <Link text="Criteria 0/1" target="_blank" href="/checkPass?passId=0615ef11-e60d-4e50-94fb-d7db17012b05" />
+                <Link text="Criteria -101" target="_blank" href="/checkPass?passId=%E6%80%BB%E6%98%AF%E5%BE%AE%E5%BC%B1%E7%9A%84" />
+                <Link text="Criteria -102" target="_blank" href="/checkPass?passId=3f3b464f-da45-4f25-a918-62e5632c7d6d" />
+                <Link text="Criteria -103" target="_blank" href="/checkPass?passId=3c41efa4-9847-4b3e-b655-f932c0220f79" />
+                <Link text="Criteria -201" target="_blank" href="/checkPass?passId=32972569-6672-435d-b4c9-dfacd1c765f0" />
+                <Link text="Criteria -302" target="_blank" href="/checkPass?passId=54ccc916-71e4-4a4f-b4e2-41244808e6b8" />
+                <Link text="Criteria -304" target="_blank" href="/checkPass?passId=6a4a2d53-f414-4a7c-8877-27a2d4ae5908" />
+                <Link text="Criteria -501" target="_blank" href="/checkPass?passId=77e942ac-4ce3-4a8b-8b5b-4de63eaf6681" />
+                <Link text="Criteria -502" target="_blank" href="/checkPass?passId=935f1136-8116-4a81-a5f0-2466e75188e3" />
+                <Link text="Criteria -503" target="_blank" href="/checkPass?passId=d9deaf3f-f962-49c2-99e3-928d2ebddca1" />
+                <Link text="Criteria -601" target="_blank" href="/checkPass?passId=78a04b24-63f5-4e90-8f66-9ec40d10c892" />
+                <Link text="Criteria -801" target="_blank" href="/checkPass?passId=35d973cd-08f6-4939-b93e-56dd5a4800c5" />
+            </l:content>
+        </l:VerticalLayout>
+</mvc:View>

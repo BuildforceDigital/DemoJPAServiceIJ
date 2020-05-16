@@ -1,0 +1,22 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        controllerName="nl.buildforce.gt.controller.operation.Operators"
+        xmlns="sap.m">
+    <Page title="{i18n>OperatorsList}" class="sapUiResponsiveContentPadding">
+        <content>
+            <List items="{/operators}">
+                <items>
+                    <StandardListItem
+                            title="{name}"
+                            icon="{imageurl}"
+                            iconDensityAware="false"
+                            iconInset="false"
+                            description="CCI Reg: {coc}"
+                            info="Tax Identification: {vatnumber}"
+                            type="Navigation"
+                            press="onListItemPressed"/>
+                </items>
+            </List>
+        </content>
+    </Page>
+</mvc:View>

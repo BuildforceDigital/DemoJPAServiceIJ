@@ -1,0 +1,12 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        controllerName="nl.buildforce.gt.controller.NotFound"
+        xmlns="sap.m">
+    <MessagePage
+            title="{i18n>NotFound}"
+            text="{i18n>NotFound.text}"
+            icon="sap-icon://message-warning"
+            description="{i18n>NotFound.description}"
+            showNavButton="true"
+            navButtonPress="onNavBack"/>
+</mvc:View>

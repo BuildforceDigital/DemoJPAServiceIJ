@@ -1,0 +1,30 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        controllerName="nl.buildforce.gt.controller.project.Project"
+        xmlns="sap.m">
+    <Page title="&quot;{projectCode}&quot; Counting points"
+          showNavButton="true"
+          navButtonPress="onNavBack"
+          class="sapUiResponsiveContentPadding">
+        <IconTabBar class="sapUiResponsiveContentPadding" expanded="{device>/isNoPhone}" id="idIconTabBar"
+                    showOverflowSelectList="true" enableTabReordering="true" select="handleIconTabBarSelect">
+            <items>
+                <IconTabFilter key="cntJrn" count="{cntJrn}" text="Journals">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.Dummy"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntPmp" count="{cntPmp}" text="Project Members">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.Dummy"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntTer" count="{cntTer}" text="Terminals">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.Dummy0"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntChilds" count="{cntChilds}" text="Child projects">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.ContactPoints"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntParents" count="{cntParents}" text="Parent projects">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.ContactPoints"></mvc:XMLView>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+    </Page>
+</mvc:View>

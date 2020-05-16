@@ -1,0 +1,51 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        controllerName="nl.buildforce.gt.controller.operation.Operator"
+        xmlns="sap.m">
+    <Page title="&quot;{name}&quot; Counting points"
+          showNavButton="true"
+          navButtonPress="onNavBack"
+          class="sapUiResponsiveContentPadding">
+        <IconTabBar class="sapUiResponsiveContentPadding" expanded="{device>/isNoPhone}" id="idIconTabBar"
+                    showOverflowSelectList="true" enableTabReordering="true" select="handleIconTabBarSelect">
+            <items>
+                <IconTabFilter key="cntCon" count="{cntCon}" text="Contracts">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.Dummy"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntCtp" count="{cntCtp}" text="Contact points">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.Dummy"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntDct" count="{cntDct}" text="Document types">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.Dummy0"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntDocC" count="{cntDocC}" text="Certificates checked">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.ContactPoints"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntDocI" count="{cntDocI}" text="Certificates issued">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.ContactPoints"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntDocO" count="{cntDocO}" text="Certificates owned">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.ContactPoints"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntEmpCom" count="{cntEmpCom}" text="Employees">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.Employees"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntEmpCon" count="{cntEmpCon}" text="Contact persons">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.ContactPoints"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntPrj" count="{cntPrj}" text="Projects">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.ContactPoints"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntPrtC" count="{cntPrtC}" text="Child parties">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.ContactPoints"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntPrtP" count="{cntPrtP}" text="Parent parties">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.ContactPoints"></mvc:XMLView>
+                </IconTabFilter>
+                <IconTabFilter key="cntTmr" count="{cntTmr}" text="Time registrations">
+                    <mvc:XMLView viewName="nl.buildforce.gt.view.operation.ContactPoints"></mvc:XMLView>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+    </Page>
+</mvc:View>

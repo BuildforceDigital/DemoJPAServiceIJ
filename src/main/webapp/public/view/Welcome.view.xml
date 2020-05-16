@@ -1,0 +1,78 @@
+<mvc:View xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+          xmlns:l="sap.ui.layout"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:ui5dev="nl.buildforce.gt.control"
+          controllerName="nl.buildforce.gt.controller.BaseController"
+          xmlns="sap.m">
+    <Page showHeader="false">
+        <l:BlockLayout background="Light">
+            <l:BlockLayoutRow>
+                <l:BlockLayoutCell class="sapUiNoContentPadding">
+                    <Image src="./mime/image/DitumWelkom.jpg" height="20rem" width="100%" densityAware="false"/>
+                </l:BlockLayoutCell>
+            </l:BlockLayoutRow>
+            <l:BlockLayoutRow>
+                <l:BlockLayoutCell title="{i18n>Native Device Demos}" width="3">
+                    <l:VerticalLayout>
+                        <Text
+                                text="This app offers some selected native device APIs demos if running inside SAP Fiori Client. Please use the tool items on the left to switch between the demos."/>
+                        <Button class="sapUiSmallMarginTopBottom" text="Synopsis User stories GreenTrac (Permission required)" type="Emphasized"
+                                press="onNavTo"
+                                data:url="https://docs.google.com/spreadsheets/d/1S3iUJ50hfb1FcJaukAgT5o3ZoFXtEvxA2gxjCa5Qsqk"/>
+                    </l:VerticalLayout>
+                </l:BlockLayoutCell>
+                <l:BlockLayoutCell titleAlignment="Center">
+                    <Image src="./mime/image/GreenTrakLogo.svg" densityAware="false"/>
+                </l:BlockLayoutCell>
+            </l:BlockLayoutRow>
+            <l:BlockLayoutRow>
+                <l:BlockLayoutCell title="{i18n>Samples}"/>
+            </l:BlockLayoutRow>
+            <l:BlockLayoutRow>
+                <l:BlockLayoutCell title="{i18n>App Usage}" width="2">
+                    <l:VerticalLayout>
+                        <Text text="Install the appropiate SAP Fiori Client on your device and enter the GreenTrac URL"/>
+                        <HBox width="100%" alignItems="Center" fitContainer="true">
+                            <Input class="sapUiSmallMarginTopBottom"
+                                   value="https://docs.google.com/spreadsheets/d/1S3iUJ50hfb1FcJaukAgT5o3ZoFXtEvxA2gxjCa5Qsqk"/>
+                            <Button icon="sap-icon://bar-code"/>
+                        </HBox>
+                        <Text text="or simply use the following QR code to configure the GreenTrac URL"/>
+                    </l:VerticalLayout>
+                </l:BlockLayoutCell>
+                <l:BlockLayoutCell title="User stories GreenTrac">
+                    <ui5dev:QRCode code="https://docs.google.com/spreadsheets/d/1S3iUJ50hfb1FcJaukAgT5o3ZoFXtEvxA2gxjCa5Qsqk"/>
+                </l:BlockLayoutCell>
+            </l:BlockLayoutRow>
+            <l:BlockLayoutRow>
+                <l:BlockLayoutCell title="{i18n>Supported Devices}"/>
+            </l:BlockLayoutRow>
+            <l:BlockLayoutRow>
+                <l:BlockLayoutCell title="{i18n>Apple}" titleAlignment="Center">
+                    <l:VerticalLayout>
+                        <Text text="Apple App Store for iOS"/>
+                        <Button class="sapUiSmallMarginTopBottom" text="View in store" type="Emphasized"
+                                data:url="https://itunes.apple.com/app/sap-fiori-client/id824997258?mt=8" press="onNavTo"/>
+                        <Text text="iOS 8.x - 9.x"/>
+                    </l:VerticalLayout>
+                </l:BlockLayoutCell>
+                <l:BlockLayoutCell title="{i18n>Android}" titleAlignment="Center">
+                    <l:VerticalLayout>
+                        <Text text="Google Play Store for Android"/>
+                        <Button class="sapUiSmallMarginTopBottom" text="View in store" type="Emphasized"
+                                data:url="https://play.google.com/store/apps/details?id=com.sap.fiori.client" press="onNavTo"/>
+                        <Text text="Android 4.3 - 5.x"/>
+                    </l:VerticalLayout>
+                </l:BlockLayoutCell>
+                <l:BlockLayoutCell title="{i18n>Microsoft}" titleAlignment="Center">
+                    <l:VerticalLayout>
+                        <Text text="Microsoft App Store"/>
+                        <Button class="sapUiSmallMarginTopBottom" text="View in store" type="Emphasized"
+                                data:url="https://www.microsoft.com/store/p/sap-fiori-client/9wzdncrd2c40" press="onNavTo"/>
+                        <Text text="Windows [Phone] 10"/>
+                    </l:VerticalLayout>
+                </l:BlockLayoutCell>
+            </l:BlockLayoutRow>
+        </l:BlockLayout>
+    </Page>
+</mvc:View>

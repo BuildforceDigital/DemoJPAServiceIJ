@@ -1,0 +1,54 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        controllerName="nl.buildforce.gt.controller.people.People"
+        xmlns="sap.m">
+    <Page showHeader="false">
+        <Table headerText="People" inset="false"
+               alternateRowColors="true"
+               items="{peoples>/peoples}"
+               itemPress="onItemPressed">
+            <columns>
+                <Column>
+                </Column>
+                <Column>
+                    <Text text="Name"/>
+                </Column>
+                <Column>
+                    <Text text="Nation"/>
+                </Column>
+                <Column>
+                    <Text text="Citizen Service Nr"/>
+                </Column>
+                <Column>
+                    <Text text="Job Function"/>
+                </Column>
+                <Column minScreenWidth="Tablet"
+                        demandPopin="true"
+                        hAlign="End">
+                    <Text text="User name"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem type="Navigation" alternateRowColors="true">
+                    <cells>
+                            <ImageContent
+                                    src="{peoples>imageurl}"
+                                    description="Icon"
+                                    >
+                            </ImageContent>
+                        <ObjectIdentifier  icon="{peoples>imageurl}"
+                                title="{peoples>nickname}" text="{peoples>name}" class="sapMTableContentMargin"/>
+                        <ObjectIdentifier title="{peoples>nationality}" text="{peoples>gender}"/>
+
+                        <ObjectIdentifier title="{peoples>citizenservicenr}"
+                                          text="{path:'peoples>birthday', formatter:'.myDateFormatter'}"/>
+
+                        <ObjectIdentifier title="{peoples>jobfunction}" text="{peoples>remarks}"/>
+                        <ObjectIdentifier title="{peoples>username}"
+                                          text="{path:'peoples>tilldate', formatter:'.myDateFormatter'}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

@@ -1,0 +1,43 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:m="sap.m"
+        xmlns="sap.uxap"
+        controllerName="nl.buildforce.gt.controller.project.ProjectDetail"
+        >
+    <ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="true">
+        <headerTitle>
+            <ObjectPageLayout objectImageURI="imageurl"
+                              objectTitle="&quot;projectCode&quot; Counting points"
+                              objectImageShape="Circle"
+                              objectImageAlt="Denise Smith"
+                              isObjectIconAlwaysVisible="true"
+                              objectSubtitle="Senior UI Developer">
+           </ObjectPageLayout>
+        </headerTitle>
+
+        <headerContent>
+
+        </headerContent>
+        <sections>
+            <ObjectPageSection title="Personal">
+                <subSections>
+                    <ObjectPageSubSection title=" ">
+                        <blocks>
+
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection title="Employment">
+                <subSections>
+                    <ObjectPageSubSection title="Employment">
+                        <blocks>
+
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

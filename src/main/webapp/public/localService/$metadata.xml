@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:DataServices m:DataServiceVersion="3.0"
+                       xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+        <Schema Namespace="NS" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+            <EntityType Name="person" OpenType="true">
+                <Key>
+                    <PropertyRef Name="guid"/>
+                    <PropertyRef Name="prtVersionnumber"/>
+                </Key>
+                <Property Name="guid" Type="Edm.String" MaxLength="36"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LanguageTag" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Nationality" Type="Edm.String" MaxLength="2"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="480"/>
+                <Property Name="TillDate" Type="Edm.Edm.Int64"/>
+                <Property Name="ImageURL" Type="Edm.String" MaxLength="160"/>
+                <Property Name="Username" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Nickname" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Birthday" Type="Edm.Edm.Int64"/>
+                <Property Name="Gender" Type="Edm.String" MaxLength="1"/>
+                <Property Name="JobFunction" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CitizenServiceNr" Type="Edm.Int32"/>
+                <Property Name="SystemRole" Type="Edm.String" MaxLength="16"/>
+            </EntityType>
+
+            <EntityType Name="party" OpenType="true">
+                <Key>
+                    <PropertyRef Name="guid"/>
+                    <PropertyRef Name="prtVersionnumber"/>
+                </Key>
+                <Property Name="guid" Type="Edm.String" Nullable="false" MaxLength="36"/>
+                <Property Name="prtVersionnumber" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="LanguageTag" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Nationality" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="superPARTY" Type="Edm.String" MaxLength="36"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="480"/>
+                <Property Name="TillDate" Type="Edm.Int64"/>
+                <Property Name="ImageURL" Type="Edm.String" MaxLength="160"/>
+                <Property Name="PRT_Issuer" Type="Edm.String" MaxLength="36"/>
+                <Property Name="Username" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Nickname" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Birthday" Type="Edm.Int64"/>
+                <Property Name="Gender" Type="Edm.String" MaxLength="1"/>
+                <Property Name="JobFunction" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CitizenServiceNr" Type="Edm.Int32"/>
+                <Property Name="SystemRole" Type="Edm.String" MaxLength="16"/>
+                <Property Name="CoC" Type="Edm.String" MaxLength="8"/>
+                <Property Name="VATNumber" Type="Edm.String" MaxLength="14"/>
+            </EntityType>
+
+            <EntityType Name="operators" OpenType="true">
+                <Key>
+                    <PropertyRef Name="guid"/>
+                </Key>
+                <Property Name="guid" Type="Edm.String" Nullable="false" MaxLength="36"/>
+                <Property Name="prtVersionnumber" Nullable="false" Type="Edm.Int32"/>
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="languagetag" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="nationality" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="remarks" Type="Edm.String" MaxLength="480"/>
+                <Property Name="tilldate" Type="Edm.DateTime"/>
+                <Property Name="imageurl" Type="Edm.String" MaxLength="160"/>
+                <Property Name="coc" Type="Edm.String" MaxLength="8"/>
+                <Property Name="vatnumber" Type="Edm.String" MaxLength="14"/>
+                <Property Name="indicator" Nullable="false" Type="Edm.String" MaxLength="1"/>
+                <Property Name="cntCon" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntCtp" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntDct" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntDocC" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntDocI" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntDocO" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntEmpCom" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntEmpCon" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntPrj" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntPrtC" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntPrtP" Nullable="false" Type="Edm.Int64"/>
+                <Property Name="cntTmr" Nullable="false" Type="Edm.Int64"/>
+            </EntityType>
+
+            <EntityType Name="employees" OpenType="true">
+                <Key>
+                    <PropertyRef Name="guid"/>
+                    <PropertyRef Name="usrEmployee"/>
+                </Key>
+
+                <Property Name="guid" Type="Edm.String" Nullable="false" MaxLength="36"/>
+                <Property Name="usrEmployee" Type="Edm.String" Nullable="false" MaxLength="36"/>
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="languagetag" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="nationality" Type="Edm.String" Nullable="false" MaxLength="2"/>
+
+                <Property Name="orgContactPersonFor" Type="Edm.String" MaxLength="36"/>
+
+                <Property Name="remarks" Type="Edm.String" MaxLength="480"/>
+                <Property Name="tilldate" Type="Edm.Date"/>
+                <Property Name="imageurl" Type="Edm.String" MaxLength="160"/>
+                <Property Name="username" Type="Edm.String" MaxLength="40"/>
+                <Property Name="nickname" Type="Edm.String" MaxLength="40"/>
+
+                <Property Name="birthday" Type="Edm.Int32"/>
+                <Property Name="gender" Type="Edm.String" MaxLength="1"/>
+                <Property Name="jobFunction" Type="Edm.String" MaxLength="40"/>
+                <Property Name="jobTitle" Type="Edm.String" MaxLength="40"/>
+                <Property Name="citizenservicenr" Type="Edm.Int32"/>
+
+                <Property Name="systemrole" Type="Edm.String" MaxLength="16"/>
+                <Property Name="expirationdate" Type="Edm.Date"/>
+                <Property Name="telephonenumber" Type="Edm.String" MaxLength="16"/>
+                <Property Name="email" Type="Edm.String" MaxLength="160"/>
+            </EntityType>
+
+            <EntityType Name="projects" OpenType="true">
+                <Key>
+                    <PropertyRef Name="projOwnerName"/>
+                    <PropertyRef Name="projectCode"/>
+                </Key>
+
+                <Property Name="guid" Type="Edm.String" MaxLength="36"/>
+                <Property Name="projectCode" Type="Edm.String" MaxLength="10"/>
+                <Property Name="projOwnerName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="nationality" Type="Edm.String" MaxLength="2"/>
+                <Property Name="remarks" Type="Edm.String" MaxLength="480"/>
+                <Property Name="projectName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="imageurl" Type="Edm.String" MaxLength="160"/>
+                <Property Name="coc" Type="Edm.String" MaxLength="8"/>
+                <Property Name="vatnumber" Type="Edm.String" MaxLength="14"/>
+                <Property Name="description" Type="Edm.String" MaxLength="480"/>
+                <Property Name="startDate" Type="Edm.Date"/>
+                <Property Name="endDate" Type="Edm.Date"/>
+                <Property Name="cntJrn" Type="Edm.Int64"/>
+                <Property Name="cntTer" Type="Edm.Int64"/>
+                <Property Name="cntPmp" Type="Edm.Int64"/>
+                <Property Name="cntChilds" Type="Edm.Int64"/>
+                <Property Name="cntParents" Type="Edm.Int64"/>
+            </EntityType>
+
+            <EntityType Name="dbsummary" OpenType="true">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String"/>
+                <Property Name="mnemonic" Type="Edm.String"/>
+                <Property Name="count" Type="Edm.Int64"/>
+            </EntityType>
+
+            <EntityType Name="present" OpenType="true">
+                <Key>
+                    <PropertyRef Name="guid"/>
+                </Key>
+                <Property Name="guid" Type="Edm.String"/>
+                <Property Name="name" Type="Edm.String"/>
+                <Property Name="imageurl" Type="Edm.String" Nullable="true" />
+                <Property Name="docDocid" Type="Edm.String"/>
+                <Property Name="terGuidIn" Type="Edm.String"/>
+                <Property Name="nickname" Type="Edm.String"/>
+            </EntityType>
+
+            <EntityContainer Name="DefaultContainer">
+                <EntitySet Name="present" EntityType="NS.present"/>
+                <EntitySet Name="dbsummary" EntityType="NS.dbsummary"/>
+                <EntitySet Name="peoples" EntityType="NS.person"/>
+                <EntitySet Name="parties" EntityType="NS.party"/>
+                <EntitySet Name="operators" EntityType="NS.operators"/>
+                <EntitySet Name="employees" EntityType="NS.employees"/>
+                <EntitySet Name="projects" EntityType="NS.projects"/>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

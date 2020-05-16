@@ -37,8 +37,13 @@
                     <header><Text text="Attended time"/></header>
                     <footer><Text text="Tetx"/></footer>
                 </Column>
+                <Column id="lastNameCol1" hAlign="Right" demandPopin="true">
+                <header><Text text="Time worked"/></header>
+                <footer><Text text="Tetx"/></footer>
+            </Column>
                 <Column id="addressCol" minScreenWidth="Tablet" demandPopin="true">
-                    <header><Text text="Description"/></header></Column>
+                    <header><Text text="Description"/></header>
+                </Column>
                 <Column id="cityCol" minScreenWidth="Tablet" demandPopin="true">
                     <header><Text text="Approval by"/></header>
                 </Column>

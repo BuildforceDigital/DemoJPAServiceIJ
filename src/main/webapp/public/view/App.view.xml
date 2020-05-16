@@ -1,0 +1,104 @@
+<mvc:View xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+          xmlns:f="sap.f"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:tnt="sap.tnt"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          controllerName="nl.buildforce.gt.controller.App"
+          displayBlock="true"
+          xmlns="sap.m"
+          xsi:schemaLocation="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <App>
+        <pages>
+            <tnt:ToolPage id="toolPage">
+                <tnt:header>
+                    <tnt:ToolHeader>
+                        <Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent"
+                                press="onSideNavButtonPress">
+                            <layoutData>
+                                <OverflowToolbarLayoutData priority="NeverOverflow"/>
+                            </layoutData>
+                        </Button>
+                        <Image src="./mime/image/GreenTrakLogo.svg" height="90%" densityAware="false"
+                               tooltip="GreenTrac logo"
+                               visible="{= !${device>/system/phone} }" press="onNavTo" custom:route="welcome"/>
+                        <ToolbarSpacer/>
+                        <Title text="{i18n>title}" titleStyle="{= ${device>/system/phone} ? 'H4' : 'H2' }">
+                            <layoutData>
+                                <OverflowToolbarLayoutData priority="Low"/>
+                            </layoutData>
+                        </Title>
+                        <ObjectStatus state="{= ${ui>/isFioriClientAvailable} ? 'Success' : 'Error' }"
+                                      icon="{= ${ui>/isFioriClientAvailable} ? 'sap-icon://connected' : 'sap-icon://disconnected' }"
+                        />
+                        <ToolbarSpacer/>
+                        <f:Avatar
+                                displaySize="XS"
+                                src="{= ${ui>/userName} ? './mime/image/BvdB.jpg' : 'sap-icon://person-placeholder'}">
+                        </f:Avatar>
+                        <MenuButton icon="sap-icon://hint" type="Transparent" visible="{=!${appView>/bSearchMode}}">
+                            <layoutData>
+                                <OverflowToolbarLayoutData priority="NeverOverflow" />
+                            </layoutData>
+                            <menu>
+                                <Menu class="sapContrast sapContrastPlus" itemSelected="handleMenuItemClick">
+                                    <items>
+                                        <MenuItem text="Feedback" visible="{appView>/bPhoneSize}" />
+                                        <MenuItem text="About" />
+                                        <MenuItem text="Legal" />
+                                        <MenuItem text="Privacy" />
+                                        <MenuItem text="Terms of Use" visible="{=!${versionData>/isOpenUI5}}">
+                                            <items>
+                                                <MenuItem text="Terms of Use" />
+                                                <MenuItem text="Copyright" />
+                                                <MenuItem text="Trademark" />
+                                                <MenuItem text="Disclaimer" />
+                                            </items>
+                                        </MenuItem>
+                                    </items>
+                                </Menu>
+                            </menu>
+                        </MenuButton>
+                        <Button text="{= ${device>/system/phone} ? '' : ${ui>/userName} ? ${ui>/userName} : ${i18n>NoBody} }"
+                                type="Transparent" press="onUser"/>
+                        <Button text="{= ${device>/system/phone} ? '' : ${i18n>Print} }" icon="sap-icon://print"
+                                type="Transparent" press="onPrint"/>
+                        <Button text="{= ${device>/system/phone} ? '' : ${i18n>Help} }" icon="sap-icon://sys-help"
+                                type="Transparent" press="onHelp"/>
+                    </tnt:ToolHeader>
+                </tnt:header>
+                <tnt:sideContent>
+                    <tnt:SideNavigation expanded="true" itemSelect="onItemSelect">
+                        <tnt:NavigationList visible = "{= ${ui>/userName}? true : false }" >
+                            <tnt:NavigationListItem text="{i18n>Home}" custom:route="welcome" icon="sap-icon://home"/>
+                            <tnt:NavigationListItem text="{i18n>People}" custom:route="people" icon="sap-icon://family-care"/>
+                            <tnt:NavigationListItem text="{i18n>Operators}" custom:route="operators"
+                                                    tooltip="{i18n>OperatorsList}" icon="sap-icon://crm-sales"/>
+                            <tnt:NavigationListItem text="{i18n>Projects}" custom:route="projects"
+                                                    tooltip="{i18n>ProjectsList}" icon="sap-icon://capital-projects"/>
+
+                            <tnt:NavigationListItem text=""/>
+
+                            <tnt:NavigationListItem text="Db Summary" custom:route="dbsummary" icon="sap-icon://pie-chart"/>
+                            <tnt:NavigationListItem text="{i18n>People}" custom:route="people" icon="sap-icon://group"/>
+
+                            <tnt:NavigationListItem text=""/>
+
+                            <tnt:NavigationListItem text="Api's" custom:route="apilist" icon="sap-icon://database"/>
+                        </tnt:NavigationList>
+                        <tnt:fixedItem>
+                            <tnt:NavigationList>
+                                <tnt:NavigationListItem text="Testery" custom:route="testery" icon="sap-icon://message-success"/>
+                                <tnt:NavigationListItem text="Kiosk cradle" custom:route="signage" icon="sap-icon://database"/>
+                                <tnt:NavigationListItem text="Digital Signage" custom:route="signage" icon="sap-icon://popup-window"/>
+                                <tnt:NavigationListItem text="Terms of Use" custom:route="termsOfUse" icon="sap-icon://compare"/>
+                            </tnt:NavigationList>
+                        </tnt:fixedItem>
+                    </tnt:SideNavigation>
+                </tnt:sideContent>
+                <tnt:mainContents>
+                    <NavContainer id="idAppControl"/>
+                </tnt:mainContents>
+            </tnt:ToolPage>
+        </pages>
+    </App>
+</mvc:View>

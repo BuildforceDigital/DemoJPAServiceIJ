@@ -1,0 +1,17 @@
+<mvc:View
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+    <List items="{/operators}">
+        <items>
+            <StandardListItem
+                    title="{name}"
+                    icon="{imageurl}"
+                    iconDensityAware="false"
+                    iconInset="false"
+                    description="CCI Reg: {coc}"
+                    info="Tax Identification: {vatnumber}"
+                    type="Navigation"
+                    press="onListItemPressed"/>
+        </items>
+    </List>
+</mvc:View>

@@ -1,0 +1,33 @@
+<mvc:View controllerName="nl.buildforce.gt.controller.BaseController"
+          displayBlock="true"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core"
+          xmlns:mvc="sap.ui.core.mvc">
+    <Page title="Responsive Image Grid" id="resizepanel">
+        <List id="list"
+              class="uoMImgGrid"
+              showSeparators="None"
+              growing="true"
+              growingThreshold="10"
+              growingScrollToLoad="true"
+              items="{/present}">
+            <CustomListItem>
+                <Image densityAware="false" src="{= ${imageurl} ? ${imageurl} : '/mime/image/placeholder.png'}"/>
+                <VBox class="productInfo" width="100%" alignItems="Stretch">
+                    <Text
+                            class="productShortDescription"
+                            width="100%"
+                            text="productShortDescription"
+                            textAlign="Center"
+                            wrapping="false"/>
+                    <Text
+                            class="productNumber"
+                            width="100%"
+                            text="Product-ID: {nickname}"
+                            textAlign="Center"
+                            wrapping="false"/>
+                </VBox>
+            </CustomListItem>
+        </List>
+    </Page>
+</mvc:View>
