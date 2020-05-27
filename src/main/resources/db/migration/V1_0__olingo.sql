@@ -610,21 +610,21 @@ create table "OLINGO"."AttendanceEventsAll"
     "ProjOwner" varchar(36) not null,
     "ProjectCode" varchar(10) not null,
     "TermGuidIn" varchar(36) not null,
-    "CheckInDateTime" timestamp not null,
+    "CheckInDateTime" TIMESTAMP WITH TIME ZONE not null,
     "UserName" varchar(40) not null,
     "ParentGuid" integer,
     "TermGuidOut" varchar(36),
-    "CheckOutDateTime" timestamp,
+    "CheckOutDateTime" TIMESTAMP WITH TIME ZONE,
     "StartDate" date,
     "Description" varchar(160),
     "ApprovalBy" varchar(40),
-    "ApprovalDateTime" timestamp,
+    "ApprovalDateTime" TIMESTAMP WITH TIME ZONE,
     "Remarks" varchar(480)
 );
 
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (0, 'WH&FF', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-02-16 19:42:54.037088', 'TestActor05', null, null, null, '2020-02-16', null, null, null, null);
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (1, 'WH&FF', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-01-16 17:42:54.037088', 'TestActor05', null, 'TERMINAL0000001', '2020-01-16 19:22:54.037088', '2020-02-16', null, null, null, null);
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (2, 'WH&FF', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-01-16 15:42:54.037088', 'TestActor05', null, 'TERMINAL0000001', '2020-01-16 17:22:54.037088', '2020-02-16', 'Tieback poured', 'FvdB', '2020-02-16 19:42:54.037088', null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (2, 'WH&FF', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-01-16 15:42:54.037088', 'TestActor05', null, 'TERMINAL0000001', '2020-01-16 17:22:54.037088', '2020-02-16', 'Tieback poured', 'FvdB', '2020-02-16 19:42:54.037088+02:00', null);
 
 --------DUMMY FOR TESTING--------------------------------------------------------------------------------------------------------
 CREATE TABLE "OLINGO"."DummyToBeIgnored"
