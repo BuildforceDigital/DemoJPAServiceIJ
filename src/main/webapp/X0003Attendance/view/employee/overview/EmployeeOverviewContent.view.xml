@@ -8,8 +8,8 @@
                 <Toolbar>
                     <Title text="Attendance events content" level="H2"/>
                     <ToolbarSpacer/>
-                    <DateRangeSelection maxDate="{:= ${appModel>/now}}" change=".handleChange" displayFormat="yyyy-MM-dd"
-                                        tooltip="View Filter Settings" width="15em"/>
+                    <DateRangeSelection maxDate="{:= ${appModel>/now}}" change=".handleChange"
+                                        displayFormat="yyyy-MM-dd" tooltip="View Filter Settings" width="15em"/>
                     <Button icon="sap-icon://sort" press=".onSortButtonPressed"/>
                 </Toolbar>
             </headerToolbar>

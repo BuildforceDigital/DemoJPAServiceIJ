@@ -628,7 +628,7 @@ INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (2, 'WH&FF', 'PRUTSERIJ0', 'TE
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (3, 'Heijmans Infra', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-05-16 19:42:54.037088+02:00', 'TestActor05', null, null, null, '2020-05-16', null, null, null, null);
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (4, 'Heijmans Infra', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-05-16 17:42:54.037088+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 19:22:54.037088', '2020-05-16', null, null, null, null);
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (5, 'Heijmans Infra', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-05-16 15:42:54.037088+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (6, 'Heijmans Infra', 'ZuidPlus: Project Zuidasdok' , 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (6, 'Heijmans Infra', 'ZUIDPLUS00' , 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
 
 --------DUMMY FOR TESTING--------------------------------------------------------------------------------------------------------
 CREATE TABLE "OLINGO"."DummyToBeIgnored"

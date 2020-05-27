@@ -6,7 +6,8 @@ sap.ui.define([
     "sap/m/ViewSettingsDialog",
     "sap/m/ViewSettingsItem",
     "sap/m/GroupHeaderListItem",
-    "sap/ui/core/library"
+    "sap/ui/core/library",
+    "sap/ui/model/odata/type/DateTimeOffset"
 ], function (
     BaseController,
     Filter,
@@ -15,7 +16,8 @@ sap.ui.define([
     ViewSettingsDialog,
     ViewSettingsItem,
     GroupHeaderListItem,
-    CoreLibrary
+    CoreLibrary,
+    DateTimeOffset
 ) {
     "use strict";
 
@@ -78,7 +80,7 @@ sap.ui.define([
 
             oEventSource.setValueState(oEvent.getParameter("valid") ? CoreLibrary.ValueState.None : CoreLibrary.ValueState.Error);
 
-            const aFilter = [new Filter({
+            /*const aFilter = [new Filter({
                 path: 'AttendanceEventsAllEntities',
                 operator: FilterOperator.All,
                 variable: 'item',
@@ -87,10 +89,11 @@ sap.ui.define([
                     operator: FilterOperator.GT,
                     value1: 100.0
                 })
-            })];
+            })];*/
 
-            const bFilter = [new Filter("CheckInDateTime", FilterOperator.EQ, "2019-11-01T14:35:20.544411Z")];
-            const cFilter = [new Filter("ID", FilterOperator.EQ, 1)];
+            const bFilter = [new Filter("CheckInDateTime", FilterOperator.BT,
+                "2019-11-01T14:35:20.544411Z" /*(new DateTimeOffset).parseValue(sFrom)*/,
+                "2020-11-01T14:35:20.544411Z" /*(new DateTimeOffset).parseValue(sTo)*/)];
 
             // filter binding
             var oList = this.byId("employeesTable");
