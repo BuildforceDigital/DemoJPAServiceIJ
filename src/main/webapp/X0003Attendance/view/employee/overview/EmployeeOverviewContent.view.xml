@@ -1,99 +1,84 @@
-<mvc:View
-        xmlns:mvc="sap.ui.core.mvc"
-        controllerName="sap.ui.demo.nav.controller.employee.overview.EmployeeOverviewContent"
-        xmlns="sap.m">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+          controllerName="sap.ui.demo.nav.controller.employee.overview.EmployeeOverviewContent">
     <VBox class="sapUiSmallMargin">
-        <Table id="employeesTable"
-               alternateRowColors="true"
-               items="{
-			path : '/AttendanceEventsAllEntities',
-			parameters: {$select:'StartDate'},
-			sorter : {
-			    descending: true,
-				group : true,
-				path : 'StartDate'
-			},
-			groupHeaderFactory: '.getGroupHeader'
-			}"
+        <Table id="employeesTable" alternateRowColors="true"
+               items="{ path : '/AttendanceEventsAllEntities', parameters: {$select:'StartDate'}, sorter : { descending: true, group : true, path : 'StartDate' }, groupHeaderFactory: '.getGroupHeader' }"
                itemPress=".onItemPressed">
             <headerToolbar>
                 <Toolbar>
                     <Title text="Attendance events content" level="H2"/>
                     <ToolbarSpacer/>
-                    <DateRangeSelection
-                            maxDate="{:= ${appModel>/now}}"
-                            change=".handleChange"
-                            displayFormat="yyyy-MM-dd"
-                            tooltip="View Filter Settings"
-                            width="15em"/>
+                    <DateRangeSelection maxDate="{:= ${appModel>/now}}" change=".handleChange" displayFormat="yyyy-MM-dd"
+                                        tooltip="View Filter Settings" width="15em"/>
                     <Button icon="sap-icon://sort" press=".onSortButtonPressed"/>
                 </Toolbar>
             </headerToolbar>
             <columns>
-                <Column id="employeeIDCol"><header><Text text="Project Code"/></header></Column>
-                <Column id="firstNameCol" hAlign="Right" demandPopin="true"><header><Text text="Check-in"/></header></Column>
-                <Column id="lastNameCol" hAlign="Right" demandPopin="true"><header><Text text="Check-out"/></header></Column>
+                <Column id="employeeIDCol">
+                    <header>
+                        <Text text="Project Code"/>
+                    </header>
+                </Column>
+                <Column id="firstNameCol" hAlign="Right" demandPopin="true">
+                    <header>
+                        <Text text="Check-in"/>
+                    </header>
+                </Column>
+                <Column id="lastNameCol" hAlign="Right" demandPopin="true">
+                    <header>
+                        <Text text="Check-out"/>
+                    </header>
+                </Column>
                 <Column id="lastNameCol0" hAlign="Right" demandPopin="true">
-                    <header><Text text="Attended time"/></header>
-                    <footer><Text text="Tetx"/></footer>
+                    <header>
+                        <Text text="Attended time"/>
+                    </header>
+                    <footer>
+                        <Text text="Tetx"/>
+                    </footer>
                 </Column>
                 <Column id="lastNameCol1" hAlign="Right" demandPopin="true">
-                <header><Text text="Time worked"/></header>
-                <footer><Text text="Tetx"/></footer>
-            </Column>
+                    <header>
+                        <Text text="Time worked"/>
+                    </header>
+                    <footer>
+                        <Text text="Tetx"/>
+                    </footer>
+                </Column>
                 <Column id="addressCol" minScreenWidth="Tablet" demandPopin="true">
-                    <header><Text text="Description"/></header>
+                    <header>
+                        <Text text="Description"/>
+                    </header>
                 </Column>
                 <Column id="cityCol" minScreenWidth="Tablet" demandPopin="true">
-                    <header><Text text="Approval by"/></header>
+                    <header>
+                        <Text text="Approval by"/>
+                    </header>
                 </Column>
                 <Column id="regionCol" minScreenWidth="Tablet" demandPopin="true">
-                    <header><Text text="Approved at"/></header>
+                    <header>
+                        <Text text="Approved at"/>
+                    </header>
                 </Column>
                 <Column id="postalCodeCol" minScreenWidth="Tablet" demandPopin="true">
-                    <header><Text text="Remarks"/></header>
+                    <header>
+                        <Text text="Remarks"/>
+                    </header>
                 </Column>
             </columns>
             <items>
                 <ColumnListItem type="Inactive">
                     <cells>
                         <Text text="{ProjectCode}"/>
-
-                        <Text text="{
-                            formatOptions: {
-                                pattern: 'HH:mm',
-                                source: { pattern: 'yyyy-MM-ddTHH:mm:ss.SSSSSSSZ' }
-                                },
-                            path: 'CheckInDateTime',
-                            type: 'sap.ui.model.type.Date'
-                            }"/>
-                        <Text text="{
-                            formatOptions: {
-                                pattern: 'HH:mm',
-                                source: { pattern: 'yyyy-MM-ddTHH:mm:ss.SSSSSSSZ' }
-                                },
-                            path: 'CheckOutDateTime',
-                            type: 'sap.ui.model.type.Date'
-                    }"/>
-
-                        <ObjectNumber number="{parts: [
-                             {path: 'CheckInDateTime', type: 'sap.ui.model.type.String'},
-                             {path: 'CheckOutDateTime', type: 'sap.ui.model.type.String'}],
-                              formatter: '.computeDuration'}"
-                        />
-                        <ObjectNumber number="{parts: [
-                             {path: 'CheckInDateTime', type: 'sap.ui.model.type.String'},
-                             {path: 'CheckOutDateTime', type: 'sap.ui.model.type.String'}],
-                      formatter: '.computeDuration'}"
-                        />
+                        <Text text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'CheckInDateTime' }"/>
+                        <Text text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'CheckOutDateTime' }"/>
+                        <ObjectNumber
+                                number="{parts: [ {path: 'CheckInDateTime', type: 'sap.ui.model.type.String'}, {path: 'CheckOutDateTime', type: 'sap.ui.model.type.String'}], formatter: '.computeDuration'}"/>
+                        <ObjectNumber
+                                number="{parts: [ {path: 'CheckInDateTime', type: 'sap.ui.model.type.String'}, {path: 'CheckOutDateTime', type: 'sap.ui.model.type.String'}], formatter: '.computeDuration'}"/>
                         <Text text="{Description}"/>
                         <Text text="{ApprovalBy}"/>
-                        <Text text="{path: 'ApprovalDateTime',
-                            type: 'sap.ui.model.type.Date',
-                            formatOptions: {
-                            source: { pattern: 'yyyy-MM-ddTHH:mm:ss.SSSSSSSZ' },
-                            pattern: 'yyyy-MM-dd HH:mm'}}"
-                        />
+                        <Text text="{path: 'ApprovalDateTime', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: {pattern: 'yyyy-MM-dd HH:mm'}}"/>
                         <Text text="{Remarks}"/>
                     </cells>
                 </ColumnListItem>
