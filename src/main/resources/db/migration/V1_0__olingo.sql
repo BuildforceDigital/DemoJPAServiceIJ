@@ -630,6 +630,31 @@ INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (4, 'Heijmans Infra', 'PRUTSER
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (5, 'Heijmans Infra', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-05-16 15:42:54.037088+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (6, 'Heijmans Infra', 'ZUIDPLUS00' , 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
 
+create table "OLINGO"."A0000Users"
+(
+    "Id" integer
+        constraint a0000users_pk
+            primary key,
+    "Birthday" varchar(36),
+    "BusinessEmail" varchar(10),
+    "CitizenServiceNr" varchar(36),
+    "FullName" varchar(40),
+    "Gender" varchar(10),
+    "JobFunction" varchar(36),
+    "LandlinePhone" varchar(40),
+    "MobilePhone" varchar(40),
+    "Nationality" varchar(40),
+    "Nickname" varchar(40),
+    "PrivateEmail" varchar(40),
+    "TillDate" TIMESTAMP WITH TIME ZONE,
+    "UserName" varchar(40)
+);
+
+INSERT INTO "OLINGO"."A0000Users" VALUES (0, 'Bd', 'Be', 'Csnr', 'Fn', 'M', 'Jf', 'lp', 'mp', 'nat', 'Jan', 'pe', '2020-05-01', 'us');
+INSERT INTO "OLINGO"."A0000Users" VALUES (1, 'Bd', 'Be', 'Csnr', 'Fn', 'M', 'Jf', 'lp', 'mp', 'nat', 'Piet', 'pe', '2020-05-01', 'us');
+INSERT INTO "OLINGO"."A0000Users" VALUES (2, 'Bd', 'Be', 'Csnr', 'Fn', 'M', 'Jf', 'lp', 'mp', 'nat', 'Klaas', 'pe', '2020-05-01', 'us');
+INSERT INTO "OLINGO"."A0000Users" VALUES (3, 'Bd', 'Be', 'Csnr', 'Fn', 'M', 'Jf', 'lp', 'mp', 'nat', 'Willem', 'pe', '2020-05-01', 'us');
+
 --------DUMMY FOR TESTING--------------------------------------------------------------------------------------------------------
 CREATE TABLE "OLINGO"."DummyToBeIgnored"
 (

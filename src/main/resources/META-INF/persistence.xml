@@ -5,7 +5,7 @@
              version="2.2">
 
     <persistence-unit name="TutorialPU">
-        <!--<class>tutorial.model.ABCClassification</class>-->
+        <class>tutorial.model.A0000UsersEntity</class>
 
         <class>tutorial.model.AccessRightsConverter</class>
         <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class> <!--AdministrativeDivisionDescriptionEntities-->

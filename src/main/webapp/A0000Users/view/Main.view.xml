@@ -22,8 +22,8 @@
                    growingThreshold="5"
                    growingScrollToLoad="true"
                    includeItemInSelection="false"
-                   items="{ path: '/Users',
-						parameters: {$select:'Nickname,FullName,Gender,UserName',
+                   items="{ path: '/A0000UsersEntities',
+						parameters: {$select:'Nickname,FullName',
 						$count: true, $$updateGroupId : 'UserGroup' } }"
                    mode="SingleSelectLeft"
                    noDataText="No User found"
