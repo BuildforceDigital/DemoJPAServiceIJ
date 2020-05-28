@@ -1,0 +1,40 @@
+<core:FragmentDefinition
+        xmlns:core="sap.ui.core"
+        xmlns:l="sap.ui.layout"
+        xmlns="sap.m">
+    <!--controllerName="sap.ui.demo.walkthrough.controller.App"-->
+    <Page title="{i18n>homePageTitle}">
+        <headerContent>
+            <Button
+                    icon="sap-icon://hello-world"
+                    press=".onOpenDialog"/>
+        </headerContent>
+        <content>
+            <VBox>
+
+                    <OverflowToolbar>
+                        <Button id="btnAccepted"
+                                press=".onSuccessPayment"
+                                text="Payment Result: Successful"
+                                type="Accept"
+                                width="50%">
+                            <layoutData>
+                                <ToolbarLayoutData shrinkable="false"/>
+                            </layoutData>
+                        </Button>
+                        <Button id="btnRejected"
+                                press=".onDeclinedPayment"
+                                text="Payment Result: Declined"
+                                type="Reject"
+                                width="45%">
+                            <layoutData>
+                                <ToolbarLayoutData shrinkable="false"/>
+                            </layoutData>
+                        </Button>
+
+                    </OverflowToolbar>
+
+            </VBox>
+        </content>
+    </Page>
+</core:FragmentDefinition>

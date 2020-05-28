@@ -1,0 +1,10 @@
+<core:FragmentDefinition
+        xmlns:core="sap.ui.core"
+        xmlns="sap.m">
+    <MessagePage
+            title="{i18n>homePageTitle}"
+            text="{i18n>ThankYou.text}"
+            description="{i18n>ThankYou.description}"
+            showNavButton="true"
+            navButtonPress=".onNavBack"/>
+</core:FragmentDefinition>

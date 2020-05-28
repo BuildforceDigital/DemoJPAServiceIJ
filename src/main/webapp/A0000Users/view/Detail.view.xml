@@ -1,0 +1,98 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+          sId="Detail"
+          xmlns="sap.m" controllerName="sap.ui.demo.basicTemplate.controller.Detail">
+    <Page id="detailPage">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button press=".onBack" tooltip="Back" icon="sap-icon://nav-back"/>
+                    <Image src="images/GreenTrakLogo.svg" height="30px"/>
+                </contentLeft>
+                <contentMiddle>
+                    <Label id="header" design="Bold" text="{i18n>title}"/>
+                </contentMiddle>
+                <contentRight>
+                    <OverflowToolbar id="otbFooter">
+                        <ToolbarSpacer/>
+                        <OverflowToolbarButton text="Edit" icon="sap-icon://edit" press="onEdit"/>
+                        <OverflowToolbarButton text="Delete" icon="sap-icon://delete" press=".onDelete"/>
+                    </OverflowToolbar>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <IconTabBar id="empIconTabBar" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter key="personal" text="Personal Info" icon="sap-icon://employee">
+                        <VBox class="sapUiSmallMargin">
+                            <f:SimpleForm id="personalForm" editable="false" layout="ResponsiveGridLayout"
+                                          title="Personal Info" labelSpanXL="4" labelSpanL="3"
+                                          labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+                                          emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                                          columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Label design="Bold" text="User Full Name"/>
+                                    <Text text="{FullName}"/>
+                                    <Label design="Bold" text="User Nick Name"/>
+                                    <Text text="{Nickname}"/>
+                                    <Label design="Bold" text="Gender"/>
+                                    <Text id="gender"
+                                          text="{= ${Gender} === 'M'?'Male': (${Gender} === 'F'?'Female':'Unknown')}"/>
+                                    <Label design="Bold" text="User Birthday"/>
+                                    <Text text="{Birthday}"/>
+                                    <Label design="Bold" text="Nationality"/>
+                                    <Text text="{Nationality}"/>
+                                    <Label design="Bold" text="Citizen Service Number"/>
+                                    <Text text="{CitizenServiceNr}"/>
+                                    <Label design="Bold" text="Validity End"/>
+                                    <Text text="{TillDate}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </VBox>
+                    </IconTabFilter>
+                    <IconTabFilter key="contact" text="Contact Info" icon="sap-icon://contacts">
+                        <VBox class="sapUiSmallMargin">
+                            <f:SimpleForm id="contactForm" editable="false" layout="ResponsiveGridLayout"
+                                          title="Contact Info" labelSpanXL="4" labelSpanL="3"
+                                          labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+                                          emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                                          columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Label design="Bold" text="User Email ID"/>
+                                    <Text text="{PrivateEmail}"/>
+                                    <Label design="Bold" text="Business Email ID"/>
+                                    <Text text="{BusinessEmail}"/>
+                                    <Label design="Bold" text="User Mobile Phone Nr"/>
+                                    <Text text="{path:'MobilePhone'}"/>
+                                    <Label design="Bold" text="User Landline Phone Nr"/>
+                                    <Text text="{path:'LandlinePhone'}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </VBox>
+                    </IconTabFilter>
+                    <IconTabFilter key="account" text="Account Info" icon="sap-icon://account">
+                        <VBox class="sapUiSmallMargin">
+                            <f:SimpleForm id="accountForm" editable="false" layout="ResponsiveGridLayout"
+                                          title="Account Info" labelSpanXL="4" labelSpanL="3"
+                                          labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+                                          emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                                          columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Label design="Bold" text="User Name"/>
+                                    <!--<Text id="empId" text="{path:'ID',formatter:'.formatNumber'}"/>-->
+                                    <Text text="{UserName}"/>
+
+                                    <Label design="Bold" text="System Role"/>
+                                    <Text text="OrdinaryUser"/>
+                                    <!--<Text text="{SystemRole}"/>-->
+                                    <Label design="Bold" text="Job Function"/>
+                                    <Text text="{JobFunction}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </VBox>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>

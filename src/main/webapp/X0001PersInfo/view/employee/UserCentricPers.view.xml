@@ -1,0 +1,94 @@
+<mvc:View controllerName="sap.ui.demo.nav.controller.employee.UserCentricShared"
+          xmlns="sap.m"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:core="sap.ui.core"
+          xmlns:form="sap.ui.layout.form">
+    <form:SimpleForm
+            title='1. Personal Information {= ${usrCtrView>/editState} ? "(Edit Mode)" : ""}'
+            minWidth="1024"
+            editable="true"
+            layout="ColumnLayout">
+        <form:content>
+            <Label design="Bold" text="Personal Full name"/>
+            <Input change=".inputChange"
+                   required="true"
+                   type="Text"
+                   value="{FullName}"
+                   editable="{usrCtrView>/editState}" />
+
+            <Label design="Bold" text="Nick name"/>
+            <Input change=".inputChange"
+                   type="Text"
+                   value="{Nickname}"
+                   editable="{usrCtrView>/editState}"/>
+
+            <Label design="Bold" text="Gender"/>
+            <Input change=".inputChange"
+                   required="true"
+                   type="Text"
+                   value="{Gender}"
+                   editable="{usrCtrView>/editState}"/>
+
+            <Label design="Bold" text="Day of birth"/>
+            <Input change=".inputChange"
+                   type="Text"
+                   value="{Birthday}"
+                   editable="{usrCtrView>/editState}"/>
+
+            <Label design="Bold" text="Citizenship" />
+            <Input change=".inputChange"
+                   required="true"
+                   type="Text"
+                   value="{Nationality}"
+                   editable="{usrCtrView>/editState}"/>
+
+            <!--<Select selectedKey="{Nationality}" width="60%">
+                <items>
+                    <core:Item text="American" key="US"/>
+                    <core:Item text="Belgian" key="BE"/>
+                    <core:Item text="British" key="UK"/>
+                    <core:Item text="Dutch" key="NL"/>
+                    <core:Item text="European" key="EU"/>
+                    <core:Item text="French" key="FR"/>
+                    <core:Item text="German" key="DE"/>
+                    <core:Item text="Irish" key="IE"/>
+                    <core:Item text="Moroccan" key="MA"/>
+                    <core:Item text="Polish" key="PL"/>
+                    <core:Item text="Spanish" key="ES"/>
+                </items>
+            </Select>-->
+
+            <Label design="Bold" text="Citizen Service Nr"/>
+            <Input change=".inputChange"
+                   required="true"
+                   value="{CitizenServiceNr}"
+                   editable="{usrCtrView>/editState}"/>
+
+            <Label design="Bold" text="Job title"/>
+            <Input change=".inputChange"
+                   type="Text"
+                   value="{JobFunction}"
+                   editable="{usrCtrView>/editState}"/>
+
+            <Label design="Bold" text="Department"/>
+            <Input change=".inputChange"
+                   type="Text"
+                   value="{W02department}"
+                   editable="{usrCtrView>/editState}"/>
+
+        </form:content>
+    </form:SimpleForm>
+    <Toolbar visible = "{usrCtrView>/editState}">
+        <ToolbarSpacer/>
+        <!--enabled="{= ${message>/}.length === 0 &amp;&amp; ${usrCtrView>/hasUIChanges} }"-->
+        <Button enabled="{usrCtrView>/hasUIChanges}"
+                type="Accept"
+                text="{i18n>saveButtonText}"
+                press=".onSave"
+                ariaDescribedBy="acceptButtonDescription genericButtonDescription"/>
+        <Button type="Reject"
+                text="{i18n>cancelButtonText}"
+                press=".onResetChanges"
+                ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
+    </Toolbar>
+</mvc:View>

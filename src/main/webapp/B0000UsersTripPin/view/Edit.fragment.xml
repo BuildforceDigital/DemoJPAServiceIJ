@@ -1,0 +1,19 @@
+<Dialog id="editDialog" xmlns:sap.ui.core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.commons.layout" xmlns="sap.m"
+        showHeader="true" title="Update User">
+    <!--<l:HorizontalLayout>-->
+    <f:SimpleForm id="empform1" layout="ResponsiveGridLayout" columnsL="4" columnsM="4" busyIndicatorDelay="0">
+        <f:content>
+            <Label design="Bold" id="efullName" text="First Name" class="createNewUserLabelSpacing" labelFor="efullNameTextField"/>
+            <Input id="efullNameTextField" required="true" value="{FirstName}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="enickname" text="Last Name" class="createNewUserLabelSpacing" labelFor="eNicknameTextField"/>
+            <Input id="eNicknameTextField" value="{LastName}" liveChange=".inputChange"/>
+
+        </f:content>
+    </f:SimpleForm>
+    <!--</l:HorizontalLayout>-->
+    <buttons>
+        <Button id="btnUpdate" press=".updateEmp" text="Update" type="Accept" enabled="false"/>
+        <Button id="btnClose" press=".onClose" text="Close" type="Reject"/>
+    </buttons>
+</Dialog>

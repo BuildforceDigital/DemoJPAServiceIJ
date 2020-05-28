@@ -1,0 +1,38 @@
+<mvc:View  controllerName="sap.ui.demo.nav.controller.employee.UserCentricShared"
+           xmlns="sap.m"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:form="sap.ui.layout.form">
+    <form:SimpleForm
+            title='4. In Case of Emergency contact {= ${usrCtrView>/editState} ? "(Edit Mode)" : ""}'
+            minWidth="1024"
+            editable="true"
+            layout="ResponsiveGridLayout">
+        <form:content>
+
+            <Label design="Bold" text="ICE Mobile Telephone"/>
+            <Input change=".inputChange"
+                   type="Text"
+                   value="{ICoE_MobilePhone}"
+                   editable="{usrCtrView>/editState}"/>
+            <Label design="Bold" text="ICE Landline Telephone"/>
+            <Input change=".inputChange"
+                   type="Text"
+                   value="{ICoE_LandlinePhone}"
+                   editable="{usrCtrView>/editState}"/>
+
+        </form:content>
+    </form:SimpleForm>
+    <Toolbar visible = "{usrCtrView>/editState}">
+        <ToolbarSpacer/>
+        <!--enabled="{= ${message>/}.length === 0 &amp;&amp; ${usrCtrView>/hasUIChanges} }"-->
+        <Button enabled="{usrCtrView>/hasUIChanges}"
+                type="Accept"
+                text="{i18n>saveButtonText}"
+                press=".onSave"
+                ariaDescribedBy="acceptButtonDescription genericButtonDescription"/>
+        <Button type="Reject"
+                text="{i18n>cancelButtonText}"
+                press=".onResetChanges"
+                ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
+    </Toolbar>
+</mvc:View>

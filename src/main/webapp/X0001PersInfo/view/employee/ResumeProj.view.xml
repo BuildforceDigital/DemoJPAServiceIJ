@@ -1,0 +1,36 @@
+<mvc:View
+		xmlns="sap.m"
+		xmlns:mvc="sap.ui.core.mvc">
+	<Table id="employeesTable"
+		   items="{/Projects}"
+		   itemPress=".onItemPressed">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="Projects" level="H2"/>
+				<ToolbarSpacer />
+				<SearchField id="searchField" search=".onSearchEmployeesTable" width="50%"/>
+				<Button icon="sap-icon://sort" press=".onSortButtonPressed"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<!--<Column id="employeeIDCol"><Text text="ID"/></Column>-->
+			<Column id="firstNameCol" demandPopin="true"><Text text="Project Owner"/></Column>
+			<Column id="lastNameCol" demandPopin="true"><Text text="Code"/></Column>
+			<Column id="cityCol" minScreenWidth="Tablet" demandPopin="true"><Text text="Project Name"/></Column>
+			<Column id="regionCol" minScreenWidth="Tablet" demandPopin="true"><Text text="Start Date"/></Column>
+			<Column id="postalCodeCol" minScreenWidth="Tablet" demandPopin="true"><Text text="Description"/></Column>
+		</columns>
+		<items>
+			<ColumnListItem type="Active">
+				<cells>
+					<!--<Text text="{ID}"/>-->
+					<Text text="{ProjOwner}"/>
+					<Text text="{ProjectCode}"/>
+					<Text text="{ProjectName}"/>
+					<Text text="{StartDate}"/>
+					<Text text="{Description}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</mvc:View>

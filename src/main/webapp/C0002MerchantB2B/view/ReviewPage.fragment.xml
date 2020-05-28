@@ -1,0 +1,225 @@
+<core:FragmentDefinition
+        height="100%"
+        xmlns:form="sap.ui.layout.form"
+        xmlns:core="sap.ui.core"
+        xmlns="sap.m">
+    <!--backgroundDesign="Solid"-->
+    <Page id="wizardBranchingReviewPage" showHeader="false">
+        <content>
+            <Panel>
+                <form:SimpleForm
+                        title="1. Selected bundle."
+                        minWidth="1024"
+                        editable="false"
+                        layout="ResponsiveGridLayout">
+                    <form:content>
+                        <!--<GenericTile
+                                class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                                header="{Name}"
+                                headerImage="{= (%{ContractPrice} !== 0)  &amp;&amp; ${regB2BWizard>/w01/discountCouponInput} === 'Ten%' ? 'images/Discount.svg' : null}">
+                            <TileContent
+                                    footer="{= ${regB2BWizard>/w01/calendarBilling} ? 'Annually' : 'Monthly'}"
+                                    unit="€" footerColor="Good">
+                                <content>
+                                    <NumericContent
+                                            truncateValueTo="6"
+                                            value="{= %{ContractPrice} === 0 ? 'Free' : (((%{ContractPrice}
+                                                                          * (${regB2BWizard>/w01/discountCouponInput} === 'Ten%' ? 0.9 : 1)
+                                                                          * (${regB2BWizard>/w01/calendarBilling} ? 1 : 1.15))) / 100).toFixed(2) }"
+                                            valueColor="Good"/>
+                                </content>
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile
+                                class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                                header="{Name}"
+                                headerImage="{ImageURL}">
+                            <TileContent
+                                    footer="{= ${regB2BWizard>/w01/calendarBilling} ? 'Annually' : 'Monthly'}"
+                                    unit="€" footerColor="Good">
+                                <content>
+                                    <NumericContent
+                                            icon="{= (%{ContractPrice} !== 0)  &amp;&amp; ${regB2BWizard>/w01/discountCouponInput} === 'Ten%' ? 'images/Discount.svg' : null}"
+                                            truncateValueTo="6"
+                                            value="{= %{ContractPrice} === 0 ? 'Free' :
+                                                                (((%{ContractPrice}
+                                                                * (${regB2BWizard>/w01/discountCouponInput} === 'Ten%' ? 0.9 : 1)
+                                                                * (${regB2BWizard>/w01/calendarBilling} ? 1 : 1.15))) / 100).toFixed(2) }"
+                                            valueColor="Good"/>
+                                </content>
+                            </TileContent>
+                        </GenericTile>-->
+                        <Link press="._navBackToBundleSelect" text="Edit"/>
+                    </form:content>
+                </form:SimpleForm>
+
+                <form:SimpleForm
+                        title="2. Personal Information"
+                        minWidth="1024"
+                        editable="false"
+                        layout="ResponsiveGridLayout">
+                    <form:content>
+
+                        <Label text="Personal name"/>
+                        <Text text="{W02personalName}"/>
+                        <Link press="._navBackToPersInfo" text="Edit"/>
+
+                        <Label text="Nick name"/>
+                        <Text text="{W02nickName}"/>
+
+                        <Label text="Gender"/>
+                        <Text text="{W02gender}"/>
+
+                        <Label text="Job title"/>
+                        <Text text="{W02jobTitle}"/>
+
+                        <Label text="Independent Contractor"/>
+                        <Text text="{W02independentContractor}"/>
+
+                        <Label text="Department"/>
+                        <Text text="{W02department}"/>
+
+                    </form:content>
+                </form:SimpleForm>
+
+                <form:SimpleForm
+                        title="3. Organization Name"
+                        minWidth="1024"
+                        editable="false"
+                        layout="ResponsiveGridLayout">
+                    <form:content>
+
+                        <Label text="Organization legal name"/>
+                        <Text text="{W03formalLegalOrganizationName}"/>
+                        <Link press="._navBackToInstName" text="Edit"/>
+
+                        <Label text="Business Division"/>
+                        <Text text="{W03division}"/>
+
+                        <Label text="Commercial Register No."/>
+                        <Text text="{W03commercialRegisterNr}"/>
+
+                        <Label text="VAT identification number"/>
+                        <Text text="{W03vatIdentification}"/>
+
+
+                    </form:content>
+
+                </form:SimpleForm>
+
+                <form:SimpleForm
+                        title="4. Organization (Billing) Address"
+                        minWidth="1024"
+                        editable="false"
+                        layout="ResponsiveGridLayout">
+                    <form:content>
+
+                        <Label text="Organization legal name"/>
+                        <Text text="{W03formalLegalOrganizationName}"/>
+                        <Link press="._navBackToInstAddress" text="Edit"/>
+
+                        <Label text="Street address"/>
+                        <Text text="{W04companyStreetAddress}"/>
+
+                        <Label text="Specific delivery point"/>
+                        <Text text="{W04companyDelivery}"/>
+
+                        <Label text="Postal code"/>
+                        <Text text="{W04companyPostalCode}"/>
+
+                        <Label text="City"/>
+                        <Text text="{W04companyCityName}"/>
+
+                        <Label text="Country"/>
+                        <Text text="{W04companyCountry}"/>
+
+                    </form:content>
+
+                </form:SimpleForm>
+
+                <form:SimpleForm
+                        title="5. Organization Visit Address"
+                        minWidth="1024"
+                        editable="false"
+                        layout="ResponsiveGridLayout">
+                    <form:content>
+
+                        <Label text="Street address"/>
+                        <Text text="{W05physStreetAddress}"/>
+                        <Link press="._navBackToInstVisitAddress" text="Edit"/>
+
+                        <Label text="Specific delivery point"/>
+                        <Text text="{W05physDelivery}"/>
+
+                        <Label text="Postal code"/>
+                        <Text text="{W05physPostalCode}"/>
+
+                        <Label text="City"/>
+                        <Text text="{W05physCityName}"/>
+
+                        <Label text="Country"/>
+                        <Text text="{W05physCountry}"/>
+
+                    </form:content>
+
+                </form:SimpleForm>
+
+                <form:SimpleForm
+                        title="6. Electronic Business Communication"
+                        minWidth="1024"
+                        editable="false"
+                        layout="ResponsiveGridLayout">
+                    <form:content>
+
+                        <Label text="Billing Email address"/>
+                        <Text text="{W06billingEmailAddress}"/>
+                        <Link press="._navBackToEBusinessCom" text="Edit"/>
+
+                        <Label text="Organization Website"/>
+                        <Text text="{W06organizationWebSite}"/>
+
+                        <Label text="Organization Telephone number"/>
+                        <Text text="{W06organizationTelephone}"/>
+
+                    </form:content>
+
+                </form:SimpleForm>
+
+                <form:SimpleForm
+                        title="7. Electronic Personal Communication"
+                        minWidth="1024"
+                        editable="false"
+                        layout="ResponsiveGridLayout">
+                    <form:content>
+
+                        <Label text="Personal Email address"/>
+                        <Text text="{W07persEmailAddress}"/>
+                        <Link press="._navBackToEPersCom" text="Edit"/>
+
+                        <Label text="Personal Telephone number"/>
+                        <Text text="{W07persTelephone}"/>
+
+                        <Label text="Contact Notes"/>
+                        <Text text="{W07persContactNote}"/>
+
+                    </form:content>
+
+                </form:SimpleForm>
+
+                <VBox><CheckBox text="I have read and agree to the Terms and Conditions and Privacy Policy."/>
+                <CheckBox text="Yes, I would like to receive mail notifications on new, latest updates on regulations &amp; compliance training sessions."/>
+                </VBox>
+          </Panel>
+
+
+        </content>
+        <footer>
+            <Bar>
+                <contentRight>
+                    <Button type="Accept" text="Submit" press=".handleWizardSubmit"/>
+                    <Button type="Reject" text="Cancel" press=".onWizardCancel"/>
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</core:FragmentDefinition>

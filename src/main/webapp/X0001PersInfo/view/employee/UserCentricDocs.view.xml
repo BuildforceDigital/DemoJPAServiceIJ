@@ -1,0 +1,18 @@
+<mvc:View controllerName="sap.ui.demo.nav.controller.employee.UserCentricDocs"
+        xmlns="sap.m"
+          xmlns:mvc="sap.ui.core.mvc">
+    <UploadCollection
+            id="UploadCollection"
+            uploadComplete="onUploadComplete"
+            fileDeleted="onFileDeleted">
+        <toolbar>
+            <OverflowToolbar>
+                <!--<Breadcrumbs id="breadcrumbs" currentLocationText="{/currentLocationText}" links="{/history}">
+                    <Link press="onBreadcrumbPress" text="{name}" />
+                </Breadcrumbs>-->
+                <ToolbarSpacer />
+                <UploadCollectionToolbarPlaceholder />
+            </OverflowToolbar>
+        </toolbar>
+    </UploadCollection>
+</mvc:View>

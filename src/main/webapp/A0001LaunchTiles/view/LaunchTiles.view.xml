@@ -1,0 +1,192 @@
+<mvc:View controllerName="sap.ui.demo.walkthrough.controller.LaunchTiles"
+          displayBlock="true"
+          xmlns="sap.m"
+          xmlns:f="sap.f"
+          xmlns:card="sap.f.cards"
+          xmlns:core="sap.ui.core"
+          xmlns:form="sap.ui.layout.form"
+          xmlns:layout="sap.ui.layout"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:pwd="openui5.password">
+    <NavContainer id="wizardNavContainer" autoFocus="false">
+        <pages>
+            <Page id="wizardBranchingReviewPage" showHeader="false">
+                <content>
+                    <Panel>
+                        <ObjectHeader>
+                            <attributes>
+                            </attributes>
+                        </ObjectHeader>
+                        <!-- <layout:VerticalLayout class="sapUiResponsiveMargin">-->
+                        <Title
+                                titleStyle="H2"
+                                text="{i18n>startpageTilesGroupTitle}"
+                                class="sapUiTinyMarginBegin"/>
+                        <layout:HorizontalLayout allowWrapping="true">
+                            <GenericTile
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                    header="B2B Merchant Wizard" press=".onPress('C0002MerchantB2B')">
+                                <tileContent>
+                                    <TileContent>
+                                        <content>
+                                            <NumericContent
+                                                    value="{path: 'reviews>/UserReviews'}"
+                                                    indicator="None"
+                                                    valueColor="Neutral"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+                            <GenericTile
+                                    state="Disabled"
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                    header="Organization Data" press=".onPress('A0001LaunchTiles')">
+                                <tileContent>
+                                    <TileContent>
+                                        <content>
+
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                    header="Personal Data" press=".onPress('D0001PersonaInfo')">
+                                <tileContent>
+                                    <TileContent>
+                                        <content>
+                                            <ImageContent src="sap-icon://temperature"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                    header="All Organizations" press=".onPress('O0000Organizations')">
+                                <tileContent>
+                                    <TileContent>
+                                        <content>
+                                            <ImageContent src="sap-icon://temperature"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                    header="All Users" press=".onPress('A0000Users')">
+                                <tileContent>
+                                    <TileContent>
+                                        <content>
+                                            <ImageContent src="sap-icon://temperature"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                    header="All Projects" press=".onPress('P0000Projects')">
+                                <tileContent>
+                                    <TileContent>
+                                        <content>
+                                            <ImageContent src="sap-icon://temperature"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                        </layout:HorizontalLayout>
+
+                        <VBox>
+                            <HBox>
+                                <Link
+                                        text="Time sheet"
+                                        emphasized="true"
+                                        href="../X0003Attendance/index.html"/>
+
+                            </HBox>
+                            <HBox>
+                                <Link
+                                        text="Test"
+                                        emphasized="true"
+                                        href="../ContextPath/ServletPath.svc/AttendanceEventsAllEntities?$filter=CheckInDateTime%20eq%202019-11-01T14:35:20.544411Z"/>
+
+                            </HBox>
+                            <HBox>
+                                <Link
+                                        text="Overview"
+                                        emphasized="true"
+                                        href="../A0001LaunchTiles/index.html"/>
+                            </HBox>
+                            <HBox>
+                                <Link
+                                        text="B2B Merchant Wizard"
+                                        emphasized="true"
+                                        href="../C0002MerchantB2B/index.html"/>
+                            </HBox>
+
+                            <HBox>
+                                <Link
+                                        text="Organization Data"
+                                        href=""/>
+                            </HBox>
+
+                            <HBox>
+                                <Link
+                                        text="Personal Data"
+                                        emphasized="true"
+                                        href="../D0001PersonaInfo/index.html"/>
+                            </HBox>
+                            <HBox>
+                                <Link
+                                        text="All Organizations"
+                                        emphasized="true"
+                                        href="../O0000Organizations/index.html"/>
+                            </HBox>
+                            <HBox>
+                                <Link
+                                        text="All Users"
+                                        emphasized="true"
+                                        href="../A0000Users/index.html"/>
+                            </HBox>
+                            <HBox>
+                                <Link
+                                        text="All Projects"
+                                        emphasized="true"
+                                        href="../P0000Projects/index.html"/>
+                            </HBox>
+                            <HBox>
+                                <Link
+                                        text="Metadata"
+                                        emphasized="true"
+                                        href="../ContextPath/ServletPath.svc/$metadata"/>
+                            </HBox>
+                            <HBox>
+                                <Link
+                                        text="Personal Info (Self service)"
+                                        emphasized="true"
+                                        href="../X0001PersInfo/index.html"/>
+                            </HBox>
+                        </VBox>
+
+
+                    </Panel>
+
+
+                </content>
+                <footer>
+
+                    <OverflowToolbar>
+                        <ToolbarSpacer/>
+
+                        <Button text="Cancel" press=".onWizardCancel" width="20%"/>
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </pages>
+    </NavContainer>
+
+</mvc:View>

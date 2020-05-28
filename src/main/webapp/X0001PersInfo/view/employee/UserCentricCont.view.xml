@@ -1,0 +1,94 @@
+<mvc:View  controllerName="sap.ui.demo.nav.controller.employee.UserCentricShared"
+		   xmlns="sap.m"
+		  xmlns:mvc="sap.ui.core.mvc"
+		  xmlns:form="sap.ui.layout.form">
+	<form:SimpleForm
+			title='3. Electronic Personal Communication {= ${usrCtrView>/editState} ? "(Edit Mode)" : ""}'
+			minWidth="1024"
+			editable="true"
+			layout="ResponsiveGridLayout">
+		<form:content>
+
+			<Label design="Bold" text="Business Email address"/>
+			<Input change=".inputChange"
+				   type="Text"
+				   value="{BusinessEmail}"
+				   editable="{usrCtrView>/editState}"/>
+			<Label design="Bold" text="Personal Email address"/>
+			<Input change=".inputChange"
+				   type="Text"
+				   value="{PrivateEmail}"
+				   editable="{usrCtrView>/editState}"/>
+			<Label design="Bold" text="Personal Mobile Telephone"/>
+			<Input change=".inputChange"
+				   type="Text"
+				   value="{MobilePhone}"
+				   editable="{usrCtrView>/editState}"/>
+			<Label design="Bold" text="Landline Telephone"/>
+			<Input change=".inputChange"
+				   type="Text"
+				   value="{LandlinePhone}"
+				   editable="{usrCtrView>/editState}"/>
+			<Label design="Bold" text="Contact Notes"/>
+			<TextArea change=".inputChange"
+				   value="{W07persContactNote}"
+				   editable="{usrCtrView>/editState}"/>
+		</form:content>
+
+	</form:SimpleForm>
+	<form:SimpleForm
+			title='2. Postal Address {= ${usrCtrView>/editState} ? "(Edit Mode)" : ""}'
+			minWidth="1024"
+			editable="true"
+			layout="ResponsiveGridLayout">
+		<form:content>
+
+			<Label design="Bold" text="Specific delivery point"/>
+			<Input change=".inputChange"
+				   type="Text"
+				   value="{PostalBranch}"
+				   editable="{usrCtrView>/editState}"/>
+			<Label design="Bold" text="Street address 1"/>
+			<Input change=".inputChange"
+				   type="Text"
+				   value="{PostalAddressLine1}"
+				   editable="{usrCtrView>/editState}"/>
+			<Label design="Bold" text="Street address 2"/>
+			<Input change=".inputChange"
+				   type="Text"
+				   value="{PostalAddressLine2}"
+				   editable="{usrCtrView>/editState}"/>
+			<Label design="Bold" text="Postal code"/>
+			<Input change=".inputChange"
+				   required="true"
+				   type="Text"
+				   value="{PostalCode}"
+				   editable="{usrCtrView>/editState}"/>
+			<Label design="Bold" text="City"/>
+			<Input change=".inputChange"
+				   required="true"
+				   type="Text"
+				   value="{PostalCity}"
+				   editable="{usrCtrView>/editState}"/>
+			<Label design="Bold" text="Country"/>
+			<Input change=".inputChange"
+				   required="true"
+				   type="Text"
+				   value="{PostalCountry}"
+				   editable="{usrCtrView>/editState}"/>
+		</form:content>
+	</form:SimpleForm>
+	<Toolbar visible = "{usrCtrView>/editState}">
+		<ToolbarSpacer/>
+		<!--enabled="{= ${message>/}.length === 0 &amp;&amp; ${usrCtrView>/hasUIChanges} }"-->
+        <Button enabled="{usrCtrView>/hasUIChanges}"
+                type="Accept"
+                text="{i18n>saveButtonText}"
+                press=".onSave"
+                ariaDescribedBy="acceptButtonDescription genericButtonDescription"/>
+        <Button type="Reject"
+                text="{i18n>cancelButtonText}"
+                press=".onResetChanges"
+                ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
+	</Toolbar>
+</mvc:View>

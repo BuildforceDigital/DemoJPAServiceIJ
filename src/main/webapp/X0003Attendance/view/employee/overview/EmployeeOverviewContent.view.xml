@@ -28,13 +28,15 @@
                     <header>
                         <Text text="Check-out"/>
                     </header>
+                    <footer>
+                        <Text text="Totals:"/>
+                    </footer>
                 </Column>
                 <Column id="lastNameCol0" hAlign="Right" demandPopin="true">
                     <header>
                         <Text text="Attended time"/>
                     </header>
                     <footer>
-                        <Text text="Tetx"/>
                     </footer>
                 </Column>
                 <Column id="lastNameCol1" hAlign="Right" demandPopin="true">
@@ -42,7 +44,6 @@
                         <Text text="Time worked"/>
                     </header>
                     <footer>
-                        <Text text="Tetx"/>
                     </footer>
                 </Column>
                 <Column id="addressCol" minScreenWidth="Tablet" demandPopin="true">

@@ -1,0 +1,24 @@
+<mvc:View
+        controllerName="sap.ui.demo.basicTemplate.controller.Home"
+        displayBlock="true"
+        xmlns="sap.m"
+        xmlns:mvc="sap.ui.core.mvc">
+    <Page
+            title="{i18n>title}"
+            backgroundDesign="Solid"
+    >
+        <content>
+            <List id="masterList"
+                  busyIndicatorDelay="0"
+                  growing="true"
+                  itemPress=".onEdit"
+                  items="{path: '/People' }"
+                  mode="SingleSelectMaster">
+                <StandardListItem
+                        description="{LastName}"
+                        title="{FirstName}"
+                        type="Active"/>
+            </List>
+        </content>
+    </Page>
+</mvc:View>

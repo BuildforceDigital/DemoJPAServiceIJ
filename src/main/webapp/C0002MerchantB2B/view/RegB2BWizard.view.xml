@@ -1,0 +1,605 @@
+<mvc:View controllerName="sap.ui.demo.walkthrough.controller.RegB2BWizard"
+          displayBlock="true"
+          xmlns="sap.m"
+          xmlns:f="sap.f"
+          xmlns:card="sap.f.cards"
+          xmlns:core="sap.ui.core"
+          xmlns:form="sap.ui.layout.form"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:pwd="openui5.password">
+    <NavContainer id="wizardNavContainer" autoFocus="false">
+        <pages>
+            <Page id="wizardContentPage">
+                <customHeader>
+                    <Bar>
+                        <contentLeft>
+                            <Image press=".onClickPic" src="images/GreenTrakLogo.svg" height="30px"/>
+                        </contentLeft>
+                        <contentMiddle>
+                            <Label id="header" design="Bold" text="{i18n>homePageTitle}"/>
+                        </contentMiddle>
+                        <!--<contentRight>
+                            <Button id="logoutBtn" tooltip="Logout" icon="sap-icon://log" press="onLogoutPress"/>
+                            <Button id="displayName" text="User Name" icon="sap-icon://account" press="handlePressOpenMenu"/>
+                        </contentRight>-->
+                    </Bar>
+                </customHeader>
+                <content>
+                    <!--stepActivate=".onWizardActivated"-->
+                    <Wizard id="idMerchantB2BWizard"
+                            complete=".onWizardCompleted"
+                            enableBranching="true"
+                            showNextButton="false">
+                        <WizardStep id="Step01"
+                                    icon="sap-icon://money-bills"
+                                    nextStep="Step_3"
+                                    title="Choose your bundle">
+                            <Panel class="sapUiResponsiveMargin" width="auto">
+                                <HBox justifyContent="Center">
+                                    <Button text="Billed Monthly" type="Transparent"/>
+                                    <Switch customTextOff="Mont" customTextOn="Year"
+                                            state="{regB2BWizard>/w01/calendarBilling}"/>
+                                    <Button id="target"
+                                            icon="sap-icon://message-information"
+                                            iconFirst="false"
+                                            text="/ Annually"
+                                            type="Transparent">
+                                        <dependents>
+                                            <ResponsivePopover id="popover" class="sapUiPopupWithPadding"
+                                                               title="Information" showHeader="true"
+                                                               icon="sap-icon://message-information">
+                                                <content>
+                                                    <Text text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+                                                </content>
+                                            </ResponsivePopover>
+                                        </dependents>
+                                    </Button>
+                                </HBox>
+                                <MessageStrip
+                                        text="Error with default icon and close button:"
+                                        type="Error"
+                                        showIcon="true"
+                                        showCloseButton="true"
+                                        class="sapUiMediumMarginBottom">
+                                </MessageStrip>
+
+                                <FlexBox id="idBundles" justifyContent="Center"
+                                         items="{ path: '/PricePlans'}">
+                                    <f:Card height="26rem"
+                                            visible="{= ${regB2BWizard>/w01/bundleChoice} === null || (${regB2BWizard>/w01/bundleChoice} === %{ID}) }">
+                                        <f:header>
+                                            <card:Header id="cardid"
+                                                         iconDisplayShape="Square"
+                                                         iconSrc="{ImageURL}"
+                                                         press=".onTileW01Click"
+                                                         subtitle="{Description}"
+                                                         title="{Name}"/>
+                                        </f:header>
+                                        <f:content>
+                                            <VBox justifyContent="Center">
+                                                <HBox justifyContent="Center">
+                                                    <GenericTile
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                                                            header="{Name}"
+                                                            headerImage="{= (%{ContractPrice} !== 0) &amp;&amp; ${regB2BWizard>/w01/discountCouponInput} === 'Ten%' ? 'images/Discount.svg' : null}"
+                                                            press=".onTileW01Click">
+                                                        <TileContent
+                                                                footer="{= ${regB2BWizard>/w01/calendarBilling} ? 'Annually' : 'Monthly'}"
+                                                                unit="€" footerColor="Good">
+                                                            <content>
+                                                                <NumericContent
+                                                                        truncateValueTo="6"
+                                                                        value="{= %{ContractPrice} === 0 ? 'Free' : (((%{ContractPrice}
+                                                                          * (${regB2BWizard>/w01/discountCouponInput} === 'Ten%' ? 0.9 : 1)
+                                                                          * (${regB2BWizard>/w01/calendarBilling} ? 1 : 1.15))) / 100).toFixed(2) }"
+                                                                        valueColor="Good"/>
+                                                            </content>
+                                                        </TileContent>
+                                                    </GenericTile>
+                                                </HBox>
+                                                <ObjectHeader
+                                                        numberState="Success"
+                                                        numberUnit="EUR"
+                                                        condensed="false"
+                                                        icon="{= (%{ContractPrice} !== 0)  &amp;&amp; ${regB2BWizard>/w01/discountCouponInput} === 'Ten%' ? 'images/Discount.svg' : null}"
+
+                                                        number="{= %{ContractPrice} === 0 ? 'Free' :
+                                                              (((%{ContractPrice}
+                                                              * (${regB2BWizard>/w01/discountCouponInput} === 'Ten%' ? 0.9 : 1)
+                                                              * (${regB2BWizard>/w01/calendarBilling} ? 1 : 1.15))) / 100).toFixed(2) }"
+                                                >
+                                                    <statuses>
+
+                                                    </statuses>
+                                                    <attributes>
+                                                        <ObjectAttribute
+                                                                text="{= ${regB2BWizard>/w01/calendarBilling} ? 'Annually' : 'Monthly'}"/>
+                                                    </attributes>
+                                                </ObjectHeader>
+                                            </VBox>
+                                        </f:content>
+                                    </f:Card>
+                                </FlexBox>
+                                <MessageStrip
+                                        text="Error with default icon and close button:"
+                                        type="Error"
+                                        showIcon="true"
+                                        showCloseButton="true"
+                                        class="sapUiMediumMarginBottom">
+                                </MessageStrip>
+                            </Panel>
+                            <VBox class="sapUiSmallMargin">
+                                <form:SimpleForm id="idStep01Form"
+                                                 editable="true"
+                                                 layout="ColumnLayout">
+                                    <core:Title text="Date of Commencement"/>
+                                    <form:content>
+                                        <!--<Panel width="auto" class="sapUiResponsiveMargin">
+                                            <headerToolbar>
+                                                <Toolbar height="3rem">
+                                                    <Title text="Date of Commencement"/>
+                                                </Toolbar>
+                                            </headerToolbar>
+                                            <content>
+                                                <l:VerticalLayout class="sapUiContentPadding" width="25%">-->
+
+                                        <!--<Text text="{path : 'W01CommencementDate',
+                                        type: 'sap.ui.model.odata.type.Date',
+                                        formatOptions: {pattern: 'yyyy-MM-dd'}}"/>-->
+                                        <DatePicker id="idDtpW01StartDate"
+                                                    change=".onDtpW01Change"
+                                                    value="{path : 'W01commencementDate',
+                                                    type: 'sap.ui.model.odata.type.Date', formatOptions: {pattern: 'yyyy-MM-dd'}}"
+                                                    minDate="{:= ${regB2BWizard>/w01/date}}"
+                                                    parseError="alert('Parse error')"
+                                                    validationError="alert('Validation error')"
+                                                    valueFormat="yyyy-MM-dd"
+                                                    width="15em"/>
+                                        <!--</l:VerticalLayout>
+                                    </content>
+                                </Panel>-->
+                                        <core:Title text="Promotional code"/>
+                                        <!--<Panel width="auto" class="sapUiResponsiveMargin">
+                                            <headerToolbar>
+                                                <Toolbar>
+                                                    <Title text="Promotional code"/>
+                                                </Toolbar>
+                                            </headerToolbar>
+                                            <content>
+                                                <VBox>-->
+                                        <Label text=""/>
+                                        <CheckBox
+                                                enabled="{= !${regB2BWizard>/discountCoupon}}"
+                                                selected="{regB2BWizard>/discountCoupon}"
+                                                text="I have a discount coupon."
+                                        />
+                                        <!-- <l:VerticalLayout class="sapUiContentPadding" width="25%">-->
+                                        <Label text=""/>
+
+                                        <SearchField id="inpPromoCode"
+                                                     placeholder="Enter promotional code…"
+                                                     showSearchButton="false"
+                                                     tooltip='For demonstration purpose "Ten%"'
+                                                     value="{W01discountCouponInput}"
+                                                     visible="{regB2BWizard>/discountCoupon}"
+                                                     width="16em"
+                                        />
+                                        <!--</l:VerticalLayout>
+                                    </VBox>
+                                </content>
+                            </Panel>-->
+                                    </form:content>
+                                </form:SimpleForm>
+                            </VBox>
+                            <MessageStrip showIcon="false"
+                                          type="Warning"
+                                          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                          class="sapUiTinyMargin"/>
+                        </WizardStep>
+
+                        <WizardStep id="Step_3"
+                                    icon="sap-icon://business-card"
+                                    nextStep="Step_4"
+                                    title="Personal Information">
+                            <form:SimpleForm id="idStep02Form"
+                                             editable="true"
+                                             layout="ColumnLayout"
+                                             columnsM="2"
+                                             columnsL="3"
+                                             columnsXL="4">
+                                <Label design="Bold" required="true" text="Personal name"/>
+                                <Input id="idTxtW02PersN"
+                                       change=".onTxtW02Change"
+                                       placeholder="Your full name, please?"
+                                       value="{path : 'W02personalName', type: '.CustomReqNameType'}"
+                                       valueStateText="At least some valid characters for name."/>
+
+                                <Label design="Bold" text="Gender"/>
+                                <Select showSecondaryValues="true"
+                                        selectedKey="{path : 'regB2BWizard>/w02/gender'}">
+                                    <core:ListItem additionalText="?" text="No disclosure" key=""/>
+                                    <core:ListItem additionalText="F" text="Female" key="F"/>
+                                    <core:ListItem additionalText="M" text="Male" key="M"/>
+                                    <core:ListItem additionalText="X" text="Androgynous" key="X"/>
+                                </Select>
+                                <Button icon="sap-icon://message-information"
+                                        iconFirst="false"
+                                        tooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                        type="Transparent"
+                                        width="1em"/>
+
+                                <Label design="Bold" text="Nick name"/>
+                                <Input id="idTxtW02NickN"
+                                       placeholder="Prefered name."
+                                       change=".onTxtW02Change"
+                                       value="{path : 'W02nickName', type: '.CustomNameOptType'}"
+                                       valueStateText="At least some valid characters for nick name."/>
+
+                                <Label design="Bold" text="Job title"/>
+                                <Input id="idTxtW02JobT"
+                                       change=".onTxtW02Change"
+                                       placeholder="e.g. General foreman"
+                                       value="{path : 'W02jobTitle',  type: '.CustomNameOptType'}"
+                                       valueStateText="At least some valid characters for job title."/>
+
+                                <Label design="Bold" text="You are an independent contractor"/>
+                                <CheckBox selected="{W02independentContractor}"/>
+
+                                <Label design="Bold" text="Your Department"/>
+                                <Input id="idTxtW02Dep"
+                                       visible="{= !${W02independentContractor}}"
+                                       change=".onTxtW02Change"
+                                       value="{path : 'W02department', type: '.CustomNameOptType'}"
+                                       valueStateText="At least some valid characters for department name."/>
+
+                            </form:SimpleForm>
+                            <form:SimpleForm layout="ColumnLayout">
+                                <Label required="true" text="Required field." class="sapMLabelNoText"/>
+                                <Text/>
+                            </form:SimpleForm>
+                        </WizardStep>
+
+                        <WizardStep id="Step_4"
+                                    icon="sap-icon://building"
+                                    nextStep="Step_5"
+                                    title="Organization Name">
+                            <Text class="sapUiSmallMarginBottom"
+                                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+
+                            <form:SimpleForm id="idStep03Form"
+                                             editable="true"
+                                             layout="ColumnLayout"
+                                             columnsM="2"
+                                             columnsL="3"
+                                             columnsXL="4">
+                                <Label design="Bold" text="Organization legal name" required="true"/>
+                                <Input id="idTxtW03CompanyName"
+                                       placeholder="Complete organization name."
+                                       change=".onTxtW03Change"
+                                       value="{path : 'W03formalLegalOrganizationName',
+                                        type: '.CustomReqNameType', constraints : {minLength: 3}}"
+                                       valueStateText="At least some valid characters for name."/>
+
+                                <Label design="Bold" required="true" text="Commercial Register No."/>
+                                <Input id="idTxtW03CoC"
+                                       textAlign="Right"
+                                       type="Number"
+                                       value="{path : 'W03commercialRegisterNr', type: 'sap.ui.model.odata.type.Decimal',
+                                       formatOptions : {   groupingEnabled: false},
+                                        constraints : {minimum: '10000', maximum: '99999999'}}"
+                                       placeholder="e.g. 56583052"
+                                       change=".onTxtW03Change"
+                                />
+
+                                <Label design="Bold" text="Business Division"/>
+                                <Input id="idTxtW03Subsidiary"
+                                       placeholder="Subsidiary"
+                                       change=".onTxtW03Change"
+                                       value="{path : 'W03division', type: '.CustomNameOptType'}"
+                                       visible="{= !${W02independentContractor}}"/>
+
+                                <Label design="Bold" required="true" text="VAT identification number"/>
+                                <Input id="idTxtW03VAT"
+                                       change=".onTxtW03Change"
+                                       value="{path : 'W03vatIdentification', type: '.CustomNameOptType', constraints : {minLength: 3}}"
+                                       visible="{= ${W02independentContractor}}"
+                                       placeholder="e.g. NL123456789B01"/>
+                            </form:SimpleForm>
+                            <form:SimpleForm layout="ColumnLayout">
+                                <Label required="true" text="Required field." class="sapMLabelNoText"/>
+                                <Text/>
+                            </form:SimpleForm>
+                        </WizardStep>
+
+                        <WizardStep id="Step_5"
+                                    icon="sap-icon://letter"
+                                    nextStep="Step_7"
+                                    subsequentSteps="Step_6, Step_7"
+                                    title="Organization (Billing) Address">
+                            <Text class="sapUiSmallMarginBottom"
+                                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+
+                            <Panel accessibleRole="Region" class="sapUiResponsiveMargin" width="auto">
+                                <headerToolbar>
+                                    <Toolbar height="3rem">
+                                        <Title text="Postal Address"/>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <content>
+                                    <form:SimpleForm id="idStep04Form" editable="true"
+                                                     layout="ColumnLayout"
+                                                     columnsM="2"
+                                                     columnsL="3"
+                                                     columnsXL="4">
+
+                                        <Label design="Bold" required="true" text="Country"/>
+                                        <Select width="50%"
+                                                selectedKey="{path : 'regB2BWizard>/w04/companyCountry'}">
+                                            <core:Item text="Belgium" key="BE"/>
+                                            <core:Item text="Germany" key="DE"/>
+                                            <core:Item text="France" key="FR"/>
+                                            <core:Item text="Netherlands" key="NL"/>
+                                            <core:Item text="Poland" key="PL"/>
+                                        </Select>
+
+                                        <Label design="Bold" required="true" text="Postal code"/>
+                                        <Input id="idTxtW04PostalCode" change=".onTxtW04Change"
+                                               placeholder="e.g. 1000 AB"
+                                               value="{path : 'W04companyPostalCode',
+                                               type : 'sap.ui.model.odata.type.String', constraints : {minLength: 4}}"
+                                               valueStateText="At least some valid characters for postal code."
+                                               width="50%"/>
+
+                                        <Label design="Bold" required="true" text="City"/>
+                                        <Input id="idTxtW04City"
+                                               change=".onTxtW04Change"
+                                               placeholder="e.g. Amsterdam"
+                                               value="{path : 'W04companyCityName',
+                                                type: '.CustomReqNameType', constraints : {minLength: 1}}"
+                                               valueStateText="At least some valid characters for city name."
+                                               width="50%"/>
+
+                                        <Label design="Bold" required="true" text="Street address"/>
+                                        <Input id="idTxtW04StreetAddr"
+                                               change=".onTxtW04Change"
+                                               placeholder="Street and number, P.O. box or ℅."
+                                               value="{path : 'W04companyStreetAddress',
+                                               type : 'sap.ui.model.odata.type.String', constraints : {minLength: 4}}"
+                                               valueStateText="At least some valid characters for street address."
+                                        />
+
+                                        <Label design="Bold" text="Specific delivery point"/>
+                                        <Input id="idTxtW04Delivery"
+                                               change=".onTxtW04Change"
+                                               placeholder="Apartment, suite, unit, building, floor, etc."
+                                               value="{path : 'W04companyDelivery',
+                                               type: 'sap.ui.model.odata.type.String'}"
+                                               valueStateText="At least some valid characters for delivery point."/>
+
+                                        <Label text="Visit address is corresponding"/>
+                                        <Switch id="chkDifferentVisitAddress"
+                                                change=".onChkW04SelCorrVisitAddress"
+                                                customTextOn="YES" customTextOff="NO"
+                                                state="{path : 'regB2BWizard>/w04/correspondingVisitAddress'}"/>
+                                    </form:SimpleForm>
+                                </content>
+                            </Panel>
+                        </WizardStep>
+
+                        <WizardStep id="Step_6"
+                                    icon="sap-icon://addresses"
+                                    nextStep="Step_7"
+                                    title="Organization Visit Address">
+                            <Panel accessibleRole="Region" class="sapUiResponsiveMargin" width="auto">
+                                <headerToolbar>
+                                    <Toolbar height="3rem">
+                                        <Title text="Visit Address"/>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <content>
+                                    <form:SimpleForm id="idStep05Form"
+                                                     editable="true"
+                                                     layout="ColumnLayout"
+                                                     columnsM="2"
+                                                     columnsL="3"
+                                                     columnsXL="4">
+
+                                        <Label design="Bold" required="true" text="Country"/>
+                                        <Select showSecondaryValues="true" width="50%"
+                                                selectedKey="{path : 'regB2BWizard>/w05/physCountry'}">
+                                            <core:Item text="Belgium" key="BE"/>
+                                            <core:Item text="Germany" key="DE"/>
+                                            <core:Item text="France" key="FR"/>
+                                            <core:Item text="Netherlands" key="NL"/>
+                                            <core:Item text="Poland" key="PL"/>
+                                        </Select>
+
+                                        <Label design="Bold" required="true" text="Postal code"/>
+                                        <Input id="idTxtW05PostalCode" change=".onTxtW05Change"
+                                               placeholder="e.g. 1000 AB"
+                                               value="{path : 'W05physPostalCode',
+                                               type : 'sap.ui.model.odata.type.String', constraints : {minLength: 4}}"
+                                               valueStateText="At least some valid characters for postal code."
+                                               width="50%"/>
+
+                                        <Label design="Bold" required="true" text="City"/>
+                                        <Input id="idTxtW05City" change=".onTxtW05Change"
+                                               placeholder="e.g. Amsterdam"
+                                               value="{path : 'W05physCityName',
+                                               type : '.CustomReqNameType', constraints : {minLength: 1}}"
+                                               valueStateText="At least some valid characters for city name."
+                                               width="50%"/>
+
+                                        <Label design="Bold" required="true" text="Street address"/>
+                                        <Input id="idTxtW05StreetAddr" change=".onTxtW05Change"
+                                               placeholder="Street and number, P.O. box or ℅."
+                                               value="{path : 'W05physStreetAddress',
+                                               type : 'sap.ui.model.odata.type.String', constraints : {minLength: 4}}"
+                                               valueStateText="At least some valid characters for street address."
+                                        />
+
+                                        <Label design="Bold" text="Specific delivery point"/>
+                                        <Input id="idTxtW05Delivery" change=".onTxtW05Change"
+                                               placeholder="Apartment, suite, unit, building, floor, etc."
+                                               value="{path : 'W05physDelivery', type: 'sap.ui.model.odata.type.String'}"
+                                               valueStateText="At least some valid characters for delivery point."/>
+                                    </form:SimpleForm>
+                                </content>
+                            </Panel>
+                        </WizardStep>
+
+                        <WizardStep id="Step_7"
+                                    icon="sap-icon://arobase"
+                                    nextStep="Resume"
+                                    title="Electronic Business Communication">
+                            <Text class="sapUiSmallMarginBottom"
+                                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+
+                            <form:SimpleForm id="idStep06Form"
+                                             layout="ColumnLayout"
+                                             columnsM="2"
+                                             columnsL="3"
+                                             columnsXL="4"
+                                             editable="true">
+
+                                <Label design="Bold" required="true" text="Billing Email address"/>
+                                <Input id="idTxtW06BillingEmailAddress"
+                                       change=".onTxtW06BillingEmailAddressChange"
+                                       placeholder="Billing email" type="Email"
+                                       value="{path: 'W06billingEmailAddress', type: '.customEMailType'}"
+                                       valueStateText="E-Mail must be a valid email address."/>
+
+                                <Label design="Bold" required="true" text="Confirm Email address"/>
+                                <Input id="idTxtW06BillingEmailAddressConf"
+                                       change=".onTxtW06ConfEmailAddressChange"
+                                       placeholder="Confirmed Email address" type="Email"
+                                       valueStateText="E-Mail addresses must be corresponding."/>
+
+                                <Label design="Bold" text="Organization Website"/>
+                                <Input id="idTxtW06OrganizationUrl"
+                                       change=".onTxtW06eCom"
+                                       placeholder="e.g. www.ditum.nl" type="Url"
+                                       value="{path: 'W06organizationWebSite', type: '.CustomNameOptType'}"
+                                />
+
+                                <Label design="Bold" text="Organization Telephone number"/>
+                                <Input id="idTxtW06OrganizationTelephone"
+                                       change=".onTxtW06eCom"
+                                       placeholder="e.g. +31 20 234 5678" type="Tel"
+                                       value="{path: 'W06organizationTelephone', type: 'sap.ui.model.odata.type.String'}"
+                                />
+                            </form:SimpleForm>
+                        </WizardStep>
+
+                        <WizardStep id="Resume"
+                                    icon="sap-icon://customer-and-contacts"
+                                    title="Electronic Personal Communication">
+                            <Text class="sapUiSmallMarginBottom"
+                                  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+
+                            <form:SimpleForm id="idStep07Form"
+                                             editable="true"
+                                             layout="ColumnLayout"
+                                             columnsM="2"
+                                             columnsL="3"
+                                             columnsXL="4">
+
+                                <Label design="Bold" required="true" text="Personal Email address"/>
+                                <Input id="idTxtW07PersEmailAddress"
+                                       change=".onTxtW07PersEmailAddressChange"
+                                       placeholder="(Work) email" type="Email"
+                                       value="{path : 'W07persEmailAddress', type: '.customEMailType'}"
+                                       valueStateText="E-Mail must be a valid email address."/>
+
+                                <Label design="Bold" required="true" text="Confirm Email address"/>
+                                <Input id="idTxtW07PersEmailAddressConf"
+                                       change=".onTxtW07ConfEmailAddressChange"
+                                       placeholder="Confirmed Email address" type="Email"
+                                       valueStateText="E-Mail addresses must be corresponding."/>
+
+                                <Label design="Bold" required="true" text="New Secret password"/>
+                                <!--type="Password"-->
+                                <pwd:Password id="idTxtW07Password"
+                                              value="{path : 'W07secretPassword', type : 'sap.ui.model.odata.type.Password'}"
+                                              placeholder="••••••••"
+                                              valueStateText="Password should be corresponding security demands."
+                                              change=".onTxtW07PasswordChange"/>
+                                <Label design="Bold" required="true" text="Confirm Secret password"/>
+                                <Input id="idTxtW07PasswordConf"
+                                       valueStateText="Passwords must be corresponding."
+                                       placeholder="••••••••" type="Password"
+                                       change=".onTxtW07ConfPasswordChange"/>
+
+                                <Label design="Bold" text="Personal Telephone number"/>
+                                <Input id="idTxtW07persTelephone"
+                                       change=".onTxtW07eCom"
+                                       placeholder="e.g. +31 61 234 5678" type="Tel"
+                                       value="{path: 'W07persTelephone', type: 'sap.ui.model.odata.type.String'}"
+                                />
+                                <Label design="Bold" text="Contact Note"/>
+                                <TextArea id="idTxtW07persContactNote"
+                                          growingMaxLines="5"
+                                          value="{path: 'W07persContactNote', type: 'sap.ui.model.odata.type.String'}"
+                                          placeholder="Notes concerning this phone number." growing="true"
+                                          width="100%"/>
+
+                            </form:SimpleForm>
+
+                        </WizardStep>
+                    </Wizard>
+
+                    <!--</FlexBox>-->
+                </content>
+                <footer>
+
+                    <Toolbar>
+                        <ToolbarSpacer/>
+                        <Button id="btnWizardRegister"
+                                press=".onRegister"
+                                text="Register"
+                                type="Accept"
+                                tooltip="Are the required fields filled in?"
+                                width="20%"
+                        />
+
+                        <Button id="btnWizardPayment"
+                                press=".onPayment"
+                                text="Payment"
+                                type="Accept"
+                                tooltip="Are the required fields filled in?"
+                                width="20%"
+                        />
+                        <Button id="btnWizardCheck"
+                                press="._checkW07all"
+                                text="Check it"
+                                type="Accept"
+                                tooltip="Are the required fields filled in?"
+                                width="20%"
+                        />
+                        <Button id="btnWizardStep"
+                                width="20%"
+                                press=".onBtnWizardStep"
+                                text="Step 2"
+                                type="Accept"
+                                enabled="{= (${regB2BWizard>/nextBtnText} === 'Step 2') &amp;&amp; ${regB2BWizard>/w01/valid}  &amp;&amp; ${regB2BWizard>/w01/valid}
+                                            || (${regB2BWizard>/nextBtnText} === 'Step_3') &amp;&amp; ${regB2BWizard>/w02/valid}  &amp;&amp; ${regB2BWizard>/w01/valid}
+                                            || (${regB2BWizard>/nextBtnText} === 'Step_4') &amp;&amp; ${regB2BWizard>/w03/valid}  &amp;&amp; ${regB2BWizard>/w01/valid} &amp;&amp; ${regB2BWizard>/w02/valid}
+                                            || (${regB2BWizard>/nextBtnText} === 'Step_5') &amp;&amp; ${regB2BWizard>/w04/valid}  &amp;&amp; ${regB2BWizard>/w01/valid} &amp;&amp; ${regB2BWizard>/w02/valid} &amp;&amp; ${regB2BWizard>/w03/valid}
+                                            || (${regB2BWizard>/nextBtnText} === 'Step_6') &amp;&amp; ${regB2BWizard>/w05/valid}  &amp;&amp; ${regB2BWizard>/w01/valid} &amp;&amp; ${regB2BWizard>/w02/valid} &amp;&amp; ${regB2BWizard>/w03/valid} &amp;&amp; ${regB2BWizard>/w04/valid}
+                                            || (${regB2BWizard>/nextBtnText} === 'Step_7') &amp;&amp; ${regB2BWizard>/w06/valid}  &amp;&amp; ${regB2BWizard>/w01/valid} &amp;&amp; ${regB2BWizard>/w02/valid} &amp;&amp; ${regB2BWizard>/w03/valid} &amp;&amp; ${regB2BWizard>/w04/valid} &amp;&amp; (${regB2BWizard>/w05/valid})
+                                            || (${regB2BWizard>/nextBtnText} === 'Resume') &amp;&amp; ${regB2BWizard>/w07/valid}  &amp;&amp; ${regB2BWizard>/w01/valid} &amp;&amp; ${regB2BWizard>/w02/valid} &amp;&amp; ${regB2BWizard>/w03/valid} &amp;&amp; ${regB2BWizard>/w04/valid} &amp;&amp; (${regB2BWizard>/w05/valid}) &amp;&amp; ${regB2BWizard>/w06/valid} }"
+                                tooltip="Are the required fields filled in?"
+                        />
+                        <Button text="Cancel" type="Reject" press=".onWizardCancel" width="20%"/>
+                    </Toolbar>
+                </footer>
+            </Page>
+        </pages>
+    </NavContainer>
+
+</mvc:View>

@@ -1,0 +1,25 @@
+<Dialog id="editDialog" showHeader="true" title="Update Project Profile"
+        xmlns:sap.ui.core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.commons.layout" xmlns="sap.m">
+    <!--<l:HorizontalLayout>-->
+    <f:SimpleForm id="empform1" layout="ResponsiveGridLayout" columnsL="4" columnsM="4">
+        <f:content>
+            <Label design="Bold" id="euserName" text="Project Owner" class="createNewUserLabelSpacing" labelFor="euserNameTextField"/>
+            <Input id="euserNameTextField" required="true" value="{ProjOwner}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="efullName" text="Project Code" class="createNewUserLabelSpacing" labelFor="efullNameTextField"/>
+            <Input id="efullNameTextField" required="true" value="{ProjectCode}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="enickname" text="Project Name" class="createNewUserLabelSpacing" labelFor="eNicknameTextField"/>
+            <Input id="eNicknameTextField" value="{ProjectName}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="enationality" text="Description" class="createNewUserLabelSpacing" labelFor="enationalityTextField"/>
+            <Input id="enationalityTextField" value="{Description}" liveChange=".inputChange"/>
+
+       </f:content>
+    </f:SimpleForm>
+    <!--</l:HorizontalLayout>-->
+    <buttons>
+        <Button id="btnUpdate" press=".updateEmp" text="Update" type="Accept" enabled="false"/>
+        <Button id="btnClose" press=".onClose" text="Close" type="Reject"/>
+    </buttons>
+</Dialog>

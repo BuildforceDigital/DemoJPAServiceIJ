@@ -1,0 +1,45 @@
+<mvc:View controllerName="sap.ui.demo.nav.controller.employee.UserCentricShared"
+          xmlns="sap.m"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns:form="sap.ui.layout.form">
+    <form:SimpleForm
+            title='4. Account and Pass Info {= ${usrCtrView>/editState} ? "(Edit Mode)" : ""}'
+            minWidth="1024"
+            editable="true"
+            layout="ResponsiveGridLayout">
+        <form:content>
+
+            <Label design="Bold" text="System Role"/>
+            <Input value="{SystemRole}"
+                   editable="false"/>
+            <Label design="Bold" text="Login ID"/>
+            <Input value="{UserName}"
+                   editable="false"/>
+            <Label text="Password" labelFor="passwordInput"/>
+            <Input editable="{usrCtrView>/editState}"
+                   liveChange=".inputChange"
+                   placeholder="Enter password …"
+                   value="{W07secretPassword}"
+                   type="Password"/>
+            <Label design="Bold" text="Expiration date"/>
+            <Input value="{TillDate}"
+                   editable="false"/>
+            <Label design="Bold" text="Remarks"/>
+            <TextArea value="{Remarks}" editable="false"/>
+        </form:content>
+
+    </form:SimpleForm>
+    <Toolbar visible="{usrCtrView>/editState}">
+        <!--enabled="{= ${message>/}.length === 0 &amp;&amp; ${usrCtrView>/hasUIChanges} }"-->
+        <ToolbarSpacer/>
+        <Button enabled="{usrCtrView>/hasUIChanges}"
+                type="Accept"
+                text="{i18n>saveButtonText}"
+                press=".onSave"
+                ariaDescribedBy="acceptButtonDescription genericButtonDescription"/>
+        <Button type="Reject"
+                text="{i18n>cancelButtonText}"
+                press=".onResetChanges"
+                ariaDescribedBy="rejectButtonDescription genericButtonDescription"/>
+    </Toolbar>
+</mvc:View>

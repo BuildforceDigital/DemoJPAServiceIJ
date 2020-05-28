@@ -1,0 +1,139 @@
+<mvc:View controllerName="sap.ui.demo.nav.controller.employee.UserCentric"
+          displayBlock="true"
+          xmlns="sap.m"
+          xmlns:mvc="sap.ui.core.mvc">
+    <!--busy="{usrCtrView>/busy}"-->
+    <Page id="employeeResumePage">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button press=".onNavBack" tooltip="Back to list" icon="sap-icon://nav-back"/>
+                    <Image src="images/GreenTrakLogo.svg" height="30px"/>
+                </contentLeft>
+                <contentMiddle>
+                    <Label id="header" design="Bold" text="GreenTrak • Personal Information"/>
+                </contentMiddle>
+                <contentRight>
+                    <OverflowToolbar id="otbFooter">
+                        <ToolbarSpacer/>
+                        <OverflowToolbarButton
+                                id="btEdit"
+                                icon='{= ${usrCtrView>/editState} ? "sap-icon://display" : "sap-icon://edit"}'
+                                tooltip='{= ${usrCtrView>/editState} ? "Read only" : "Edit"} mode'
+                                press=".onEditTogglePress"/>
+                    </OverflowToolbar>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <ObjectHeader
+					icon="{ImageURL}"
+                    iconDensityAware="false"
+                    iconAlt="{FullName}"
+                    intro="{JobFunction}"
+                    imageShape="Circle"
+                    responsive="true"
+                    title="{FullName}"
+                    visible="{= !${usrCtrView>/editState} }">
+                <attributes>
+                    <ObjectAttribute title="Email address" text="{BusinessEmail}" active="true"/>
+                    <ObjectAttribute title="Telephone number" text="{MobilePhone}"/>
+                    <ObjectAttribute title="Functional Area" text="{W02department}"/>
+                    <ObjectAttribute title="Renew Your Membership before" text="{TillDate}"/>
+                </attributes>
+            </ObjectHeader>
+            <IconTabBar
+                    enableTabReordering="true"
+                    id="iconTabBar"
+                    class="sapUiResponsiveContentPadding"
+                    select=".onTabSelect"
+                    selectedKey="{usrCtrView>/selectedTabKey}"
+                    showOverflowSelectList="true">
+                <items>
+                    <IconTabFilter
+                            id="personalTab"
+                            icon="sap-icon://employee"
+                            key="Personal"
+                            text="Personal"
+                            tooltip="Personal information about you, to inspect and to edit.">
+                    </IconTabFilter>
+                    <IconTabFilter
+                            count="0"
+                            id="notifyTab"
+                            icon="sap-icon://notes"
+                            key="Notifications"
+                            text="Notifications"
+                            tooltip="Notifications addressed to you.">
+                    </IconTabFilter>
+                    <IconTabFilter
+                            count="0"
+                            enabled="true"
+                            icon="sap-icon://document"
+                            id="documentTab"
+                            key="Documents"
+                            text="Documents"
+                            tooltip="Your personal documents.">
+                    </IconTabFilter>
+                    <IconTabFilter
+                            count="3"
+                            id="projectTab"
+                            icon="sap-icon://project-definition-triangle"
+                            key="Projects"
+                            text="Projects"
+                            tooltip="Projects in where you involved, shows also indirectly your timesheets.">
+                    </IconTabFilter>
+                    <IconTabFilter
+                            count="34"
+                            id="timeSheetTab"
+                            icon="sap-icon://timesheet"
+                            key="TimeSheets"
+                            text="Time sheets"
+                            tooltip="Your timesheets, to inspect and comment.">
+                    </IconTabFilter>
+                    <IconTabFilter
+                            count="12"
+                            id="managedOTab"
+                            icon="sap-icon://attachment"
+                            key="ManagedO"
+                            text="Managed objects"
+                            tooltip="Company gear handed out to you.">
+                    </IconTabFilter>
+                    <IconTabFilter
+                            count="2"
+                            id="contactTab"
+                            icon="sap-icon://contacts"
+                            key="Contact"
+                            text="Contact info"
+                            tooltip="Your personal contact information, electronic and postal, to inspect and update.">
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                            count="1"
+                            id="accountTab"
+                            icon="sap-icon://business-card"
+                            key="Account"
+                            text="Account info"
+                            tooltip="Account and Pass info, Credentials">
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                            count="42"
+                            id="calendarTab"
+                            icon="sap-icon://calendar"
+                            key="Calendar"
+                            text="Calendar">
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                            id="emergencyTab"
+                            count="3"
+                            icon="sap-icon://wounds-doc"
+                            key="Emergency"
+                            text="Emergency"
+                            tooltip="Your In Case of Emergency contact information ">
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>

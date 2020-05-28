@@ -1,0 +1,203 @@
+{
+  "_version": "1.14.0",
+  "sap.app": {
+    "applicationVersion": {
+      "version": "0.0.0"
+    },
+    "dataSources": {
+      "employeeRemote": {
+        "uri": "/ContextPath/ServletPath.svc/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "description": "{{appDescription}}",
+    "i18n": "i18n/i18n.properties",
+    "id": "sap.ui.demo.nav",
+    "title": "{{appTitle}}",
+    "type": "application"
+  },
+  "sap.ui": {
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "technology": "UI5"
+  },
+  "sap.ui5": {
+    "rootView": {
+      "async": true,
+      "type": "XML",
+      "viewName": "sap.ui.demo.nav.view.App"
+    },
+    "dependencies": {
+      "minUI5Version": "1.71.3",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "handleValidation": true,
+    "models": {
+      "": {
+        "dataSource": "employeeRemote",
+        "preload": true,
+        "settings": {
+          "autoExpandSelect": true,
+          "groupId": "$auto",
+          "operationMode": "Server",
+          "synchronizationMode": "None"
+        }
+      },
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sap.ui.demo.nav.i18n.i18n"
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "async": true,
+        "bypassed": {
+          "target": "notFound"
+        },
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "routerClass": "sap.m.routing.Router",
+        "transition": "slide",
+        "viewPath": "sap.ui.demo.nav.view",
+        "viewType": "XML"
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "appHome",
+          "target": [
+            "EmployeeOverviewContent"
+          ]
+        },
+        {
+          "pattern": "employees/{userId}/userCentric:?query:",
+          "name": "userCentricRoute",
+          "target": "userCentric"
+        }
+      ],
+      "targets": {
+        "EmployeeOverview": {
+          "viewId": "idEmployeeOverview",
+          "viewPath": "sap.ui.demo.nav.view.employee.overview",
+          "viewName": "EmployeeOverview",
+          "viewLevel": 2
+        },
+        "EmployeeOverviewContent": {
+          "parent": "EmployeeOverview",
+          "viewId": "idEmployeeOverviewContent",
+          "viewPath": "sap.ui.demo.nav.view.employee.overview",
+          "viewName": "EmployeeOverviewContent",
+          "controlId": "EmployeeOverviewParent",
+          "controlAggregation": "content"
+        },
+        "userCentric": {
+          "viewId": "idUserCentric",
+          "viewName": "employee.UserCentric",
+          "viewLevel": 4,
+          "transition": "flip"
+        },
+        "notFound": {
+          "viewId": "iDNotFound",
+          "viewName": "NotFound",
+          "transition": "show"
+        },
+        "objectNotFound": {
+          "viewId": "idObjectNotFound",
+          "viewName": "ObjectNotFound",
+          "transition": "show"
+        },
+        "resumeTabAccount": {
+          "parent": "userCentric",
+          "viewId": "idViewAccount",
+          "viewPath": "sap.ui.demo.nav.view.employee",
+          "viewName": "UserCentricAcco",
+          "controlId": "accountTab",
+          "controlAggregation": "content"
+        },
+        "resumeTabCalendar": {
+          "parent": "userCentric",
+          "viewId": "idViewCalendar",
+          "viewPath": "sap.ui.demo.nav.view.employee",
+          "viewName": "ResumeCale",
+          "controlId": "calendarTab",
+          "controlAggregation": "content"
+        },
+        "resumeTabContact": {
+          "parent": "userCentric",
+          "viewId": "resumeContact",
+          "viewPath": "sap.ui.demo.nav.view.employee",
+          "viewName": "UserCentricCont",
+          "controlId": "contactTab",
+          "controlAggregation": "content"
+        },
+        "resumeTabDocuments": {
+          "parent": "userCentric",
+          "viewId": "idViewDocuments",
+          "viewPath": "sap.ui.demo.nav.view.employee",
+          "viewName": "UserCentricDocs",
+          "controlId": "documentTab",
+          "controlAggregation": "content"
+        },
+        "resumeTabEmergency": {
+          "parent": "userCentric",
+          "viewId": "idViewEmergency",
+          "viewPath": "sap.ui.demo.nav.view.employee",
+          "viewName": "UserCentricEmer",
+          "controlId": "emergencyTab",
+          "controlAggregation": "content"
+        },
+        "resumeTabManagedO": {
+          "parent": "userCentric",
+          "viewId": "idViewManagedO",
+          "viewPath": "sap.ui.demo.nav.view.employee",
+          "viewName": "ResumeManO",
+          "controlId": "managedOTab",
+          "controlAggregation": "content"
+        },
+        "resumeTabNotifications": {
+          "parent": "userCentric",
+          "viewId": "idViewNotifications",
+          "viewPath": "sap.ui.demo.nav.view.employee",
+          "viewName": "ResumeNoti",
+          "controlId": "notifyTab",
+          "controlAggregation": "content"
+        },
+        "resumeTabPersonal": {
+          "parent": "userCentric",
+          "viewId": "idViewPersonal",
+          "viewPath": "sap.ui.demo.nav.view.employee",
+          "viewName": "UserCentricPers",
+          "controlId": "personalTab",
+          "controlAggregation": "content"
+        },
+        "resumeTabProjects": {
+          "parent": "userCentric",
+          "viewId": "idViewProjects",
+          "viewPath": "sap.ui.demo.nav.view.employee",
+          "viewName": "ResumeProj",
+          "controlId": "projectTab",
+          "controlAggregation": "content"
+        },
+        "resumeTabTimeSheets": {
+          "parent": "userCentric",
+          "viewId": "idViewTimeSheets",
+          "viewPath": "sap.ui.demo.nav.view.employee",
+          "viewName": "ResumeTime",
+          "controlId": "timeSheetTab",
+          "controlAggregation": "content"
+        }
+      }
+    }
+  }
+}

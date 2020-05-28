@@ -80,20 +80,9 @@ sap.ui.define([
 
             oEventSource.setValueState(oEvent.getParameter("valid") ? CoreLibrary.ValueState.None : CoreLibrary.ValueState.Error);
 
-            /*const aFilter = [new Filter({
-                path: 'AttendanceEventsAllEntities',
-                operator: FilterOperator.All,
-                variable: 'item',
-                condition: new Filter({
-                    path: '/AttendanceEventsAllEntities/CheckInDateTime',
-                    operator: FilterOperator.GT,
-                    value1: 100.0
-                })
-            })];*/
-
             const bFilter = [new Filter("CheckInDateTime", FilterOperator.BT,
-                "2019-11-01T14:35:20.544411Z" /*(new DateTimeOffset).parseValue(sFrom)*/,
-                "2020-11-01T14:35:20.544411Z" /*(new DateTimeOffset).parseValue(sTo)*/)];
+                /*"2019-11-01T14:35:20.544411Z"*/ sFrom.toISOString(),
+                /*"2020-11-01T14:35:20.544411Z"*/ sTo.toISOString())];
 
             // filter binding
             var oList = this.byId("employeesTable");

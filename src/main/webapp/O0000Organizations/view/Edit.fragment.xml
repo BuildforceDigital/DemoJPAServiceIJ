@@ -1,0 +1,59 @@
+<Dialog id="editDialog" showHeader="true" title="Update User"
+        xmlns:sap.ui.core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.commons.layout" xmlns="sap.m">
+    <!--<l:HorizontalLayout>-->
+    <f:SimpleForm id="empform1" layout="ResponsiveGridLayout" columnsL="4" columnsM="4">
+        <f:content>
+            <Label design="Bold" id="euserName" text="User Name" class="createNewUserLabelSpacing" labelFor="euserNameTextField"/>
+            <Input id="euserNameTextField" required="true" value="{UserName}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="efullName" text="Full Name" class="createNewUserLabelSpacing" labelFor="efullNameTextField"/>
+            <Input id="efullNameTextField" required="true" value="{FullName}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="enickname" text="Nickname" class="createNewUserLabelSpacing" labelFor="eNicknameTextField"/>
+            <Input id="eNicknameTextField" value="{Nickname}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="egender" text="Gender" class="createNewUserLabelSpacing" labelFor="egenderRadioGroup"/>
+            <!--selectedIndex="{Gender}"-->
+            <RadioButtonGroup id="egenderRadioGroup" columns="2" class="sapUiMediumMarginBottom">
+                <buttons>
+                    <RadioButton id="eRB2-1" text="Male" select=".inputChange"/>
+                    <RadioButton id="eRB2-3" text="Female" select=".inputChange"/>
+                </buttons>
+            </RadioButtonGroup>
+
+            <Label design="Bold" id="estartdate" text="Birthday" class="createNewUserLabelSpacing" labelFor="ebirthdayField"/>
+            <DatePicker id="ebirthdayField" displayFormat="long" placeholder="Birthday" change=".inputChange"
+                        value="{Birthday}"/>
+
+            <Label design="Bold" id="enationality" text="Nationality" class="createNewUserLabelSpacing" labelFor="enationalityTextField"/>
+            <Input id="enationalityTextField" value="{Nationality}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="ecitizenServiceNr" text="Citizen Service Nr" class="createNewUserLabelSpacing" labelFor="ecitizenServiceNrField"/>
+            <Input id="ecitizenServiceNrField" value="{CitizenServiceNr}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="ejobFunction" text="Job Function" class="createNewUserLabelSpacing" labelFor="ejobFunctionField"/>
+            <Input id="ejobFunctionField" placeholder="Job Function" value="{JobFunction}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="epemail" text="Private Email" class="createNewUserLabelSpacing" labelFor="epemailTextField"/>
+            <Input id="epemailTextField" required="true" value="{PrivateEmail}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="ebemail" text="Business Email" class="createNewUserLabelSpacing" labelFor="ebemailTextField"/>
+            <Input id="ebemailTextField" value="{BusinessEmail}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="emobile" text="Mobile Phone Number" class="createNewUserLabelSpacing" labelFor="emobileTextField"/>
+            <Input id="emobileTextField" value="{MobilePhone}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="elandlinePhoneNr" text="Landline Phone Number" class="createNewUserLabelSpacing" labelFor="elandlinePhoneNrField"/>
+            <Input id="elandlinePhoneNrField" value="{LandlinePhone}" liveChange=".inputChange"/>
+
+            <Label design="Bold" id="eenddate" text="Validity end" class="createNewUserLabelSpacing" labelFor="etillDateField"/>
+            <DatePicker id="etillDateField" placeholder="Validity end" displayFormat="long" change=".inputChange" value="{TillDate}"/>
+
+        </f:content>
+    </f:SimpleForm>
+    <!--</l:HorizontalLayout>-->
+    <buttons>
+        <Button id="btnUpdate" press=".updateEmp" text="Update" type="Accept" enabled="false"/>
+        <Button id="btnClose" press=".onClose" text="Close" type="Reject"/>
+    </buttons>
+</Dialog>

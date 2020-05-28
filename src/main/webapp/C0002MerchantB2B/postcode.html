@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Postcode API Widget Demo</title>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" rel="stylesheet">
+    <style>
+        .postcodeapi-loading {
+            border-color: orange;
+        }
+
+        .postcodeapi-error {
+            border-color: red;
+        }
+
+        .postcodeapi-success {
+            border-color: green;
+        }
+
+        .help-block {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Postcode API Widget</h1>
+    <form>
+        <div class="row">
+            <div class="form-group col-md-8">
+                <label for="postcode">Postcode</label>
+                <input class="form-control" id="postcode" placeholder="Postcode" type="text">
+                <span class="help-block" id="postcodeapi-error"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="number">Huisnummer</label>
+                <input class="form-control" id="number" placeholder="Huisnummer" type="text">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="street">Straatnaam</label>
+                <input class="form-control" id="street" placeholder="Straatnaam" type="text">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="city">Plaatsnaam</label>
+                <input class="form-control" id="city" placeholder="Plaatsnaam" type="text">
+            </div>
+        </div>
+        <button class="btn btn-default" type="submit">Submit</button>
+    </form>
+</div>
+<script>
+    window.postcodeapi = {
+        token: 'dj1RMYpB8a7ExoAuv2FtS8Lt7xPPSFUI5pYotQuQ',
+    };
+</script>
+<script async defer src="https://cdn.postcodeapi.nu/widget-v1.1.js"></script>
+</body>
+</html>

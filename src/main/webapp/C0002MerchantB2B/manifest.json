@@ -1,0 +1,94 @@
+{
+  "_version": "1.14.0",
+  "sap.app": {
+    "applicationVersion": {
+      "version": "0.0.0"
+    },
+    "dataSources": {
+      "default": {
+        "uri": "/ContextPath/ServletPath.svc/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "description": "{{appDescription}}",
+    "i18n": "i18n/i18n.properties",
+    "id": "sap.ui.demo.walkthrough",
+    "title": "{{appTitle}}",
+    "type": "application"
+  },
+  "sap.ui": {
+    "deviceTypes": {
+      "desktop": true,
+      "phone": true,
+      "tablet": true
+    },
+    "technology": "UI5"
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.71.3",
+      "libs": {
+        "sap.m": {}
+      }
+    },
+    "_comment": "handleValidation enables Form Field Validation",
+    "handleValidation": true,
+    "models": {
+      "": {
+        "dataSource": "default",
+        "preload": true,
+        "settings": {
+          "autoExpandSelect": true,
+          "groupId": "$direct",
+          "operationMode": "Server",
+          "synchronizationMode": "None"
+        }
+      },
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sap.ui.demo.walkthrough.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "rootView": {
+      "async": true,
+      "viewName": "sap.ui.demo.walkthrough.view.App",
+      "type": "XML"
+    },
+    "routing": {
+      "config": {
+        "async": true,
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "routerClass": "sap.m.routing.Router",
+        "viewPath": "sap.ui.demo.walkthrough.view",
+        "viewType": "XML"
+      },
+      "routes": [
+        {
+          "name": "RouteMain",
+          "pattern": "",
+          "target": "targetMaster"
+        }
+      ],
+      "targets": {
+        "targetMaster": {
+          "viewId": "home",
+          "viewLevel": 1,
+          "viewName": "RegB2BWizard"
+        }
+      }
+    }
+  }
+}

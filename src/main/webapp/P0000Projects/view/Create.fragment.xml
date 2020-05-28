@@ -1,0 +1,54 @@
+<Dialog id="createDialog" showHeader="true" title="Project Registration Form"
+        xmlns:sap.ui.core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.commons.layout" xmlns="sap.m">
+    <l:HorizontalLayout>
+        <f:SimpleForm
+                columnsL="3" columnsM="3"
+                editable="true"
+                emptySpanL="0" emptySpanM="0"
+                id="empform"
+                labelSpanL="4" labelSpanM="4"
+                layout="ResponsiveGridLayout"
+                title="">
+            <f:content>
+                <Title text="Basic Information"/>
+                <Label class="createNewUserLabelSpacing"
+                       design="Bold"
+                       id="efullName"
+                       labelFor="efullNameTextField"
+                       text="Project Owner"/>
+                <Input id="fullNameTextField"
+                       required="true"
+                       width="100%"/>
+
+                <Label class="createNewUserLabelSpacing"
+                       design="Bold" id="epemail"
+                       labelFor="epemailTextField"
+                       text="Project Code"/>
+                <Input id="epemailTextField"
+                       required="true"
+                       width="100%"/>
+                <Label class="createNewUserLabelSpacing"
+                       design="Bold" id="epprojectName"
+                       labelFor="epprojectNameTextField"
+                       text="Project Name"/>
+                <Input id="epprojectNameTextField"
+                       required="true"
+                       width="100%"/>
+                <Label class="createNewUserLabelSpacing" required="true" text="Required field."/>
+                <Text/>
+
+                <!--<Label design="Bold" id="gender" text="Gender" class="createNewUserLabelSpacing" labelFor="email"/>
+                 <RadioButtonGroup id="genderRadioGroup" columns="2" selectedIndex="0" class="sapUiMediumMarginBottom">
+                     <buttons>
+                         <RadioButton id="RB2-1" text="Male"/>
+                         <RadioButton id="RB2-3" text="Female"/>
+                     </buttons>
+                 </RadioButtonGroup>-->
+            </f:content>
+        </f:SimpleForm>
+    </l:HorizontalLayout>
+    <buttons>
+        <Button id="create" press=".onCreateEmp" text="Create"/>
+        <Button id="close" press=".onClose" text="Close"/>
+    </buttons>
+</Dialog>
