@@ -3,14 +3,14 @@ package tutorial.persistence
 import java.lang.reflect.{Constructor, InvocationTargetException}
 import java.util
 
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.{JPAAssociationPath, JPAEntityType, JPAStructuredType}
-import com.sap.olingo.jpa.metadata.core.edm.mapper.exception.ODataJPAModelException
-import com.sap.olingo.jpa.processor.core.api.JPAAbstractCUDRequestHandler
-import com.sap.olingo.jpa.processor.core.api.example.JPAExampleModifyException
-import com.sap.olingo.jpa.processor.core.api.example.JPAExampleModifyException.MessageKeys.{ENTITY_ALREADY_EXISTS, ENTITY_NOT_FOUND}
-import com.sap.olingo.jpa.processor.core.exception.{ODataJPAInvocationTargetException, ODataJPAProcessException, ODataJPAProcessorException}
-import com.sap.olingo.jpa.processor.core.modify.JPAUpdateResult
-import com.sap.olingo.jpa.processor.core.processor.{JPAModifyUtil, JPARequestEntity, JPARequestLink}
+import nl.buildforce.sequoia.jpa.metadata.core.edm.mapper.api.{JPAAssociationPath, JPAEntityType, JPAStructuredType}
+import nl.buildforce.sequoia.jpa.metadata.core.edm.mapper.exception.ODataJPAModelException
+import nl.buildforce.sequoia.jpa.processor.core.api.JPAAbstractCUDRequestHandler
+import nl.buildforce.sequoia.jpa.processor.core.api.example.JPAExampleModifyException
+import nl.buildforce.sequoia.jpa.processor.core.api.example.JPAExampleModifyException.MessageKeys.{ENTITY_ALREADY_EXISTS, ENTITY_NOT_FOUND}
+import nl.buildforce.sequoia.jpa.processor.core.exception.{ODataJPAInvocationTargetException, ODataJPAProcessException, ODataJPAProcessorException}
+import nl.buildforce.sequoia.jpa.processor.core.modify.JPAUpdateResult
+import nl.buildforce.sequoia.jpa.processor.core.processor.{JPAModifyUtil, JPARequestEntity, JPARequestLink}
 import jakarta.persistence.EntityManager
 import org.apache.olingo.commons.api.http.{HttpMethod, HttpStatusCode}
 

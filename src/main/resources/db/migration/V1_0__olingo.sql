@@ -650,10 +650,10 @@ create table "OLINGO"."A0000Users"
     "UserName" varchar(40)
 );
 
-INSERT INTO "OLINGO"."A0000Users" VALUES (0, 'Bd', 'Be', 'Csnr', 'Fn', 'M', 'Jf', 'lp', 'mp', 'nat', 'Jan', 'pe', '2020-05-01', 'us');
-INSERT INTO "OLINGO"."A0000Users" VALUES (1, 'Bd', 'Be', 'Csnr', 'Fn', 'M', 'Jf', 'lp', 'mp', 'nat', 'Piet', 'pe', '2020-05-01', 'us');
-INSERT INTO "OLINGO"."A0000Users" VALUES (2, 'Bd', 'Be', 'Csnr', 'Fn', 'M', 'Jf', 'lp', 'mp', 'nat', 'Klaas', 'pe', '2020-05-01', 'us');
-INSERT INTO "OLINGO"."A0000Users" VALUES (3, 'Bd', 'Be', 'Csnr', 'Fn', 'M', 'Jf', 'lp', 'mp', 'nat', 'Willem', 'pe', '2020-05-01', 'us');
+INSERT INTO "OLINGO"."A0000Users" VALUES (0, 'Bd', 'Be', 'Csnr', 'Fn0', 'M', 'Jf', 'lp', 'mp', 'nat', 'Jan', 'pe', '2020-05-01', 'us');
+INSERT INTO "OLINGO"."A0000Users" VALUES (1, 'Bd', 'Be', 'Csnr', 'Fn1', 'M', 'Jf', 'lp', 'mp', 'nat', 'Piet', 'pe', '2020-05-01', 'us');
+INSERT INTO "OLINGO"."A0000Users" VALUES (2, 'Bd', 'Be', 'Csnr', 'Fn2', 'M', 'Jf', 'lp', 'mp', 'nat', 'Klaas', 'pe', '2020-05-01', 'us');
+INSERT INTO "OLINGO"."A0000Users" VALUES (3, 'Bd', 'Be', 'Csnr', 'Fn3', 'M', 'Jf', 'lp', 'mp', 'nat', 'Willem', 'pe', '2020-05-01', 'us');
 
 --------DUMMY FOR TESTING--------------------------------------------------------------------------------------------------------
 CREATE TABLE "OLINGO"."DummyToBeIgnored"

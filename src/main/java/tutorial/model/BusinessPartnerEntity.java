@@ -1,7 +1,7 @@
 package tutorial.model;
 
-import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmDescriptionAssociation;
-import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmIgnore;
+import nl.buildforce.sequoia.jpa.metadata.core.edm.annotation.EdmDescriptionAssociation;
+import nl.buildforce.sequoia.jpa.metadata.core.edm.annotation.EdmIgnore;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;

@@ -11,7 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
-import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmIgnore;
+import nl.buildforce.sequoia.jpa.metadata.core.edm.annotation.EdmIgnore;
 
 @EdmIgnore
 @Entity

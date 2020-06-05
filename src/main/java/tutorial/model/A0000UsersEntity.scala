@@ -3,7 +3,7 @@ package tutorial.model
 import java.sql.Date
 import java.time.OffsetDateTime
 
-import jakarta.persistence._
+import jakarta.persistence.{Basic, Column, Entity, Id, Table}
 
 @Entity
 @Table(name = "\"A0000Users\"", schema = "OLINGO")

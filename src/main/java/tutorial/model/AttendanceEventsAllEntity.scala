@@ -8,8 +8,6 @@ import jakarta.persistence.Table
 import java.sql.Date
 import java.time.OffsetDateTime
 
-import com.sap.olingo.jpa.metadata.core.edm.annotation.{EdmFunction, EdmFunctions, EdmParameter}
-
 /*@EdmFunctions ( {
   @EdmFunction(
     name = "SiblingsBound",

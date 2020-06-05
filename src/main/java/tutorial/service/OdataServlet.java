@@ -1,8 +1,8 @@
 package tutorial.service;
 
-import com.sap.olingo.jpa.metadata.core.edm.mapper.exception.ODataJPAModelException;
-import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
-import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDHandler;
+import nl.buildforce.sequoia.jpa.metadata.core.edm.mapper.exception.ODataJPAModelException;
+import nl.buildforce.sequoia.jpa.processor.core.api.JPAODataCRUDContextAccess;
+import nl.buildforce.sequoia.jpa.processor.core.api.JPAODataCRUDHandler;
 import tutorial.persistence.ExampleCUDRequestHandler;
 
 import javax.servlet.ServletException;

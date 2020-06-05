@@ -1,9 +1,9 @@
 package tutorial.service;
 
-import com.sap.olingo.jpa.metadata.core.edm.mapper.exception.ODataJPAException;
-import com.sap.olingo.jpa.processor.core.api.JPAODataCRUDContextAccess;
-import com.sap.olingo.jpa.processor.core.api.JPAODataServiceContext;
-import com.sap.olingo.jpa.processor.core.exception.ODataJPAFilterException;
+import nl.buildforce.sequoia.jpa.metadata.core.edm.mapper.exception.ODataJPAException;
+import nl.buildforce.sequoia.jpa.processor.core.api.JPAODataCRUDContextAccess;
+import nl.buildforce.sequoia.jpa.processor.core.api.JPAODataServiceContext;
+import nl.buildforce.sequoia.jpa.processor.core.exception.ODataJPAFilterException;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

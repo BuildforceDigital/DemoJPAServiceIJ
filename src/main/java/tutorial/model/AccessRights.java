@@ -1,6 +1,6 @@
 package tutorial.model;
 
-import com.sap.olingo.jpa.metadata.core.edm.annotation.EdmEnumeration;
+import nl.buildforce.sequoia.jpa.metadata.core.edm.annotation.EdmEnumeration;
 
 @EdmEnumeration(isFlags = true, converter = AccessRightsConverter.class)
 public enum AccessRights {

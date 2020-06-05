@@ -3,11 +3,11 @@ package tutorial.persistence
 import java.lang.reflect.{Constructor, InvocationTargetException}
 import java.util
 
-import com.sap.olingo.jpa.metadata.core.edm.mapper.api.JPAStructuredType
-import com.sap.olingo.jpa.processor.core.api.JPAAbstractCUDRequestHandler
-import com.sap.olingo.jpa.processor.core.exception.{ODataJPAInvocationTargetException, ODataJPAProcessException, ODataJPAProcessorException}
-import com.sap.olingo.jpa.processor.core.modify.JPAUpdateResult
-import com.sap.olingo.jpa.processor.core.processor.JPARequestEntity
+import nl.buildforce.sequoia.jpa.metadata.core.edm.mapper.api.JPAStructuredType
+import nl.buildforce.sequoia.jpa.processor.core.api.JPAAbstractCUDRequestHandler
+import nl.buildforce.sequoia.jpa.processor.core.exception.{ODataJPAInvocationTargetException, ODataJPAProcessException, ODataJPAProcessorException}
+import nl.buildforce.sequoia.jpa.processor.core.modify.JPAUpdateResult
+import nl.buildforce.sequoia.jpa.processor.core.processor.JPARequestEntity
 import jakarta.persistence.EntityManager
 import org.apache.olingo.commons.api.http.{HttpMethod, HttpStatusCode}
 
