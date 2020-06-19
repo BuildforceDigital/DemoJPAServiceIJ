@@ -1,17 +1,17 @@
 package tutorial.modify;
 
-import nl.buildforce.sequoia.jpa.metadata.core.edm.mapper.api.JPAAssociationPath;
-import nl.buildforce.sequoia.jpa.metadata.core.edm.mapper.api.JPAEntityType;
-import nl.buildforce.sequoia.jpa.metadata.core.edm.mapper.api.JPAStructuredType;
-import nl.buildforce.sequoia.jpa.processor.core.api.JPAAbstractCUDRequestHandler;
-import nl.buildforce.sequoia.jpa.processor.core.exception.ODataJPAInvocationTargetException;
-import nl.buildforce.sequoia.jpa.processor.core.exception.ODataJPAProcessException;
-import nl.buildforce.sequoia.jpa.processor.core.exception.ODataJPAProcessorException;
-import nl.buildforce.sequoia.jpa.processor.core.modify.JPAUpdateResult;
-import nl.buildforce.sequoia.jpa.processor.core.processor.JPARequestEntity;
-import nl.buildforce.sequoia.jpa.processor.core.processor.JPARequestLink;
-import org.apache.olingo.commons.api.http.HttpMethod;
-import org.apache.olingo.commons.api.http.HttpStatusCode;
+import nl.buildforce.sequoia.metadata.core.edm.mapper.api.JPAAssociationPath;
+import nl.buildforce.sequoia.metadata.core.edm.mapper.api.JPAEntityType;
+import nl.buildforce.sequoia.metadata.core.edm.mapper.api.JPAStructuredType;
+import nl.buildforce.sequoia.processor.core.api.JPAAbstractCUDRequestHandler;
+import nl.buildforce.sequoia.processor.core.exception.ODataJPAInvocationTargetException;
+import nl.buildforce.sequoia.processor.core.exception.ODataJPAProcessException;
+import nl.buildforce.sequoia.processor.core.exception.ODataJPAProcessorException;
+import nl.buildforce.sequoia.processor.core.modify.JPAUpdateResult;
+import nl.buildforce.sequoia.processor.core.processor.JPARequestEntity;
+import nl.buildforce.sequoia.processor.core.processor.JPARequestLink;
+import nl.buildforce.olingo.commons.api.http.HttpMethod;
+import nl.buildforce.olingo.commons.api.http.HttpStatusCode;
 
 import jakarta.persistence.EntityManager;
 import java.lang.reflect.Constructor;

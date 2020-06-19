@@ -1,7 +1,7 @@
 package tutorial.model;
 
-import nl.buildforce.sequoia.jpa.metadata.core.edm.annotation.EdmDescriptionAssociation;
-import nl.buildforce.sequoia.jpa.metadata.core.edm.annotation.EdmIgnore;
+import nl.buildforce.sequoia.metadata.core.edm.annotation.EdmDescriptionAssociation;
+import nl.buildforce.sequoia.metadata.core.edm.annotation.EdmIgnore;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;

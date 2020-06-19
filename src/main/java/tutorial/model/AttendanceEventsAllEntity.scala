@@ -1,12 +1,12 @@
 package tutorial.model
 
+import java.time.OffsetDateTime
+
 import jakarta.persistence.Basic
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-import java.sql.Date
-import java.time.OffsetDateTime
 
 /*@EdmFunctions ( {
   @EdmFunction(
@@ -105,11 +105,11 @@ class AttendanceEventsAllEntity {
   }
 
   @Basic
-  @Column(name = "\"StartDate\"") private var startDate: Date = _
+  @Column(name = "\"StartDate\"") private var startDate: OffsetDateTime = _
 
-  def getStartDate: Date = startDate
+  def getStartDate: OffsetDateTime = startDate
 
-  def setStartDate(startDate: Date): Unit = {
+  def setStartDate(startDate: OffsetDateTime): Unit = {
     this.startDate = startDate
   }
 

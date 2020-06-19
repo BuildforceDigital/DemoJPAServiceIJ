@@ -6,7 +6,7 @@
     },
     "dataSources": {
       "default": {
-        "uri": "/DemoOdata4Service/ServletPath.svc/",
+        "uri": "/ContextPath/ServletPath.svc/",
         "type": "OData",
         "settings": {
           "odataVersion": "4.0"

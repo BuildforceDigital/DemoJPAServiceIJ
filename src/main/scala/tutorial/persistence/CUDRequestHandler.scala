@@ -1,17 +1,18 @@
 package tutorial.persistence
 
 import java.lang.reflect.{Constructor, InvocationTargetException}
-import java.util
+import java.{util => ju}
 
-import nl.buildforce.sequoia.jpa.metadata.core.edm.mapper.api.JPAStructuredType
-import nl.buildforce.sequoia.jpa.processor.core.api.JPAAbstractCUDRequestHandler
-import nl.buildforce.sequoia.jpa.processor.core.exception.{ODataJPAInvocationTargetException, ODataJPAProcessException, ODataJPAProcessorException}
-import nl.buildforce.sequoia.jpa.processor.core.modify.JPAUpdateResult
-import nl.buildforce.sequoia.jpa.processor.core.processor.JPARequestEntity
+import nl.buildforce.sequoia.metadata.core.edm.mapper.api.JPAStructuredType
+import nl.buildforce.sequoia.processor.core.api.JPAAbstractCUDRequestHandler
+import nl.buildforce.sequoia.processor.core.exception.{ODataJPAInvocationTargetException, ODataJPAProcessException, ODataJPAProcessorException}
+import nl.buildforce.sequoia.processor.core.modify.JPAUpdateResult
+import nl.buildforce.sequoia.processor.core.processor.JPARequestEntity
 import jakarta.persistence.EntityManager
-import org.apache.olingo.commons.api.http.{HttpMethod, HttpStatusCode}
 
-import scala.jdk.CollectionConverters._
+import nl.buildforce.olingo.commons.api.http.{HttpMethod, HttpStatusCode}
+
+import scala.jdk.CollectionConverters.{ListHasAsScala, SetHasAsScala}
 
 class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
   @throws[ODataJPAProcessorException]
@@ -30,7 +31,7 @@ class CUDRequestHandler extends JPAAbstractCUDRequestHandler {
 
     def getConstructor(st: JPAStructuredType) = {
       val constructors = st.getTypeClass.getConstructors
-      util.Arrays.stream(constructors).findFirst.orElse(null)
+      ju.Arrays.stream(constructors).findFirst.orElse(null)
     }
 
     val jpaEt = requestEntity.getEntityType

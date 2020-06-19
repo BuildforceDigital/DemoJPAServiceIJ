@@ -1,6 +1,6 @@
 package tutorial.model;
 
-import nl.buildforce.sequoia.jpa.metadata.core.edm.annotation.EdmDescriptionAssociation;
+import nl.buildforce.sequoia.metadata.core.edm.annotation.EdmDescriptionAssociation;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;

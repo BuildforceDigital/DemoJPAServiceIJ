@@ -126,11 +126,11 @@ class A0000UsersEntity {
   }
 
   @Basic
-  @Column(name = "\"TillDate\"") private var tillDate: OffsetDateTime = _
+  @Column(name = "\"TillDate\"") private var tillDate: java.sql.Date = _
 
-  def getTillDate: OffsetDateTime = tillDate
+  def getTillDate: java.sql.Date = tillDate
 
-  def setTillDate(approvalDateTime: OffsetDateTime): Unit = {
+  def setTillDate(approvalDateTime: java.sql.Date): Unit = {
     this.tillDate = approvalDateTime
   }
 

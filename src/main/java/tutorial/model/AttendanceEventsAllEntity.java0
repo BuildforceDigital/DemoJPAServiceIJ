@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.sql.Date;
-import java.time.OffsetDateTime;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
@@ -60,12 +60,12 @@ public class AttendanceEventsAllEntity {
 
     @Basic
     @Column(name = "\"CheckInDateTime\"", nullable = false)
-    private OffsetDateTime checkInDateTime;
-    public OffsetDateTime getCheckInDateTime() {
+    private java.sql.Date checkInDateTime;
+    public java.sql.Date getCheckInDateTime() {
         return checkInDateTime;
     }
 
-    public void setCheckInDateTime(OffsetDateTime checkInDatetime) {
+    public void setCheckInDateTime(java.sql.Date checkInDatetime) {
         this.checkInDateTime = checkInDatetime;
     }
 
@@ -104,10 +104,10 @@ public class AttendanceEventsAllEntity {
 
     @Basic
     @Column(name = "\"CheckOutDateTime\"")
-    private OffsetDateTime checkOutDateTime;
-    public OffsetDateTime getCheckOutDateTime() { return checkOutDateTime; }
+    private java.sql.Date checkOutDateTime;
+    public java.sql.Date getCheckOutDateTime() { return checkOutDateTime; }
 
-    public void setCheckOutDateTime(OffsetDateTime checkOutDateTime) {
+    public void setCheckOutDateTime(java.sql.Date checkOutDateTime) {
         this.checkOutDateTime = checkOutDateTime;
     }
 
@@ -146,12 +146,12 @@ public class AttendanceEventsAllEntity {
 
     @Basic
     @Column(name = "\"ApprovalDateTime\"")
-    private OffsetDateTime approvalDateTime;
-    public OffsetDateTime getApprovalDateTime() {
+    private java.sql.Date approvalDateTime;
+    public java.sql.Date getApprovalDateTime() {
         return approvalDateTime;
     }
 
-    public void setApprovalDateTime(OffsetDateTime approvalDateTime) {
+    public void setApprovalDateTime(java.sql.Date approvalDateTime) {
         this.approvalDateTime = approvalDateTime;
     }
 

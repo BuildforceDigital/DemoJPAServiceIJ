@@ -1,15 +1,15 @@
 package tutorial.service;
 
-import nl.buildforce.sequoia.jpa.metadata.core.edm.mapper.exception.ODataJPAModelException;
-import nl.buildforce.sequoia.jpa.processor.core.api.JPAODataCRUDContextAccess;
-import nl.buildforce.sequoia.jpa.processor.core.api.JPAODataCRUDHandler;
+import nl.buildforce.sequoia.processor.core.api.JPAODataCRUDContextAccess;
+import nl.buildforce.sequoia.processor.core.api.JPAODataCRUDHandler;
+import nl.buildforce.olingo.commons.api.ex.ODataException;
 import tutorial.persistence.ExampleCUDRequestHandler;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns="/ServletPath.svc/*")
 public class OdataServlet extends HttpServlet {
@@ -23,7 +23,7 @@ public class OdataServlet extends HttpServlet {
 
 		handler.getJPAODataRequestContext().setCUDRequestHandler(new ExampleCUDRequestHandler());
 		try { handler.process(req, resp); }
-		catch ( ODataJPAModelException e) { throw new ServletException(e); }
+		catch ( ODataException e) { throw new ServletException(e); }
 	}
 
 }
