@@ -21,10 +21,7 @@ public class OdataServlet extends HttpServlet {
 				(JPAODataCRUDContextAccess) getServletContext().getAttribute("ServiceContext");
 		final JPAODataCRUDHandler handler = new JPAODataCRUDHandler(serviceContext);
 
-		handler.getJPAODataRequestContext()
-				.setCUDRequestHandler(
-						new ExampleCUDRequestHandler()
-				);
+		handler.getJPAODataRequestContext().setCUDRequestHandler(new ExampleCUDRequestHandler());
 		try { handler.process(req, resp); }
 		catch ( ODataException e) { throw new ServletException(e); }
 	}
