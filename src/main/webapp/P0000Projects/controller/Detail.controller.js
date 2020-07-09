@@ -59,7 +59,7 @@ sap.ui.define([
 
         },
         formatNumber: function (value) {
-            return value.replace(/\,/g, "");
+            return value.replace(/,/g, "");
         },
         inputChange: function (oEvent) {
             this.getView().byId("btnUpdate").setEnabled(true);

@@ -18,16 +18,6 @@ import java.{util => ju}
 
 import scala.jdk.CollectionConverters.{ListHasAsScala, SetHasAsScala}
 
-/**
- * Example implementation at a CUD handler. The main purpose is rapid prototyping.<p/>
- * The implementation requires Getter and Setter. This includes getter for collection properties and collection
- * navigation properties that return at least empty collections.<br/>
- * To link entities constructor injection is used. So each dependent entity needs a constructor that takes a entity type
- * it depends on as parameter.
- *
- * @author Oliver Grande
- *
- */
 class ExampleCUDRequestHandler() extends JPAAbstractCUDRequestHandler {
   final private val entityBuffer = new util.HashMap[Any, JPARequestEntity]
 
@@ -151,4 +141,5 @@ class ExampleCUDRequestHandler() extends JPAAbstractCUDRequestHandler {
       }
     }
   }
+
 }

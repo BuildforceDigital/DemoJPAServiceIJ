@@ -2,9 +2,11 @@ package tutorial.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public class BusinessPartnerRoleEntityPK {
+public class BusinessPartnerRoleEntityPK implements Serializable {
 
     @Column(name = "\"BusinessPartnerID\"", nullable = false, length = 32)
     @Id

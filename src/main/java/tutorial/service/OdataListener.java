@@ -1,7 +1,6 @@
 package tutorial.service;
 
 import nl.buildforce.sequoia.metadata.core.edm.mapper.exception.ODataJPAException;
-import nl.buildforce.sequoia.processor.core.api.JPAODataCRUDContextAccess;
 import nl.buildforce.sequoia.processor.core.api.JPAODataServiceContext;
 import nl.buildforce.sequoia.processor.core.exception.ODataJPAFilterException;
 
@@ -30,7 +29,7 @@ public class OdataListener implements ServletContextListener {
         final DataSource ds = DataSourceHelper.createDataSource(DataSourceHelper.DB_HSQLDB);
         try {
 
-            final JPAODataCRUDContextAccess serviceContext =
+            final JPAODataServiceContext serviceContext =
                     new JPAODataServiceContext(OdataServlet.PUNIT_NAME, ds, "tutorial.operations", "tutorial.model");
 
             sce.getServletContext().setAttribute("ServiceContext", serviceContext);

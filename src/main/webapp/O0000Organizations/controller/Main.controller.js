@@ -269,7 +269,7 @@ sap.ui.define([
         },
 
         formatNumber: function (value) {
-            return value.replace(/\,/g, "");
+            return value.replace(/,/g, "");
         }
         /* =========================================================== */
         /* begin: internal methods                                     */

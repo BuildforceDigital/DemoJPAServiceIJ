@@ -38,7 +38,7 @@ CacheBuster.prototype.convertURL = function convertURL(sUrl) {
 
 	var ts = this.timestamp;
 	//Get file extension
-	var extension = sUrl.split(".").pop().split(/\#|\?/)[0];
+	var extension = sUrl.split(".").pop().split(/#|\?/)[0];
 	if (/(html|xml|js|json|css|properties|png|jpg|jpeg|svg)$/ig.test(extension) && sUrl.search("[?&]ts=") === -1 && sUrl.search("https?:") === -1 && sUrl.search("/resources/") === -1) {
 		sUrl = sUrl + "?ts=" + ts;
 	}
