@@ -1,8 +1,10 @@
 package tutorial.persistence
 
 import java.lang.reflect.{Constructor, InvocationTargetException}
-import java.util
+import java.{util => ju}
 
+import jakarta.persistence.EntityManager
+import nl.buildforce.olingo.commons.api.http.{HttpMethod, HttpStatusCode}
 import nl.buildforce.sequoia.metadata.core.edm.mapper.api.{JPAAssociationPath, JPAEntityType, JPAStructuredType}
 import nl.buildforce.sequoia.metadata.core.edm.mapper.exception.ODataJPAModelException
 import nl.buildforce.sequoia.processor.core.api.JPAAbstractCUDRequestHandler
@@ -11,27 +13,43 @@ import nl.buildforce.sequoia.processor.core.api.example.JPAExampleModifyExceptio
 import nl.buildforce.sequoia.processor.core.exception.{ODataJPAInvocationTargetException, ODataJPAProcessException, ODataJPAProcessorException}
 import nl.buildforce.sequoia.processor.core.modify.JPAUpdateResult
 import nl.buildforce.sequoia.processor.core.processor.{JPAModifyUtil, JPARequestEntity, JPARequestLink}
-import jakarta.persistence.EntityManager
-import nl.buildforce.olingo.commons.api.http.{HttpMethod, HttpStatusCode}
-
-import java.{util => ju}
 
 import scala.jdk.CollectionConverters.{ListHasAsScala, SetHasAsScala}
 
 class ExampleCUDRequestHandler() extends JPAAbstractCUDRequestHandler {
-  final private val entityBuffer = new util.HashMap[Any, JPARequestEntity]
+  final private val entityBuffer = new ju.HashMap[Any, JPARequestEntity]
 
   @throws[ODataJPAProcessException]
   override def createEntity(requestEntity: JPARequestEntity, em: EntityManager): Any = {
-    var instance: Any = null
-    if (requestEntity.getKeys.isEmpty) { // POST an Entity
-      instance = createOneEntity(requestEntity, /*em,*/ null)
-      val old = em.find(requestEntity.getEntityType.getTypeClass, requestEntity.getModifyUtil.createPrimaryKey(requestEntity.getEntityType, instance))
-      if (old != null) throw new JPAExampleModifyException(ENTITY_ALREADY_EXISTS, HttpStatusCode.BAD_REQUEST)
+
+    @throws[ODataJPAProcessException]
+    def processRelatedEntities(relatedEntities: ju.Map[JPAAssociationPath, ju.List[JPARequestEntity]],
+                               parentInstance: Any, util: JPAModifyUtil, em: EntityManager): Unit = {
+      for (entity <- relatedEntities.entrySet.asScala;
+           requestEntity <- entity.getValue.asScala) {
+
+        val newInstance = createOneEntity(requestEntity, parentInstance)
+        val pathInfo = entity.getKey
+        util.linkEntities(parentInstance, newInstance, pathInfo)
+        if (Option(pathInfo.getPartner).isDefined) try util.linkEntities(newInstance, parentInstance, pathInfo.getPartner.getPath)
+        catch {
+          case e: ODataJPAModelException =>
+            throw new ODataJPAProcessorException(e, HttpStatusCode.INTERNAL_SERVER_ERROR)
+        }
+        processRelatedEntities(requestEntity.getRelatedEntities, newInstance, util, em)
+      }
     }
-    else { // POST on Link only // https://issues.oasis-open.org/browse/ODATA-1294
-      instance = findEntity(requestEntity, em)
+
+    val instance = if (requestEntity.getKeys.isEmpty) { // POST an Entity
+      val instance0 = createOneEntity(requestEntity, /*em,*/ null)
+      if (Option(em.find(requestEntity.getEntityType.getTypeClass,
+        requestEntity.getModifyUtil.createPrimaryKey(requestEntity.getEntityType, instance0))).isDefined)
+        throw new JPAExampleModifyException(ENTITY_ALREADY_EXISTS, HttpStatusCode.BAD_REQUEST)
+      instance0
     }
+    else // POST on Link only // https://issues.oasis-open.org/browse/ODATA-1294
+      findEntity(requestEntity, em)
+
     processRelatedEntities(requestEntity.getRelatedEntities, instance, requestEntity.getModifyUtil, em)
     em.persist(instance)
     instance
@@ -39,15 +57,17 @@ class ExampleCUDRequestHandler() extends JPAAbstractCUDRequestHandler {
 
   @throws[ODataJPAProcessException]
   override def deleteEntity(requestEntity: JPARequestEntity, em: EntityManager): Unit = {
-    val instance = em.find(requestEntity.getEntityType.getTypeClass, requestEntity.getModifyUtil.createPrimaryKey(requestEntity.getEntityType, requestEntity.getKeys, requestEntity.getEntityType))
-    if (instance != null) em.remove(instance)
+    val instance = em.find(requestEntity.getEntityType.getTypeClass,
+      requestEntity.getModifyUtil.createPrimaryKey(requestEntity.getEntityType,
+        requestEntity.getKeys, requestEntity.getEntityType))
+    if (Option(instance).isDefined) em.remove(instance)
   }
 
   @throws[ODataJPAProcessException]
   override def updateEntity(requestEntity: JPARequestEntity, em: EntityManager, method: HttpMethod): JPAUpdateResult = {
     if ((method eq HttpMethod.PATCH) || (method eq HttpMethod.DELETE)) {
       val instance = em.find(requestEntity.getEntityType.getTypeClass, requestEntity.getModifyUtil.createPrimaryKey(requestEntity.getEntityType, requestEntity.getKeys, requestEntity.getEntityType))
-      if (instance == null) throw new JPAExampleModifyException(ENTITY_NOT_FOUND, HttpStatusCode.NOT_FOUND)
+      if (Option(instance).isEmpty) throw new JPAExampleModifyException(ENTITY_NOT_FOUND, HttpStatusCode.NOT_FOUND)
       requestEntity.getModifyUtil.setAttributesDeep(requestEntity.getData, instance, requestEntity.getEntityType)
       updateLinks(requestEntity, em, instance)
       return new JPAUpdateResult(false, instance)
@@ -58,15 +78,15 @@ class ExampleCUDRequestHandler() extends JPAAbstractCUDRequestHandler {
   @throws[ODataJPAProcessorException]
   @throws[ODataJPAInvocationTargetException]
   private def updateLinks(requestEntity: JPARequestEntity, em: EntityManager, instance: Any): Unit = {
-    if (requestEntity.getRelationLinks != null) {
-      for (links <- requestEntity.getRelationLinks.entrySet.asScala) {
-        for (link <- links.getValue.asScala) {
-          val related = em.find(link.getEntityType.getTypeClass, requestEntity.getModifyUtil.createPrimaryKey(link.getEntityType, link.getRelatedKeys, link.getEntityType))
-          requestEntity.getModifyUtil.linkEntities(instance, related, links.getKey)
-        }
+    if (Option(requestEntity.getRelationLinks).isDefined)
+      for {links <- requestEntity.getRelationLinks.entrySet.asScala
+           link <- links.getValue.asScala} {
+        requestEntity.getModifyUtil.linkEntities(instance,
+          em.find(link.getEntityType.getTypeClass, requestEntity.getModifyUtil.createPrimaryKey(link.getEntityType, link.getRelatedKeys, link.getEntityType)),
+          links.getKey)
       }
     }
-  }
+
 
   @throws[ODataJPAProcessException]
   override def validateChanges(em: EntityManager): Unit = {
@@ -76,7 +96,7 @@ class ExampleCUDRequestHandler() extends JPAAbstractCUDRequestHandler {
   }
 
   @throws[ODataJPAProcessException]
-  private def processBindingLinks(relationLinks: ju.Map[JPAAssociationPath, util.List[JPARequestLink]], instance: Any, util0: JPAModifyUtil, em: EntityManager): Unit = {
+  private def processBindingLinks(relationLinks: ju.Map[JPAAssociationPath, ju.List[JPARequestLink]], instance: Any, util0: JPAModifyUtil, em: EntityManager): Unit = {
     for (entity <- relationLinks.entrySet.asScala) {
       val pathInfo = entity.getKey
       for (requestLink <- entity.getValue.asScala) {
@@ -98,7 +118,23 @@ class ExampleCUDRequestHandler() extends JPAAbstractCUDRequestHandler {
 
   @throws[ODataJPAProcessException]
   private def createOneEntity(requestEntity: JPARequestEntity, /*final EntityManager em,*/ parent: Any) = {
+
+    @throws[ODataJPAProcessorException]
+     def getConstructor(st: JPAStructuredType, parentInstance: Any): Constructor[_] = { // If a parent exists, try to use a constructor that accepts the parent
+      if (Option(parentInstance).isDefined) try return st.getTypeClass.getConstructor(parentInstance.getClass)
+      catch {
+        case _: NoSuchMethodException | _: SecurityException =>
+
+      }
+      try st.getTypeClass.getConstructor()
+      catch {
+        case e@(_: NoSuchMethodException | _: SecurityException) =>
+          throw new ODataJPAProcessorException(e, HttpStatusCode.INTERNAL_SERVER_ERROR)
+      }
+    }
+
     val instance: Any = createInstance(getConstructor(requestEntity.getEntityType, parent), parent)
+
     requestEntity.getModifyUtil.setAttributesDeep(requestEntity.getData, instance, requestEntity.getEntityType)
     entityBuffer.put(instance, requestEntity)
     instance
@@ -109,37 +145,6 @@ class ExampleCUDRequestHandler() extends JPAAbstractCUDRequestHandler {
   private def findEntity(requestEntity: JPARequestEntity, em: EntityManager) = {
     val key = requestEntity.getModifyUtil.createPrimaryKey(requestEntity.getEntityType, requestEntity.getKeys, requestEntity.getEntityType)
     em.getReference(requestEntity.getEntityType.getTypeClass, key)
-  }
-
-  @throws[ODataJPAProcessorException]
-  private def getConstructor(st: JPAStructuredType, parentInstance: Any): Constructor[_] = { // If a parent exists, try to use a constructor that accepts the parent
-    if (parentInstance != null) try return st.getTypeClass.getConstructor(parentInstance.getClass)
-    catch {
-      case _: NoSuchMethodException | _: SecurityException =>
-
-    }
-    try st.getTypeClass.getConstructor()
-    catch {
-      case e@(_: NoSuchMethodException | _: SecurityException) =>
-        throw new ODataJPAProcessorException(e, HttpStatusCode.INTERNAL_SERVER_ERROR)
-    }
-  }
-
-  @throws[ODataJPAProcessException]
-  private def processRelatedEntities(relatedEntities: ju.Map[JPAAssociationPath, ju.List[JPARequestEntity]], parentInstance: Any, util: JPAModifyUtil, em: EntityManager): Unit = {
-    for (entity <- relatedEntities.entrySet.asScala) {
-      val pathInfo = entity.getKey
-      for (requestEntity <- entity.getValue.asScala) {
-        val newInstance = createOneEntity(requestEntity, parentInstance)
-        util.linkEntities(parentInstance, newInstance, pathInfo)
-        if (pathInfo.getPartner != null) try util.linkEntities(newInstance, parentInstance, pathInfo.getPartner.getPath)
-        catch {
-          case e: ODataJPAModelException =>
-            throw new ODataJPAProcessorException(e, HttpStatusCode.INTERNAL_SERVER_ERROR)
-        }
-        processRelatedEntities(requestEntity.getRelatedEntities, newInstance, util, em)
-      }
-    }
   }
 
 }
