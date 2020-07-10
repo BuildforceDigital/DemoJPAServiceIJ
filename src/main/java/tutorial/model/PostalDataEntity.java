@@ -1,14 +1,18 @@
 package tutorial.model;
 
-import nl.buildforce.sequoia.metadata.core.edm.annotation.EdmDescriptionAssociation;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
 
+import nl.buildforce.sequoia.metadata.core.edm.annotation.EdmDescriptionAssociation;
+
+import java.util.Collection;
 import java.util.Objects;
 
 @Embeddable
@@ -91,7 +95,6 @@ public class PostalDataEntity {
 
     public void setCountry(String addressCountry) { this.country = addressCountry; }
 
-/*
     @EdmDescriptionAssociation(languageAttribute = "key/languageIso", descriptionAttribute = "description")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumns({
@@ -100,7 +103,7 @@ public class PostalDataEntity {
             @JoinColumn(name = "\"DivisionCode\"", referencedColumnName = "\"ADDRESS_REGION\"", nullable = false, insertable = false, updatable = false)
     })
     private Collection<AdministrativeDivisionDescriptionEntity> regionDescriptions;
-*/
+
 
     @Override
     public String toString() {
