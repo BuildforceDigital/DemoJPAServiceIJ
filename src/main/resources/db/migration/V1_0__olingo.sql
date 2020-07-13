@@ -602,6 +602,21 @@ INSERT INTO "OLINGO"."Comment" VALUES ('1', 3, 'This is another test');
 
 --------GreenTrak --------------------------------------------------------------------------------------------------------
 
+create table "OLINGO"."Invoices"
+(
+    "ProductName" varchar(36) not null,
+    "Quantity" varchar(36) not null,
+    "ShipperName" varchar(36) not null,
+    "ExtendedPrice" DECIMAL(19,4) not null,
+    "ShippingDate" varchar(36) not null,
+    "Status" varchar(1) not null,
+
+    CONSTRAINT PK_Invoices PRIMARY KEY (    "ProductName", "Quantity", "ShipperName")
+);
+
+INSERT INTO "OLINGO"."Invoices" VALUES ('Pineapple', 21, 'Fun Inc', 87.2000, '2020-02-16 19:42:54.037088', 'A');
+
+
 create table "OLINGO"."AttendanceEventsAll"
 (
     "Id" integer

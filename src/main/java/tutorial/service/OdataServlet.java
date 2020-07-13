@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns="/ServletPath.svc/*")
 public class OdataServlet extends HttpServlet {
-	protected static final String PUNIT_NAME = "TutorialPU";
+	protected static final String PUNIT_NAME = "GreenTrak00";
 
 	@Override
 	protected void service(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException {
