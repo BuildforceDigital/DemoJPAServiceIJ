@@ -1,9 +1,7 @@
 {
   "_version": "1.14.0",
   "sap.app": {
-    "applicationVersion": {
-      "version": "0.0.0"
-    },
+    "applicationVersion": {"version": "0.0.0"},
     "dataSources": {
       "employeeRemote": {
         "uri": "/ContextPath/ServletPath.svc/",
