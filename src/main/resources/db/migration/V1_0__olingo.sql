@@ -608,7 +608,7 @@ create table "OLINGO"."Invoices"
     "Quantity" varchar(36) not null,
     "ShipperName" varchar(36) not null,
     "ExtendedPrice" DECIMAL(19,4) not null,
-    "ShippingDate" varchar(36) not null,
+    "ShippingDate" varchar(36),
     "Status" varchar(1) not null,
 
     CONSTRAINT PK_Invoices PRIMARY KEY (    "ProductName", "Quantity", "ShipperName")
