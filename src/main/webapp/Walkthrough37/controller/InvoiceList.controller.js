@@ -29,14 +29,14 @@ sap.ui.define([
 			}
 
 			// filter binding
-			var oList = this.byId("invoiceList");
-			var oBinding = oList.getBinding("items");
+			const oList = this.byId("invoiceList");
+			const oBinding = oList.getBinding("items");
 			oBinding.filter(aFilter);
 		},
 
 		onPress: function (oEvent) {
-			var oItem = oEvent.getSource();
-			var oRouter = UIComponent.getRouterFor(this);
+			const oItem = oEvent.getSource();
+			const oRouter = UIComponent.getRouterFor(this);
 			oRouter.navTo("detail", {
 				invoicePath: window.encodeURIComponent(oItem.getBindingContext("invoice").getPath().substr(1))
 			});

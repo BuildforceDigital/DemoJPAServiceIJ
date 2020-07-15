@@ -48,7 +48,7 @@ sap.ui.define([
 		},
 
 		reset: function () {
-			var oResourceBundle = this.getModel("i18n").getResourceBundle();
+			const oResourceBundle = this.getModel("i18n").getResourceBundle();
 
 			this.setValue(0);
 			this.getAggregation("_label").setDesign("Standard");
@@ -58,8 +58,8 @@ sap.ui.define([
 		},
 
 		_onRate: function (oEvent) {
-			var oRessourceBundle = this.getModel("i18n").getResourceBundle();
-			var fValue = oEvent.getParameter("value");
+			const oRessourceBundle = this.getModel("i18n").getResourceBundle();
+			const fValue = oEvent.getParameter("value");
 
 			this.setProperty("value", fValue, true);
 
@@ -68,14 +68,12 @@ sap.ui.define([
 		},
 
 		_onSubmit: function (oEvent) {
-			var oResourceBundle = this.getModel("i18n").getResourceBundle();
+			const oResourceBundle = this.getModel("i18n").getResourceBundle();
 
 			this.getAggregation("_rating").setEnabled(false);
 			this.getAggregation("_label").setText(oResourceBundle.getText("productRatingLabelFinal"));
 			this.getAggregation("_button").setEnabled(false);
-			this.fireEvent("change", {
-				value: this.getValue()
-			});
+			this.fireEvent("change", { value: this.getValue() })
 		},
 
 		renderer: function (oRM, oControl) {
@@ -87,7 +85,7 @@ sap.ui.define([
 			oRM.renderControl(oControl.getAggregation("_rating"));
 			oRM.renderControl(oControl.getAggregation("_label"));
 			oRM.renderControl(oControl.getAggregation("_button"));
-			oRM.write("</div>");
+			oRM.write("</div>")
 		}
 	});
 
