@@ -24,7 +24,7 @@
 				<ObjectAttribute title="{i18n>quantityTitle}" text="{invoice>Quantity}"/>
 
 				<ObjectAttribute title="{i18n>dateTitle}" text="{
-				 formatOptions: { pattern: 'yyyy-MM-ddTHH:mm:ss' },
+				 formatOptions: { pattern: 'yyyy-MM-dd HH:mm' },
 				 path: 'invoice>ShippedDate',
 				 type: 'sap.ui.model.odata.type.DateTimeOffset' }"
 				/>
