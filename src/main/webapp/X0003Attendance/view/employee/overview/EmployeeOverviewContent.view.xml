@@ -2,7 +2,7 @@
           controllerName="sap.ui.demo.nav.controller.employee.overview.EmployeeOverviewContent">
     <VBox class="sapUiSmallMargin">
         <Table id="employeesTable" alternateRowColors="true"
-               items="{ path : '/AttendanceEventsAllEntities', parameters: {$select:'StartDate'}, sorter : { descending: true, group : true, path : 'StartDate' }, groupHeaderFactory: '.getGroupHeader' }"
+               items="{ path : 'attendanceEventMod>/AttendanceEventsAllEntities', parameters: {$select:'StartDate'}, sorter : { descending: true, group : true, path : 'StartDate' }, groupHeaderFactory: '.getGroupHeader' }"
                itemPress=".onItemPressed">
             <headerToolbar>
                 <Toolbar>
@@ -70,17 +70,17 @@
             <items>
                 <ColumnListItem id="item0" type="Navigation" press=".onItemPress">
                     <cells>
-                        <Text text="{ProjectCode}"/>
-                        <Text text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'CheckInDateTime' }"/>
-                        <Text text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'CheckOutDateTime' }"/>
+                        <Text text="{attendanceEventMod>ProjectCode}"/>
+                        <Text text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'attendanceEventMod>CheckInDateTime' }"/>
+                        <Text text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'attendanceEventMod>CheckOutDateTime' }"/>
                         <ObjectNumber
-                                number="{parts: [ {path: 'CheckInDateTime', type: 'sap.ui.model.type.String'}, {path: 'CheckOutDateTime', type: 'sap.ui.model.type.String'}], formatter: '.computeDuration'}"/>
+                                number="{parts: [ {path: 'attendanceEventMod>CheckInDateTime', type: 'sap.ui.model.type.String'}, {path: 'attendanceEventMod>CheckOutDateTime', type: 'sap.ui.model.type.String'}], formatter: '.computeDuration'}"/>
                         <ObjectNumber
-                                number="{parts: [ {path: 'CheckInDateTime', type: 'sap.ui.model.type.String'}, {path: 'CheckOutDateTime', type: 'sap.ui.model.type.String'}], formatter: '.computeDuration'}"/>
-                        <Text text="{Description}"/>
-                        <Text text="{ApprovalBy}"/>
-                        <Text text="{path: 'ApprovalDateTime', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: {pattern: 'yyyy-MM-dd HH:mm'}}"/>
-                        <Text text="{Remarks}"/>
+                                number="{parts: [ {path: 'attendanceEventMod>CheckInDateTime', type: 'sap.ui.model.type.String'}, {path: 'attendanceEventMod>CheckOutDateTime', type: 'sap.ui.model.type.String'}], formatter: '.computeDuration'}"/>
+                        <Text text="{attendanceEventMod>Description}"/>
+                        <Text text="{attendanceEventMod>ApprovalBy}"/>
+                        <Text text="{path: 'attendanceEventMod>ApprovalDateTime', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: {pattern: 'yyyy-MM-dd HH:mm'}}"/>
+                        <Text text="{attendanceEventMod>Remarks}"/>
                     </cells>
                 </ColumnListItem>
             </items>

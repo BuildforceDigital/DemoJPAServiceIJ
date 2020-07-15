@@ -40,7 +40,7 @@
     },
     "handleValidation": true,
     "models": {
-      "": {
+      "attendanceEventMod": {
         "dataSource": "employeeRemote",
         "preload": true,
         "settings": {
@@ -88,9 +88,6 @@
           "viewLevel": 2
         },
         "detail": {
-          "controlAggregation": "content",
-          "controlId": "EmployeeOverviewParent",
-          "parent": "EmployeeOverview",
           "viewId": "idParent",
           "viewName": "Detail",
           "viewPath": "sap.ui.demo.nav.view.employee.overview"

@@ -230,7 +230,7 @@ sap.ui.define([
             const oRouter = UIComponent.getRouterFor(this);
             console.log("Item pressed");
             oRouter.navTo("detail", {
-                invoicePath: window.encodeURIComponent(oItem.getBindingContext().getPath().substr(1))
+                invoicePath: window.encodeURIComponent(oItem.getBindingContext("attendanceEventMod").getPath().substr(1))
             })
         },
 
