@@ -30,7 +30,7 @@ sap.ui.define([
 			});*/
 
 			// set dialog
-			this._helloDialog = new HelloDialog(this.getRootControl());
+			this._helloDialog = new HelloDialog(this.getRootControl())
 		},
 
 		exit : function () {
@@ -39,7 +39,7 @@ sap.ui.define([
 		},
 
 		openHelloDialog : function () {
-			this._helloDialog.open();
+			this._helloDialog.open()
 		}
 
 	});

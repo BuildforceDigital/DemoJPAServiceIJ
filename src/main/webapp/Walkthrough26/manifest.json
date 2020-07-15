@@ -1,5 +1,5 @@
 {
-	"_version": "1.14.0",
+	"_version": "1.21.0",
 	"sap.app": {
 		"applicationVersion": {"version": "1.0.0"},
 		"dataSources": {
@@ -36,13 +36,11 @@
 			"viewName": "sap.ui.demo.walkthrough.view.App"
 		},
 		"dependencies": {
-			"minUI5Version": "1.71.3",
+			"minUI5Version": "1.79.2",
 			"libs": {
-              "sap.m": {},
-              "sap.ui.core": {}
+              "sap.m": {}
 			}
 		},
-    "handleValidation": true,
 		"models": {
       "invoice": {
         "dataSource": "invoiceRemote",
@@ -58,19 +56,13 @@
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
 					"bundleName": "sap.ui.demo.walkthrough.i18n.i18n",
-					"supportedLocales": [
-						""
-					],
+					"supportedLocales": [""],
 					"fallbackLocale": ""
 				}
-			},
+			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{"uri": "css/style.css"}]
 		}
 	}
 }

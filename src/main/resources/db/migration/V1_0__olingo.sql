@@ -614,8 +614,11 @@ create table "OLINGO"."Invoices"
     CONSTRAINT PK_Invoices PRIMARY KEY (    "ProductName", "Quantity", "ShipperName")
 );
 
-INSERT INTO "OLINGO"."Invoices" VALUES ('Pineapple', 21, 'Fun Inc', 87.2000, '2020-02-16 19:42:54.037088', 'A');
-
+INSERT INTO "OLINGO"."Invoices" VALUES ('Pineapple', 21, 'Fun Inc', 87.2000, '2015-04-01T00:00:00', 'A');
+INSERT INTO "OLINGO"."Invoices" VALUES ('Milk', 4, 'ACME', 9.99999, '2015-02-18 00:00:00', 'B');
+INSERT INTO "OLINGO"."Invoices" VALUES ('Canned Beans', 3, 'ACME', 6.85000, '2015-03-02 00:00:00', 'B');
+INSERT INTO "OLINGO"."Invoices" VALUES ('Salad', 2, 'ACME', 8.8000, '2015-04-12 00:00:00', 'C');
+INSERT INTO "OLINGO"."Invoices" VALUES ('Bread', 1, 'Fun Inc', 2.71212, '2015-01-27 00:00:00', 'A');
 
 create table "OLINGO"."AttendanceEventsAll"
 (
