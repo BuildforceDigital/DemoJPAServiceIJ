@@ -75,7 +75,7 @@
           "target": ["EmployeeOverviewContent"]
         },
         {
-          "pattern": "detail",
+          "pattern": "detail/{invoicePath}",
           "name": "detail",
           "target": ["detail"]
         }
