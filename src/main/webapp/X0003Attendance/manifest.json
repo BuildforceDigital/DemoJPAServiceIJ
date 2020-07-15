@@ -60,9 +60,7 @@
     "routing": {
       "config": {
         "async": true,
-        "bypassed": {
-          "target": "notFound"
-        },
+        "bypassed": { "target": "notFound" },
         "controlAggregation": "pages",
         "controlId": "app",
         "routerClass": "sap.m.routing.Router",
@@ -74,17 +72,28 @@
         {
           "pattern": "",
           "name": "appHome",
-          "target": [
-            "EmployeeOverviewContent"
-          ]
+          "target": ["EmployeeOverviewContent"]
+        },
+        {
+          "pattern": "detail",
+          "name": "detail",
+          "target": ["detail"]
         }
-       ],
+      ],
       "targets": {
         "EmployeeOverview": {
           "viewId": "idEmployeeOverview",
           "viewPath": "sap.ui.demo.nav.view.employee.overview",
           "viewName": "EmployeeOverview",
           "viewLevel": 2
+        },
+        "detail": {
+          "controlAggregation": "content",
+          "controlId": "EmployeeOverviewParent",
+          "parent": "EmployeeOverview",
+          "viewId": "idParent",
+          "viewName": "Detail",
+          "viewPath": "sap.ui.demo.nav.view.employee.overview"
         },
         "EmployeeOverviewContent": {
           "parent": "EmployeeOverview",

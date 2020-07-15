@@ -7,7 +7,8 @@ sap.ui.define([
     "sap/m/ViewSettingsItem",
     "sap/m/GroupHeaderListItem",
     "sap/ui/core/library",
-    "sap/ui/model/odata/type/DateTimeOffset"
+    "sap/ui/model/odata/type/DateTimeOffset",
+    "sap/ui/core/UIComponent"
 ], function (
     BaseController,
     Filter,
@@ -17,7 +18,8 @@ sap.ui.define([
     ViewSettingsItem,
     GroupHeaderListItem,
     CoreLibrary,
-    DateTimeOffset
+    DateTimeOffset,
+    UIComponent
 ) {
     "use strict";
 
@@ -221,6 +223,15 @@ sap.ui.define([
                 //oBinding = this._oTable.getBinding("items");
                 //oBinding.sort(oSorter);
             }
+        },
+
+        onItemPress: function (oEvent) {
+            const oItem = oEvent.getSource();
+            const oRouter = UIComponent.getRouterFor(this);
+            console.log("Item pressed");
+            oRouter.navTo("detail", {
+                invoicePath: window.encodeURIComponent(oItem.getBindingContext().getPath().substr(1))
+            })
         },
 
         _syncViewSettingsDialogSorter: function (sSortField, bSortDescending) {
