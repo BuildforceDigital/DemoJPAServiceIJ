@@ -2,7 +2,12 @@
           controllerName="sap.ui.demo.nav.controller.employee.overview.EmployeeOverviewContent">
     <VBox class="sapUiSmallMargin">
         <Table id="employeesTable" alternateRowColors="true"
-               items="{ path : 'attendanceEventMod>/AttendanceEventsAllEntities', parameters: {$select:'StartDate'}, sorter : { descending: true, group : true, path : 'StartDate' }, groupHeaderFactory: '.getGroupHeader' }"
+               items="{ path: 'attendanceEventMod>/AttendanceEventsAllEntities',
+                        parameters: {$select:'StartDate'},
+                        sorter : { descending: true, group : true, path : 'StartDate' },
+                        filters: [{path: 'ParentGuid', operator: 'EQ', value1: null}],
+                        groupHeaderFactory: '.getGroupHeader'
+                      }"
                itemPress=".onItemPressed">
             <headerToolbar>
                 <Toolbar>

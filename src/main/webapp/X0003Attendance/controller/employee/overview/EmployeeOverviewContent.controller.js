@@ -59,7 +59,7 @@ sap.ui.define([
         },
 
         onInit: function () {
-            var oRouter = this.getRouter();
+            const oRouter = this.getRouter();
 
             // this._oTable = this.byId("employeesTable");
             // this._oVSD = null;
@@ -87,8 +87,8 @@ sap.ui.define([
                 /*"2020-11-01T14:35:20.544411Z"*/ sTo.toISOString())];
 
             // filter binding
-            var oList = this.byId("employeesTable");
-            var oBinding = oList.getBinding("items");
+            const oList = this.byId("employeesTable");
+            const oBinding = oList.getBinding("items");
             oBinding.filter(bFilter);
         },
 
@@ -114,23 +114,23 @@ sap.ui.define([
         },
 
         onSortButtonPressed: function (oEvent) {
-            var oRouter = this.getRouter();
+            const oRouter = this.getRouter();
             this._oRouterArgs.query.showDialog = 1;
             oRouter.navTo("employeeOverview", this._oRouterArgs);
         },
 
         onSearchEmployeesTable: function (oEvent) {
-            var oRouter = this.getRouter();
+            const oRouter = this.getRouter();
             // update the hash with the current search term
             this._oRouterArgs.query.search = oEvent.getSource().getValue();
             oRouter.navTo("employeeOverview", this._oRouterArgs, true /*no history*/);
         },
 
         _initViewSettingsDialog: function () {
-            var oRouter = this.getRouter();
+            const oRouter = this.getRouter();
             this._oVSD = new ViewSettingsDialog("vsd", {
                 confirm: function (oEvent) {
-                    var oSortItem = oEvent.getParameter("sortItem");
+                    const oSortItem = oEvent.getParameter("sortItem");
                     this._oRouterArgs.query.sortField = oSortItem.getKey();
                     this._oRouterArgs.query.sortDescending = oEvent.getParameter("sortDescending");
                     delete this._oRouterArgs.query.showDialog;
@@ -163,7 +163,7 @@ sap.ui.define([
         },
 
         _applySearchFilter: function (sSearchQuery) {
-            var aFilters, oFilter, oBinding;
+            let aFilters, oFilter; //, oBinding;
 
             // first check if we already have this search value
             if (this._sSearchQuery === sSearchQuery) {
@@ -177,7 +177,7 @@ sap.ui.define([
             if (sSearchQuery && sSearchQuery.length > 0) {
                 aFilters.push(new Filter("FullName", FilterOperator.Contains, sSearchQuery));
                 aFilters.push(new Filter("UserName", FilterOperator.Contains, sSearchQuery));
-                oFilter = new Filter({filters: aFilters, and: false});  // OR filter
+                // oFilter = new Filter({filters: aFilters, and: false});  // OR filter
             } else {
                 oFilter = null;
             }
@@ -194,7 +194,7 @@ sap.ui.define([
          * @private
          */
         _applySorter: function (sSortField, sortDescending) {
-            var bSortDescending, oBinding, oSorter;
+            let bSortDescending; //, oBinding, oSorter;
 
             // only continue if we have a valid sort field
             if (sSortField && this._aValidSortFields.indexOf(sSortField) > -1) {
@@ -215,7 +215,7 @@ sap.ui.define([
 
                 this._sSortField = sSortField;
                 this._bSortDescending = bSortDescending;
-                oSorter = new Sorter(sSortField, bSortDescending);
+                // oSorter = new Sorter(sSortField, bSortDescending);
 
                 // sync with View Settings Dialog
                 this._syncViewSettingsDialogSorter(sSortField, bSortDescending);

@@ -12,7 +12,8 @@ import java.util.Properties;
 public class DataSourceHelper {
     private static final String DB_SCHEMA = "OLINGO";
 
-    private static final String HSQLDB_URL = "jdbc:hsqldb:mem:com.sample";
+    // private static final String HSQLDB_URL = "jdbc:hsqldb:mem:com.sample";
+    private static final String HSQLDB_URL = "jdbc:hsqldb:file:~/IdeaProjects/Buildforce Digital 00/DemoOdataJPAWebContainer/GreentrakData/DevoGreentrak00";
     private static final String HSQLDB_DRIVER_CLASS_NAME = "org.hsqldb.jdbcDriver";
 
     private static final String DERBY_URL = "jdbc:derby:testdb;create=true;traceFile=derby_trace.log;trace_level=0xFFFFFFFF";

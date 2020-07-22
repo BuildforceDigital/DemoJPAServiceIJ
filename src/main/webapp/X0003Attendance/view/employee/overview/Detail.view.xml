@@ -5,7 +5,139 @@
     <Page title="Revision"
           showNavButton="true"
           navButtonPress=".onNavBack">
-        <ObjectHeader title="{attendanceEventMod>ProjectCode}"/>
+        <ObjectHeader id="oh1"
+                      responsive="true"
+                      fullScreenOptimized="true"
+                      binding="{/ProductCollection/2}"
+                      icon="{ProductPicUrl}"
+                      iconAlt="{Name}"
+                      intro="Approved by {attendanceEventMod>ApprovalBy} at {path: 'attendanceEventMod>ApprovalDateTime', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: {pattern: 'yyyy-MM-dd HH:mm'}}"
+                      title="{attendanceEventMod>UserName}"
+                      titleActive="true"
+                      titlePress="handleTitlePress"
+                      number="{attendanceEventMod>ProjectCode}"
 
+                      showMarkers="true"
+                      markFlagged="true"
+                      markFavorite="true"
+                      numberState="Success"
+                      backgroundDesign="Translucent"
+                      class="sapUiResponsivePadding--header">
+
+            <ObjectAttribute
+                    title="StartDate"
+                    text="{path: 'attendanceEventMod>StartDate', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: {pattern: 'yyyy-MM-dd'}}"/>
+            <ObjectAttribute
+                    title="CheckInDateTime"
+                    text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'attendanceEventMod>CheckInDateTime' }"/>
+            <ObjectAttribute
+                    title="CheckOutDateTime"
+                    text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'attendanceEventMod>CheckOutDateTime' }"/>
+            <ObjectAttribute
+                    title="TermGuidIn"
+                    text="{attendanceEventMod>TermGuidIn}"/>
+
+            <ObjectAttribute
+                    title="ProjOwner"
+                    text="{attendanceEventMod>ProjOwner}"/>
+
+            <ObjectAttribute
+                    title="TermGuidOut"
+                    text="{attendanceEventMod>TermGuidOut}"/>
+            <ObjectAttribute
+                    title="ProjectCode"
+                    text="{attendanceEventMod>ProjectCode}"/>
+            <ObjectAttribute
+                    title="Description"
+                    text="{attendanceEventMod>Description}"/>
+            <ObjectAttribute
+                    title="Remarks"
+                    text="{attendanceEventMod>Remarks}"/>
+        </ObjectHeader>
+        <VBox class="sapUiSmallMargin">
+            <Table id="employeesTable" alternateRowColors="true"
+                   items="{ path: 'attendanceEventMod>/AttendanceEventsAllEntities',
+                            sorter: { descending: true, path : 'StartDate' },
+                            filters: [{path: 'ParentGuid', operator: 'NE', value1: null},
+                                      {path: 'CheckInDateTime', operator: 'EQ', value1: 'attendanceEventMod>StartDate'}] }"
+                   itemPress=".onItemPressed">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Reviews" level="H2"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="employeeIDCol">
+                        <header>
+                            <Text text="Project Code"/>
+                        </header>
+                    </Column>
+                    <Column id="firstNameCol" hAlign="Right" demandPopin="true">
+                        <header>
+                            <Text text="Check-in"/>
+                        </header>
+                    </Column>
+                    <Column id="lastNameCol" hAlign="Right" demandPopin="true">
+                        <header>
+                            <Text text="Check-out"/>
+                        </header>
+                        <footer>
+                            <Text text="Totals:"/>
+                        </footer>
+                    </Column>
+                    <Column id="lastNameCol0" hAlign="Right" demandPopin="true">
+                        <header>
+                            <Text text="Attended time"/>
+                        </header>
+                        <footer>
+                        </footer>
+                    </Column>
+                    <Column id="lastNameCol1" hAlign="Right" demandPopin="true">
+                        <header>
+                            <Text text="Time worked"/>
+                        </header>
+                        <footer>
+                        </footer>
+                    </Column>
+                    <Column id="addressCol" minScreenWidth="Tablet" demandPopin="true">
+                        <header>
+                            <Text text="Description"/>
+                        </header>
+                    </Column>
+                    <Column id="cityCol" minScreenWidth="Tablet" demandPopin="true">
+                        <header>
+                            <Text text="Approval by"/>
+                        </header>
+                    </Column>
+                    <Column id="regionCol" minScreenWidth="Tablet" demandPopin="true">
+                        <header>
+                            <Text text="Approved at"/>
+                        </header>
+                    </Column>
+                    <Column id="postalCodeCol" minScreenWidth="Tablet" demandPopin="true">
+                        <header>
+                            <Text text="Remarks"/>
+                        </header>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="item0" type="Navigation" press=".onItemPress">
+                        <cells>
+                            <Text text="{attendanceEventMod>ProjectCode}"/>
+                            <Text text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'attendanceEventMod>CheckInDateTime' }"/>
+                            <Text text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'attendanceEventMod>CheckOutDateTime' }"/>
+                            <ObjectNumber
+                                    number="{parts: [ {path: 'attendanceEventMod>CheckInDateTime', type: 'sap.ui.model.type.String'}, {path: 'attendanceEventMod>CheckOutDateTime', type: 'sap.ui.model.type.String'}], formatter: '.computeDuration'}"/>
+                            <ObjectNumber
+                                    number="{parts: [ {path: 'attendanceEventMod>CheckInDateTime', type: 'sap.ui.model.type.String'}, {path: 'attendanceEventMod>CheckOutDateTime', type: 'sap.ui.model.type.String'}], formatter: '.computeDuration'}"/>
+                            <Text text="{attendanceEventMod>Description}"/>
+                            <Text text="{attendanceEventMod>ApprovalBy}"/>
+                            <Text text="{path: 'attendanceEventMod>ApprovalDateTime', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: {pattern: 'yyyy-MM-dd HH:mm'}}"/>
+                            <Text text="{attendanceEventMod>Remarks}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
     </Page>
 </mvc:View>
