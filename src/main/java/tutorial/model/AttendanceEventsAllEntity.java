@@ -79,4 +79,119 @@ public class AttendanceEventsAllEntity {
         this.parentGuid = parent.getParentGuid();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getApprovalBy() {
+        return approvalBy;
+    }
+
+    public void setApprovalBy(String approvalBy) {
+        this.approvalBy = approvalBy;
+    }
+
+    public OffsetDateTime getApprovalDateTime() {
+        return approvalDateTime;
+    }
+
+    public void setApprovalDateTime(OffsetDateTime approvalDateTime) {
+        this.approvalDateTime = approvalDateTime;
+    }
+
+    public OffsetDateTime getCheckInDateTime() {
+        return checkInDateTime;
+    }
+
+    public void setCheckInDateTime(OffsetDateTime checkInDateTime) {
+        this.checkInDateTime = checkInDateTime;
+    }
+
+    public OffsetDateTime getCheckOutDateTime() {
+        return checkOutDateTime;
+    }
+
+    public void setCheckOutDateTime(OffsetDateTime checkOutDateTime) {
+        this.checkOutDateTime = checkOutDateTime;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getParentGuid() {
+        return parentGuid;
+    }
+
+    public void setParentGuid(int parentGuid) {
+        this.parentGuid = parentGuid;
+    }
+
+    public String getProjectCode() {
+        return projectCode;
+    }
+
+    public void setProjectCode(String projectCode) {
+        this.projectCode = projectCode;
+    }
+
+    public String getProjOwner() {
+        return projOwner;
+    }
+
+    public void setProjOwner(String projOwner) {
+        this.projOwner = projOwner;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public OffsetDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getTermGuidIn() {
+        return termGuidIn;
+    }
+
+    public void setTermGuidIn(String termGuidIn) {
+        this.termGuidIn = termGuidIn;
+    }
+
+    public String getTermGuidOut() {
+        return termGuidOut;
+    }
+
+    public void setTermGuidOut(String termGuidOut) {
+        this.termGuidOut = termGuidOut;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public List<AttendanceEventsAllEntity> getChildren() {
+        return children;
+    }
 }
