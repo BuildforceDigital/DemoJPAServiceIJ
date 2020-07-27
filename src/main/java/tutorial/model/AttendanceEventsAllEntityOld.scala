@@ -21,10 +21,12 @@ import jakarta.persistence.Table
 
 })*/
 @Entity
-@Table(name = "\"AttendanceEventsAll\"", schema = "OLINGO")
-class AttendanceEventsAllEntity {
+@Table(name = "\"AttendanceEventsAllOld\"", schema = "OLINGO")
+class AttendanceEventsAllEntityOld {
+
   @Id
-  @Column(name = "\"Id\"", nullable = false) private var id = 0
+  @Column(name = "\"Id\"", nullable = false)
+  private var id = 0
 
   def getId: Int = id
 
@@ -149,34 +151,4 @@ class AttendanceEventsAllEntity {
     this.remarks = remarks
   }
 
-  override def hashCode: Int = {
-    var result = id
-    result = 31 * result + (if (projOwner != null) projOwner.hashCode
-    else 0)
-    result = 31 * result + (if (projectCode != null) projectCode.hashCode
-    else 0)
-    result = 31 * result + (if (termGuidIn != null) termGuidIn.hashCode
-    else 0)
-    result = 31 * result + (if (checkInDateTime != null) checkInDateTime.hashCode
-    else 0)
-    result = 31 * result + (if (userName != null) userName.hashCode
-    else 0)
-    result = 31 * result + (if (parentGuid != null) parentGuid.hashCode
-    else 0)
-    result = 31 * result + (if (termGuidOut != null) termGuidOut.hashCode
-    else 0)
-    result = 31 * result + (if (checkOutDateTime != null) checkOutDateTime.hashCode
-    else 0)
-    result = 31 * result + (if (startDate != null) startDate.hashCode
-    else 0)
-    result = 31 * result + (if (description != null) description.hashCode
-    else 0)
-    result = 31 * result + (if (approvalBy != null) approvalBy.hashCode
-    else 0)
-    result = 31 * result + (if (approvalDateTime != null) approvalDateTime.hashCode
-    else 0)
-    result = 31 * result + (if (remarks != null) remarks.hashCode
-    else 0)
-    result
-  }
 }
