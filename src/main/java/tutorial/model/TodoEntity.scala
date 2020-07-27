@@ -1,15 +1,19 @@
 package tutorial.model
 
 import jakarta.persistence._
-import javax.persistence.{GeneratedValue, GenerationType}
+import jakarta.persistence.{GeneratedValue, GenerationType}
 
 @Entity
 @Table(name = "\"Todos\"", schema = "OLINGO")
 class TodoEntity {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  //@GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "\"Id\"", nullable = false)
   private var id: Int = _
+
+  def setId(_id : Int): Unit = id = _id
+
+  def getId(): Int = id
 
   @Basic
   @Column(name = "\"Summary\"", nullable = false, length = 100)
