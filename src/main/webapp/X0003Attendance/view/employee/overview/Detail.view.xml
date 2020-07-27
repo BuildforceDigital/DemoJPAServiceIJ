@@ -11,7 +11,7 @@
                       binding="{/ProductCollection/2}"
                       icon="{ProductPicUrl}"
                       iconAlt="{Name}"
-                      intro="Approved by {attendanceEventMod>ApprovalBy} at {path: 'attendanceEventMod>ApprovalDateTime', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: {pattern: 'yyyy-MM-dd HH:mm'}}"
+                      intro="Shift approved by {attendanceEventMod>ApprovalBy} at {path: 'attendanceEventMod>ApprovalDateTime', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: {pattern: 'yyyy-MM-dd HH:mm'}}"
                       title="{attendanceEventMod>UserName}"
                       titleActive="true"
                       titlePress="handleTitlePress"

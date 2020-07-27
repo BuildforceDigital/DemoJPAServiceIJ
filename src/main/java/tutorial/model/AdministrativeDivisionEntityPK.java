@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class AdministrativeDivisionEntityPK implements Serializable {
+class AdministrativeDivisionEntityPK implements Serializable {
     public AdministrativeDivisionEntityPK() {
         // Needed to be used as IdClass
     }

@@ -28,7 +28,7 @@ CREATE TABLE "OLINGO"."BusinessPartner"(
                                            "Telecom.Email"               VARCHAR(100),
                                            "CreatedBy"                   VARCHAR(32) NOT NULL CONSTRAINT bpa_bpa00_fk REFERENCES "OLINGO"."BusinessPartner",
                                            "CreatedAt"                   TIMESTAMP /*WITH TIME ZONE*/ DEFAULT CURRENT_TIMESTAMP,
-                                           "UpdatedBy"                   VARCHAR(32) CONSTRAINT bpa_bpa01_fk REFERENCES "OLINGO"."BusinessPartner",
+                                           "UpdatedBy"                   VARCHAR(32) CONSTRAINT "FK_BusinessPartner_UpdatedBy" REFERENCES "OLINGO"."BusinessPartner",
                                            "UpdatedAt"                   TIMESTAMP /*WITH TIME ZONE*/ CHECK ("UpdatedAt" >= "CreatedAt"),
                                            "Country"                     VARCHAR(4),
                                            "AbcClass"                    VARCHAR(1),
@@ -51,7 +51,7 @@ INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '9', 0, '2', '', '',   null, nul
 --------BUSINESS PARTNER ROLE----------------------------------------------------------------------------------------------------
 CREATE TABLE "OLINGO"."BusinessPartnerRole"
 (
-    "BusinessPartnerID" VARCHAR(32) NOT NULL CONSTRAINT fk_bpr_bpa REFERENCES "OLINGO"."BusinessPartner",
+    "BusinessPartnerID" VARCHAR(32) NOT NULL CONSTRAINT "FK_BusinessPartnerRole_BusinessPartnerID" REFERENCES "OLINGO"."BusinessPartner",
     "BusinessPartnerRole" VARCHAR(10) NOT NULL,
     PRIMARY KEY ("BusinessPartnerID", "BusinessPartnerRole")
 );
@@ -587,7 +587,7 @@ INSERT INTO "OLINGO"."AdministrativeDivision" VALUES ('ISO', '3166-1', 'CHE', 'C
 INSERT INTO "OLINGO"."AdministrativeDivision" VALUES ('ISO', '3166-2', 'CH-BL', 'CHE', '3166-1', 'CHE', null, 0, 0);
 
 ALTER TABLE "OLINGO"."BusinessPartner"
-    ADD CONSTRAINT bpa_adv_fk
+    ADD CONSTRAINT "FK_BusinessPartner_ADDRESS_REGION"
         FOREIGN KEY ("ADDRESS_REGIONCODEPUBLISHER", "ADDRESS_REGIONCODEID", "ADDRESS_REGION")
             REFERENCES "OLINGO"."AdministrativeDivision" ("CodePublisher", "CodeID", "DivisionCode");
 
@@ -649,6 +649,14 @@ INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (5, 'Heijmans Infra', 'PRUTSER
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (6, 'Heijmans Infra', 'ZUIDPLUS00' , 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (10, 'Heijmans Infra', 'ZUIDPLUS00' , 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', 6, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (11, 'Heijmans Infra', 'ZUIDPLUS00' , 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', 10, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
+
+CREATE TABLE OLINGO."Todos"
+(
+    "Id"          INTEGER      NOT NULL,
+    "Description" VARCHAR(100) NOT NULL,
+    "Summary"     VARCHAR(100) NOT NULL,
+    PRIMARY KEY ("Id")
+);
 
 create table "OLINGO"."A0000Users"
 (

@@ -6,7 +6,9 @@
 
     <persistence-unit name="GreenTrak00">
         <class>tutorial.model.A0000UsersEntity</class>
-        <class>tutorial.model.WalktroughInvoiceEntity</class>
+        <class>tutorial.model.WalkthroughInvoiceEntity</class>
+
+        <class>tutorial.model.TodoEntity</class>
 
         <class>tutorial.model.AccessRightsConverter</class>
         <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class> <!--AdministrativeDivisionDescriptionEntities-->
@@ -33,7 +35,12 @@
         <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:com.sample" />
         <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
 -->
-    </properties>
+
+         <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+         <property name="eclipselink.ddl-generation.output-mode" value="sql-script"/>
+         <property name="eclipselink.application-location" value="C:\Users\FransAdm.LAPTOP-M05O0II\IdeaProjects\Buildforce Digital 00\DemoOdataJPAWebContainer"/>
+
+     </properties>
 
     </persistence-unit>
 </persistence>

@@ -1,15 +1,65 @@
 package tutorial.model
 
-import java.sql.Date
-import java.time.OffsetDateTime
-
-import jakarta.persistence.{Basic, Column, Entity, Id, Table}
+import javax.persistence.{Basic, Column, Entity, Id, Table}
 
 @Entity
 @Table(name = "\"A0000Users\"", schema = "OLINGO")
 class A0000UsersEntity {
   @Id
-  @Column(name = "\"Id\"", nullable = false) private var id = 0
+  @Column(name = "\"Id\"", nullable = false)
+  private var id: Int = _
+
+  @Basic
+  @Column(name = "\"Birthday\"" /*, nullable = false*/ , length = 36)
+  private var birthday: String = _
+
+  @Basic
+  @Column(name = "\"BusinessEmail\"", /*nullable = false,*/ length = 10)
+  private var businessEmail: String = _
+
+  @Basic
+  @Column(name = "\"CitizenServiceNr\"", /*nullable = false,*/ length = 36)
+  private var citizenServiceNr: String = _
+
+  @Basic
+  @Column(name = "\"FullName\"", nullable = false)
+  private var fullName: String = _
+
+  @Basic
+  @Column(name = "\"JobFunction\"", /*nullable = false,*/ length = 40)
+  private var jobFunction: String = _
+
+  @Basic
+  @Column(name = "\"LandlinePhone\"")
+  private var landlinePhone: String = _
+
+  @Basic
+  @Column(name = "\"MobilePhone\"", length = 36)
+  private var mobilePhone: String = _
+
+  @Basic
+  @Column(name = "\"Nationality\"")
+  private var nationality: String = _
+
+  @Basic
+  @Column(name = "\"Gender\"")
+  private var gender: String = _
+
+  @Basic
+  @Column(name = "\"Nickname\"")
+  private var nickname: String = _
+
+  @Basic
+  @Column(name = "\"PrivateEmail\"", length = 160)
+  private var PrivateEmail: String = _
+
+  @Basic
+  @Column(name = "\"UserName\"", length = 40)
+  private var userName: String = _
+
+  @Basic
+  @Column(name = "\"TillDate\"")
+  private var tillDate: java.sql.Date = _
 
   def getId: Int = id
 
@@ -17,17 +67,11 @@ class A0000UsersEntity {
     this.id = id
   }
 
-  @Basic
-  @Column(name = "\"Birthday\""/*, nullable = false*/, length = 36) private var birthday: String = _
-
   def getBirthday: String = birthday
 
   def setBirthday(projOwner: String): Unit = {
     this.birthday = projOwner
   }
-
-  @Basic
-  @Column(name = "\"BusinessEmail\"", /*nullable = false,*/ length = 10) private var businessEmail: String = _
 
   def getBusinessEmail: String = businessEmail
 
@@ -35,17 +79,11 @@ class A0000UsersEntity {
     this.businessEmail = projectCode
   }
 
-  @Basic
-  @Column(name = "\"CitizenServiceNr\"", /*nullable = false,*/ length = 36) private var citizenServiceNr: String = _
-
   def getCitizenServiceNr: String = citizenServiceNr
 
   def setCitizenServiceNr(termGuidIn: String): Unit = {
     this.citizenServiceNr = termGuidIn
   }
-
-  @Basic
-  @Column(name = "\"FullName\"", nullable = false) private var fullName: String = _
 
   def getFullName: String = fullName
 
@@ -53,17 +91,11 @@ class A0000UsersEntity {
     this.fullName = checkInDatetime
   }
 
-  @Basic
-  @Column(name = "\"JobFunction\"", /*nullable = false,*/ length = 40) private var jobFunction: String = _
-
   def getJobFunction: String = jobFunction
 
   def setJobFunction(userName: String): Unit = {
     this.jobFunction = userName
   }
-
-  @Basic
-  @Column(name = "\"LandlinePhone\"") private var landlinePhone: String = _
 
   def getLandlinePhone: String = landlinePhone
 
@@ -71,17 +103,11 @@ class A0000UsersEntity {
     this.landlinePhone = parentGuid
   }
 
-  @Basic
-  @Column(name = "\"MobilePhone\"", length = 36) private var mobilePhone: String = _
-
   def getMobilePhone: String = mobilePhone
 
   def setMobilePhone(termGuidOut: String): Unit = {
     this.mobilePhone = termGuidOut
   }
-
-  @Basic
-  @Column(name = "\"Nationality\"") private var nationality: String = _
 
   def getNationality: String = nationality
 
@@ -89,17 +115,11 @@ class A0000UsersEntity {
     this.nationality = checkOutDateTime
   }
 
-  @Basic
-  @Column(name = "\"Gender\"") private var gender: String = _
-
   def getGender: String = nationality
 
   def setGender(checkOutDateTime: String): Unit = {
     this.gender = checkOutDateTime
   }
-
-  @Basic
-  @Column(name = "\"Nickname\"") private var nickname: String = _
 
   def getNickname: String = nickname
 
@@ -107,17 +127,11 @@ class A0000UsersEntity {
     this.nickname = startDate
   }
 
-  @Basic
-  @Column(name = "\"PrivateEmail\"", length = 160) private var PrivateEmail: String = _
-
   def getPrivateEmail: String = PrivateEmail
 
   def setPrivateEmail(description: String): Unit = {
     this.PrivateEmail = description
   }
-
-  @Basic
-  @Column(name = "\"UserName\"", length = 40) private var userName: String = _
 
   def getUserName: String = userName
 
@@ -125,23 +139,20 @@ class A0000UsersEntity {
     this.userName = approvalBy
   }
 
-  @Basic
-  @Column(name = "\"TillDate\"") private var tillDate: java.sql.Date = _
-
   def getTillDate: java.sql.Date = tillDate
 
   def setTillDate(approvalDateTime: java.sql.Date): Unit = {
     this.tillDate = approvalDateTime
   }
 
-/*  @Basic
-  @Column(name = "\"Remarks\"", length = 480) private var remarks: String = _
+  /*  @Basic
+    @Column(name = "\"Remarks\"", length = 480) private var remarks: String = _
 
-  def getRemarks: String = remarks
+    def getRemarks: String = remarks
 
-  def setRemarks(remarks: String): Unit = {
-    this.remarks = remarks
-  }*/
+    def setRemarks(remarks: String): Unit = {
+      this.remarks = remarks
+    }*/
 
   override def hashCode: Int = {
     var result = id

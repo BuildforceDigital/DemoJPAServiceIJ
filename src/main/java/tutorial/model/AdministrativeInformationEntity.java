@@ -10,7 +10,7 @@ import jakarta.persistence.JoinColumn;
 import java.util.Objects;
 
 @Embeddable
-public class AdministrativeInformationEntity {
+class AdministrativeInformationEntity {
 
     @Embedded
     @AttributeOverrides({

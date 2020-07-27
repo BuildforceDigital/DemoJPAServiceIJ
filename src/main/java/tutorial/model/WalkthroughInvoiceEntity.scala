@@ -2,13 +2,32 @@ package tutorial.model
 
 import java.time.OffsetDateTime
 
-import jakarta.persistence._
+import javax.persistence.{Basic, Column, Entity, Id, Table}
 
 @Entity
 @Table(name = "\"Invoices\"", schema = "OLINGO")
-class WalktroughInvoiceEntity {
+class WalkthroughInvoiceEntity {
   @Id
-  @Column(name = "\"ProductName\"", nullable = false) private var productName: String = _
+  @Column(name = "\"ProductName\"", nullable = false)
+  private var productName: String = _
+  @Id
+  @Column(name = "\"Quantity\"", nullable = false)
+  private var quantity: Short = _
+  @Id
+  @Column(name = "\"ShipperName\"", nullable = false)
+  private var shipperName: String = _
+
+  @Basic
+  @Column(name = "\"ExtendedPrice\"" /*, nullable = false*/ , precision = 19)
+  private var extendedPrice: Double = _
+
+  @Basic
+  @Column(name = "\"Status\"", /*nullable = false,*/ length = 1)
+  private var status: String = _
+
+  @Basic
+  @Column(name = "\"ShippingDate\"", nullable = true)
+  private var shippedDate: OffsetDateTime = _
 
   def getProductName: String = productName
 
@@ -16,17 +35,11 @@ class WalktroughInvoiceEntity {
     this.productName = productName
   }
 
-  @Id
-  @Column(name = "\"Quantity\"", nullable = false) private var quantity: Short = _
-
   def getQuantity = quantity
 
   def setQuantity(quantity: Short): Unit = {
     this.quantity = quantity
   }
-
-  @Id
-  @Column(name = "\"ShipperName\"", nullable = false) private var shipperName: String = _
 
   def getShipperName: String = shipperName
 
@@ -34,27 +47,17 @@ class WalktroughInvoiceEntity {
     this.shipperName = shipperName
   }
 
-  @Basic
-  @Column(name = "\"ExtendedPrice\""/*, nullable = false*/, precision = 19) private var extendedPrice: Double =  _
-
   def getExtendedPrice: Double = extendedPrice
 
   def setExtendedPrice(extendedPrice: Double): Unit = {
     this.extendedPrice = extendedPrice
   }
 
-  @Basic
-  @Column(name = "\"Status\"", /*nullable = false,*/ length = 1) private var status: String = _
-
   def getStatus: String = status
 
   def setStatus(status: String): Unit = {
     this.status = status
   }
-
-  @Basic
-  @Column(name = "\"ShippingDate\"", nullable = true)
-  private var shippedDate: OffsetDateTime = _
 
   def getCheckInDateTime: OffsetDateTime = shippedDate
 

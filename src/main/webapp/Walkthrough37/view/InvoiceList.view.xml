@@ -6,7 +6,7 @@
           class="sapUiResponsiveMargin"
           width="auto"
           items="{
-			path : 'invoice>/WalktroughInvoiceEntities',
+			path : 'invoice>/WalkthroughInvoiceEntities',
 			sorter : {
 				path : 'ShipperName',
 				group : true
