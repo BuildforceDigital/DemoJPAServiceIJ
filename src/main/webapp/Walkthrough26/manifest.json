@@ -14,8 +14,8 @@
 		"description": "{{appDescription}}",
 		"i18n": {
 			"bundleUrl": "i18n/i18n.properties",
-			"supportedLocales": [""],
-			"fallbackLocale": ""
+			"fallbackLocale": "",
+			"supportedLocales": [""]
 		},
 		"id": "sap.ui.demo.walkthrough",
 		"title": "{{appTitle}}",

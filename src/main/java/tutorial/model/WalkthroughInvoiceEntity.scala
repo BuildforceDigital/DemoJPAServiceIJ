@@ -2,7 +2,7 @@ package tutorial.model
 
 import java.time.OffsetDateTime
 
-import javax.persistence.{Basic, Column, Entity, Id, Table}
+import jakarta.persistence.{Basic, Column, Entity, Id, Table}
 
 @Entity
 @Table(name = "\"Invoices\"", schema = "OLINGO")

@@ -33,18 +33,12 @@
       "desktop": true,
       "tablet": true,
       "phone": true
-    },
-    "supportedThemes": [
-      "sap_belize",
-      "sap_belize_hcb",
-      "sap_belize_plus",
-      "sap_belize_hcw"
-    ]
+    }
   },
   "sap.ui5": {
     "rootView": "nl.buildforce.gt.view.App",
     "dependencies": {
-      "minUI5Version": "1.30.0",
+      "minUI5Version": "1.79.2",
       "libs": {
         "sap.ui.core": {},
         "sap.m": {},

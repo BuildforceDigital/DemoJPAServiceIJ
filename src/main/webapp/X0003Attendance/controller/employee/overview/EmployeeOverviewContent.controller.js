@@ -228,7 +228,6 @@ sap.ui.define([
         onItemPress: function (oEvent) {
             const oItem = oEvent.getSource();
             const oRouter = UIComponent.getRouterFor(this);
-            console.log("Item pressed");
             oRouter.navTo("detail", {
                 invoicePath: window.encodeURIComponent(oItem.getBindingContext("attendanceEventMod").getPath().substr(1))
             })

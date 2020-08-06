@@ -1,6 +1,6 @@
 package tutorial.model
 
-import javax.persistence.{Basic, Column, Entity, Id, Table}
+import jakarta.persistence.{Basic, Column, Entity, Id, Table}
 
 @Entity
 @Table(name = "\"A0000Users\"", schema = "OLINGO")
@@ -59,7 +59,7 @@ class A0000UsersEntity {
 
   @Basic
   @Column(name = "\"TillDate\"")
-  private var tillDate: java.sql.Date = _
+  private var tillDate: java.time.OffsetDateTime = _
 
   def getId: Int = id
 
@@ -139,9 +139,9 @@ class A0000UsersEntity {
     this.userName = approvalBy
   }
 
-  def getTillDate: java.sql.Date = tillDate
+  def getTillDate: java.time.OffsetDateTime = tillDate
 
-  def setTillDate(approvalDateTime: java.sql.Date): Unit = {
+  def setTillDate(approvalDateTime: java.time.OffsetDateTime): Unit = {
     this.tillDate = approvalDateTime
   }
 
