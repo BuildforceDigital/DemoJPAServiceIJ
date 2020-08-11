@@ -1,7 +1,6 @@
 {
-	"_version": "1.1.0",
+	"_version":"1.21.0",
 	"sap.app": {
-		"_version": "1.1.0",
 		"id": "ToDoMVC",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
@@ -10,7 +9,6 @@
 		}
 	},
 	"sap.ui": {
-		"_version": "1.1.0",
 		"technology": "UI5",
 		"deviceTypes": {
 			"desktop": true,
@@ -19,7 +17,6 @@
 		}
 	},
 	"sap.ui5": {
-		"_version": "1.1.0",
 		"rootView": {
 			"viewName": "ToDoMVC.view.App",
 			"type": "XML"

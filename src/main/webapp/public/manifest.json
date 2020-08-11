@@ -1,5 +1,5 @@
 {
-  "_version": "1.8.0",
+  "_version": "1.21.0",
   "sap.app": {
     "id": "nl.buildforce.gt",
     "type": "application",
@@ -231,9 +231,5 @@
         }
       ]
     }
-  },
-  "sap.platform.hcp": {
-    "uri": "webapp",
-    "_version": "1.1.0"
   }
 }
