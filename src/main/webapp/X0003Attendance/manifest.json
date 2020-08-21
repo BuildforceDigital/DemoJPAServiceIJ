@@ -12,7 +12,7 @@
       }
     },
     "description": "{{appDescription}}",
-    "i18n": "i18n/i18n.properties",
+    "i18n": {"bundleUrl": "i18n/i18n.properties", "supportedLocales": [""], "fallbackLocale": ""},
     "title": "{{appTitle}}",
     "type": "application"
   },
@@ -25,16 +25,16 @@
     "technology": "UI5"
   },
   "sap.ui5": {
-    "rootView": {
-      "async": true,
-      "type": "XML",
-      "viewName": "sap.ui.demo.nav.view.App"
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
     },
     "dependencies": {
       "minUI5Version": "1.79.2",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+				"sap.ui.core": {},
+				"sap.ui.layout": {}
       }
     },
     "handleValidation": true,
@@ -49,10 +49,11 @@
           "synchronizationMode": "None"
         }
       },
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
+      "i18n": {"type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "sap.ui.demo.nav.i18n.i18n"
+          "bundleName": "sap.ui.demo.nav.i18n.i18n",
+          "supportedLocales": [""],
+          "fallbackLocale": ""
         }
       }
     },
@@ -110,6 +111,11 @@
           "transition": "show"
         }
       }
+    },
+    "rootView": {
+      "async": true,
+      "type": "XML",
+      "viewName": "sap.ui.demo.nav.view.App"
     }
   }
 }

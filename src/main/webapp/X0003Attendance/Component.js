@@ -1,8 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
-	"sap/ui/model/json/JSONModel",
-	"sap/ui/demo/nav/model/Models"
-], function (UIComponent, JSONModel, Models) {
+	"sap/ui/model/json/JSONModel"/*,
+	"sap/ui/demo/nav/model/Models"*/
+], function (UIComponent, JSONModel) {
 	"use strict";
 
 	const oViewModel = new JSONModel({
@@ -19,6 +19,11 @@ sap.ui.define([
 			manifest: "json"
 		},
 
+		/**
+		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
+		 * @public
+		 * @override
+		 */
 		init: function () {
 			sap.ui.core.LocaleData
 				.getInstance(sap.ui.getCore().getConfiguration().getFormatSettings().getFormatLocale())
@@ -28,7 +33,7 @@ sap.ui.define([
 			UIComponent.prototype.init.apply(this, arguments);
 
 			// set the device model
-			this.setModel(Models.createDeviceModel(), "device");
+			// this.setModel(Models.createDeviceModel(), "device");
 			this.setModel(oViewModel, "appModel");
 
 			// create the views based on the url/hash
