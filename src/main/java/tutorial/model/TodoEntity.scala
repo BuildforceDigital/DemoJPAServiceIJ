@@ -1,19 +1,22 @@
 package tutorial.model
 
 import jakarta.persistence._
-import jakarta.persistence.{GeneratedValue, GenerationType}
+import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
 @Entity
 @Table(name = "\"Todos\"", schema = "OLINGO")
-class TodoEntity {
+@PrimaryKey(validation = IdValidation.NULL)
+class TodoEntity(_id : Int ) {
+  def this() = this(0)
+
   @Id
   //@GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "\"Id\"", nullable = false)
-  private var id: Int = _
+  private var id: Int = _id
 
   def setId(_id : Int): Unit = id = _id
 
-  def getId(): Int = id
+  def getId: Int = id
 
   @Basic
   @Column(name = "\"Summary\"", nullable = false, length = 100)
@@ -35,6 +38,6 @@ class TodoEntity {
     description = _description
   }
 
-  override def toString: String = "Todo [summary=" + summary + ", description=" + description + "]"
+  override def toString: String = s"Todo [id=$id, summary=$summary, description=$description]"
 
 }

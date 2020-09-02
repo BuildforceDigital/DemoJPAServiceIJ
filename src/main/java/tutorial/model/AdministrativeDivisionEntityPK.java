@@ -3,17 +3,16 @@ package tutorial.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-class AdministrativeDivisionEntityPK implements Serializable {
+public class AdministrativeDivisionEntityPK {
     public AdministrativeDivisionEntityPK() {
-        // Needed to be used as IdClass
+        // Needed to be used as IdClass for java.lang.reflect.Constructor.newInstance
     }
 
-    public AdministrativeDivisionEntityPK(String codePublisher, String codeID, String divisionCode) {
+    public AdministrativeDivisionEntityPK(String codePublisher, String codeId, String divisionCode) {
         this.codePublisher = codePublisher;
-        this.codeId = codeID;
+        this.codeId = codeId;
         this.divisionCode = divisionCode;
     }
 

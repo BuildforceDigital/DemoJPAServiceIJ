@@ -1,7 +1,7 @@
 sap.ui.define([
-	"sap/ui/core/UIComponent",
-	"sap/ui/core/tutorial/odatav4/model/models"
-], function(UIComponent, models) {
+	"sap/ui/core/UIComponent"/*,
+	"sap/ui/core/tutorial/odatav4/model/models"*/
+], function(UIComponent) {
 	"use strict";
 
 	return UIComponent.extend("sap.ui.core.tutorial.odatav4.Component", {

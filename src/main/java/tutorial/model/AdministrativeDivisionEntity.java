@@ -21,6 +21,10 @@ import jakarta.persistence.Table;
 @Table(name = "\"AdministrativeDivision\"", schema = "OLINGO")
 public class AdministrativeDivisionEntity {
 
+    public AdministrativeDivisionEntity() {
+        // required for JPA
+    }
+
     @Id
     @Column(name = "\"CodePublisher\"", length = 10)
     private String codePublisher;
@@ -31,7 +35,7 @@ public class AdministrativeDivisionEntity {
     @Column(name = "\"DivisionCode\"", length = 10)
     private String divisionCode;
 
-    @Column(name = "\"CountryISOCode\"", length = 4)
+    @Column(name = "\"CountryIsoCode\"", length = 4)
     private String countryIsoCode;
     @Column(name = "\"ParentCodeID\"", length = 10)
     private String parentCodeId;
@@ -39,8 +43,8 @@ public class AdministrativeDivisionEntity {
     private String parentDivisionCode;
     @Column(name = "\"AlternativeCode\"", length = 10)
     private String alternativeCode;
-    @Column(name = "\"Area\"") // , precision = 34, scale = 0)
-    private Integer area = 0;
+    @Column(name = "\"Area\"", columnDefinition = "integer default 0") // , precision = 34, scale = 0)
+    private long area;
     @Column(name = "\"Population\"", precision = 34)
     private long population;
 
@@ -64,15 +68,11 @@ public class AdministrativeDivisionEntity {
             updatable = false)
     private List<AdministrativeDivisionDescriptionEntity> allDescriptions;
 
-    public AdministrativeDivisionEntity() {
-        // required for JPA
-    }
-
-    public AdministrativeDivisionEntity(final AdministrativeDivisionEntityPK key) {
+    /*public AdministrativeDivisionEntity(AdministrativeDivisionEntityPK key) {
         codePublisher = key.getCodePublisher();
         codeId = key.getCodeId();
         divisionCode = key.getDivisionCode();
-    }
+    }*/
 
     @PostPersist
     @PostUpdate
@@ -86,7 +86,7 @@ public class AdministrativeDivisionEntity {
         return alternativeCode;
     }
 
-    public int getArea() {
+    public long getArea() {
         return area;
     }
 
@@ -110,9 +110,9 @@ public class AdministrativeDivisionEntity {
         return divisionCode;
     }
 
-    public Object getKey() {
+    /*public Object getKey() {
         return new AdministrativeDivisionEntityPK(codePublisher, codeId, divisionCode);
-    }
+    }*/
 
     public AdministrativeDivisionEntity getParent() {
         return parent;
@@ -134,11 +134,7 @@ public class AdministrativeDivisionEntity {
         this.alternativeCode = alternativeCode;
     }
 
-    public void setArea(int area) {
-        this.area = area;
-    }
-
-    public void setArea(Integer area) {
+    public void setArea(long area) {
         this.area = area;
     }
 

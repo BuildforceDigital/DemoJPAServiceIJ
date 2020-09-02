@@ -13,7 +13,7 @@
 							id="peopleList"
 							growing="true"
 							growingThreshold="10"
-							items="{path: '/People'}">
+							items="{path: '/AttendanceEventsAllEntities'}">
 							<headerToolbar>
 								<OverflowToolbar>
 									<ToolbarSpacer/>
@@ -57,13 +57,13 @@
 										<Input value="{UserName}"/>
 									</cells>
 									<cells>
-										<Input value="{FirstName}"/>
+										<Input value="{ProjectCode}"/>
 									</cells>
 									<cells>
-										<Input value="{LastName}"/>
+										<Input value="{CheckInDateTime}"/>
 									</cells>
 									<cells>
-										<Input value="{Age}"/>
+										<Input value="{Remarks}"/>
 									</cells>
 								</ColumnListItem>
 							</items>

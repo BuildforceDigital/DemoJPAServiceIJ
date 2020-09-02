@@ -11,14 +11,14 @@
         <class>tutorial.model.TodoEntity</class>
 
         <class>tutorial.model.AccessRightsConverter</class>
-        <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class> <!--AdministrativeDivisionDescriptionEntities-->
-        <class>tutorial.model.AdministrativeDivisionEntity</class>            <!--AdministrativeDivisions-->
-        <class>tutorial.model.BusinessPartnerEntity</class>                   <!--BusinessPartners-->
-        <class>tutorial.model.BusinessPartnerRoleEntity</class>               <!--BusinessPartnerRoleEntities-->
-        <class>tutorial.model.CompanyEntity</class>                           <!--Companies-->
+        <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>
+        <class>tutorial.model.AdministrativeDivisionEntity</class>
+        <class>tutorial.model.BusinessPartnerEntity</class>
+        <class>tutorial.model.BusinessPartnerRoleEntity</class>
+        <class>tutorial.model.CompanyEntity</class>
         <class>tutorial.model.CommentEntity</class>
         <class>tutorial.model.PersonEntity</class>
-        <class>tutorial.model.AttendanceEventsAllEntity</class>                            <!--Persons-->
+        <class>tutorial.model.AttendanceEventsAllEntity</class>
 
         <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
      <properties>
