@@ -3,36 +3,37 @@ SET schema "OLINGO";
 
 --------BUSINESS PARTNER---------------------------------------------------------------------------------------------------------
 CREATE TABLE "OLINGO"."BusinessPartner"(
-                                           "ID"                          VARCHAR(32) CONSTRAINT BusinessPartner_pkey PRIMARY KEY,
-                                           "ETag"                        BIGINT,
-                                           "Type"                        VARCHAR(2),
-                                           "CustomString1"               VARCHAR(250),
-                                           "CustomString2"               VARCHAR(250),
-                                           "CustomNum1"                  DECIMAL(16, 5),
-                                           "CustomNum2"                  DECIMAL(31, 0),
-                                           "NameLine1"                   VARCHAR(250),
-                                           "NameLine2"                   VARCHAR(250),
-                                           "BirthDay"                    DATE,
-                                           "Address.StreetName"          VARCHAR(200),
-                                           "Address.StreetNumber"        VARCHAR(60),
-                                           "Address.PostOfficeBox"       VARCHAR(60),
-                                           "Address.City"                VARCHAR(100),
-                                           "Address.PostalCode"          VARCHAR(60),
-                                           "ADDRESS_REGIONCODEPUBLISHER" VARCHAR(10) NOT NULL,
-                                           "ADDRESS_REGIONCODEID"        VARCHAR(10) NOT NULL,
-                                           "ADDRESS_REGION"              VARCHAR(10) NOT NULL,
-                                           "Address.Country"             VARCHAR(100),
-                                           "Telecom.Phone"               VARCHAR(100),
-                                           "Telecom.Mobile"              VARCHAR(100),
-                                           "Telecom.Fax"                 VARCHAR(100),
-                                           "Telecom.Email"               VARCHAR(100),
-                                           "CreatedBy"                   VARCHAR(32) NOT NULL CONSTRAINT bpa_bpa00_fk REFERENCES "OLINGO"."BusinessPartner",
-                                           "CreatedAt"                   TIMESTAMP /*WITH TIME ZONE*/ DEFAULT CURRENT_TIMESTAMP,
-                                           "UpdatedBy"                   VARCHAR(32) CONSTRAINT "FK_BusinessPartner_UpdatedBy" REFERENCES "OLINGO"."BusinessPartner",
-                                           "UpdatedAt"                   TIMESTAMP /*WITH TIME ZONE*/ CHECK ("UpdatedAt" >= "CreatedAt"),
-                                           "Country"                     VARCHAR(4),
-                                           "AbcClass"                    VARCHAR(1),
-                                           "AccessRights"                INTEGER);
+    "ID"                          VARCHAR(32) CONSTRAINT BusinessPartner_pkey PRIMARY KEY,
+    "ETag"                        BIGINT,
+    "Type"                        VARCHAR(2),
+    "CustomString1"               VARCHAR(250),
+    "CustomString2"               VARCHAR(250),
+    "CustomNum1"                  DECIMAL(16, 5),
+    "CustomNum2"                  DECIMAL(31, 0),
+    "NameLine1"                   VARCHAR(250),
+    "NameLine2"                   VARCHAR(250),
+    "BirthDay"                    DATE,
+    "Address.StreetName"          VARCHAR(200),
+    "Address.StreetNumber"        VARCHAR(60),
+    "Address.PostOfficeBox"       VARCHAR(60),
+    "Address.City"                VARCHAR(100),
+    "Address.PostalCode"          VARCHAR(60),
+    "ADDRESS_REGIONCODEPUBLISHER" VARCHAR(10) NOT NULL,
+    "ADDRESS_REGIONCODEID"        VARCHAR(10) NOT NULL,
+    "ADDRESS_REGION"              VARCHAR(10) NOT NULL,
+    "Address.Country"             VARCHAR(100),
+    "Telecom.Phone"               VARCHAR(100),
+    "Telecom.Mobile"              VARCHAR(100),
+    "Telecom.Fax"                 VARCHAR(100),
+    "Telecom.Email"               VARCHAR(100),
+    "CreatedBy"                   VARCHAR(32) NOT NULL CONSTRAINT bpa_bpa00_fk REFERENCES "OLINGO"."BusinessPartner",
+    "CreatedAt"                   TIMESTAMP /*WITH TIME ZONE*/ DEFAULT CURRENT_TIMESTAMP,
+    "UpdatedBy"                   VARCHAR(32) CONSTRAINT "FK_BusinessPartner_UpdatedBy" REFERENCES "OLINGO"."BusinessPartner",
+    "UpdatedAt"                   TIMESTAMP /*WITH TIME ZONE*/ CHECK ("UpdatedAt" >= "CreatedAt"),
+    "Country"                     VARCHAR(4),
+    "AbcClass"                    VARCHAR(1),
+    "AccessRights"                INTEGER
+);
 
 INSERT INTO "OLINGO"."BusinessPartner" VALUES ('99', 0, '1', '', '',   null, null, 'Max', 'Mustermann', null, 'Test Straße', '12', '', 'Teststadt', '10115', 'ISO', '3166-2', 'DE-BE', 'DEU', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'DEU', null, 1);
 INSERT INTO "OLINGO"."BusinessPartner" VALUES ('98', 0, '1', '', '',   null, null, 'John', 'Doe',       null, 'Test Road', '55',   '', 'Test City', '76321', 'ISO', '3166-2', 'US-TX', 'USA', '', '', '', '', '99', '2016-01-20 09:21:23', null, null, 'DEU', null, 2);
@@ -51,7 +52,7 @@ INSERT INTO "OLINGO"."BusinessPartner" VALUES ( '9', 0, '2', '', '',   null, nul
 --------BUSINESS PARTNER ROLE----------------------------------------------------------------------------------------------------
 CREATE TABLE "OLINGO"."BusinessPartnerRole"
 (
-    "BusinessPartnerID" VARCHAR(32) NOT NULL CONSTRAINT "FK_BusinessPartnerRole_BusinessPartnerID" REFERENCES "OLINGO"."BusinessPartner",
+    "BusinessPartnerID"   VARCHAR(32) NOT NULL CONSTRAINT "FK_BusinessPartnerRole_BusinessPartnerID" REFERENCES "OLINGO"."BusinessPartner",
     "BusinessPartnerRole" VARCHAR(10) NOT NULL,
     PRIMARY KEY ("BusinessPartnerID", "BusinessPartnerRole")
 );
@@ -595,23 +596,23 @@ CREATE TABLE "OLINGO"."Comment" (
     "BusinessPartnerID" VARCHAR(32) NOT NULL,
     "Order"             INTEGER     NOT NULL,
     "Text"              VARCHAR(280),
-    PRIMARY KEY ("BusinessPartnerID", "Order"));
+    PRIMARY KEY ("BusinessPartnerID", "Order")
+);
 
 INSERT INTO "OLINGO"."Comment" VALUES ('1', 1, 'This is just a test');
 INSERT INTO "OLINGO"."Comment" VALUES ('1', 3, 'This is another test');
 
 --------GreenTrak --------------------------------------------------------------------------------------------------------
 
-create table "OLINGO"."Invoices"
-(
-    "ProductName" varchar(36) not null,
-    "Quantity" varchar(36) not null,
-    "ShipperName" varchar(36) not null,
-    "ExtendedPrice" DECIMAL(19,4) not null,
-    "ShippingDate" TIMESTAMP /* WITH TIME ZONE*/,
-    "Status" varchar(1) not null,
+create table "OLINGO"."Invoices" (
+    "ProductName"   varchar(36)    not null,
+    "Quantity"      varchar(36)    not null,
+    "ShipperName"   varchar(36)    not null,
+    "ExtendedPrice" DECIMAL(19, 4) not null,
+    "ShippingDate"  TIMESTAMP /* WITH TIME ZONE*/,
+    "Status"        varchar(1)     not null,
 
-    CONSTRAINT PK_Invoices PRIMARY KEY (    "ProductName", "Quantity", "ShipperName")
+    CONSTRAINT PK_Invoices PRIMARY KEY ("ProductName", "Quantity", "ShipperName")
 );
 
 INSERT INTO "OLINGO"."Invoices" VALUES ('Pineapple', 21, 'Fun Inc', 87.2000, '2015-04-01 12:00:00', 'A');
@@ -620,35 +621,32 @@ INSERT INTO "OLINGO"."Invoices" VALUES ('Canned Beans', 3, 'ACME', 6.85000,  '20
 INSERT INTO "OLINGO"."Invoices" VALUES ('Salad', 2, 'ACME', 8.8000,          '2015-04-12 00:00:00', 'C');
 INSERT INTO "OLINGO"."Invoices" VALUES ('Bread', 1, 'Fun Inc', 2.71212,      '2015-01-27 00:00:00', 'A');
 
-create table "OLINGO"."AttendanceEventsAll"
-(
-    "Id" integer
-        constraint attendanceeventsall_pk
-            primary key,
-    "ProjOwner" varchar(36) not null,
-    "ProjectCode" varchar(10) not null,
-    "TermGuidIn" varchar(36) not null,
-    "CheckInDateTime" TIMESTAMP WITH TIME ZONE not null,
-    "UserName" varchar(40) not null,
-    "ParentGuid" integer,
-    "TermGuidOut" varchar(36),
+create table "OLINGO"."AttendanceEventsAll" (
+    "Id"               integer                  constraint attendanceeventsall_pk primary key,
+    "ProjOwner"        varchar(36)              not null,
+    "ProjectCode"      varchar(10)              not null,
+    "TermGuidIn"       varchar(36)              not null,
+    "CheckInDateTime"  TIMESTAMP WITH TIME ZONE not null,
+    "UserName"         varchar(40)              not null,
+    "ParentGuid"       integer,
+    "TermGuidOut"      varchar(36),
     "CheckOutDateTime" TIMESTAMP WITH TIME ZONE,
-    "StartDate" date,
-    "Description" varchar(160),
-    "ApprovalBy" varchar(40),
+    "StartDate"        date,
+    "Description"      varchar(160),
+    "ApprovalBy"       varchar(40),
     "ApprovalDateTime" TIMESTAMP WITH TIME ZONE,
-    "Remarks" varchar(480)
+    "Remarks"          varchar(480)
 );
 
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (0, 'WH&FF', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-02-16 19:42:54.037088', 'TestActor05', null, null, null, '2020-02-16', null, null, null, null);
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (1, 'WH&FF', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-01-16 17:42:54.037088', 'TestActor05', null, 'TERMINAL0000001', '2020-01-16 19:22:54.037088', '2020-02-16', null, null, null, null);
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (2, 'WH&FF', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-01-16 15:42:54.037088', 'TestActor05', null, 'TERMINAL0000001', '2020-01-16 17:22:54.037088', '2020-02-16', 'Tieback poured', 'FvdB', '2020-02-16 19:42:54.037088+02:00', null);
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (3, 'Heijmans Infra', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-05-16 19:42:54.037088+02:00', 'TestActor05', null, null, null, '2020-05-16', null, null, null, null);
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (4, 'Heijmans Infra', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-05-16 17:42:54.037088+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 19:22:54.037088', '2020-05-16', null, null, null, null);
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (5, 'Heijmans Infra', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-05-16 15:42:54.037088+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (6, 'Heijmans Infra', 'ZUIDPLUS00' , 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (10, 'Heijmans Infra', 'ZUIDPLUS00' , 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', 6, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
-INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (11, 'Heijmans Infra', 'ZUIDPLUS00' , 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', 10, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES ( 0, 'WH&FF',          'PRUTSERIJ0', 'TERMINAL0000003', '2020-02-16 19:42:54.037088',       'TestActor05', null, null, null,        '2020-02-16', null, null, null, null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES ( 1, 'WH&FF',          'PRUTSERIJ0', 'TERMINAL0000003', '2020-01-16 17:42:54.037088',       'TestActor05', null, 'TERMINAL0000001', '2020-01-16 19:22:54.037088', '2020-02-16', null, null, null, null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES ( 2, 'WH&FF',          'PRUTSERIJ0', 'TERMINAL0000003', '2020-01-16 15:42:54.037088',       'TestActor05', null, 'TERMINAL0000001', '2020-01-16 17:22:54.037088', '2020-02-16', 'Tieback poured', 'FvdB', '2020-02-16 19:42:54.037088+02:00', null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES ( 3, 'Heijmans Infra', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-05-16 19:42:54.037088+02:00', 'TestActor05', null, null, null,        '2020-05-16', null, null, null, null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES ( 4, 'Heijmans Infra', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-05-16 17:42:54.037088+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 19:22:54.037088', '2020-05-16', null, null, null, null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES ( 5, 'Heijmans Infra', 'PRUTSERIJ0', 'TERMINAL0000003', '2020-05-16 15:42:54.037088+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES ( 6, 'Heijmans Infra', 'ZUIDPLUS00', 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (10, 'Heijmans Infra', 'ZUIDPLUS00', 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', 6,    'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
+INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (11, 'Heijmans Infra', 'ZUIDPLUS00', 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', 10,   'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
 
 CREATE TABLE OLINGO."Todos"
 (
@@ -658,24 +656,21 @@ CREATE TABLE OLINGO."Todos"
     PRIMARY KEY ("Id")
 );
 
-create table "OLINGO"."A0000Users"
-(
-    "Id" integer
-        constraint a0000users_pk
-            primary key,
-    "Birthday" varchar(36),
-    "BusinessEmail" varchar(10),
+create table "OLINGO"."A0000Users" (
+    "Id"               integer constraint a0000users_pk primary key,
+    "Birthday"         varchar(36),
+    "BusinessEmail"    varchar(10),
     "CitizenServiceNr" varchar(36),
-    "FullName" varchar(40),
-    "Gender" varchar(10),
-    "JobFunction" varchar(36),
-    "LandlinePhone" varchar(40),
-    "MobilePhone" varchar(40),
-    "Nationality" varchar(40),
-    "Nickname" varchar(40),
-    "PrivateEmail" varchar(40),
-    "TillDate" TIMESTAMP WITH TIME ZONE,
-    "UserName" varchar(40)
+    "FullName"         varchar(40),
+    "Gender"           varchar(10),
+    "JobFunction"      varchar(36),
+    "LandlinePhone"    varchar(40),
+    "MobilePhone"      varchar(40),
+    "Nationality"      varchar(40),
+    "Nickname"         varchar(40),
+    "PrivateEmail"     varchar(40),
+    "TillDate"         TIMESTAMP WITH TIME ZONE,
+    "UserName"         varchar(40)
 );
 
 INSERT INTO "OLINGO"."A0000Users" VALUES (0, 'Bd', 'Be', 'Csnr', 'Fn0', 'M', 'Jf', 'lp', 'mp', 'nat', 'Jan', 'pe', '2020-05-01', 'us');
@@ -684,8 +679,7 @@ INSERT INTO "OLINGO"."A0000Users" VALUES (2, 'Bd', 'Be', 'Csnr', 'Fn2', 'M', 'Jf
 INSERT INTO "OLINGO"."A0000Users" VALUES (3, 'Bd', 'Be', 'Csnr', 'Fn3', 'M', 'Jf', 'lp', 'mp', 'nat', 'Willem', 'pe', '2020-05-01', 'us');
 
 --------DUMMY FOR TESTING--------------------------------------------------------------------------------------------------------
-CREATE TABLE "OLINGO"."DummyToBeIgnored"
-(
+CREATE TABLE "OLINGO"."DummyToBeIgnored" (
     "ID" VARCHAR(32) NOT NULL,
     PRIMARY KEY ("ID")
 );
@@ -707,28 +701,28 @@ BEGIN ATOMIC
     END IF;
 END;
 
-CREATE FUNCTION "Siblings" ("Publisher" VARCHAR(10), "ID" VARCHAR(10), "Division" VARCHAR(10))
-	RETURNS TABLE(
-		"CodePublisher" VARCHAR(10),
-		"CodeID" VARCHAR(10),
-		"DivisionCode" VARCHAR(10),
-		"CountryIsoCode" VARCHAR(4),
-		"ParentCodeID" VARCHAR(10),
-		"ParentDivisionCode" VARCHAR(10),
-		"AlternativeCode" VARCHAR(10),
-		"Area" int,
-		"Population" BIGINT)
-	READS SQL DATA
-	RETURN TABLE( SELECT *
-FROM "AdministrativeDivision" as a
-WHERE EXISTS (SELECT "CodePublisher"
-				FROM "AdministrativeDivision" as b
-				WHERE b."CodeID" = "ID"
-				AND b."DivisionCode" = "Division"
-				AND b."CodePublisher" = a."CodePublisher"
-				AND b."ParentCodeID" = a."ParentCodeID"
-				AND b."ParentDivisionCode" = a."ParentDivisionCode")
-				AND NOT( a."CodePublisher" = "Publisher"
-					    AND a."CodeID" = "ID"
-					    AND a."DivisionCode" = "Division" )
-				);
+CREATE FUNCTION "Siblings"("Publisher" VARCHAR(10), "ID" VARCHAR(10), "Division" VARCHAR(10))
+    RETURNS TABLE(
+                "CodePublisher"      VARCHAR(10),
+                "CodeID"             VARCHAR(10),
+                "DivisionCode"       VARCHAR(10),
+                "CountryIsoCode"     VARCHAR(4),
+                "ParentCodeID"       VARCHAR(10),
+                "ParentDivisionCode" VARCHAR(10),
+                "AlternativeCode"    VARCHAR(10),
+                "Area"               int,
+                "Population"         BIGINT)
+    READS SQL DATA
+    RETURN TABLE ( SELECT *
+        FROM "AdministrativeDivision" as a
+        WHERE EXISTS (SELECT "CodePublisher"
+        FROM "AdministrativeDivision" as b
+        WHERE b."CodeID" = "ID"
+        AND b."DivisionCode" = "Division"
+        AND b."CodePublisher" = a."CodePublisher"
+        AND b."ParentCodeID" = a."ParentCodeID"
+        AND b."ParentDivisionCode" = a."ParentDivisionCode")
+        AND NOT ( a."CodePublisher" = "Publisher"
+        AND a."CodeID" = "ID"
+        AND a."DivisionCode" = "Division" )
+        );

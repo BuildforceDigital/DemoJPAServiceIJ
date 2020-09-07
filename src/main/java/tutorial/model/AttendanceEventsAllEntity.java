@@ -1,22 +1,16 @@
 package tutorial.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.PostPersist;
-import jakarta.persistence.PostUpdate;
 import jakarta.persistence.Table;
+import org.eclipse.persistence.annotations.IdValidation;
+import org.eclipse.persistence.annotations.PrimaryKey;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
+@PrimaryKey(validation = IdValidation.NULL)
 @Table(name = "\"AttendanceEventsAll\"", schema = "OLINGO")
 public class AttendanceEventsAllEntity {
 

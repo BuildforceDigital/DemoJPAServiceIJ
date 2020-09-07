@@ -8,17 +8,18 @@
 			<pages>
 				<Page title="{i18n>peoplePageTitle}">
 					<content>
-						<Table
-							id="peopleList"
+						<Table id="peopleList"
 							growing="true"
 							growingThreshold="10"
 							items="{path: '/AttendanceEventsAllEntities',
 								parameters: {
 									$count: true,
 									$$updateGroupId : 'peopleGroup'
-								}}">
+								}}"
+							mode="SingleSelectLeft">
 							<headerToolbar>
 								<OverflowToolbar>
+									<content>
 									<ToolbarSpacer/>
 									<SearchField
 											id="searchField"
@@ -35,20 +36,27 @@
 											<OverflowToolbarLayoutData priority="NeverOverflow"/>
 										</layoutData>
 									</Button>
-									<content>
-
+									<Button
+											id="deleteUserButton"
+											icon="sap-icon://delete"
+											tooltip="{i18n>deleteButtonText}"
+											press=".onDelete">
+										<layoutData>
+											<OverflowToolbarLayoutData priority="NeverOverflow"/>
+										</layoutData>
+									</Button>
 										<Button
 												id="refreshUsersButton"
 												icon="sap-icon://refresh"
 												tooltip="{i18n>refreshButtonText}"
 												press=".onRefresh"/>
-									</content>
 									<Button
 											id="sortUsersButton"
 											press=".onSort"
 											tooltip="{i18n>sortButtonText}"
 											enabled="{= !${appView>/hasUIChanges}}"
 											icon="sap-icon://sort"/>
+									</content>
 								</OverflowToolbar>
 							</headerToolbar>
 							<columns>
