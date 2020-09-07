@@ -1,24 +1,26 @@
 package tutorial.model
 
 import jakarta.persistence.{Basic, Column, Entity, Id, Table}
+import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
 @Entity
+@PrimaryKey (validation = IdValidation.NULL)
 @Table(name = "\"A0000Users\"", schema = "OLINGO")
 class A0000UsersEntity {
   @Id
   @Column(name = "\"Id\"", nullable = false)
-  private var id: Int = _
+  private var id: Integer = _
 
   @Basic
-  @Column(name = "\"Birthday\"" /*, nullable = false*/ , length = 36)
+  @Column(name = "\"Birthday\"", length = 36)
   private var birthday: String = _
 
   @Basic
-  @Column(name = "\"BusinessEmail\"", /*nullable = false,*/ length = 10)
+  @Column(name = "\"BusinessEmail\"", length = 10)
   private var businessEmail: String = _
 
   @Basic
-  @Column(name = "\"CitizenServiceNr\"", /*nullable = false,*/ length = 36)
+  @Column(name = "\"CitizenServiceNr\"", length = 36)
   private var citizenServiceNr: String = _
 
   @Basic
@@ -26,7 +28,7 @@ class A0000UsersEntity {
   private var fullName: String = _
 
   @Basic
-  @Column(name = "\"JobFunction\"", /*nullable = false,*/ length = 40)
+  @Column(name = "\"JobFunction\"", length = 40)
   private var jobFunction: String = _
 
   @Basic
@@ -61,9 +63,13 @@ class A0000UsersEntity {
   @Column(name = "\"TillDate\"")
   private var tillDate: java.time.OffsetDateTime = _
 
-  def getId: Int = id
+  @Basic
+  @Column(name = "\"UserImage\"", length = 40)
+  private var userImage: String = _
 
-  def setId(id: Int): Unit = {
+  def getId: Integer = id
+
+  def setId(id: Integer): Unit = {
     this.id = id
   }
 
@@ -137,6 +143,12 @@ class A0000UsersEntity {
 
   def setUserName(approvalBy: String): Unit = {
     this.userName = approvalBy
+  }
+
+  def getUserImage: String = userImage
+
+  def setUserImage(approvalBy: String): Unit = {
+    this.userImage = approvalBy
   }
 
   def getTillDate: java.time.OffsetDateTime = tillDate

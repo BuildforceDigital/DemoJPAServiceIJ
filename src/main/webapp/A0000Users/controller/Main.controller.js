@@ -12,7 +12,7 @@ sap.ui.define([
         _deleteEmp: function (oSelected) {
             if (oSelected) {
                 var that = this;
-                var EMPID = oSelected.getBindingContext().getProperty("ID");
+                var EMPID = oSelected.getBindingContext().getProperty("Id");
                 var fullname = oSelected.getBindingContext().getProperty("FullName");
                 oSelected.getBindingContext().delete("$auto").then(function () {
                     var successMessage = "User profile " + fullname + " is deleted";
@@ -131,7 +131,7 @@ sap.ui.define([
             var email = this.getView().byId("epemailTextField").getValue().trim();
             //creating payload
             var data = {
-                "ID": getRandomArbitrary(1000, 2000), //default ID
+                "Id": getRandomArbitrary(1000, 2000), //default ID
                 "FullName": this.getView().byId("fullNameTextField").getValue().trim(),
                 "UserName": email,
                 "PrivateEmail": email,

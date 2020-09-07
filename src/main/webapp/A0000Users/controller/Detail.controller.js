@@ -34,7 +34,7 @@ sap.ui.define([
             MessageBox.confirm("Do you sure want to delete User profile: " + userName,
                 jQuery.proxy(function (bResult) {
                     if (bResult === "OK") {
-                        const EMPID = this.getView().getBindingContext().getProperty("ID");
+                        const EMPID = this.getView().getBindingContext().getProperty("Id");
                         this._deleteUsr(EMPID, userName);
                     }
                 }, this),

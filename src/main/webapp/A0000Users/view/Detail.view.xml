@@ -24,6 +24,7 @@
             <IconTabBar id="empIconTabBar" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
                 <items>
                     <IconTabFilter key="personal" text="Personal Info" icon="sap-icon://employee">
+                        <HBox justifyContent="SpaceBetween">
                         <VBox class="sapUiSmallMargin">
                             <f:SimpleForm id="personalForm" editable="false" layout="ResponsiveGridLayout"
                                           title="Personal Info" labelSpanXL="4" labelSpanL="3"
@@ -44,11 +45,32 @@
                                     <Text text="{Nationality}"/>
                                     <Label design="Bold" text="Citizen Service Number"/>
                                     <Text text="{CitizenServiceNr}"/>
-                                    <Label design="Bold" text="Validity End"/>
+                                    <Label design="Bold" text="Validity Ends"/>
                                     <Text text="{TillDate}"/>
                                 </f:content>
                             </f:SimpleForm>
                         </VBox>
+                            <VBox class="sapUiSmallMarginBottom">
+                                <Image  decorative="false"
+                                        densityAware="false"
+                                        src="{UserImage}"
+                                        width="170px">
+                                    <detailBox>
+                                        <LightBox>
+                                            <LightBoxItem
+                                                    imageSrc="{UserImage}"
+                                                    alt="Beamer"
+                                                    title="This is a beamer"
+                                                    subtitle="This is beamer's description" />
+                                        </LightBox>
+                                    </detailBox>
+                                    <!-- Fixes HBox layout on Android Stock Browser for Android 5.0 -->
+                                    <layoutData>
+                                        <FlexItemData growFactor="1" shrinkFactor="0" />
+                                    </layoutData>
+                                </Image>
+                            </VBox>
+                        </HBox>
                     </IconTabFilter>
                     <IconTabFilter key="contact" text="Contact Info" icon="sap-icon://contacts">
                         <VBox class="sapUiSmallMargin">
