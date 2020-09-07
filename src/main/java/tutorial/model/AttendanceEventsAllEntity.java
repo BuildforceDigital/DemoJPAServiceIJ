@@ -21,13 +21,12 @@ import java.util.List;
 public class AttendanceEventsAllEntity {
 
     @Id
-    @Column(name = "\"Id\"", nullable = false) private int id;
+    @Column(name = "\"Id\"", nullable = false) private Integer id;
     @Column(name = "\"ApprovalBy\"", length = 40) private String approvalBy;
     @Column(name = "\"ApprovalDateTime\"") private OffsetDateTime approvalDateTime;
     @Column(name = "\"CheckInDateTime\"", nullable = false) private OffsetDateTime checkInDateTime;
     @Column(name = "\"CheckOutDateTime\"") private OffsetDateTime checkOutDateTime;
     @Column(name = "\"Description\"", length = 160) private String description;
-    @Column(name = "\"ParentGuid\"") private int parentGuid;
     @Column(name = "\"ProjectCode\"", nullable = false, length = 10) private String projectCode;
     @Column(name = "\"ProjOwner\"", nullable = false, length = 36) private String projOwner;
     @Column(name = "\"Remarks\"", length = 480) private String remarks;
@@ -37,53 +36,20 @@ public class AttendanceEventsAllEntity {
     @Column(name = "\"UserName\"", nullable = false, length = 40) private String userName;
 
 
-    public AttendanceEventsAllEntity(final int key) {
+    /*public AttendanceEventsAllEntity(final Integer key) {
         id = key;
-    }
+    }*/
     
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinColumn(referencedColumnName = "\"Id\"", name = "\"Id\"", nullable = false,
-            insertable = false, updatable = false)
-    private AttendanceEventsAllEntity parent;
-
-    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<AttendanceEventsAllEntity> children = new ArrayList<>();
 
     public AttendanceEventsAllEntity() {
         // required for JPA
     }
 
-    @PostPersist
-    @PostUpdate
-    public void adjustParent() {
-        for (AttendanceEventsAllEntity child : children) {
-            child.setParent(this);
-        }
-    }
-
-    public AttendanceEventsAllEntity getParent() {
-        return parent;
-    }
-
-    public void setChildren(List<AttendanceEventsAllEntity> children) {
-        this.children = children;
-    }
-
-    public void setParentKey(int parentKey) {
-        this.parentGuid = parentKey;
-    }
-
-    public void setParent(AttendanceEventsAllEntity parent) {
-        this.parent = parent;
-        this.parentGuid = parent.getParentGuid();
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -125,14 +91,6 @@ public class AttendanceEventsAllEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getParentGuid() {
-        return parentGuid;
-    }
-
-    public void setParentGuid(int parentGuid) {
-        this.parentGuid = parentGuid;
     }
 
     public String getProjectCode() {
@@ -191,7 +149,4 @@ public class AttendanceEventsAllEntity {
         this.userName = userName;
     }
 
-    public List<AttendanceEventsAllEntity> getChildren() {
-        return children;
-    }
 }

@@ -110,10 +110,6 @@ public class AdministrativeDivisionEntity {
         return divisionCode;
     }
 
-    /*public Object getKey() {
-        return new AdministrativeDivisionEntityPK(codePublisher, codeId, divisionCode);
-    }*/
-
     public AdministrativeDivisionEntity getParent() {
         return parent;
     }
@@ -162,7 +158,6 @@ public class AdministrativeDivisionEntity {
         this.parent = parent;
         this.parentCodeId = parent.getCodeId();
         this.parentDivisionCode = parent.getDivisionCode();
-
     }
 
     public void setParentCodeId(String parentCodeID) {

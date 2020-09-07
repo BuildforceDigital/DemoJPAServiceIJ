@@ -10,17 +10,11 @@ public class AdministrativeDivisionEntityPK {
         // Needed to be used as IdClass for java.lang.reflect.Constructor.newInstance
     }
 
-    public AdministrativeDivisionEntityPK(String codePublisher, String codeId, String divisionCode) {
-        this.codePublisher = codePublisher;
-        this.codeId = codeId;
-        this.divisionCode = divisionCode;
-    }
-
     @Column(name = "\"CodePublisher\"", length = 10)
     @Id
     private String codePublisher;
 
-    public String getCodePublisher() { return codePublisher; }
+//    public String getCodePublisher() { return codePublisher; }
 
     public void setCodePublisher(String codePublisher) { this.codePublisher = codePublisher; }
 
@@ -28,7 +22,7 @@ public class AdministrativeDivisionEntityPK {
     @Id
     private String codeId;
 
-    public String getCodeId() { return codeId; }
+//    public String getCodeId() { return codeId; }
 
     public void setCodeId(String codeId) { this.codeId = codeId; }
 
@@ -36,10 +30,9 @@ public class AdministrativeDivisionEntityPK {
     @Id
     private String divisionCode;
 
-    public String getDivisionCode() { return divisionCode; }
+//    public String getDivisionCode() { return divisionCode; }
 
-    public void setDivisionCode(String divisionCode) {
-        this.divisionCode = divisionCode; }
+    public void setDivisionCode(String divisionCode) {this.divisionCode = divisionCode; }
 
     @Override
     public boolean equals(Object o) {

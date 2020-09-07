@@ -8,12 +8,15 @@
 			<pages>
 				<Page title="{i18n>peoplePageTitle}">
 					<content>
-						<!--, parameters: {$count: true}, $$updateGroupId : 'UserGroup'-->
 						<Table
 							id="peopleList"
 							growing="true"
 							growingThreshold="10"
-							items="{path: '/AttendanceEventsAllEntities'}">
+							items="{path: '/AttendanceEventsAllEntities',
+								parameters: {
+									$count: true,
+									$$updateGroupId : 'peopleGroup'
+								}}">
 							<headerToolbar>
 								<OverflowToolbar>
 									<ToolbarSpacer/>
@@ -21,7 +24,17 @@
 											id="searchField"
 											width="20%"
 											placeholder="{i18n>searchFieldPlaceholder}"
+											enabled="{= !${appView>/hasUIChanges}}"
 											search=".onSearch"/>
+									<Button
+											id="addUserButton"
+											icon="sap-icon://add"
+											tooltip="{i18n>createButtonText}"
+											press=".onCreate">
+										<layoutData>
+											<OverflowToolbarLayoutData priority="NeverOverflow"/>
+										</layoutData>
+									</Button>
 									<content>
 
 										<Button
@@ -34,6 +47,7 @@
 											id="sortUsersButton"
 											press=".onSort"
 											tooltip="{i18n>sortButtonText}"
+											enabled="{= !${appView>/hasUIChanges}}"
 											icon="sap-icon://sort"/>
 								</OverflowToolbar>
 							</headerToolbar>
@@ -54,21 +68,40 @@
 							<items>
 								<ColumnListItem>
 									<cells>
-										<Input value="{UserName}"/>
+										<Input value="{UserName}"
+											   valueLiveUpdate="true"
+											   liveChange=".onInputChange"/>
 									</cells>
 									<cells>
-										<Input value="{ProjectCode}"/>
+										<Input value="{ProjectCode}" liveChange=".onInputChange"/>
 									</cells>
 									<cells>
-										<Input value="{CheckInDateTime}"/>
+										<Input value="{CheckInDateTime}"
+											   liveChange=".onInputChange"/>
 									</cells>
 									<cells>
-										<Input value="{Remarks}"/>
+										<Input value="{Remarks}"
+											   liveChange=".onInputChange"/>
 									</cells>
 								</ColumnListItem>
 							</items>
 						</Table>
 					</content>
+					<footer>
+						<Toolbar visible="{appView>/hasUIChanges}">
+							<ToolbarSpacer/>
+							<Button
+									id="saveButton"
+									type="Emphasized"
+									text="{i18n>saveButtonText}"
+									enabled="{= ${message>/}.length === 0 &amp;&amp; ${appView>/usernameEmpty} === false }"
+									press=".onSave"/>
+							<Button
+									id="doneButton"
+									text="{i18n>cancelButtonText}"
+									press=".onResetChanges"/>
+						</Toolbar>
+					</footer>
 				</Page>
 			</pages>
 		</App>
