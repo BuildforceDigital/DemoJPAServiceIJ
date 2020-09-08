@@ -118,6 +118,7 @@ sap.ui.define([
 
         _onRouteMatched: function (oEvent) {
             this.getView().byId("empIconTabBar").setSelectedKey("personal");
+            console.log("Query: " + "/" + oEvent.getParameter("arguments").employeePath);
             this.getView().bindElement({
                 path: "/" + oEvent.getParameter("arguments").employeePath,
                 parameters: {

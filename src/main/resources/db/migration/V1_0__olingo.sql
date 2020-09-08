@@ -648,13 +648,27 @@ INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES ( 6, 'Heijmans Infra', 'ZUIDPL
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (10, 'Heijmans Infra', 'ZUIDPLUS00', 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', 6,    'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
 INSERT INTO "OLINGO"."AttendanceEventsAll" VALUES (11, 'Heijmans Infra', 'ZUIDPLUS00', 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00', 'TestActor05', 10,   'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
 
-CREATE TABLE OLINGO."Todos"
-(
-    "Id"          INTEGER      NOT NULL,
-    "Description" VARCHAR(100) NOT NULL,
-    "Summary"     VARCHAR(100) NOT NULL,
-    PRIMARY KEY ("Id")
+create table OLINGO."P0000Projects"(
+    "Id"          INTEGER not null constraint P0000PROJECTS_PK primary key,
+    "StartDate"   TIMESTAMP WITH TIME ZONE,
+    "ProjectName" VARCHAR(20),
+    "ProjectCode" VARCHAR(20),
+    "ProjOwner"   VARCHAR(20),
+    "Description" VARCHAR(320)
 );
+
+create table OLINGO."P0000ProjMembers"(
+    "P0000ProjectId" INTEGER,
+    "A0000UserId"    INTEGER
+);
+
+INSERT INTO "OLINGO"."P0000ProjMembers" VALUES (0, 0);
+
+INSERT INTO "OLINGO"."P0000Projects" VALUES ( 0, '2020-05-16 12:00:00.000000+02:00', 'Zuidasdok', 'ZUIDPLUS00', 'Heijmans Infra',
+'De verbreding van 4 naar 6 rijstroken en ondergronds brengen van Rijksweg A10 Zuid;
+De herinrichting van de verkeersknooppunten Amstel en De Nieuwe Meer;
+Het uitbreiden en vernieuwen van het station Amsterdam Zuid;
+Het opnieuw inrichten van het stationsgebied.');
 
 create table "OLINGO"."A0000Users" (
     "Id"               integer constraint a0000users_pk primary key,
@@ -674,13 +688,33 @@ create table "OLINGO"."A0000Users" (
     "UserImage"        varchar(40)
 );
 
-INSERT INTO "OLINGO"."A0000Users" VALUES (0, 'Bd', 'Be', 'Csnr', 'Fn0', 'M', 'Jf', 'lp', 'mp', 'nat', 'Jan',    'pe', '2020-05-01', 'us', null);
-INSERT INTO "OLINGO"."A0000Users" VALUES (1, 'Bd', 'Be', 'Csnr', 'Fn1', 'M', 'Jf', 'lp', 'mp', 'nat', 'Piet',   'pe', '2020-05-01', 'us', null);
-INSERT INTO "OLINGO"."A0000Users" VALUES (2, 'Bd', 'Be', 'Csnr', 'Fn2', 'M', 'Jf', 'lp', 'mp', 'nat', 'Klaas',  'pe', '2020-05-01', 'us', null);
-INSERT INTO "OLINGO"."A0000Users" VALUES (3, 'Bd', 'Be', 'Csnr', 'Fn3', 'M', 'Jf', 'lp', 'mp', 'nat', 'Willem', 'pe', '2020-05-01', 'us', null);
-INSERT INTO "OLINGO"."A0000Users" VALUES (4, 'Bd', 'Be', 'Csnr', 'Fn4', 'F', 'Jf', 'lp', 'mp', 'nat', 'Anita',  'pe', '2020-05-01', 'us', '../media/Woman_avatar_02.png');
+INSERT INTO "OLINGO"."A0000Users" VALUES (0, 'Bd', 'Be', 'Csnr', 'TestActor05', 'M', 'Jf', 'lp', 'mp', 'nat', 'Jan',    'pe', '2020-05-01', 'us', null);
+INSERT INTO "OLINGO"."A0000Users" VALUES (1, 'Bd', 'Be', 'Csnr', 'Fn1', 'M', 'Jf', 'lp', 'mp', 'nat', 'Jan',    'pe', '2020-05-01', 'us', null);
+INSERT INTO "OLINGO"."A0000Users" VALUES (2, 'Bd', 'Be', 'Csnr', 'Fn2', 'M', 'Jf', 'lp', 'mp', 'nat', 'Piet',   'pe', '2020-05-01', 'us', null);
+INSERT INTO "OLINGO"."A0000Users" VALUES (3, 'Bd', 'Be', 'Csnr', 'Fn3', 'M', 'Jf', 'lp', 'mp', 'nat', 'Klaas',  'pe', '2020-05-01', 'us', null);
+INSERT INTO "OLINGO"."A0000Users" VALUES (4, 'Bd', 'Be', 'Csnr', 'Fn4', 'M', 'Jf', 'lp', 'mp', 'nat', 'Willem', 'pe', '2020-05-01', 'us', null);
+INSERT INTO "OLINGO"."A0000Users" VALUES (5, 'Bd', 'Be', 'Csnr', 'Fn5', 'F', 'Jf', 'lp', 'mp', 'nat', 'Anita',  'pe', '2020-05-01', 'us', '../media/Woman_avatar_02.png');
+
+CREATE view "P0000ProjMembersView" ("P0000ProjectId", "A0000UserId", "Nickname", "UserName", "Gender", "FullName") as
+SELECT "OLINGO"."P0000ProjMembers"."P0000ProjectId",
+       "OLINGO"."P0000ProjMembers"."A0000UserId",
+       "OLINGO"."A0000Users"."Nickname",
+       "OLINGO"."A0000Users"."UserName",
+       "OLINGO"."A0000Users"."Gender",
+       "OLINGO"."A0000Users"."FullName"
+FROM "OLINGO"."P0000ProjMembers",
+     "OLINGO"."A0000Users"
+WHERE "OLINGO"."P0000ProjMembers"."A0000UserId" = "OLINGO"."A0000Users"."Id";
 
 --------DUMMY FOR TESTING--------------------------------------------------------------------------------------------------------
+CREATE TABLE OLINGO."Todos"
+(
+    "Id"          INTEGER      NOT NULL,
+    "Description" VARCHAR(100) NOT NULL,
+    "Summary"     VARCHAR(100) NOT NULL,
+    PRIMARY KEY ("Id")
+);
+
 CREATE TABLE "OLINGO"."DummyToBeIgnored" (
     "ID" VARCHAR(32) NOT NULL,
     PRIMARY KEY ("ID")

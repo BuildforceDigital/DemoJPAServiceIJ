@@ -1,6 +1,6 @@
 <mvc:View controllerName="sap.ui.demo.basicTemplate.controller.Main" displayBlock="true"
           xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
-    <Page class="sapUiContentPadding ">
+    <Page class="sapUiContentPadding">
         <customHeader>
             <Bar>
                 <contentLeft>
@@ -20,8 +20,9 @@
                    alternateRowColors="true"
                    growing="true"
                    growingThreshold="5"
+                   growingScrollToLoad="true"
                    includeItemInSelection="false"
-                   items="{ path: '/Projects',
+                   items="{ path: '/P0000ProjectsEntities',
 						parameters: {$select:'ProjOwner,ProjectCode,ProjectName,StartDate',
 						$count: true, $$updateGroupId : 'UserGroup' } }"
                    mode="SingleSelectLeft"

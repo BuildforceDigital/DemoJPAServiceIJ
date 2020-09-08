@@ -2,7 +2,7 @@ package tutorial.model
 
 import java.{util => ju}
 
-import jakarta.persistence._
+import jakarta.persistence.{Basic, Column, Entity, Id, Table}
 import scala.jdk.CollectionConverters._
 
 

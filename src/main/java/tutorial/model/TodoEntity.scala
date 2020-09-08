@@ -1,6 +1,6 @@
 package tutorial.model
 
-import jakarta.persistence._
+import jakarta.persistence.{Basic, Column, Entity, Id, Table}
 import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
 @Entity

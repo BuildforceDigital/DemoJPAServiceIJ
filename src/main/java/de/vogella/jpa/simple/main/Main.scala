@@ -19,7 +19,7 @@ object Main {
     println("Size: " + todoList.size)
     todoList.foreach(println)
 
-    val i: Int = if (todoList.isEmpty) -1 else todoList.map { case x: TodoEntity => x.getId() }.max
+    val i: Int = if (todoList.isEmpty) -1 else todoList.map { case x: TodoEntity => x.getId }.max
     // create new todo
     em.getTransaction.begin()
     val todo = new TodoEntity(i + 1)

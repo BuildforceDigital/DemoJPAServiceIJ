@@ -51,9 +51,9 @@
                                growing="true"
                                growingThreshold="5"
                                includeItemInSelection="false"
-                               items="{ path: '/ProjMembers',
-						parameters: {$select:'Nickname,FullName,Gender,UserName',
-						$count: true, $$updateGroupId : 'UserGroup' } }"
+                               items="{ path: '/P0000ProjMembersEntities',
+                               parameters: {$count: true,
+                               $$updateGroupId : 'UserGroup'}}"
                                mode="SingleSelectLeft"
                                noDataText="No User found"
                                select=".onSelection"
