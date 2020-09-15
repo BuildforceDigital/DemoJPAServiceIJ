@@ -1,4 +1,4 @@
-package tutorial.model
+package de.vogella.jpa.simple.main
 
 import jakarta.persistence.{Basic, Column, Entity, Id, Table}
 import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}

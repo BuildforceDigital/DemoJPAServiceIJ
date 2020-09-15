@@ -9,8 +9,10 @@
         <class>tutorial.model.P0000ProjectsEntity</class>
         <class>tutorial.model.P0000ProjMembersEntity</class>
         <class>tutorial.model.WalkthroughInvoiceEntity</class>
+        <class>de.mirkosertic.scala.Parent</class>
+        <class>de.mirkosertic.scala.Child</class>
 
-        <class>tutorial.model.TodoEntity</class>
+        <class>de.vogella.jpa.simple.main.TodoEntity</class>
 
         <class>tutorial.model.AccessRightsConverter</class>
         <class>tutorial.model.AdministrativeDivisionDescriptionEntity</class>

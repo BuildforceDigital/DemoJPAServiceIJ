@@ -1,7 +1,6 @@
 package de.vogella.jpa.simple.main
 
 import nl.buildforce.sequoia.metadata.api.JPAEntityManagerFactory
-import tutorial.model.TodoEntity
 import tutorial.service.DataSourceHelper
 
 import scala.jdk.CollectionConverters.ListHasAsScala
