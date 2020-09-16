@@ -11,6 +11,8 @@
         <class>tutorial.model.WalkthroughInvoiceEntity</class>
         <class>de.mirkosertic.scala.Parent</class>
         <class>de.mirkosertic.scala.Child</class>
+        <class>com.vladmihalcea.OneToMany.Post</class>
+        <class>com.vladmihalcea.OneToMany.PostComment</class>
 
         <class>de.vogella.jpa.simple.main.TodoEntity</class>
 

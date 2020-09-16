@@ -15,11 +15,11 @@ class Parent(@BeanProperty val name1: String, @BeanProperty val name2: String) {
   @Column(name = "\"Id\"", nullable = false)
   private var id: Int = _
 
-  @OneToMany(cascade = Array(CascadeType.ALL), fetch=FetchType.EAGER)
+  @OneToMany(cascade = Array(CascadeType.ALL), orphanRemoval = true, fetch=FetchType.LAZY)
   @JoinColumn(name = "PARENT_ID")
   @BeanProperty
   // Use Java collection types instead of Scala ones to make JPA happy
-  var children: ju.Set[Child] = new ju.HashSet[Child]()
+  var children: ju.List[Child] = new ju.ArrayList[Child]()
 
   // Default constructor for persistence providers
   // No public visibility required
