@@ -12,7 +12,7 @@ class Parent(@BeanProperty val name1: String, @BeanProperty val name2: String) {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "\"Id\"", nullable = false)
+  @Column(name = "\"Id\"")
   private var id: Int = _
 
   @OneToMany(cascade = Array(CascadeType.ALL), orphanRemoval = true, fetch=FetchType.LAZY)

@@ -43,5 +43,10 @@ public class JPA20 {
         for (Parent theParent : theEntityManager.createQuery(theQuery).getResultList()) {
             System.out.println(theParent);
         }
+        CriteriaQuery<Post> theQuery0 = theEntityManager.getCriteriaBuilder().createQuery(Post.class);
+        theQuery0.distinct(false).from(Parent.class);
+        for (Post theParent : theEntityManager.createQuery(theQuery0).getResultList()) {
+            System.out.println(theParent);
+        }
     }
 }

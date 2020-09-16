@@ -25,7 +25,7 @@ import jakarta.persistence.Table
 class AttendanceEventsAllEntityOld {
 
   @Id
-  @Column(name = "\"Id\"", nullable = false)
+  @Column(name = "\"Id\"")
   private var id = 0
 
   def getId: Int = id

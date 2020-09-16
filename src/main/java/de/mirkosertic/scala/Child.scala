@@ -8,7 +8,7 @@ class Child(@BeanProperty val name: String) {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "\"Id\"", nullable = false)
+  @Column(name = "\"Id\"")
   var id: Int = _
 
   // Default constructor for hibernate

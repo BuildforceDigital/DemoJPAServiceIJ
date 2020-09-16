@@ -8,7 +8,7 @@ import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 @Table(name = "\"A0000Users\"", schema = "OLINGO")
 class A0000UsersEntity {
   @Id
-  @Column(name = "\"Id\"", nullable = false)
+  @Column(name = "\"Id\"")
   private var id: Integer = _
 
   @Basic

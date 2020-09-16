@@ -18,7 +18,7 @@ class WalkthroughInvoiceEntity {
   private var shipperName: String = _
 
   @Basic
-  @Column(name = "\"ExtendedPrice\"" /*, nullable = false*/ , precision = 19)
+  @Column(name = "\"ExtendedPrice\"", precision = 19)
   private var extendedPrice: Double = _
 
   @Basic

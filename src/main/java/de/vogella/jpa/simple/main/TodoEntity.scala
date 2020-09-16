@@ -11,7 +11,7 @@ class TodoEntity(_id : Int ) {
 
   @Id
   //@GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "\"Id\"", nullable = false)
+  @Column(name = "\"Id\"")
   private var id: Int = _id
 
   def setId(_id : Int): Unit = id = _id
