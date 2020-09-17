@@ -1,9 +1,9 @@
 package com.vladmihalcea.OneToMany
 
+import beans.BeanProperty
 import jakarta.persistence.{Entity, FetchType, GeneratedValue, GenerationType, Id, ManyToOne, Table}
 import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
-import scala.beans.BeanProperty
 
 @Entity
 @PrimaryKey(validation = IdValidation.NULL)
