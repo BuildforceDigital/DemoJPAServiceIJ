@@ -9,7 +9,7 @@ import scala.beans.BeanProperty
 
 @Entity
 @PrimaryKey(validation = IdValidation.NULL)
-@Table(name = Parent.tableName, schema = "OLINGO")
+@Table(name = Parent.tableName, schema = Parent.schemaName)
 class Parent(@BeanProperty val name1: String, @BeanProperty val name2: String) {
   @OneToMany(mappedBy = Parent.tableName, cascade = Array(CascadeType.ALL), orphanRemoval = true)
   // Use Java collection types instead of Scala ones to make JPA happy
@@ -49,4 +49,5 @@ class Parent(@BeanProperty val name1: String, @BeanProperty val name2: String) {
 
 object Parent {
   final val tableName = "parent"
+  final val schemaName ="OLINGO"
 }

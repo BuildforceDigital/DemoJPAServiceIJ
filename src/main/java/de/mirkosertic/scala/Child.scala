@@ -6,7 +6,7 @@ import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
 @Entity
 @PrimaryKey(validation = IdValidation.NULL)
-@Table(name = "CHILD", schema = "OLINGO")
+@Table(name = "CHILD", schema = Child.schemaName)
 class Child(@BeanProperty val name: String) {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +23,8 @@ class Child(@BeanProperty val name: String) {
 
   override def toString: String = s"Child: $id, $name"
 
+}
+
+object Child {
+  final val schemaName ="OLINGO"
 }

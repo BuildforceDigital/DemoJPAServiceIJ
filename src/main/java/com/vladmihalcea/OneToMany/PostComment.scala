@@ -7,7 +7,7 @@ import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
 @Entity
 @PrimaryKey(validation = IdValidation.NULL)
-@Table(name = "post_comment", schema = "OLINGO")
+@Table(name = "post_comment", schema = PostComment.schemaName)
 class PostComment(@BeanProperty val review: String) {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +21,8 @@ class PostComment(@BeanProperty val review: String) {
   // No public visibility required
   private def this() = this(null)
 
+}
+
+object PostComment {
+  final val schemaName ="OLINGO"
 }

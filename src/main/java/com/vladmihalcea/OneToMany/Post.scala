@@ -9,7 +9,7 @@ import scala.beans.BeanProperty
 
 @Entity
 @PrimaryKey(validation = IdValidation.NULL)
-@Table(name = Post.tableName, schema = "OLINGO")
+@Table(name = Post.tableName, schema = Post.schemaName)
 class Post(@BeanProperty val title: String) {
   @OneToMany(mappedBy = Post.tableName, cascade = Array(CascadeType.ALL), orphanRemoval = true)
   // Use Java collection types instead of Scala ones to make JPA happy
@@ -40,4 +40,5 @@ class Post(@BeanProperty val title: String) {
 
 object Post {
   final val tableName = "post"
+  final val schemaName ="OLINGO"
 }
