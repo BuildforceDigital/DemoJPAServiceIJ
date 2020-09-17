@@ -8,7 +8,7 @@ import java.util.Objects;
 
 class BusinessPartnerRoleEntityPK implements Serializable {
 
-    @Column(name = "\"BusinessPartnerID\"", nullable = false, length = 32)
+    @Column(name = "\"BusinessPartnerID\"", length = 32)
     @Id
     private String businessPartnerId;
     public String getBusinessPartnerId() {
@@ -19,7 +19,7 @@ class BusinessPartnerRoleEntityPK implements Serializable {
         this.businessPartnerId = businessPartnerId;
     }
 
-    @Column(name = "\"BusinessPartnerRole\"", nullable = false, length = 10)
+    @Column(name = "\"BusinessPartnerRole\"", length = 10)
     @Id
     private String businessPartnerRole;
     public String getBusinessPartnerRole() {

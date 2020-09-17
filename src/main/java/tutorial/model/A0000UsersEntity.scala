@@ -194,4 +194,5 @@ class A0000UsersEntity {
     else 0)
     result
   }
+
 }

@@ -20,12 +20,12 @@ public class JPA20 {
 
         // Enter some test data
         theEntityManager.getTransaction().begin();
-        Parent p0 = new Parent("name1","name2");
+        /*Parent p0 = new Parent("name1","name2");
         theEntityManager.persist(p0);
 
         Parent p1 = new Parent("name3","name4");
         p1.addChild(new Child("child1"));
-        theEntityManager.persist(p1);
+        theEntityManager.persist(p1);*/
 
 
         Post post = new Post("First post");
@@ -39,12 +39,12 @@ public class JPA20 {
         // Query it
         theEntityManager.getTransaction().begin();
         CriteriaQuery<Parent> theQuery = theEntityManager.getCriteriaBuilder().createQuery(Parent.class);
-        theQuery.distinct(false).from(Parent.class);
+        /*theQuery.distinct(false).from(Parent.class);
         for (Parent theParent : theEntityManager.createQuery(theQuery).getResultList()) {
             System.out.println(theParent);
-        }
+        }*/
         CriteriaQuery<Post> theQuery0 = theEntityManager.getCriteriaBuilder().createQuery(Post.class);
-        theQuery0.distinct(false).from(Parent.class);
+        theQuery0.distinct(false).from(Post.class);
         for (Post theParent : theEntityManager.createQuery(theQuery0).getResultList()) {
             System.out.println(theParent);
         }

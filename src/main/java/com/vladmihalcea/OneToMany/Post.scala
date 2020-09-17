@@ -1,14 +1,18 @@
 package com.vladmihalcea.OneToMany
 
-import jakarta.persistence.{CascadeType, Entity, GeneratedValue, GenerationType, Id, OneToMany, Table}
+import jakarta.persistence.{CascadeType, Entity, FetchType, GeneratedValue, GenerationType, Id, OneToMany, Table}
 import java.{util => ju}
+
+import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
 import scala.beans.BeanProperty
 
-@Entity(name = "Post")
+@Entity
+@PrimaryKey(validation = IdValidation.NULL)
 @Table(name = "post", schema = "OLINGO")
 class Post(@BeanProperty val title: String) {
   @OneToMany(mappedBy = "post", cascade = Array(CascadeType.ALL), orphanRemoval = true)
+  // Use Java collection types instead of Scala ones to make JPA happy
   final private val comments: ju.List[PostComment] = new ju.ArrayList[PostComment]
 
   @Id

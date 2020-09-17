@@ -1,10 +1,12 @@
 package com.vladmihalcea.OneToMany
 
 import jakarta.persistence.{Entity, FetchType, GeneratedValue, GenerationType, Id, ManyToOne, Table}
+import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
 import scala.beans.BeanProperty
 
-@Entity(name = "PostComment")
+@Entity
+@PrimaryKey(validation = IdValidation.NULL)
 @Table(name = "post_comment", schema = "OLINGO")
 class PostComment(@BeanProperty val review: String) {
   @Id
@@ -18,7 +20,5 @@ class PostComment(@BeanProperty val review: String) {
   // Default constructor for hibernate
   // No public visibility required
   private def this() = this(null)
-
-
 
 }

@@ -18,7 +18,7 @@ import nl.buildforce.sequoia.metadata.core.edm.annotation.EdmIgnore;
 @Table(name = "\"Comment\"", schema = "OLINGO")
 public class CommentEntity {
     @Id
-    @Column(name = "\"BusinessPartnerID\"", nullable = false, length = 32)
+    @Column(name = "\"BusinessPartnerID\"", length = 32)
     private String businessPartnerId;
 
     public String getBusinessPartnerId() { return businessPartnerId; }

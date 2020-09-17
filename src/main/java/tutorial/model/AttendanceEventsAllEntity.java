@@ -15,7 +15,7 @@ import java.time.OffsetDateTime;
 public class AttendanceEventsAllEntity {
 
     @Id
-    @Column(name = "\"Id\"", nullable = false) private Integer id;
+    @Column(name = "\"Id\"") private Integer id;
     @Column(name = "\"ApprovalBy\"", length = 40) private String approvalBy;
     @Column(name = "\"ApprovalDateTime\"") private OffsetDateTime approvalDateTime;
     @Column(name = "\"CheckInDateTime\"", nullable = false) private OffsetDateTime checkInDateTime;

@@ -1,15 +1,21 @@
 package de.mirkosertic.scala
 
 import beans.BeanProperty
-import jakarta.persistence.{Column, Entity, GeneratedValue, GenerationType, Id, Table}
-@Entity
+import jakarta.persistence.{ Entity, GeneratedValue, GenerationType, Id, FetchType, ManyToOne, Table}
+import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
+
+@Entity(name="Child")
+@PrimaryKey(validation = IdValidation.NULL)
 @Table(name = "CHILD", schema = "OLINGO")
 class Child(@BeanProperty val name: String) {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "\"Id\"")
-  var id: Int = _
+  private var id: Int = _
+  //@Column(name = "\"Id\"")
+
+  @BeanProperty
+  @ManyToOne(fetch = FetchType.LAZY)
+  var parent: Parent = _
 
   // Default constructor for hibernate
   // No public visibility required

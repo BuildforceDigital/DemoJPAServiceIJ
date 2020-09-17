@@ -26,7 +26,7 @@ import java.util.Objects;
 @Table(name = "\"BusinessPartner\"", schema = "OLINGO")
 public abstract class BusinessPartnerEntity {
     @Id
-    @Column(name = "ID", length = 32, nullable = false)
+    @Column(name = "ID", length = 32)
     private String id;
 
     public String getId() {

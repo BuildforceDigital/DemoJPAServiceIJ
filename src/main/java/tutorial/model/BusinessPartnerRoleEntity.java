@@ -17,7 +17,7 @@ import java.util.Objects;
 @IdClass(BusinessPartnerRoleEntityPK.class)
 public class BusinessPartnerRoleEntity {
     @Id
-    @Column(name = "\"BusinessPartnerID\"", nullable = false, length = 32)
+    @Column(name = "\"BusinessPartnerID\"", length = 32)
     private String businessPartnerId;
     public String getBusinessPartnerId() {
         return businessPartnerId;
@@ -28,7 +28,7 @@ public class BusinessPartnerRoleEntity {
     }
 
     @Id
-    @Column(name = "\"BusinessPartnerRole\"", nullable = false, length = 10)
+    @Column(name = "\"BusinessPartnerRole\"", length = 10)
     private String businessPartnerRole;
     public String getBusinessPartnerRole() {
         return businessPartnerRole;

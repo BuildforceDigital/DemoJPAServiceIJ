@@ -4,22 +4,21 @@ import jakarta.persistence.{CascadeType, Column, Entity, FetchType, GeneratedVal
 import java.{util => ju}
 
 import scala.beans.BeanProperty
+import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
-
-@Entity
+@Entity(name = "Parent")
+@PrimaryKey(validation = IdValidation.NULL)
 @Table(name = "PARENT", schema = "OLINGO")
 class Parent(@BeanProperty val name1: String, @BeanProperty val name2: String) {
 
+  @OneToMany(mappedBy = "Parent", cascade = Array(CascadeType.ALL), orphanRemoval = true)
+  // Use Java collection types instead of Scala ones to make JPA happy
+  private var children: ju.List[Child] = new ju.ArrayList[Child]()
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "\"Id\"")
   private var id: Int = _
-
-  @OneToMany(cascade = Array(CascadeType.ALL), orphanRemoval = true, fetch=FetchType.LAZY)
-  @JoinColumn(name = "PARENT_ID")
-  @BeanProperty
-  // Use Java collection types instead of Scala ones to make JPA happy
-  var children: ju.List[Child] = new ju.ArrayList[Child]()
+  //@Column(name = "\"Id\"")
 
   // Default constructor for persistence providers
   // No public visibility required
@@ -32,6 +31,7 @@ class Parent(@BeanProperty val name1: String, @BeanProperty val name2: String) {
    */
   def addChild(aChild: Child) {
     children.add(aChild)
+    aChild.setParent(this)
   }
 
   /**
