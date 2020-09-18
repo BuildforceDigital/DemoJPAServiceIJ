@@ -21,9 +21,9 @@
                 </buttons>
             </RadioButtonGroup>
 
-            <Label design="Bold" id="estartdate" text="Birthday" class="createNewUserLabelSpacing" labelFor="ebirthdayField"/>
-            <DatePicker id="ebirthdayField" displayFormat="long" placeholder="Birthday" change=".inputChange"
-                        value="{Birthday}"/>
+            <Label design="Bold" id="estartdate" text="Birth day" class="createNewUserLabelSpacing" labelFor="ebirthdayField"/>
+            <DatePicker id="ebirthdayField" displayFormat="long" placeholder="Birth day" change=".inputChange"
+                        value="{BirthDay}"/>
 
             <Label design="Bold" id="enationality" text="Nationality" class="createNewUserLabelSpacing" labelFor="enationalityTextField"/>
             <Input id="enationalityTextField" value="{Nationality}" liveChange=".inputChange"/>

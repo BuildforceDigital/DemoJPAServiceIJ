@@ -40,7 +40,7 @@
                                     <Text id="gender"
                                           text="{= ${Gender} === 'M'?'Male': (${Gender} === 'F'?'Female':'Unknown')}"/>
                                     <Label design="Bold" text="User Birthday"/>
-                                    <Text text="{Birthday}"/>
+                                    <Text text="{BirthDay}"/>
                                     <Label design="Bold" text="Nationality"/>
                                     <Text text="{Nationality}"/>
                                     <Label design="Bold" text="Citizen Service Number"/>
