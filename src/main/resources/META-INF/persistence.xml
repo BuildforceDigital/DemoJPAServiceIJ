@@ -5,7 +5,7 @@
              version="2.2">
 
     <persistence-unit name="GreenTrak00">
-        <class>tutorial.model.A0000UsersEntity</class>
+        <class>realdeal.model.A0000UsersEntity</class>
         <class>tutorial.model.P0000ProjectsEntity</class>
         <class>tutorial.model.P0000ProjMembersEntity</class>
         <class>tutorial.model.WalkthroughInvoiceEntity</class>
