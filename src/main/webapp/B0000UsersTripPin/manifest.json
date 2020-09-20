@@ -13,7 +13,6 @@
     },
     "description": "{{appDescription}}",
     "i18n": "i18n/i18n.properties",
-    "id": "sap.ui.demo.basicTemplate",
     "title": "{{appTitle}}",
     "type": "application"
   },

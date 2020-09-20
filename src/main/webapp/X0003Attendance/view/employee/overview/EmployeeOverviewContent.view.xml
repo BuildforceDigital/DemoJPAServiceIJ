@@ -1,11 +1,16 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
           controllerName="sap.ui.demo.nav.controller.employee.overview.EmployeeOverviewContent">
     <VBox class="sapUiSmallMargin">
+        <!--items="{ path: 'attendanceEventMod>/AttendanceEventsAllEntities',
+                        parameters: {$select:'StartDate'},
+                        sorter : { descending: true, group : true, path : 'StartDate' },
+                        filters: [{path: 'ParentGuid', operator: 'EQ', value1: null}],
+                        groupHeaderFactory: '.getGroupHeader'
+                      }"-->
         <Table id="employeesTable" alternateRowColors="true"
                items="{ path: 'attendanceEventMod>/AttendanceEventsAllEntities',
                         parameters: {$select:'StartDate'},
                         sorter : { descending: true, group : true, path : 'StartDate' },
-                        filters: [{path: 'ParentGuid', operator: 'EQ', value1: null}],
                         groupHeaderFactory: '.getGroupHeader'
                       }"
                itemPress=".onItemPressed">

@@ -19,8 +19,8 @@
   "sap.ui": {
     "deviceTypes": {
       "desktop": true,
-      "tablet": true,
-      "phone": true
+      "phone": true,
+      "tablet": true
     },
     "technology": "UI5"
   },
@@ -37,6 +37,7 @@
 				"sap.ui.layout": {}
       }
     },
+    "_comment": "handleValidation enables Form Field Validation",
     "handleValidation": true,
     "models": {
       "attendanceEventMod": {
@@ -52,8 +53,8 @@
       "i18n": {"type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "sap.ui.demo.nav.i18n.i18n",
-          "supportedLocales": [""],
-          "fallbackLocale": ""
+          "fallbackLocale": "",
+          "supportedLocales": [""]
         }
       }
     },

@@ -117,7 +117,7 @@ sap.ui.define([
         /* =========================================================== */
 
         _onRouteMatched: function (oEvent) {
-            this.getView().byId("empIconTabBar").setSelectedKey("personal");
+            this.getView().byId("empIconTabBar").setSelectedKey("timesheet");
             this.getView().bindElement({
                 path: "/" + oEvent.getParameter("arguments").employeePath,
                 parameters: {
@@ -125,6 +125,25 @@ sap.ui.define([
                 }
             });
         },
+        getGroupHeader: function (oGroup) {
+            const oDate = new Date(oGroup.key);
+
+            return new GroupHeaderListItem({
+                tooltip: oGroup.key,
+                title:  `${oGroup.key} ${this._getWeekNumber(oDate)} ${oDate.toLocaleString('default', { weekday: 'short' })}`
+                /*,
+                count : "Total: 2h80, approved: 0h00, 0 %"*/
+            })
+        },
+        computeDuration: function (strDateBeg, strDateEnd) {
+            const formatTwoDigits = (n) => n < 10 ? '0' + n : n;
+
+            if (strDateEnd) {
+                const elapsed = new Date(new Date(strDateEnd) - new Date(strDateBeg));
+                return elapsed.getUTCHours() + "h" + formatTwoDigits(elapsed.getUTCMinutes())
+            }
+        },
+
         _trimTextInput: function (oDlgEvent) {
             const field = oDlgEvent.getSource();
 

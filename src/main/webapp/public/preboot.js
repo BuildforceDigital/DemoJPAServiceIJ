@@ -52,8 +52,7 @@ function main() {
 			// sync (cachebuster issue on Component-preload)
 			new ComponentContainer("app", {
 				height: "100%",
-				name: "nl.buildforce.gt",
-				manifestFirst: true
+				name: "nl.buildforce.gt"
 			}).placeAt("content");
 		});
 	}

@@ -1,9 +1,7 @@
 {
   "_version": "1.21.0",
   "sap.app": {
-    "applicationVersion": {
-      "version": "0.0.0"
-    },
+    "applicationVersion": {"version": "0.0.0"},
     "dataSources": {
       "default": {
         "uri": "/ContextPath/ServletPath.svc/",
@@ -14,8 +12,7 @@
       }
     },
     "description": "{{appDescription}}",
-    "i18n": "i18n/i18n.properties",
-    "id": "sap.ui.demo.basicTemplate",
+    "i18n": {"bundleUrl": "i18n/i18n.properties", "supportedLocales": [""], "fallbackLocale": ""},
     "title": "{{appTitle}}",
     "type": "application"
   },

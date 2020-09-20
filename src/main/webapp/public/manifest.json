@@ -1,7 +1,6 @@
 {
   "_version": "1.21.0",
   "sap.app": {
-    "id": "nl.buildforce.gt",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {

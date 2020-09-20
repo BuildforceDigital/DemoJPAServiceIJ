@@ -68,7 +68,8 @@
                 </tnt:header>
                 <tnt:sideContent>
                     <tnt:SideNavigation expanded="true" itemSelect="onItemSelect">
-                        <tnt:NavigationList visible = "{= ${ui>/userName}? true : false }" >
+                        <!--visible = "{= ${ui>/userName}? true : false }"-->
+                        <tnt:NavigationList  >
                             <tnt:NavigationListItem text="{i18n>Home}" custom:route="welcome" icon="sap-icon://home"/>
                             <tnt:NavigationListItem text="{i18n>People}" custom:route="people" icon="sap-icon://family-care"/>
                             <tnt:NavigationListItem text="{i18n>Operators}" custom:route="operators"
