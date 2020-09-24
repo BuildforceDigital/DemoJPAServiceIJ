@@ -1,12 +1,30 @@
 <!DOCTYPE HTML>
-<html>
+<html style="height: 100%;" lang="">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Demo</title>
-  <script src="bootConfig.js"></script>
-  <script src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js" id="sap-ui-bootstrap"></script>
+    <script
+      id="sap-ui-bootstrap"
+      src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+      data-sap-ui-theme="sap_fiori_3"
+      data-sap-ui-modules="sap/ui/core/ComponentSupport"
+      data-sap-ui-async="true"
+      data-sap-ui-compatversion="edge"
+      data-sap-ui-resourceRoots='{ "demo": "./" }'
+      data-sap-ui-loglevel="INFO"
+      data-sap-ui-xx-componentpreload="off"
+      data-sap-ui-xx-waitfortheme="init"
+    ></script>
 </head>
-<body class="sapUiBody" id="content">
+  <body id="content" class="sapUiBody">
+    <div
+      data-sap-ui-component
+      style="height: 100%;"
+      data-id="rootComponentContainer"
+      data-name="demo"
+      data-height="100%"
+      data-settings='{ "id": "rootComponent" }'
+    ></div>
 </body>
 </html>

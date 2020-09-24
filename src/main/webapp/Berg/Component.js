@@ -12,8 +12,15 @@ sap.ui.define([
       UIComponent.prototype.init.apply(this, arguments);
       this.getModel("detailViewModel").setProperty("/editing", false);
       this.getRouter().initialize();
-      window.onbeforeunload = () => this.getModel().hasPendingChanges() || null;
+      window.addEventListener("beforeunload", this.onBeforeLeave.bind(this));
     },
+
+    onBeforeLeave: function(event) {
+      if (this.getModel("detailViewModel").getProperty("/editing")) { // display confirmation dialog
+        event.preventDefault(); // as specified by the HTML standard
+        event.returnValue = ""; // as required by Chromium-based UAs
+      }
+    }
     
   });
 });

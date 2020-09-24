@@ -63,34 +63,35 @@
       "async": true
     },
     "routing": {
-    "config": {
-      "routerClass": "sap.m.routing.Router",
-      "async": true,
-      "viewType": "XML",
-      "viewPath": "demo.view",
-      "controlId": "rootSplitContainer"
-    },
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "async": true,
+        "viewType": "XML",
+        "viewPath": "demo.view",
+        "controlId": "rootSplitContainer"
+      },
       "routes": {
         "master": {
-        "pattern": "",
+          "pattern": "",
         "target": ["emptyDetail", "master"]
-      },
+        },
         "masterDetail": {
-        "pattern": "user/{userName}",
-        "target": ["detail", "master"]
-      }},
+          "pattern": "user/{userName}",
+          "target": ["detail", "master"]
+        }
+      },
       "targets": {
         "master": {
           "viewId": "masterView",
           "viewName": "Master",
-            "viewLevel": 1,
+          "viewLevel": 1,
           "controlAggregation": "masterPages"
         },
         "detail": {
           "viewId": "detailView",
           "viewName": "Detail",
           "controlAggregation": "detailPages",
-            "viewLevel": 2,
+          "viewLevel": 2,
           "transition": "show"
         },
         "emptyDetail": {
