@@ -1,0 +1,104 @@
+{
+  "_version": "1.15.0",
+  "start_url": "index.html",
+  "sap.app": {
+    "id": "demo",
+    "type": "application",
+    "title": "Demo",
+    "description": "Sample Code",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "myDataSource": {
+        "uri": "https://cors-anywhere.herokuapp.com/https://services.odata.org/TripPinRESTierService/(S(0m1hkqy5kzmpz1xxhqwjihdk))/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "handleValidation": true,
+    "dependencies": {
+      "minUI5Version": "1.77.2",
+      "libs": {
+        "sap.m": {},
+        "sap.f": {},
+        "sap.ui.layout": {},
+        "sap.ui.unified": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "": {
+        "dataSource": "myDataSource",
+        "settings": {
+          "autoExpandSelect": true,
+          "operationMode": "Server",
+          "synchronizationMode": "None"
+        },
+        "preload": true
+      },
+      "detailViewModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      }
+    },
+    "rootView": {
+      "viewName": "demo.view.Root",
+      "id": "rootView",
+      "type": "XML",
+      "async": true
+    },
+    "routing": {
+    "config": {
+      "routerClass": "sap.m.routing.Router",
+      "async": true,
+      "viewType": "XML",
+      "viewPath": "demo.view",
+      "controlId": "rootSplitContainer"
+    },
+      "routes": {
+        "master": {
+        "pattern": "",
+        "target": ["emptyDetail", "master"]
+      },
+        "masterDetail": {
+        "pattern": "user/{userName}",
+        "target": ["detail", "master"]
+      }},
+      "targets": {
+        "master": {
+          "viewId": "masterView",
+          "viewName": "Master",
+            "viewLevel": 1,
+          "controlAggregation": "masterPages"
+        },
+        "detail": {
+          "viewId": "detailView",
+          "viewName": "Detail",
+          "controlAggregation": "detailPages",
+            "viewLevel": 2,
+          "transition": "show"
+        },
+        "emptyDetail": {
+          "viewId": "emptyDetailView",
+          "viewName": "EmptyDetail",
+          "controlAggregation": "detailPages"
+        }
+      }
+    }
+  }
+}
