@@ -21,6 +21,5 @@ sap.ui.define([
         event.returnValue = ""; // as required by Chromium-based UAs
       }
     }
-    
   });
 });

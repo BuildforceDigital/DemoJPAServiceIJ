@@ -55,7 +55,7 @@
         />
         <Button id="cancelBtn"
           text="Cancel"
-          press=".onCancelPress"
+          press=".reset"
         />
       </OverflowToolbar>
     </footer>

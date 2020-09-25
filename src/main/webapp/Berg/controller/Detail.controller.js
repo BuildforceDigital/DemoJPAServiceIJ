@@ -13,10 +13,10 @@ sap.ui.define([
     },
 
     onPatternMatched: function(event) {
-      this.bindSelectedItem(event.getParameter("arguments").userName);
+      this.bindSelectedItem(event.getParameter("arguments"));
     },
 
-    bindSelectedItem: function(userName) {
+    bindSelectedItem: function({ userName }) {
       const decodedUserName = window.decodeURIComponent(userName);
       this.getView().bindElement({
         path: `/People('${decodedUserName}')`,
@@ -37,7 +37,7 @@ sap.ui.define([
         this.submitBatch(batchGroupId).then(() => {
           this.resetEditingStatus();
           this.byId("page").setBusy(false);
-          MessageToast.show("User updated");
+          window.requestAnimationFrame(() => MessageToast.show("User updated"));
         });
       }
     },
@@ -49,10 +49,6 @@ sap.ui.define([
 
     submitBatch: function(id) {
       return this.getOwnerComponent().getModel().submitBatch(id);
-    },
-
-    onCancelPress: function() {
-      this.reset();
     },
 
     reset: function(event) {

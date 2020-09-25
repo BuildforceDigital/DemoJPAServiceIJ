@@ -15,6 +15,7 @@
       itemPress=".onItemPress"
     >
       <StandardListItem
+        icon="sap-icon://person-placeholder"
         title="{FirstName}"
         description="{LastName}"
         type="Active"

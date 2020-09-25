@@ -16,9 +16,9 @@ sap.ui.define([
     },
 
     navToDetailOf: function(item) {
-      this.getOwnerComponent().getRouter().navTo("masterDetail", {
-        userName: item.getBindingContext().getProperty("UserName")
-      }, !Device.system.phone);
+      const username = window.encodeURIComponent(item.getBindingContext().getProperty("UserName"));
+      this.getOwnerComponent().getRouter().navTo("masterDetail", {userName: username},
+          !Device.system.phone);
     },
 
     shouldRefresh: function(channelId, eventId, groupId) {
