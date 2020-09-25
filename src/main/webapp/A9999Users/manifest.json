@@ -1,0 +1,102 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "applicationVersion": {"version": "0.0.0"},
+    "dataSources": {
+      "default": {
+        "uri": "/ContextPath/ServletPath.svc/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "description": "{{appDescription}}",
+    "i18n": {"bundleUrl": "i18n/i18n.properties", "supportedLocales": [""], "fallbackLocale": ""},
+    "title": "{{appTitle}}",
+    "type": "application"
+  },
+  "sap.ui": {
+    "deviceTypes": {
+      "desktop": true,
+      "phone": true,
+      "tablet": true
+    },
+    "technology": "UI5"
+  },
+  "sap.ui5": {
+    "contentDensities": { },
+    "dependencies": {
+      "minUI5Version": "1.79.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "_comment": "handleValidation enables Form Field Validation",
+    "handleValidation": true,
+    "models": {
+      "": {
+        "dataSource": "default",
+        "preload": true,
+        "settings": {
+          "autoExpandSelect": true,
+          "operationMode": "Server",
+          "synchronizationMode": "None"
+        }
+      },
+      "i18n": {
+        "settings": {
+          "bundleName": "sap.ui.demo.basicTemplate.i18n.i18n"
+        },
+        "type": "sap.ui.model.resource.ResourceModel"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "rootView": {
+      "async": true,
+      "viewName": "sap.ui.demo.basicTemplate.view.App",
+      "type": "XML"
+    },
+    "routing": {
+      "config": {
+        "async": true,
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "routerClass": "sap.m.routing.Router",
+        "viewPath": "sap.ui.demo.basicTemplate.view",
+        "viewType": "XML"
+      },
+      "routes": [
+        {
+          "name": "RouteMain",
+          "pattern": "",
+          "target": "targetMaster"
+        },
+        {
+          "name": "Detail",
+          "pattern": "Detail/{employeePath}",
+          "target": ["targetDetail"]
+        }
+      ],
+      "targets": {
+        "targetMaster": {
+          "viewId": "home",
+          "viewLevel": 1,
+          "viewName": "Main"
+        },
+        "targetDetail": {
+          "transition": "slide",
+          "viewLevel": 2,
+          "viewName": "Detail"
+        }
+      }
+    }
+  }
+}

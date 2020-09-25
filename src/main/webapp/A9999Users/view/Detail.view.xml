@@ -1,0 +1,214 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+          sId="Detail"
+          xmlns="sap.m" controllerName="sap.ui.demo.basicTemplate.controller.Detail">
+    <Page id="detailPage">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button press=".onBack" tooltip="Back" icon="sap-icon://nav-back"/>
+                    <Image src="images/GreenTrakLogo.svg" height="30px"/>
+                </contentLeft>
+                <contentMiddle>
+                    <Label id="header" design="Bold" text="{i18n>title2} {FullName}"/>
+                </contentMiddle>
+                <contentRight>
+                    <OverflowToolbar id="otbFooter">
+                        <ToolbarSpacer/>
+                        <OverflowToolbarButton text="Edit" icon="sap-icon://edit" press="onEdit"/>
+                        <OverflowToolbarButton text="Delete" icon="sap-icon://delete" press=".onDelete"/>
+                    </OverflowToolbar>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <IconTabBar id="empIconTabBar" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter key="personal" text="Personal Info" icon="sap-icon://employee">
+                        <HBox justifyContent="SpaceBetween">
+                        <VBox class="sapUiSmallMargin">
+                            <f:SimpleForm id="personalForm" editable="false" layout="ResponsiveGridLayout"
+                                          title="Personal Info" labelSpanXL="4" labelSpanL="3"
+                                          labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+                                          emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                                          columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Label design="Bold" text="User Full Name"/>
+                                    <Text text="{FullName}"/>
+                                    <Label design="Bold" text="User Nick Name"/>
+                                    <Text text="{Nickname}"/>
+                                    <Label design="Bold" text="Gender"/>
+                                    <Text id="gender"
+                                          text="{= ${Gender} === 'M'?'Male': (${Gender} === 'F'?'Female':'Unknown')}"/>
+                                    <Label design="Bold" text="User Birthday"/>
+                                    <Text text="{BirthDay}"/>
+                                    <Label design="Bold" text="Nationality"/>
+                                    <Text text="{Nationality}"/>
+                                    <Label design="Bold" text="Citizen Service Number"/>
+                                    <Text text="{CitizenServiceNr}"/>
+                                    <Label design="Bold" text="Validity Ends"/>
+                                    <Text text="{TillDate}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </VBox>
+                            <VBox class="sapUiSmallMarginBottom">
+                                <Image  decorative="false"
+                                        densityAware="false"
+                                        src="{UserImage}"
+                                        width="170px">
+                                    <detailBox>
+                                        <LightBox>
+                                            <LightBoxItem
+                                                    imageSrc="{UserImage}"
+                                                    alt="Beamer"
+                                                    title="This is a beamer"
+                                                    subtitle="This is beamer's description" />
+                                        </LightBox>
+                                    </detailBox>
+                                    <!-- Fixes HBox layout on Android Stock Browser for Android 5.0 -->
+                                    <layoutData>
+                                        <FlexItemData growFactor="1" shrinkFactor="0" />
+                                    </layoutData>
+                                </Image>
+                            </VBox>
+                        </HBox>
+                    </IconTabFilter>
+                    <IconTabFilter key="contact" text="Contact Info" icon="sap-icon://contacts">
+                        <VBox class="sapUiSmallMargin">
+                            <f:SimpleForm id="contactForm" editable="false" layout="ResponsiveGridLayout"
+                                          title="Contact Info" labelSpanXL="4" labelSpanL="3"
+                                          labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+                                          emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                                          columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Label design="Bold" text="User Email ID"/>
+                                    <Text text="{PrivateEmail}"/>
+                                    <Label design="Bold" text="Business Email ID"/>
+                                    <Text text="{BusinessEmail}"/>
+                                    <Label design="Bold" text="User Mobile Phone Nr"/>
+                                    <Text text="{path:'MobilePhone'}"/>
+                                    <Label design="Bold" text="User Landline Phone Nr"/>
+                                    <Text text="{path:'LandlinePhone'}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </VBox>
+                    </IconTabFilter>
+                    <IconTabFilter key="timesheet" text="Timesheet" icon="sap-icon://timesheet">
+                        <VBox class="sapUiSmallMargin">
+                            <Table id="employeesTable" alternateRowColors="true"
+                                   items="{ path: 'attendanceEventMod>/AttendanceEventsAllEntities',
+                        parameters: {$select:'StartDate'},
+                        sorter : { descending: true, group : true, path : 'StartDate' },
+                        filters: [{path: 'ParentGuid', operator: 'EQ', value1: null}],
+                        groupHeaderFactory: '.getGroupHeader'
+                      }"
+                                   itemPress=".onItemPressed">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <Title text="Attendance events content" level="H2"/>
+                                        <ToolbarSpacer/>
+                                        <DateRangeSelection maxDate="{:= ${appModel>/now}}" change=".handleChange"
+                                                            displayFormat="yyyy-MM-dd" tooltip="View Filter Settings" width="15em"/>
+                                        <Button icon="sap-icon://sort" press=".onSortButtonPressed"/>
+                                    </Toolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column id="employeeIDCol">
+                                        <header>
+                                            <Text text="Project Code"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="firstNameCol" hAlign="Right" demandPopin="true">
+                                        <header>
+                                            <Text text="Check-in"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="lastNameCol" hAlign="Right" demandPopin="true">
+                                        <header>
+                                            <Text text="Check-out"/>
+                                        </header>
+                                        <footer>
+                                            <Text text="Totals:"/>
+                                        </footer>
+                                    </Column>
+                                    <Column id="lastNameCol0" hAlign="Right" demandPopin="true">
+                                        <header>
+                                            <Text text="Attended time"/>
+                                        </header>
+                                        <footer>
+                                        </footer>
+                                    </Column>
+                                    <Column id="lastNameCol1" hAlign="Right" demandPopin="true">
+                                        <header>
+                                            <Text text="Time worked"/>
+                                        </header>
+                                        <footer>
+                                        </footer>
+                                    </Column>
+                                    <Column id="addressCol" minScreenWidth="Tablet" demandPopin="true">
+                                        <header>
+                                            <Text text="Description"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="cityCol" minScreenWidth="Tablet" demandPopin="true">
+                                        <header>
+                                            <Text text="Approval by"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="regionCol" minScreenWidth="Tablet" demandPopin="true">
+                                        <header>
+                                            <Text text="Approved at"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="postalCodeCol" minScreenWidth="Tablet" demandPopin="true">
+                                        <header>
+                                            <Text text="Remarks"/>
+                                        </header>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem id="item0" type="Navigation" press=".onItemPress">
+                                        <cells>
+                                            <Text text="{attendanceEventMod>ProjectCode}"/>
+                                            <Text text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'attendanceEventMod>CheckInDateTime' }"/>
+                                            <Text text="{ type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: { pattern: 'HH:mm' }, path: 'attendanceEventMod>CheckOutDateTime' }"/>
+                                            <ObjectNumber
+                                                    number="{parts: [ {path: 'attendanceEventMod>CheckInDateTime', type: 'sap.ui.model.type.String'}, {path: 'attendanceEventMod>CheckOutDateTime', type: 'sap.ui.model.type.String'}], formatter: '.computeDuration'}"/>
+                                            <ObjectNumber
+                                                    number="{parts: [ {path: 'attendanceEventMod>CheckInDateTime', type: 'sap.ui.model.type.String'}, {path: 'attendanceEventMod>CheckOutDateTime', type: 'sap.ui.model.type.String'}], formatter: '.computeDuration'}"/>
+                                            <Text text="{attendanceEventMod>Description}"/>
+                                            <Text text="{attendanceEventMod>ApprovalBy}"/>
+                                            <Text text="{path: 'attendanceEventMod>ApprovalDateTime', type: 'sap.ui.model.odata.type.DateTimeOffset', formatOptions: {pattern: 'yyyy-MM-dd HH:mm'}}"/>
+                                            <Text text="{attendanceEventMod>Remarks}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </VBox>
+
+                    </IconTabFilter>
+                    <IconTabFilter key="account" text="Account Info" icon="sap-icon://account">
+                        <VBox class="sapUiSmallMargin">
+                            <f:SimpleForm id="accountForm" editable="false" layout="ResponsiveGridLayout"
+                                          title="Account Info" labelSpanXL="4" labelSpanL="3"
+                                          labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+                                          emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"
+                                          columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>
+                                    <Label design="Bold" text="User Name"/>
+                                    <!--<Text id="empId" text="{path:'ID',formatter:'.formatNumber'}"/>-->
+                                    <Text text="{UserName}"/>
+
+                                    <Label design="Bold" text="System Role"/>
+                                    <Text text="OrdinaryUser"/>
+                                    <!--<Text text="{SystemRole}"/>-->
+                                    <Label design="Bold" text="Job Function"/>
+                                    <Text text="{JobFunction}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </VBox>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>
