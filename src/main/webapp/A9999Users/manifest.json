@@ -73,18 +73,16 @@
         "viewPath": "sap.ui.demo.basicTemplate.view",
         "viewType": "XML"
       },
-      "routes": [
-        {
-          "name": "RouteMain",
+      "routes": {
+        "RouteMain": {
           "pattern": "",
           "target": "targetMaster"
         },
-        {
-          "name": "Detail",
+        "Detail": {
           "pattern": "Detail/{employeePath}",
           "target": ["targetDetail"]
         }
-      ],
+      },
       "targets": {
         "targetMaster": {
           "viewId": "home",

@@ -11,13 +11,13 @@ sap.ui.define([
     return Controller.extend("sap.ui.demo.basicTemplate.controller.Main", {
         _deleteEmp: function (oSelected) {
             if (oSelected) {
-                var that = this;
-                var EMPID = oSelected.getBindingContext().getProperty("Id");
-                var fullname = oSelected.getBindingContext().getProperty("FullName");
+                const that = this;
+                const EMPID = oSelected.getBindingContext().getProperty("Id");
+                const fullname = oSelected.getBindingContext().getProperty("FullName");
                 oSelected.getBindingContext().delete("$auto").then(function () {
-                    var successMessage = "User profile " + fullname + " is deleted";
+                    const successMessage = "User profile " + fullname + " is deleted";
                     MessageBox.show(successMessage, "SUCCESS", "Success");
-                    var deleteButton = that.getView().byId("deleteButton");
+                    const deleteButton = that.getView().byId("deleteButton");
                     deleteButton.setEnabled(false)
                 }, function (oError) {
                     MessageBox.error(oError.message);
@@ -77,7 +77,7 @@ sap.ui.define([
             const aContexts = oEvent.getSource().getContexts();
             let bMessageOpen = false;
             if (!bMessageOpen && aContexts.length) {// Extract and remove the technical messages
-                var aMessages = aContexts.map(function (oContext) {
+                const aMessages = aContexts.map(function (oContext) {
                     return oContext.getObject();
                 });
                 sap.ui.getCore().getMessageManager().removeMessages(aMessages);
@@ -92,7 +92,7 @@ sap.ui.define([
             }
         },
         _onRefresh: function () {
-            var empTable = this.getView().byId("emptable"),
+            const empTable = this.getView().byId("emptable"),
                 oBinding = empTable.getBinding("items");
             empTable.setBusy(true);
             oBinding.refresh();
@@ -104,7 +104,7 @@ sap.ui.define([
           this.getView().byId(field.getId()).setValue(field.getValue().trim())
         },*/
         onClose: function (oEvent) {
-            var oDialog = (oEvent.getSource()).getEventingParent();
+            const oDialog = (oEvent.getSource()).getEventingParent();
             oDialog.close();
         },
         onCreate: function (oEvent) {
@@ -128,9 +128,9 @@ sap.ui.define([
 
 
             //getting input data
-            var email = this.getView().byId("epemailTextField").getValue().trim();
+            const email = this.getView().byId("epemailTextField").getValue().trim();
             //creating payload
-            var data = {
+            const data = {
                 "Id": getRandomArbitrary(1000, 2000), //default ID
                 "FullName": this.getView().byId("fullNameTextField").getValue().trim(),
                 "UserName": email,
@@ -138,14 +138,14 @@ sap.ui.define([
                 "Gender": "?"
             };
 
-            var that = this;
-            var oList = this.getView().byId("emptable");
+            const that = this;
+            const oList = this.getView().byId("emptable");
 
-            var oContext = oList.getBinding("items").create(data);
+            const oContext = oList.getBinding("items").create(data);
             // trigger batch request
             this.getView().getModel().submitBatch("UserGroup");
             oContext.created().then(function () {
-                var dialog = that.getView().byId("createDialog");
+                const dialog = that.getView().byId("createDialog");
                 dialog.close();
                 MessageBox.success("User created: " + oContext.getProperty("UserName"));
                 that._onRefresh()
@@ -176,8 +176,8 @@ sap.ui.define([
           this._trimTextInput(oDlgEvent)
         },*/
         onItemPress: function (oEvent) { //navigation
-            var oItem = oEvent.getSource();
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            const oItem = oEvent.getSource();
+            const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("Detail", {
                 employeePath: encodeURIComponent(oItem.getBindingContext().getPath().substr(1))
             });
@@ -186,9 +186,9 @@ sap.ui.define([
             MessageBox.confirm("Do you sure want to logout?",
                 jQuery.proxy(function (bResult) {
                     if (bResult === "OK") {
-                        var url = window.location.href;
-                        var arr = url.split("/");
-                        var location = arr[0] + "//" + arr[2];
+                        const url = window.location.href;
+                        const arr = url.split("/");
+                        const location = arr[0] + "//" + arr[2];
                         window.location.replace(location + "/do/logout");
                     }
                 }, this),
@@ -202,7 +202,7 @@ sap.ui.define([
          * Search for the FullName/lastname/email in the search field.
          */
         onSearch: function () {
-            var oView = this.getView(),
+            const oView = this.getView(),
                 sValue = oView.byId("searchField").getValue(),
                 oFilter = new Filter({
                     filters: [
@@ -227,7 +227,7 @@ sap.ui.define([
             oView.byId("emptable").getBinding("items").filter(oFilter, FilterType.Application);
         },
         onSelection: function (oEvent) {
-            var deleteButton = this.getView().byId("deleteButton");
+            const deleteButton = this.getView().byId("deleteButton");
             deleteButton.setEnabled(true);
         },
         /**
@@ -235,15 +235,15 @@ sap.ui.define([
          * Cycles between the three sorting states "none", "ascending" and "descending"
          */
         onSort: function () {
-            var oView = this.getView(),
+            const oView = this.getView(),
                 aStates = [undefined, "asc", "desc"],
-                aStateTextIds = ["sortNone", "sortAscending", "sortDescending"],
-                sMessage,
+                aStateTextIds = ["sortNone", "sortAscending", "sortDescending"];
+            let sMessage,
                 iOrder = oView.getModel("appView").getProperty("/order");
 
             // // Cycle between the states
             iOrder = (iOrder + 1) % aStates.length;
-            var sOrder = aStates[iOrder];
+            const sOrder = aStates[iOrder];
 
             oView.getModel("appView").setProperty("/order", iOrder);
             oView.byId("emptable").getBinding("items").sort(sOrder && new Sorter("FullName", sOrder === "desc"));
@@ -253,10 +253,10 @@ sap.ui.define([
         },
 
         formatDate: function (date) {
-            var d = new Date(date),
-                month = "" + (d.getMonth() + 1),
-                day = "" + d.getDate(),
-                year = d.getFullYear();
+            const d = new Date(date);
+            let month = "" + (d.getMonth() + 1),
+                day = "" + d.getDate();
+            const year = d.getFullYear();
 
             if (month.length < 2) {
                 month = "0" + month;

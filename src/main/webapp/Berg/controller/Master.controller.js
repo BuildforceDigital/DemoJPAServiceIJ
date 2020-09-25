@@ -16,14 +16,14 @@ sap.ui.define([
     },
 
     navToDetailOf: function(item) {
-      const username = window.encodeURIComponent(item.getBindingContext().getProperty("UserName"));
+      const username = encodeURIComponent(item.getBindingContext().getProperty("UserName"));
       this.getOwnerComponent().getRouter().navTo("masterDetail", {userName: username},
           !Device.system.phone);
     },
 
-    shouldRefresh: function(channelId, eventId, groupId) {
+    shouldRefresh: function(channelId, eventId, parametersMap) {
       const listBinding = this.byId("masterList").getBinding("items");
-      this.refresh(listBinding, groupId);
+      this.refresh(listBinding, parametersMap["groupId"]);
     },
     
     refresh: function(binding, groupId) {

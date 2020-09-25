@@ -27,7 +27,7 @@ sap.ui.define([
         */
         onBack: function () {
             const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("RouteMain", true);
+            oRouter.navTo("RouteMain", true)
         },
         onDelete: function (oEvent) {
             const userName = this.getView().getBindingContext().getProperty("UserName");
@@ -73,16 +73,21 @@ sap.ui.define([
             oView.byId("btnUpdate").setEnabled(false);
             // const ID = oView.getBindingContext().getProperty("ID");
             oView.bindElement({
-                path: oEvent.getSource().getBindingContext().getPath(),
+                path: oEvent.getSource().getBindingContext() /*.getPath()*/,
                 parameters: {
                     $$updateGroupId: batchGroupId
-                }
+                }/*, events: {dataRequested: () => {},
+                    dataReceived: () => {}
+                }*/
             });
         },
         updateEmp: function (oEvent) {
             const that = this,
                 dialog = this.getView().byId("editDialog"),
                 _oBinding = sap.ui.getCore().byId(this.getOwnerComponent().getId() + "---home--emptable").getBinding("items");
+
+            /*rootComponentContainer-basicTemplate---home--emptable*/
+            // console.log(sap.ui.getCore().byId(this.getOwnerComponent().getId()));
 
             dialog.getModel().submitBatch(batchGroupId).then(function () {
                 _oBinding.refresh(/*batchGroupId*/);

@@ -26,7 +26,8 @@
                     <IconTabFilter key="personal" text="Personal Info" icon="sap-icon://employee">
                         <HBox justifyContent="SpaceBetween">
                         <VBox class="sapUiSmallMargin">
-                            <f:SimpleForm id="personalForm" editable="false" layout="ResponsiveGridLayout"
+                            <!--layout="ResponsiveGridLayout"-->
+                            <f:SimpleForm id="personalForm" editable="false"
                                           title="Personal Info" labelSpanXL="4" labelSpanL="3"
                                           labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
                                           emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2"

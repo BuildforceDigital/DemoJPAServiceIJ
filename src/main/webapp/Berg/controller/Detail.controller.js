@@ -17,7 +17,7 @@ sap.ui.define([
     },
 
     bindSelectedItem: function({ userName }) {
-      const decodedUserName = window.decodeURIComponent(userName);
+      const decodedUserName = decodeURIComponent(userName);
       this.getView().bindElement({
         path: `/People('${decodedUserName}')`,
         parameters: {
@@ -25,7 +25,7 @@ sap.ui.define([
         },
         events: {
           dataRequested: () => this.byId("page").setBusy(true),
-          dataReceived: () => this.byId("page").setBusy(false),
+          dataReceived:  () => this.byId("page").setBusy(false)
         },
       });
     },
@@ -44,7 +44,7 @@ sap.ui.define([
 
     refreshMasterList: function(groupId) {
       const bus = this.getOwnerComponent().getEventBus();
-      bus.publish("master", "refresh", groupId);
+      bus.publish("master", "refresh", { groupId });
     },
 
     submitBatch: function(id) {
