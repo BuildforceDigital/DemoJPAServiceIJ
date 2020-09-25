@@ -24,4 +24,4 @@ INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES (1, 'Bd', 'Be', 'Csnr', 'Fn1', 'M'
 INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES (2, 'Bd', 'Be', 'Csnr', 'Fn2', 'M', 'Jf', 'lp', 'mp', 'nat', 'Piet',   'pe', '2020-05-01', 'us', null);
 INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES (3, 'Bd', 'Be', 'Csnr', 'Fn3', 'M', 'Jf', 'lp', 'mp', 'nat', 'Klaas',  'pe', '2020-05-01', 'us', null);
 INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES (4, 'Bd', 'Be', 'Csnr', 'Fn4', 'M', 'Jf', 'lp', 'mp', 'nat', 'Willem', 'pe', '2020-05-01', 'us', null);
-INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES (5, 'Bd', 'Be', 'Csnr', 'Fn5', 'F', 'Jf', 'lp', 'mp', 'nat', 'Anita',  'pe', '2020-05-01', 'us', '../media/Woman_avatar_02.png');
+INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES (5, 'Bd', 'Be', 'Csnr', 'Anita', 'F', 'Jf', 'lp', 'mp', 'nat', 'Anita',  'pe', '2020-05-01', 'us', '../media/Woman_avatar_02.png');
