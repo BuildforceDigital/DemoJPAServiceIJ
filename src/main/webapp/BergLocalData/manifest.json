@@ -1,0 +1,100 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "applicationVersion": {"version": "1.0.0"},
+    "dataSources": {
+      "myDataSource": {
+        "uri": "/ContextPath/ServletPath.svc/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "description": "Sample Code",
+    "title": "Demo",
+    "type": "application"
+  },
+  "sap.ui": {
+    "deviceTypes": {
+      "desktop": true,
+      "phone": true,
+      "tablet": true
+    },
+    "technology": "UI5"
+  },
+  "sap.ui5": {
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "dependencies": {
+      "minUI5Version": "1.79.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "_comment": "handleValidation enables Form Field Validation",
+    "handleValidation": true,
+    "models": {
+      "": {
+        "dataSource": "myDataSource",
+        "preload": true,
+        "settings": {
+          "autoExpandSelect": true,
+          "operationMode": "Server",
+          "synchronizationMode": "None"
+        }
+      },
+      "detailViewModel": {
+        "type": "sap.ui.model.json.JSONModel"
+      }
+    },
+    "rootView": {
+      "viewName": "demo.view.Root",
+      "id": "rootView",
+      "type": "XML",
+      "async": true
+    },
+    "routing": {
+      "config": {
+        "async": true,
+        "controlId": "rootSplitContainer",
+        "routerClass": "sap.m.routing.Router",
+        "viewPath": "demo.view",
+        "viewType": "XML"
+      },
+      "routes": {
+        "master": {
+          "pattern": "",
+        "target": ["emptyDetail", "master"]
+        },
+        "masterDetail": {
+          "pattern": "user/{userName}",
+          "target": ["detail", "master"]
+        }
+      },
+      "targets": {
+        "master": {
+          "viewId": "masterView",
+          "viewName": "Master",
+          "viewLevel": 1,
+          "controlAggregation": "masterPages"
+        },
+        "detail": {
+          "viewId": "detailView",
+          "viewName": "Detail",
+          "controlAggregation": "detailPages",
+          "viewLevel": 2,
+          "transition": "show"
+        },
+        "emptyDetail": {
+          "viewId": "emptyDetailView",
+          "viewName": "EmptyDetail",
+          "controlAggregation": "detailPages"
+        }
+      }
+    }
+  }
+}

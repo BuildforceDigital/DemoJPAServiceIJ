@@ -1,0 +1,63 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:form="sap.ui.layout.form"
+  controllerName="demo.controller.Detail"
+>
+  <Page id="page"
+    title="User: {UserName}"
+    floatingFooter="true"
+    showFooter="{detailViewModel>/editing}"
+  >
+    <headerContent>
+      <ToggleButton
+        icon="sap-icon://edit"
+        pressed="{detailViewModel>/editing}"
+        visible="{= !${detailViewModel>/editing}}"
+      />
+    </headerContent>
+    <form:SimpleForm id="form"
+      layout="ResponsiveGridLayout"
+      editable="true"
+    >
+      <Label text="First Name"/>
+      <Input
+        value="{
+          path: 'FirstName',
+          type: 'sap.ui.model.odata.type.String',
+          constraints: {
+            nullable: false,
+            maxLength: 30
+          }
+        }"
+        editable="{detailViewModel>/editing}"
+      />
+      <Label text="Last Name"/>
+      <Input
+        value="{
+          path: 'LastName',
+          type: 'sap.ui.model.odata.type.String',
+          constraints: {
+            nullable: false,
+            maxLength: 30
+          }
+        }"
+        editable="{detailViewModel>/editing}"
+      />
+    </form:SimpleForm>
+    <footer>
+      <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button id="submitBtn"
+          text="Submit"
+          type="Emphasized"
+          press=".onSubmitPress"
+        />
+        <Button id="cancelBtn"
+          text="Cancel"
+          press=".reset"
+        />
+      </OverflowToolbar>
+    </footer>
+  </Page>
+</mvc:View>

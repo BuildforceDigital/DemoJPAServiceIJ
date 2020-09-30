@@ -31,10 +31,10 @@ public class DataSourceHelper {
 
         switch (database) {
             case DB_HSQLDB:
-                ds = new DriverDataSource(classLoader, HSQLDB_DRIVER_CLASS_NAME, HSQLDB_URL, "SA", null, null);
+                ds = new DriverDataSource(classLoader, HSQLDB_DRIVER_CLASS_NAME, HSQLDB_URL, "SA", null);
                 break;
             case DB_DERBY:
-                ds = new DriverDataSource(classLoader, DERBY_DRIVER_CLASS_NAME, DERBY_URL, null, null, null);
+                ds = new DriverDataSource(classLoader, DERBY_DRIVER_CLASS_NAME, DERBY_URL, null, null);
                 break;
 
             case DB_REMOTE:
@@ -51,8 +51,7 @@ public class DataSourceHelper {
                 url = url.replace("$Port$", dbInfo.get("port").asText());
                 url = url.replace("$DBNAME$", dbInfo.get("dbname").asText());
                 String driver = dbInfo.get("driver").asText();
-                ds = new DriverDataSource(classLoader, driver, url, dbInfo.get("username").asText(),
-                        dbInfo.get("password").asText(), null);
+                ds = new DriverDataSource(classLoader, driver, url, dbInfo.get("username").asText(), dbInfo.get("password").asText());
                 return ds;
             default:
                 return null;

@@ -1,0 +1,10 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+>
+  <MessagePage
+    title="Demo"
+    text="Choose an Item from Master List"
+    description="Nothing to see here"
+  />
+</mvc:View>
