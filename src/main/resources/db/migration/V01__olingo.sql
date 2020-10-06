@@ -662,6 +662,16 @@ CREATE TABLE OLINGO."Todos"
     PRIMARY KEY ("Id")
 );
 
+CREATE TABLE OLINGO.TODO
+(
+    "Id"          VARCHAR(160) NOT NULL,
+    "Description" VARCHAR(160) NOT NULL,
+    "Summary"     VARCHAR(100) NULL,
+    PRIMARY KEY ("Id")
+);
+
+INSERT INTO OLINGO.TODO VALUES ( '34' , 'Et ea et omnis illum cupiditate. Dolor aspernatur tenetur ducimus facilis est nihil. Quo esse cupiditate molestiae illo corrupti qui quidem dolor.', null);
+
 
 CREATE TABLE OLINGO.parent
 (

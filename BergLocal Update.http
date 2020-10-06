@@ -1,0 +1,51 @@
+POST http://laptop-m05o0ii:8080/ContextPath/ServletPath.svc/$batch
+Content-Type: multipart/mixed; boundary=batch_id-1601562940648-35
+OData-Version: 4.0
+
+--batch_id-1601562940648-35
+Content-Type:application/http
+Content-Transfer-Encoding:binary
+
+PATCH Person0s(UserName='a') HTTP/1.1
+Accept:application/json;odata.metadata=minimal;IEEE754Compatible=true
+Accept-Language:en-US
+Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
+
+{
+   "LastName":"bfdfdf"
+}
+
+--batch_id-1601562940648-35--
+###
+PATCH http://laptop-m05o0ii:8080/ContextPath/ServletPath.svc/Person0s(UserName='a')
+Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
+OData-Version: 4.0
+
+{
+   "LastName":"bfdfdf"
+}
+###
+PATCH http://laptop-m05o0ii:8080/ContextPath/ServletPath.svc/BusinessPartner(UserName='a')
+Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
+OData-Version: 4.0
+
+{
+  "LastName":"bfdfdf"
+}
+
+###
+PATCH http://laptop-m05o0ii:8080/ContextPath/ServletPath.svc/Todos('34')
+Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
+OData-Version: 4.0
+
+{
+  "Summary":"blurp0"
+}
+###
+PATCH http://laptop-m05o0ii:8080/ContextPath/ServletPath.svc/AdministrativeDivisions(DivisionCode='BE1',CodeId='NUTS1',CodePublisher='Eurostat')
+Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
+OData-Version: 4.0
+
+{
+        "AlternativeCode": "Test"
+}

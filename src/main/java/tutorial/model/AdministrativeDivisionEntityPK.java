@@ -11,7 +11,6 @@ public class AdministrativeDivisionEntityPK {
     }
 
     @Column(name = "\"CodePublisher\"", length = 10)
-    @Id
     private String codePublisher;
 
 //    public String getCodePublisher() { return codePublisher; }
@@ -19,7 +18,6 @@ public class AdministrativeDivisionEntityPK {
     public void setCodePublisher(String codePublisher) { this.codePublisher = codePublisher; }
 
     @Column(name = "\"CodeID\"", length = 10)
-    @Id
     private String codeId;
 
 //    public String getCodeId() { return codeId; }
@@ -27,7 +25,6 @@ public class AdministrativeDivisionEntityPK {
     public void setCodeId(String codeId) { this.codeId = codeId; }
 
     @Column(name = "\"DivisionCode\"", length = 10)
-    @Id
     private String divisionCode;
 
 //    public String getDivisionCode() { return divisionCode; }
