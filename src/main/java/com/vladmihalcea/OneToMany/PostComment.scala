@@ -4,12 +4,14 @@ import beans.BeanProperty
 import jakarta.persistence.{Entity, FetchType, GeneratedValue, GenerationType, Id, ManyToOne, Table}
 import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
+import scala.annotation.meta.field
+
 
 @Entity
 @PrimaryKey(validation = IdValidation.NULL)
 @Table(name = "post_comment", schema = PostComment.schemaName)
 class PostComment(@BeanProperty val review: String) {
-  @Id
+  @(Id@field)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private val id = 0L
 

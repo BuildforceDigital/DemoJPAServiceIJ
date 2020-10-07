@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class AdministrativeDivisionDescriptionEntityPK implements Serializable {
+public class AdministrativeDivisionDescriptionEntityPK {
 
     @Column(name = "\"CodePublisher\"", nullable = false, length = 10)
     private String codePublisher;

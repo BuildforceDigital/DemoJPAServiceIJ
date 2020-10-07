@@ -1,14 +1,16 @@
 package de.mirkosertic.scala
 
 import beans.BeanProperty
-import jakarta.persistence.{Entity, GeneratedValue, GenerationType, Id, FetchType, ManyToOne, Table}
+import jakarta.persistence.{Entity, FetchType, GeneratedValue, GenerationType, Id, ManyToOne, Table}
 import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
+
+import scala.annotation.meta.field
 
 @Entity
 @PrimaryKey(validation = IdValidation.NULL)
 @Table(name = "CHILD", schema = Child.schemaName)
 class Child(@BeanProperty val name: String) {
-  @Id
+  @(Id@field)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private val id = 0L
   //@Column(name = "\"Id\"")

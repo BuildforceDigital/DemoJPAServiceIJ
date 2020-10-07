@@ -3,6 +3,7 @@ package realdeal.model
 import jakarta.persistence.{Column, Entity, GeneratedValue, GenerationType, Id, Table}
 import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
+import scala.annotation.meta.field
 import scala.beans.BeanProperty
 
 @Entity
@@ -22,7 +23,7 @@ class A0000UsersEntity( @Column(name = "\"BirthDay00\"", length = 36) @BeanPrope
                         @Column(name = "\"TillDate\"") @BeanProperty val tillDate: java.time.OffsetDateTime,
                         @Column(name = "\"UserImage\"", length = 40) @BeanProperty val userImage: String,
                         @Column(name = "\"UserName\"", length = 40) @BeanProperty val userName: String) {
-  @Id
+  @(Id@field)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private var id = 0L
 

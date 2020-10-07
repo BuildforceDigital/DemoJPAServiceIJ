@@ -3,15 +3,17 @@ package tutorial.model
 import jakarta.persistence.{Basic, Column, Entity, Id, Table}
 import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
+import scala.annotation.meta.field
+
 @Entity
 @PrimaryKey (validation = IdValidation.NULL)
 @Table(name = "\"P0000ProjMembersView\"", schema = "OLINGO")
 class P0000ProjMembersEntity {
-  @Id
+  @(Id@field)
   @Column(name = "\"P0000ProjectId\"", nullable = false)
   private var p0000ProjectId: Integer = _
 
-  @Id
+  @(Id@field)
   @Column(name = "\"A0000UserId\"", nullable = false)
   private var a0000UserId: Integer = _
 

@@ -8,6 +8,8 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 
+import scala.annotation.meta.field
+
 /*@EdmFunctions ( {
   @EdmFunction(
     name = "SiblingsBound",
@@ -24,7 +26,7 @@ import jakarta.persistence.Table
 @Table(name = "\"AttendanceEventsAllOld\"", schema = "OLINGO")
 class AttendanceEventsAllEntityOld {
 
-  @Id
+  @(Id@field)
   @Column(name = "\"Id\"")
   private var id = 0
 

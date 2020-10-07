@@ -3,13 +3,15 @@ package de.vogella.jpa.simple.main
 import jakarta.persistence.{Basic, Column, Entity, Id, Table}
 import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
+import scala.annotation.meta.field
+
 @Entity
 @Table(name = "\"Todos\"", schema = "OLINGO")
 @PrimaryKey(validation = IdValidation.NULL)
 class TodoEntity(_id : Int ) {
   def this() = this(0)
 
-  @Id
+  @(Id@field)
   //@GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "\"Id\"")
   private var id: Int = _id

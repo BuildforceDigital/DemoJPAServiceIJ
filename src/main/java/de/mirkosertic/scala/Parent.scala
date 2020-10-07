@@ -5,6 +5,7 @@ import java.{util => ju}
 import jakarta.persistence.{CascadeType, Entity, GeneratedValue, GenerationType, Id, OneToMany, Table}
 import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
+import scala.annotation.meta.field
 import scala.beans.BeanProperty
 
 @Entity
@@ -15,7 +16,7 @@ class Parent(@BeanProperty val name1: String, @BeanProperty val name2: String) {
   // Use Java collection types instead of Scala ones to make JPA happy
   final private val children: ju.List[Child] = new ju.ArrayList[Child]
 
-  @Id
+  @(Id@field)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private val id = 0L
 
@@ -24,7 +25,7 @@ class Parent(@BeanProperty val name1: String, @BeanProperty val name2: String) {
    *
    * @param aChild the child to add
    */
-  def addChild(aChild: Child) {
+  def addChild(aChild: Child): Unit = {
     children.add(aChild)
     aChild.setParent(this)
   }
