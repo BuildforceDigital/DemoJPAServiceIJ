@@ -16,7 +16,7 @@ sap.ui.define([
     },
 
     navToDetailOf: function(item) {
-      const username = encodeURIComponent(item.getBindingContext().getProperty("UserName"));
+      const username = item.getBindingContext().getProperty("UserName");
       this.getOwnerComponent().getRouter().navTo("masterDetail", {userName: username},
           !Device.system.phone);
     },

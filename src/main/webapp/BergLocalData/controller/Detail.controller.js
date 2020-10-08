@@ -17,9 +17,8 @@ sap.ui.define([
     },
 
     bindSelectedItem: function({ userName }) {
-      const decodedUserName = decodeURIComponent(userName);
       this.getView().bindElement({
-        path: `/Person0s('${decodedUserName}')`,
+        path: `/Person0s(${userName})`,
         parameters: {
           $$updateGroupId: batchGroupId
         },

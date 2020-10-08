@@ -6,7 +6,7 @@ OData-Version: 4.0
 Content-Type:application/http
 Content-Transfer-Encoding:binary
 
-PATCH Person0s(UserName='a') HTTP/1.1
+PATCH Person0s(UserName=c9da6455-213d-42c9-9a79-3e9149a57833) HTTP/1.1
 Accept:application/json;odata.metadata=minimal;IEEE754Compatible=true
 Accept-Language:en-US
 Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
@@ -17,7 +17,7 @@ Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
 
 --batch_id-1601562940648-35--
 ###
-PATCH http://laptop-m05o0ii:8080/ContextPath/ServletPath.svc/Person0s(UserName='a')
+PATCH http://laptop-m05o0ii:8080/ContextPath/ServletPath.svc/Person0s(UserName=c9da6455-213d-42c9-9a79-3e9149a57833)
 Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
 OData-Version: 4.0
 
