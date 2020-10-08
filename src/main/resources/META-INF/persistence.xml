@@ -13,6 +13,7 @@
         <class>com.vladmihalcea.OneToMany.Post</class>
         <class>com.vladmihalcea.OneToMany.PostComment</class>
         <class>tutorial.model.Person0</class>
+        <class>tutorial.model.UUIDAttributeConverter</class>
         <class>de.vogella.jpa.simple.main.Todo</class>
         <class>de.vogella.jpa.simple.main.TodoId</class>
 
