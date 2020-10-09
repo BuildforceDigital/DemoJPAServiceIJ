@@ -9,11 +9,11 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "person0", schema = "OLINGO")
-public class Person0 {
-    public Person0() {// Needed to be used as IdClass for java.lang.reflect.Constructor.newInstance
+public class Person0J {
+    public Person0J() {// Needed to be used as IdClass for java.lang.reflect.Constructor.newInstance
     }
 
-    public Person0 (UUID _Id){
+    public Person0J(UUID _Id){
         userName = _Id;
     }
 
