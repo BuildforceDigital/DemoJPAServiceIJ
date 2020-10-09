@@ -2,10 +2,13 @@ package tutorial.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import org.eclipse.persistence.annotations.IdValidation;
 import org.eclipse.persistence.annotations.PrimaryKey;
+import realdeal.model.A0000UsersEntity;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -26,6 +29,17 @@ public class AttendanceEventsAllEntity {
     public void setUserID(UUID userID) {
         this.userID = userID;
     }
+
+/*    @ManyToOne(fetch = FetchType.LAZY)
+    A0000UsersEntity parent;
+
+    public A0000UsersEntity getParent() {
+        return parent;
+    }
+
+    public void setParent(A0000UsersEntity parent) {
+        this.parent = parent;
+    }*/
 
     @Column(name = "\"UserID\"", nullable = false)
     private java.util.UUID userID;

@@ -1,10 +1,11 @@
 package realdeal.model
 
-import java.util.UUID
+import java.{util => ju}
 
-import jakarta.persistence.{Column, Convert, Entity, Id, Table}
+
+import jakarta.persistence.{CascadeType, Column, Convert, Entity, Id, OneToMany, Table}
 import realdeal.model.A0000UsersEntity._Column
-import tutorial.model.UUIDAttributeConverter
+import tutorial.model.{AttendanceEventsAllEntity, UUIDAttributeConverter}
 
 import scala.annotation.meta.{beanGetter, field}
 import scala.beans.BeanProperty
@@ -16,7 +17,12 @@ class A0000UsersEntity {
   @(Id@field)
   @Convert(converter = classOf[UUIDAttributeConverter])
   @BeanProperty
-  var id :UUID = _
+  var id: ju.UUID = _
+
+  // Use Java collection types instead of Scala ones to make JPA happy
+  //@OneToMany(mappedBy = A0000UsersEntity.tableName, cascade = Array(CascadeType.ALL), orphanRemoval = true)
+  //@BeanProperty
+  //final val children: ju.List[AttendanceEventsAllEntity] = new ju.ArrayList[AttendanceEventsAllEntity]
 
   @(_Column@field)(name = "\"BirthDay\"", length = 36)
   @BeanProperty
