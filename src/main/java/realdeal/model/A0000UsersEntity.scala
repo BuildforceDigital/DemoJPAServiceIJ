@@ -3,7 +3,6 @@ package realdeal.model
 import java.util.UUID
 
 import jakarta.persistence.{Column, Convert, Entity, Id, Table}
-import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 import realdeal.model.A0000UsersEntity._Column
 import tutorial.model.UUIDAttributeConverter
 
@@ -14,13 +13,10 @@ import scala.beans.BeanProperty
 @Table(name = A0000UsersEntity.tableName, schema = A0000UsersEntity.schemaName)
 class A0000UsersEntity {
 
-  /*    @(Id@field)
-    @Column(name = "userName")
-    @Convert(converter = classOf[UUIDAttributeConverter])
-    @BeanProperty
-    var userName: UUID = _*/
   @(Id@field)
-  private var id = 0L
+  @Convert(converter = classOf[UUIDAttributeConverter])
+  @BeanProperty
+  var id :UUID = _
 
   @(_Column@field)(name = "\"BirthDay\"", length = 36)
   @BeanProperty

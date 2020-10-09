@@ -642,10 +642,10 @@ create table OLINGO."P0000Projects"(
 
 create table OLINGO."P0000ProjMembers"(
     "P0000ProjectId" INTEGER,
-    "A0000UserId"    INTEGER
+    "A0000UserId"    LONGVARBINARY
 );
 
-INSERT INTO OLINGO."P0000ProjMembers" VALUES (0, 0);
+INSERT INTO OLINGO."P0000ProjMembers" VALUES (0, 'f2a3b1deee884b2885729d6afc856116');
 
 INSERT INTO OLINGO."P0000Projects" VALUES ( 0, '2020-05-16 12:00:00.000000+02:00', 'Zuidasdok', 'ZUIDPLUS00', 'Heijmans Infra',
 'De verbreding van 4 naar 6 rijstroken en ondergronds brengen van Rijksweg A10 Zuid;
