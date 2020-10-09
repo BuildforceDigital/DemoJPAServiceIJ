@@ -25,15 +25,8 @@ class Person0 {
   @BeanProperty
   var lastName: String = _
 
-  def this(_Id: UUID) = {
-    this()
-    userName = _Id
-  }
-
 }
 
 object Person0 {
   type _Column = Column@beanGetter
-  final val tableName = "person0"
-  final val schemaName = "OLINGO"
 }
