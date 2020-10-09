@@ -8,6 +8,7 @@ import org.eclipse.persistence.annotations.IdValidation;
 import org.eclipse.persistence.annotations.PrimaryKey;
 
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 @Entity
 @PrimaryKey(validation = IdValidation.NULL)
@@ -17,7 +18,19 @@ public class AttendanceEventsAllEntity {
     @Id
     @Column(name = "\"Id\"") private Integer id;
     @Column(name = "\"ApprovalBy\"", length = 40) private String approvalBy;
-    @Column(name = "ApprovalDateTime") private OffsetDateTime approvalDateTime;
+
+    public UUID getUserID() {
+        return userID;
+    }
+
+    public void setUserID(UUID userID) {
+        this.userID = userID;
+    }
+
+    @Column(name = "\"UserID\"", nullable = false)
+    private java.util.UUID userID;
+
+    @Column(name = "\"ApprovalDateTime\"") private OffsetDateTime approvalDateTime;
     @Column(name = "\"CheckInDateTime\"", nullable = false) private OffsetDateTime checkInDateTime;
     @Column(name = "\"CheckOutDateTime\"") private OffsetDateTime checkOutDateTime;
     @Column(name = "\"Description\"", length = 160) private String description;
