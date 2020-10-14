@@ -1,5 +1,5 @@
 -- SET schema "DEV_GREENTRAK00";
-create schema "DEV_GREENTRAK00";
+create schema DEV_GREENTRAK00;
 
 create table DEV_GREENTRAK00.A0000USERS (
                                        ID                 LONGVARBINARY,

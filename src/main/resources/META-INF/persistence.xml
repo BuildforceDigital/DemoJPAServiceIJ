@@ -6,8 +6,7 @@
 
     <persistence-unit name="GreenTrak00">
         <class>realdeal.model.A0000UsersEntity</class>
-        <class>tutorial.model.P0000ProjectsEntity</class>
-        <class>tutorial.model.P0000ProjMembersEntity</class>
+        <class>realdeal.model.P0000ProjectsEntity</class>
         <class>de.mirkosertic.scala.Parent</class>
         <class>de.mirkosertic.scala.Child</class>
         <class>com.vladmihalcea.OneToMany.Post</class>

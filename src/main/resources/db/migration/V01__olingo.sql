@@ -1,4 +1,4 @@
-SET schema "OLINGO";
+SET schema OLINGO;
 -- create schema "OLINGO";
 
 --------BUSINESS PARTNER---------------------------------------------------------------------------------------------------------
@@ -633,28 +633,6 @@ INSERT INTO OLINGO."AttendanceEventsAll" VALUES ( 5, 'Heijmans Infra', 'PRUTSERI
 INSERT INTO OLINGO."AttendanceEventsAll" VALUES ( 6, 'Heijmans Infra', 'ZUIDPLUS00', 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00','f2a3b1deee884b2885729d6afc856116',  'TestActor05', null, 'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
 INSERT INTO OLINGO."AttendanceEventsAll" VALUES (10, 'Heijmans Infra', 'ZUIDPLUS00', 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00','f2a3b1deee884b2885729d6afc856116',  'TestActor05', 6,    'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
 INSERT INTO OLINGO."AttendanceEventsAll" VALUES (11, 'Heijmans Infra', 'ZUIDPLUS00', 'TERMINAL0000003', '2020-05-16 12:00:00.000000+02:00','f2a3b1deee884b2885729d6afc856116',  'TestActor05', 10,   'TERMINAL0000001', '2020-05-16 17:22:54.037088', '2020-05-16', 'Tieback poured', 'FvdB', '2020-05-16 19:42:54.037088+02:00', null);
-
-create table OLINGO."P0000Projects"(
-    "Id"          INTEGER not null constraint P0000PROJECTS_PK primary key,
-    "StartDate"   TIMESTAMP WITH TIME ZONE,
-    "ProjectName" VARCHAR(20),
-    "ProjectCode" VARCHAR(20),
-    "ProjOwner"   VARCHAR(20),
-    "Description" VARCHAR(320)
-);
-
-create table OLINGO."P0000ProjMembers"(
-    "P0000ProjectId" INTEGER,
-    "A0000UserId"    LONGVARBINARY
-);
-
-INSERT INTO OLINGO."P0000ProjMembers" VALUES (0, 'f2a3b1deee884b2885729d6afc856116');
-
-INSERT INTO OLINGO."P0000Projects" VALUES ( 0, '2020-05-16 12:00:00.000000+02:00', 'Zuidasdok', 'ZUIDPLUS00', 'Heijmans Infra',
-'De verbreding van 4 naar 6 rijstroken en ondergronds brengen van Rijksweg A10 Zuid;
-De herinrichting van de verkeersknooppunten Amstel en De Nieuwe Meer;
-Het uitbreiden en vernieuwen van het station Amsterdam Zuid;
-Het opnieuw inrichten van het stationsgebied.');
 
 --------DUMMY FOR TESTING--------------------------------------------------------------------------------------------------------
 CREATE TABLE OLINGO."Todos"
