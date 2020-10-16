@@ -6,6 +6,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
 import org.eclipse.persistence.annotations.IdValidation;
 import org.eclipse.persistence.annotations.PrimaryKey;
 import realdeal.model.A0000UsersEntity;
@@ -19,38 +21,21 @@ import java.util.UUID;
 public class AttendanceEventsAllEntity {
 
     @Id
-    @Column(name = "\"Id\"") private
+    @Column(name = "\"ID\"") private
     Integer id;
 
     @Column(name = "\"ApprovalBy\"", length = 40)
 
     private String approvalBy;
 
-    public UUID getUserID() {
-        return userID;
-    }
-
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(referencedColumnName = "ID", name = "\"UserID\"", nullable = false, insertable = false, updatable = false)
+    })
     private A0000UsersEntity hourWriter;
 
     @Column(name = "\"UserID\"", nullable = false)
     private java.util.UUID userID;
-
-    public void setUserID(UUID userID) {
-        this.userID = userID;
-    }
-
-/*    @ManyToOne(fetch = FetchType.LAZY)
-    A0000UsersEntity parent;
-
-    public A0000UsersEntity getParent() {
-        return parent;
-    }
-
-    public void setParent(A0000UsersEntity parent) {
-        this.parent = parent;
-    }*/
-
 
     @Column(name = "\"ApprovalDateTime\"") private OffsetDateTime approvalDateTime;
     @Column(name = "\"CheckInDateTime\"", nullable = false) private OffsetDateTime checkInDateTime;
@@ -66,9 +51,9 @@ public class AttendanceEventsAllEntity {
     @Column(name = "\"UserName\"", nullable = false, length = 40)
     private String userName;
 
-    /*public AttendanceEventsAllEntity(final Integer key) {
+    public AttendanceEventsAllEntity(final Integer key) {
         id = key;
-    }*/
+    }
 
     public AttendanceEventsAllEntity() {
         // required for JPA

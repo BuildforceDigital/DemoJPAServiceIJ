@@ -2,7 +2,7 @@
 create schema DEV_GREENTRAK00;
 
 create table DEV_GREENTRAK00.A0000USERS (
-                                       ID                 LONGVARBINARY,
+                                       "Id"                 LONGVARBINARY,
                                        "BirthDay"         varchar(36),
                                        "BusinessEmail"    varchar(10),
                                        "CitizenServiceNr" varchar(36),
@@ -17,7 +17,7 @@ create table DEV_GREENTRAK00.A0000USERS (
                                        "TillDate"         TIMESTAMP WITH TIME ZONE,
                                        "UserName"         varchar(40),
                                        "UserImage"        varchar(40),
-                                       PRIMARY KEY (ID));
+                                       PRIMARY KEY ("Id"));
 
 INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES ('04a47a9852374cc8b2fac629bd8f019e', 'Bd', 'Be', 'Csnr', 'TestActor05', 'M', 'Jf', 'lp', 'mp', 'nat', 'Jan',    'pe', '2020-05-01', 'us', null);
 INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES ('4e65220e9332442eb0bcd1b5b16c1db8', 'Bd', 'Be', 'Csnr', 'Fn1', 'M', 'Jf', 'lp', 'mp', 'nat', 'Jan',    'pe', '2020-05-01', 'us', null);
@@ -26,7 +26,7 @@ INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES ('a7de5d729e0343419e7da348aaa8eac2
 INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES ('caa70247ad7c4b688949edec7e879ae2', 'Bd', 'Be', 'Csnr', 'Fn4', 'M', 'Jf', 'lp', 'mp', 'nat', 'Willem', 'pe', '2020-05-01', 'us', null);
 INSERT INTO DEV_GREENTRAK00.A0000USERS VALUES ('f2a3b1deee884b2885729d6afc856116', 'Bd', 'Be', 'Csnr', 'Anita', 'F', 'Jf', 'lp', 'mp', 'nat', 'Anita',  'pe', '2020-05-01', 'us', '../media/Woman_avatar_02.png');
 
-ALTER TABLE OLINGO."AttendanceEventsAll" ADD CONSTRAINT "FK_AttendanceEventsAll_PARENT_ID" FOREIGN KEY ("UserID") REFERENCES DEV_GREENTRAK00.A0000USERS (ID);
+ALTER TABLE OLINGO."AttendanceEventsAll" ADD CONSTRAINT "FK_AttendanceEventsAll_UserID" FOREIGN KEY ("UserID") REFERENCES DEV_GREENTRAK00.A0000USERS ("Id");
 
 create table DEV_GREENTRAK00.P0000PROJECTS(
                                               "Id"          INTEGER not null constraint P0000PROJECTS_PK primary key,
