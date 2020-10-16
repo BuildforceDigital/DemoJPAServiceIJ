@@ -19,12 +19,22 @@ import java.util.UUID;
 public class AttendanceEventsAllEntity {
 
     @Id
-    @Column(name = "\"Id\"") private Integer id;
-    @Column(name = "\"ApprovalBy\"", length = 40) private String approvalBy;
+    @Column(name = "\"Id\"") private
+    Integer id;
+
+    @Column(name = "\"ApprovalBy\"", length = 40)
+
+    private String approvalBy;
 
     public UUID getUserID() {
         return userID;
     }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private A0000UsersEntity hourWriter;
+
+    @Column(name = "\"UserID\"", nullable = false)
+    private java.util.UUID userID;
 
     public void setUserID(UUID userID) {
         this.userID = userID;
@@ -41,8 +51,6 @@ public class AttendanceEventsAllEntity {
         this.parent = parent;
     }*/
 
-    @Column(name = "\"UserID\"", nullable = false)
-    private java.util.UUID userID;
 
     @Column(name = "\"ApprovalDateTime\"") private OffsetDateTime approvalDateTime;
     @Column(name = "\"CheckInDateTime\"", nullable = false) private OffsetDateTime checkInDateTime;
@@ -54,13 +62,13 @@ public class AttendanceEventsAllEntity {
     @Column(name = "\"StartDate\"") private OffsetDateTime startDate;
     @Column(name = "\"TermGuidIn\"", nullable = false, length = 36) private String termGuidIn;
     @Column(name = "\"TermGuidOut\"", length = 36) private String termGuidOut;
-    @Column(name = "\"UserName\"", nullable = false, length = 40) private String userName;
 
+    @Column(name = "\"UserName\"", nullable = false, length = 40)
+    private String userName;
 
     /*public AttendanceEventsAllEntity(final Integer key) {
         id = key;
     }*/
-    
 
     public AttendanceEventsAllEntity() {
         // required for JPA

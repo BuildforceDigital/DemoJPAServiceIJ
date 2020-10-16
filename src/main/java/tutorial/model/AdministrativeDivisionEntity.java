@@ -55,10 +55,10 @@ public class AdministrativeDivisionEntity {
             insertable = false, updatable = false)
     @JoinColumn(referencedColumnName = "\"DivisionCode\"", name = "\"ParentDivisionCode\"", nullable = false,
             insertable = false, updatable = false)
-    private AdministrativeDivisionEntity parent;
+    private AdministrativeDivisionEntity parentAD;
 
-    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<AdministrativeDivisionEntity> children = new ArrayList<>();
+    @OneToMany(mappedBy = "parentAD", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<AdministrativeDivisionEntity> childrenAD = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "\"CodePublisher\"", referencedColumnName = "\"CodePublisher\"", insertable = false,
@@ -77,8 +77,8 @@ public class AdministrativeDivisionEntity {
     @PostPersist
     @PostUpdate
     public void adjustParent() {
-        for (AdministrativeDivisionEntity child : children) {
-            child.setParent(this);
+        for (AdministrativeDivisionEntity child : childrenAD) {
+            child.setParentAD(this);
         }
     }
 
@@ -90,8 +90,8 @@ public class AdministrativeDivisionEntity {
         return area;
     }
 
-    public List<AdministrativeDivisionEntity> getChildren() {
-        return children;
+    public List<AdministrativeDivisionEntity> getChildrenAD() {
+        return childrenAD;
     }
 
     public String getCodeId() {
@@ -110,8 +110,8 @@ public class AdministrativeDivisionEntity {
         return divisionCode;
     }
 
-    public AdministrativeDivisionEntity getParent() {
-        return parent;
+    public AdministrativeDivisionEntity getParentAD() {
+        return parentAD;
     }
 
     public String getParentCodeId() {
@@ -134,8 +134,8 @@ public class AdministrativeDivisionEntity {
         this.area = area;
     }
 
-    public void setChildren(List<AdministrativeDivisionEntity> children) {
-        this.children = children;
+    public void setChildrenAD(List<AdministrativeDivisionEntity> children) {
+        this.childrenAD = children;
     }
 
     public void setCodeId(String codeID) {
@@ -154,8 +154,8 @@ public class AdministrativeDivisionEntity {
         this.divisionCode = divisionCode;
     }
 
-    public void setParent(AdministrativeDivisionEntity parent) {
-        this.parent = parent;
+    public void setParentAD(AdministrativeDivisionEntity parent) {
+        this.parentAD = parent;
         this.parentCodeId = parent.getCodeId();
         this.parentDivisionCode = parent.getDivisionCode();
     }

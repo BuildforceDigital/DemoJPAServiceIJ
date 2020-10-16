@@ -2,8 +2,7 @@ package realdeal.model
 
 import java.{util => ju}
 
-
-import jakarta.persistence.{CascadeType, Column, Convert, Entity, Id, OneToMany, Table}
+import jakarta.persistence.{CascadeType, Column, Convert, Entity, FetchType, Id, OneToMany, Table}
 import realdeal.model.A0000UsersEntity._Column
 import tutorial.model.{AttendanceEventsAllEntity, UUIDAttributeConverter}
 
@@ -79,6 +78,10 @@ class A0000UsersEntity {
   @(_Column@field)(name = "\"UserName\"", length = 40)
   @BeanProperty
   var userName: String = _
+
+  @BeanProperty
+  @(OneToMany@field)(mappedBy = "hourWriter", fetch = FetchType.LAZY, cascade = Array(CascadeType.ALL))
+  var regHours: ju.ArrayList[AttendanceEventsAllEntity] = new ju.ArrayList
 
 }
 
