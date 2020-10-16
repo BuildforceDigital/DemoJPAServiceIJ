@@ -37,7 +37,7 @@ public class JPA20 {
         theEntityManager.getTransaction().commit();
 
         // Query it
-        theEntityManager.getTransaction().begin();
+        // theEntityManager.getTransaction().begin();
         CriteriaQuery<Parent> theQuery = theEntityManager.getCriteriaBuilder().createQuery(Parent.class);
         theQuery.distinct(false).from(Parent.class);
         for (Parent theParent : theEntityManager.createQuery(theQuery).getResultList()) {

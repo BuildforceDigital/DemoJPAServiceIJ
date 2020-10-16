@@ -12,13 +12,13 @@ import scala.beans.BeanProperty
 @PrimaryKey(validation = IdValidation.NULL)
 @Table(name = Parent.tableName, schema = Parent.schemaName)
 class Parent(@BeanProperty val name1: String, @BeanProperty val name2: String) {
-  @OneToMany(mappedBy = Parent.tableName, cascade = Array(CascadeType.ALL), orphanRemoval = true)
-  // Use Java collection types instead of Scala ones to make JPA happy
-  final private val children: ju.List[Child] = new ju.ArrayList[Child]
-
   @(Id@field)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private val id = 0L
+
+  @(OneToMany@field)(mappedBy = "parent", cascade = Array(CascadeType.ALL), orphanRemoval = true)
+  // Use Java collection types instead of Scala ones to make JPA happy
+  final private val children: ju.List[Child] = new ju.ArrayList[Child]
 
   /**
    * Method to add a child to the parent.

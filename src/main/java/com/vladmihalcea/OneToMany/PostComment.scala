@@ -15,8 +15,8 @@ class PostComment(@BeanProperty val review: String) {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private val id = 0L
 
+  @(ManyToOne@field)(fetch = FetchType.LAZY)
   @BeanProperty
-  @ManyToOne(fetch = FetchType.LAZY)
   var post: Post = _
 
   // Default constructor for hibernate
