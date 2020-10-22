@@ -1,7 +1,7 @@
 package de.mirkosertic.scala
 
 import beans.BeanProperty
-import jakarta.persistence.{Entity, FetchType, GeneratedValue, GenerationType, Id, ManyToOne, Table}
+import jakarta.persistence.{Entity, FetchType, GeneratedValue, GenerationType, Id, JoinColumn, ManyToOne, Table}
 import org.eclipse.persistence.annotations.{IdValidation, PrimaryKey}
 
 import scala.annotation.meta.field
@@ -16,7 +16,8 @@ class Child(@BeanProperty val name: String) {
   //@Column(name = "\"Id\"")
 
   @BeanProperty
-  @ManyToOne(fetch = FetchType.LAZY)
+  @(ManyToOne@field)(fetch = FetchType.LAZY)
+  //@(JoinColumn@field)(name="ID", nullable=false)
   var parent: Parent = _
 
   // Default constructor for hibernate

@@ -80,11 +80,11 @@ class A0000UsersEntity {
   @BeanProperty
   var userName: String = _
 
-/*
+
   @BeanProperty
   @(OneToMany@field)(mappedBy = "hourWriter", fetch = FetchType.LAZY, cascade = Array(CascadeType.ALL))
   var regHours: ju.ArrayList[AttendanceEventsAllEntity] = new ju.ArrayList
-*/
+
 
 }
 

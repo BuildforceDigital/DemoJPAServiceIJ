@@ -16,6 +16,9 @@ class Post(@BeanProperty val title: String) {
   // Use Java collection types instead of Scala ones to make JPA happy
   final private val comments: ju.List[PostComment] = new ju.ArrayList[PostComment]
 
+  def getComments: ju.List[PostComment] = comments
+
+
   @(Id@field)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private var id = 0L

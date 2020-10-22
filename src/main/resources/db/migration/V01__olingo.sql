@@ -26,7 +26,7 @@ CREATE TABLE OLINGO."BusinessPartner"(
     "Telecom.Mobile"              VARCHAR(100),
     "Telecom.Fax"                 VARCHAR(100),
     "Telecom.Email"               VARCHAR(100),
-    "CreatedBy"                   VARCHAR(32) NOT NULL CONSTRAINT bpa_bpa00_fk REFERENCES OLINGO."BusinessPartner",
+    "CreatedBy"                   VARCHAR(32) NOT NULL CONSTRAINT "FK_BusinessPartner_CreatedBy" REFERENCES OLINGO."BusinessPartner",
     "CreatedAt"                   TIMESTAMP /*WITH TIME ZONE*/ DEFAULT CURRENT_TIMESTAMP,
     "UpdatedBy"                   VARCHAR(32) CONSTRAINT "FK_BusinessPartner_UpdatedBy" REFERENCES OLINGO."BusinessPartner",
     "UpdatedAt"                   TIMESTAMP /*WITH TIME ZONE*/ CHECK ("UpdatedAt" >= "CreatedAt"),
@@ -362,6 +362,9 @@ INSERT INTO OLINGO."AdministrativeDivisionDescription" VALUES ('ISO', '3166-2', 
 INSERT INTO OLINGO."AdministrativeDivisionDescription" VALUES ('ISO', '3166-2', 'US-WY', 'de', 'Wyoming');
 INSERT INTO OLINGO."AdministrativeDivisionDescription" VALUES ('ISO', '3166-2', 'US-WY', 'en', 'Wyoming');
 
+--ALTER TABLE OLINGO."AdministrativeDivisionDescription" ADD CONSTRAINT "AdministrativeDivisionDescription_CodePublisher" FOREIGN KEY ("CodePublisher", "CodeID", "DivisionCode") REFERENCES OLINGO."BusinessPartner" (ADDRESS_REGIONCODEPUBLISHER, ADDRESS_REGIONCODEID, ADDRESS_REGION);
+
+
 --------ADMINISTRATIVE DIVISION--------------------------------------------------------------------------------------------------
 CREATE TABLE OLINGO."AdministrativeDivision"
 (
@@ -592,6 +595,8 @@ ALTER TABLE OLINGO."BusinessPartner"
         FOREIGN KEY ("ADDRESS_REGIONCODEPUBLISHER", "ADDRESS_REGIONCODEID", "ADDRESS_REGION")
             REFERENCES OLINGO."AdministrativeDivision" ("CodePublisher", "CodeID", "DivisionCode");
 
+ALTER TABLE OLINGO."AdministrativeDivision" ADD CONSTRAINT "FK_AdministrativeDivision_ParentDivisionCode" FOREIGN KEY ("ParentDivisionCode", "ParentCodeID", "CodePublisher") REFERENCES OLINGO."AdministrativeDivision" ("DivisionCode", "CodeID", "CodePublisher");
+
 CREATE TABLE OLINGO."Comment" (
     "BusinessPartnerID" VARCHAR(32) NOT NULL,
     "Order"             INTEGER     NOT NULL,
@@ -606,7 +611,7 @@ INSERT INTO OLINGO."Comment" VALUES ('1', 3, 'This is another test');
 
 CREATE TABLE OLINGO."AttendanceEventsAll"
 (
-    "Id"               INTEGER                  NOT NULL,
+    ID               INTEGER                  NOT NULL,
     "ProjOwner"        VARCHAR(36)              NOT NULL,
     "ProjectCode"      VARCHAR(10)              NOT NULL,
     "TermGuidIn"       VARCHAR(36)              NOT NULL,
@@ -621,7 +626,7 @@ CREATE TABLE OLINGO."AttendanceEventsAll"
     "ApprovalBy"       VARCHAR(40),
     "ApprovalDateTime" TIMESTAMP WITH TIME ZONE,
     "Remarks"          VARCHAR(480),
-    PRIMARY KEY ("Id")
+    PRIMARY KEY (ID)
 );
 
 INSERT INTO OLINGO."AttendanceEventsAll" VALUES ( 0, 'WH&FF',          'PRUTSERIJ0', 'TERMINAL0000003', '2020-01-16 17:42:54.037088',  'f2a3b1deee884b2885729d6afc856116',     'TestActor05',  null,  null,             null,        '2020-02-16', null, null, null, null);

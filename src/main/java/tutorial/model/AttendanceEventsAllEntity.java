@@ -21,7 +21,7 @@ import java.util.UUID;
 public class AttendanceEventsAllEntity {
 
     @Id
-    @Column(name = "\"ID\"") private
+    @Column(name = "ID") private
     Integer id;
 
     @Column(name = "\"ApprovalBy\"", length = 40)
