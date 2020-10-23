@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import org.eclipse.persistence.annotations.IdValidation;
 import org.eclipse.persistence.annotations.PrimaryKey;
 import realdeal.model.A0000UsersEntity;
@@ -28,10 +27,16 @@ public class AttendanceEventsAllEntity {
 
     private String approvalBy;
 
+    public A0000UsersEntity getHourWriter() {
+        return hourWriter;
+    }
+
+    public void setHourWriter(A0000UsersEntity hourWriter) {
+        this.hourWriter = hourWriter;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(referencedColumnName = "ID", name = "\"UserID\"", nullable = false, insertable = false, updatable = false)
-    })
+    @JoinColumn(/*referencedColumnName = "ID",*/ name = "\"UserID\"", nullable = false, insertable = false, updatable = false)
     private A0000UsersEntity hourWriter;
 
     @Column(name = "\"UserID\"", nullable = false)
@@ -51,9 +56,11 @@ public class AttendanceEventsAllEntity {
     @Column(name = "\"UserName\"", nullable = false, length = 40)
     private String userName;
 
+/*
     public AttendanceEventsAllEntity(final Integer key) {
         id = key;
     }
+*/
 
     public AttendanceEventsAllEntity() {
         // required for JPA

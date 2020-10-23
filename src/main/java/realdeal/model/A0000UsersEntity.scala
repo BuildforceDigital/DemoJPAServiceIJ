@@ -81,7 +81,7 @@ class A0000UsersEntity {
   var userName: String = _
 
 
-  @BeanProperty
+  //@BeanProperty
   @(OneToMany@field)(mappedBy = "hourWriter", fetch = FetchType.LAZY, cascade = Array(CascadeType.ALL))
   var regHours: ju.ArrayList[AttendanceEventsAllEntity] = new ju.ArrayList
 

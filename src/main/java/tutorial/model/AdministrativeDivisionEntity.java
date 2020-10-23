@@ -90,9 +90,9 @@ public class AdministrativeDivisionEntity {
         return area;
     }
 
-    public List<AdministrativeDivisionEntity> getChildrenAD() {
+/*    public List<AdministrativeDivisionEntity> getChildrenAD() {
         return childrenAD;
-    }
+    }*/
 
     public String getCodeId() {
         return codeId;
