@@ -1,6 +1,7 @@
 package tutorial.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -40,6 +41,7 @@ public class AttendanceEventsAllEntity {
     private A0000UsersEntity hourWriter;
 
     @Column(name = "\"UserID\"", nullable = false)
+    @Convert(converter = UUIDAttributeConverter.class)
     private java.util.UUID userID;
 
     @Column(name = "\"ApprovalDateTime\"") private OffsetDateTime approvalDateTime;
@@ -61,6 +63,14 @@ public class AttendanceEventsAllEntity {
         id = key;
     }
 */
+
+    public UUID getUserID() {
+        return userID;
+    }
+
+    public void setUserID(UUID userID) {
+        this.userID = userID;
+    }
 
     public AttendanceEventsAllEntity() {
         // required for JPA

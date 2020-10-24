@@ -3,15 +3,15 @@ package realdeal.model
 import java.{util => ju}
 
 import jakarta.persistence.{CascadeType, Column, Convert, Entity, FetchType, Id, OneToMany, Table}
-import realdeal.model.A0000UsersEntity._Column
+import realdeal.model.A0000UsersEntity0._Column
 import tutorial.model.{AttendanceEventsAllEntity, UUIDAttributeConverter}
 
 import scala.annotation.meta.{beanGetter, field}
 import scala.beans.BeanProperty
 
 @Entity
-@Table(name = A0000UsersEntity.tableName, schema = A0000UsersEntity.schemaName)
-class A0000UsersEntity {
+@Table(name = A0000UsersEntity0.tableName, schema = A0000UsersEntity0.schemaName)
+class A0000UsersEntity0 {
 
   @(Id@field)
   @Convert(converter = classOf[UUIDAttributeConverter])
@@ -88,7 +88,7 @@ class A0000UsersEntity {
 
 }
 
-object A0000UsersEntity {
+object A0000UsersEntity0 {
   type _Column = Column@beanGetter
   final val schemaName= "DEV_GREENTRAK00"
   final val tableName = "A0000USERS"
