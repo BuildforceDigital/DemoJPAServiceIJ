@@ -124,13 +124,13 @@ sap.ui.define([
         /* =========================================================== */
 
         _onRouteMatched: function (oEvent) {
-            this.getView().byId("empIconTabBar").setSelectedKey("timesheet");
+            /*this.getView().byId("empIconTabBar").setSelectedKey("timesheet");
             this.getView().bindElement({
                 path: "/" + oEvent.getParameter("arguments").employeePath,
                 parameters: {
                     $$updateGroupId: batchGroupId
                 }
-            });
+            });*/
         },
         getGroupHeader: function (oGroup) {
             const oDate = new Date(oGroup.key);

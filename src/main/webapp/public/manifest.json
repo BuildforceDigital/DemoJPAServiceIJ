@@ -1,5 +1,5 @@
 {
-  "_version": "1.21.0",
+  "_version": "1.25.0",
   "sap.app": {
     "type": "application",
     "i18n": "i18n/i18n.properties",

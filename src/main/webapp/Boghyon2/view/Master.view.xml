@@ -1,0 +1,43 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:f="sap.f"
+  xmlns="sap.m"
+  controllerName="demo.controller.Master"
+>
+  <f:DynamicPage id="page"
+    fitContent="true"
+    headerExpanded="false"
+    toggleHeaderOnTitleClick="false"
+    class="sapUiNoContentPadding"
+    backgroundDesign="List"
+  >
+    <f:title>
+      <f:DynamicPageTitle>
+        <f:heading>
+          <Title text="Users" />
+        </f:heading>
+      </f:DynamicPageTitle>
+    </f:title>
+    <f:content>
+      <List id="masterList"
+        growing="true"
+        growingScrollToLoad="true"
+        class="sapFDynamicPageAlignContent"
+        width="auto"
+        mode="SingleSelectMaster"
+        items="{
+          path: '/BPersonss',
+          templateShareable: false
+        }"
+        itemPress=".navToDetailOf(${$parameters>/listItem})"
+      >
+        <StandardListItem icon="sap-icon://person-placeholder"
+          title="{FirstName}"
+          info="{LastName}"
+          infoState="Information"
+          type="Navigation"
+        />
+      </List>
+    </f:content>
+  </f:DynamicPage>
+</mvc:View>

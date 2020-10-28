@@ -5,26 +5,17 @@
 		xmlns:layout="sap.ui.layout"
 		xmlns:mvc="sap.ui.core.mvc"
 		xmlns="sap.m">
+	<!--toggleHeaderOnTitleClick="{/titleClickable}"-->
 		<f:DynamicPage id="dynamicPageId"
 			stickySubheaderProvider="iconTabBar"
-			class="sapUiNoContentPadding"
-			toggleHeaderOnTitleClick="{/titleClickable}">
+			class="sapUiNoContentPadding">
+
 			<!-- DynamicPage Title -->
 			<f:title>
 				<f:DynamicPageTitle>
 					<f:heading>
 						<Title text="Header Title"/>
 					</f:heading>
-					<f:breadcrumbs>
-						<Breadcrumbs>
-							<Link text="Home" />
-							<Link text="Page 1" />
-							<Link text="Page 2" />
-							<Link text="Page 3" />
-							<Link text="Page 4" />
-							<Link text="Page 5" />
-						</Breadcrumbs>
-					</f:breadcrumbs>
 					<f:expandedContent>
 						<Label text="This is a subheading"/>
 					</f:expandedContent>
@@ -86,10 +77,7 @@
 								inset="false"
 								sticky="HeaderToolbar,ColumnHeaders"
 								items="{
-										path: '/ProductCollection',
-										sorter: {
-											path: 'Name'
-										}
+
 									}"
 								class="sapFDynamicPageAlignContent"
 								width="auto">
@@ -145,11 +133,13 @@
 			<!-- DynamicPage Footer -->
 			<f:footer>
 				<OverflowToolbar>
+					<!--text="{/messagesLength}"
+					visible="{= !!${/messagesLength}}"-->
 					<Button icon="sap-icon://message-popup"
-						text="{/messagesLength}"
+
 						type="Emphasized"
 						press="onMessageButtonPress"
-						visible="{= !!${/messagesLength}}"/>
+						/>
 					<ToolbarSpacer/>
 					<Button type="Accept" text="Accept"/>
 					<Button type="Reject" text="Reject"/>

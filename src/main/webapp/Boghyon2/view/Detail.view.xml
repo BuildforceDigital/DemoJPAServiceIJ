@@ -1,0 +1,111 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:f="sap.f"
+  xmlns:form="sap.ui.layout.form"
+  controllerName="demo.controller.Detail"
+>
+  <f:DynamicPage id="page"
+    fitContent="true"
+    headerExpanded="false"
+    toggleHeaderOnTitleClick="false"
+    showFooter="{detailViewModel>/editing}"
+  >
+    <f:title>
+      <f:DynamicPageTitle>
+        <f:heading>
+          <Title text="User: {UserName}" />
+        </f:heading>
+        <f:actions>
+          <ToggleButton
+            text="Edit"
+            type="Emphasized"
+            pressed="{detailViewModel>/editing}"
+            visible="{= !${detailViewModel>/editing}}"
+          />
+        </f:actions>
+      </f:DynamicPageTitle>
+    </f:title>
+    <f:content>
+      <VBox renderType="Bare">
+        <form:SimpleForm id="form"
+          class="sapFDynamicPageAlignContent"
+          width="auto"
+          layout="ResponsiveGridLayout"
+          editable="true"
+        >
+          <Label text="First Name"/>
+          <Input
+            value="{
+              path: 'FirstName',
+              type: 'sap.ui.model.odata.type.String',
+              constraints: {
+                nullable: false,
+                maxLength: 30
+              }
+            }"
+            editable="{detailViewModel>/editing}"
+          />
+          <Label text="Last Name"/>
+          <Input
+            value="{
+              path: 'LastName',
+              type: 'sap.ui.model.odata.type.String',
+              constraints: {
+                nullable: false,
+                maxLength: 30
+              }
+            }"
+            editable="{detailViewModel>/editing}"
+          />
+        </form:SimpleForm>
+        <Table headerText="Trips"
+          class="sapFDynamicPageAlignContent"
+          width="auto"
+          growing="true"
+          items="{
+            path: 'Trips',
+            templateShareable: false
+          }"
+        >
+          <columns>
+            <Column>
+              <Text text="Name" />
+            </Column>
+            <Column>
+              <Text text="Duration" />
+            </Column>
+          </columns>
+          <ColumnListItem>
+            <Text text="{Name}"/>
+            <Text text="{
+              parts: [
+                'StartsAt',
+                'EndsAt'
+              ],
+              type: 'sap.ui.model.type.DateTimeInterval',
+              formatOptions: {
+                interval: true,
+                style: 'medium/short'
+              }
+            }" />
+          </ColumnListItem>
+        </Table>
+      </VBox>
+    </f:content>
+    <f:footer>
+      <OverflowToolbar asyncMode="true">
+        <ToolbarSpacer/>
+        <Button id="submitBtn"
+          text="Submit"
+          type="Emphasized"
+          press=".onSubmitPress"
+        />
+        <Button id="cancelBtn"
+          text="Cancel"
+          press=".reset"
+        />
+      </OverflowToolbar>
+    </f:footer>
+  </f:DynamicPage>
+</mvc:View>

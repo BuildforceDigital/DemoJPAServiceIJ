@@ -1,5 +1,5 @@
 {
-  "_version": "1.21.0",
+  "_version": "1.25.0",
   "sap.app": {
     "applicationVersion": {"version": "0.0.0"},
     "dataSources": {
@@ -7,6 +7,7 @@
         "uri": "/ContextPath/ServletPath.svc/",
         "type": "OData",
         "settings": {
+          "autoExpandSelect": true,
           "odataVersion": "4.0"
         }
       }

@@ -137,7 +137,7 @@ sap.ui.define([
 
             return new GroupHeaderListItem({
                 tooltip: oGroup.key,
-                title:  `${oGroup.key} ${this._getWeekNumber(oDate)} ${oDate.toLocaleString('default', { weekday: 'short' })}`
+                title:  'Title'//`${oGroup.key} ${this._getWeekNumber(oDate)} ${oDate.toLocaleString('default', { weekday: 'short' })}`
                 /*,
                 count : "Total: 2h80, approved: 0h00, 0 %"*/
             })
