@@ -61,16 +61,6 @@ sap.ui.define([
         onInit: function () {
             const oRouter = this.getRouter();
 
-            // this._oTable = this.byId("employeesTable");
-            // this._oVSD = null;
-            // this._sSortField = null;
-            // this._bSortDescending = false;
-            // this._aValidSortFields = ["ID", "FullName", "UserName"];
-            // this._sSearchQuery = null;
-            // this._oRouterArgs = null;
-
-            // this._initViewSettingsDialog();
-
             oRouter.getRoute("appHome").attachMatched(this._onRouteMatched, this);
 
         },
